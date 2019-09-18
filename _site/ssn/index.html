@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Erdi Sayar - SSN</title>
+  <meta name="description" content="Erdi Sayar: SSN">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/ssn/">
+<link rel="shortcut icon" type ="image/x-icon" href="http://localhost:4000/images/favicon.ico">
+
+
+
+</head>
+
+
+  <body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+	<div class="navbar-header">
+	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	  </button>
+
+    <a class="navbar-brand" href="http://localhost:4000/">Erdi Sayar</a>
+	</div>
+	<div class="collapse navbar-collapse" id="navbar-collapse-1">
+	  <ul class="nav navbar-nav navbar-right">
+		<li><a href="http://localhost:4000/">Home</a></li>
+		<li><a href="http://localhost:4000/publications">Publications</a></li>
+		<li><a href="http://localhost:4000/animations">Animations</a></li>
+		<li><a href="http://localhost:4000/experience">Experience</a></li>
+	  </ul>
+	</div>
+  </div>
+</div>
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <div id="gridid" class="col-sm-12">
+  <h2 align="center"> Superpixel Sampling Networks </h2>
+<p> </p>
+
+<p style="text-align: center;">
+<a href="http://varunjampani.github.io" style="color: #CC0000"> Varun Jampani </a>
+         
+<a href="http://research.nvidia.com/person/deqing-sun" style="color: #CC0000"> Deqing Sun </a>
+         
+<a href="http://mingyuliu.net/" style="color: #CC0000"> Ming-Yu Liu </a>
+         
+<a href="http://faculty.ucmerced.edu/mhyang/" style="color: #CC0000"> Ming-Hsuan Yang </a>
+         
+<a href="http://jankautz.com/" style="color: #CC0000"> Jan Kautz </a>
+</p>
+<p> </p>
+
+<h3> Abstract </h3>
+<p>Superpixels provide an efficient low/mid-level representation of image data, which greatly reduces the number of image primitives for subsequent vision tasks. While various superpixel computation models exist, they are not differentiable, making them difficult to integrate into otherwise end-to-end trainable deep neural networks. In this work, we develop a new differentiable model for superpixel sampling that better leverages deep networks for learning superpixel segmentation. The resulting “Superpixel Sampling Network” (SSN) is end-to-end trainable, which allows learning task-specific superpixels with flexible loss functions and has fast runtime. Extensive experimental analysis indicates that SSNs not only outperforms existing superpixel algorithms on traditional segmentation benchmarks, but can also learns superpixels for other tasks. In addition, SSNs can be easily integrated into downstream deep networks resulting in performance improvements.</p>
+
+<center>
+<figure>
+		<div id="projectid">
+    <img src="http://localhost:4000/images/projectpic/ssn_illustration.png" width="900px" />
+		</div>
+
+    <figcaption>
+		<br />
+				Overview of Superpixel Sampling Networks. A given image is first passed onto a deep network that extracts features at each pixel, which are then used by differentiable SLIC to generate the superpixels. Shown here are a couple of example SSN generated task-specific superpixels for semantic segmentation and optical flow.
+    </figcaption>
+</figure>
+</center>
+
+<h3> Paper </h3>
+
+<ul>
+  <li>Paper: <a href="http://localhost:4000/papers/jampani18_SSN.pdf" style="color: #CC0000"> PDF </a></li>
+  <li>Supplementary: <a href="http://localhost:4000/papers/jampani18_SSN_supp.pdf" style="color: #CC0000"> PDF </a></li>
+</ul>
+
+<!-- - Poster: <a href="https://ps.is.tuebingen.mpg.de/uploads_file/attachment/attachment/279/cvpr_poster.pdf" style="color: #CC0000"> PDF </a> -->
+
+<p>Please consider citing if you make use of this work and/or the corresponding code:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@inproceedings{jampani:ssn:2018,
+	title = {Superpixel Sampling Networks},
+	author = {Jampani, Varun and Sun, Deqing and Liu, Ming-Yu and Yang, Ming-Hsuan and Kautz, Jan},
+	booktitle = {European Conference on Computer Vision (ECCV)},
+	month = September,
+	year = {2018}
+}
+</code></pre></div></div>
+
+<h3> Code </h3>
+<p>We integrated superpixel sampling networks into <a href="http://caffe.berkeleyvision.org/" style="color: #CC0000"> Caffe </a> neural network framework. Code is available online in ths github repository:
+<a href="https://github.com/NVlabs/ssn_superpixels" style="color: #CC0000">https://github.com/NVlabs/ssn_superpixels</a>.</p>
+
+<h3> Video </h3>
+<center>
+<iframe width="900" height="500" src="https://www.youtube.com/embed/q37MxZolDck" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+</center>
+
+</div>
+
+      </div>
+    </div>
+
+    <div id="footer" class="panel">
+  <div class="panel-footer">
+	<div class="container-fluid">
+	  <div class="row">
+		<div class="col-sm-5">
+
+		  <p>&copy 2019 Erdi Sayar. Site made with <a href="https://jekyllrb.com">Jekyll</a>.</p>
+		   <p>  </p><p>
+
+
+		</div>
+		<div class="col-sm-5">
+		</div>
+    <div class="col-sm-5">
+		</div>
+		<div class="col-sm-5">
+		</div>
+	  </div>
+	</div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://localhost:4000/js/bootstrap.min.js"></script>
+
+
+  </body>
+
+</html>

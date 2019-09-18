@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Erdi Sayar - VPN</title>
+  <meta name="description" content="Erdi Sayar: VPN">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/vpn/">
+<link rel="shortcut icon" type ="image/x-icon" href="http://localhost:4000/images/favicon.ico">
+
+
+
+</head>
+
+
+  <body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+	<div class="navbar-header">
+	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	  </button>
+
+    <a class="navbar-brand" href="http://localhost:4000/">Erdi Sayar</a>
+	</div>
+	<div class="collapse navbar-collapse" id="navbar-collapse-1">
+	  <ul class="nav navbar-nav navbar-right">
+		<li><a href="http://localhost:4000/">Home</a></li>
+		<li><a href="http://localhost:4000/publications">Publications</a></li>
+		<li><a href="http://localhost:4000/animations">Animations</a></li>
+		<li><a href="http://localhost:4000/experience">Experience</a></li>
+	  </ul>
+	</div>
+  </div>
+</div>
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <div id="gridid" class="col-sm-12">
+  <h2 align="center"> Video Propagation Networks </h2>
+<p> </p>
+
+<p style="text-align: center;">
+<a href="http://varunjampani.github.io" style="color: #CC0000"> Varun Jampani </a>                <a href="http://ps.is.tuebingen.mpg.de/person/rgadde" style="color: #CC0000"> Raghudeep Gadde </a>               <a href="http://files.is.tue.mpg.de/pgehler/" style="color: #CC0000"> Peter V. Gehler </a>
+</p>
+<p> </p>
+
+<h3> Abstract </h3>
+<p>In this paper we propose a technique that propagates information forward through video data. The method is conceptually simple and can be applied to tasks that require the propagation of structured information, such as semantic labels, based on video content. We propose a ‘Video Propagation Network’ that processes video frames in an adaptive manner. The model is applied online: it propagates information forward without the need to access future frames other than the current ones. In particular, we combine two components, a temporal bilateral network for dense and video adaptive filtering, followed by a spatial network to refine features and increased flexibility. We present experiments on video object segmentation and semantic video segmentation and show increased performance comparing to the best previous task-specific methods, while having favorable runtime. Additionally we demonstrate our approach on an example regression task of propagating color in a grayscale video.</p>
+
+<center>
+<figure>
+		<div id="projectid">
+    <img src="http://localhost:4000/images/projectpic/bcl_vpn_illustration.png" width="900px" />
+		</div>
+    <figcaption>
+				Schematic of Bilateral Convolutional Layer, which forms the core of video propagation networks. Mask probabilities from previous frames are splatted on to the lattice positions defined by the image features. The splatted result is convolved with a 1 × 1 filter B, and the filtered result is sliced back to the original image space to get result for the present frame. Input and output can also be an intermediate CNN representations.
+    </figcaption>
+</figure>
+</center>
+
+<h3> Paper </h3>
+<ul>
+  <li>Paper: <a href="http://localhost:4000/papers/jampani17_VPN.pdf" style="color: #CC0000"> PDF </a></li>
+  <li>Supplementary: <a href="http://localhost:4000/papers/jampani17_VPN_supp.pdf" style="color: #CC0000"> PDF </a></li>
+</ul>
+
+<!-- - Poster: <a href="https://ps.is.tuebingen.mpg.de/uploads_file/attachment/attachment/279/cvpr_poster.pdf" style="color: #CC0000"> PDF </a> -->
+
+<p>Please consider citing if you make use of this work and/or the corresponding code:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@inproceedings{jampani:vpn:2017,
+	title = {Video Propagation Networks},
+	author = {Jampani, Varun and Gadde, Raghudeep and Gehler, Peter V.},
+	booktitle = { IEEE Conf. on Computer Vision and Pattern Recognition (CVPR)},
+	month = july,
+	year = {2017}
+}
+</code></pre></div></div>
+
+<h3> Code </h3>
+<p>We integrated video propagation network into <a href="http://caffe.berkeleyvision.org/" style="color: #CC0000"> Caffe </a> neural network framework. Code is available in this github repository:
+<a href="https://github.com/varunjampani/video_prop_networks" style="color: #CC0000"> https://github.com/varunjampani/video_prop_networks</a>.</p>
+
+<h3> Usage </h3>
+
+<p>The video propagation networks are generic and can be used for propagating any type of information across video frames. They are end-to-end trainable and can be combined with any existing deep network. The main use of VPNs in comparison to standard spatio-temporal CNNs is that VPNs can enable long-range pixel/superpixel connections while being computationally fast. In this paper, we experimented with label propagation (foreground or semantic labels) and colour propagation. See experiments in the paper and the corresponding <a href="https://github.com/varunjampani/video_prop_networks" style="color: #CC0000"> codes</a>.</p>
+
+<p>An example color propagation:</p>
+
+<center>
+<figure>
+		<div id="projectid">
+    <img src="http://localhost:4000/images/projectpic/color_propagation.png" width="800px" />
+		<p> &nbsp; </p>
+		</div>
+    <figcaption>
+		<b>
+			Input grayscale video frames and corresponding ground-truth (GT) color images together with color predictions of Levin et al. (2004) and VPN-Stage1 models.
+		</b>
+    </figcaption>
+</figure>
+</center>
+
+<p>A couple of examples for object mask propagation:</p>
+
+<center>
+<figure>
+		<div id="projectid">
+    <img src="http://localhost:4000/images/projectpic/video_seg_visuals.png" width="800px" />
+		<p> &nbsp; </p>
+		</div>
+    <figcaption>
+		<b>
+			Shown are the different frames in example videos with the corresponding ground truth (GT) masks, predictions from BVS [M&auml;rki et al. 2016], OFL [Tsai et al. 2016], VPN (VPN- Stage2) and VPN-DLab (VPN-DeepLab) models.
+		</b>
+    </figcaption>
+</figure>
+</center>
+
+<p>   </p>
+
+</div>
+
+      </div>
+    </div>
+
+    <div id="footer" class="panel">
+  <div class="panel-footer">
+	<div class="container-fluid">
+	  <div class="row">
+		<div class="col-sm-5">
+
+		  <p>&copy 2019 Erdi Sayar. Site made with <a href="https://jekyllrb.com">Jekyll</a>.</p>
+		   <p>  </p><p>
+
+
+		</div>
+		<div class="col-sm-5">
+		</div>
+    <div class="col-sm-5">
+		</div>
+		<div class="col-sm-5">
+		</div>
+	  </div>
+	</div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://localhost:4000/js/bootstrap.min.js"></script>
+
+
+  </body>
+
+</html>

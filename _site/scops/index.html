@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Erdi Sayar - SCOPS</title>
+  <meta name="description" content="Erdi Sayar: SCOPS">
+  <link rel="stylesheet" href="http://localhost:4000/css/main.css">
+  <link rel="canonical" href="http://localhost:4000/scops/">
+<link rel="shortcut icon" type ="image/x-icon" href="http://localhost:4000/images/favicon.ico">
+
+
+
+</head>
+
+
+  <body>
+
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+	<div class="navbar-header">
+	  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false">
+		<span class="sr-only">Toggle navigation</span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+		<span class="icon-bar"></span>
+	  </button>
+
+    <a class="navbar-brand" href="http://localhost:4000/">Erdi Sayar</a>
+	</div>
+	<div class="collapse navbar-collapse" id="navbar-collapse-1">
+	  <ul class="nav navbar-nav navbar-right">
+		<li><a href="http://localhost:4000/">Home</a></li>
+		<li><a href="http://localhost:4000/publications">Publications</a></li>
+		<li><a href="http://localhost:4000/animations">Animations</a></li>
+		<li><a href="http://localhost:4000/experience">Experience</a></li>
+	  </ul>
+	</div>
+  </div>
+</div>
+
+
+    <div class="container-fluid">
+      <div class="row">
+        <div id="gridid" class="col-sm-12">
+  <h2 align="center"> SCOPS: Self-Supervised Co-Part Segmentation </h2>
+<p> </p>
+
+<p style="text-align: center;">
+<a href="https://hfslyc.github.io" style="color: #CC0000"> Wei-Chih Hung </a>
+      
+<a href="http://varunjampani.github.io" style="color: #CC0000"> Varun Jampani </a>
+      
+<a href="https://www.sifeiliu.net/" style="color: #CC0000"> Sifei Liu </a>
+      
+<a href="https://research.nvidia.com/person/pavlo-molchanov" style="color: #CC0000"> Pavlo Molchanov </a>
+      
+<a href="http://faculty.ucmerced.edu/mhyang/" style="color: #CC0000"> Ming-Hsuan Yang </a>
+      
+<a href="http://jankautz.com/" style="color: #CC0000"> Jan Kautz </a>
+</p>
+<p> </p>
+
+<h3> Abstract </h3>
+<p>Parts provide a good intermediate representation of objects that is robust with respect to the camera, pose and appearance variations. Existing works on part segmentation is dominated by supervised approaches that rely on large amounts of manual annotations and can not generalize to unseen object categories. We propose a self-supervised deep learning approach for part segmentation, where we devise several loss functions that aids in predicting part segments that are geometrically concentrated, robust to object variations and are also semantically consistent across different object instances. Extensive experiments on different types of image collections demonstrate that our approach can produce part segments that adhere to object boundaries and also more semantically consistent across object instances compared to existing self-supervised techniques.</p>
+
+<center>
+<figure>
+		<div id="projectid">
+    <img src="http://localhost:4000/images/projectpic/scops_results.png" width="900px" />
+		</div>
+		<br />
+    <figcaption>
+				Sample part segmentation obtained by SCOPS on different types of image collections: (left) unaligned faces from CelebA, (middle) birds from CUB and (right) horses from PASCAL VOC dataset images, showing that SCOPS can be robust to appearance, viewpoint and pose variations.
+    </figcaption>
+</figure>
+</center>
+
+<h3> Paper </h3>
+<ul>
+  <li>Paper: <a href="http://localhost:4000/papers/hung19_SCOPS.pdf" style="color: #CC0000"> PDF </a></li>
+  <li>Supplementary: <a href="http://localhost:4000/papers/hung19_SCOPS_supp.pdf" style="color: #CC0000"> PDF </a></li>
+</ul>
+
+<!-- - Poster: <a href="https://ps.is.tuebingen.mpg.de/uploads_file/attachment/attachment/279/cvpr_poster.pdf" style="color: #CC0000"> PDF </a> -->
+
+<p>Please consider citing if you make use of this work and/or the corresponding code:</p>
+
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>@inproceedings{hung:CVPR:2019,
+	title = {SCOPS: Self-Supervised Co-Part Segmentation},
+	author = {Hung, Wei-Chih and Jampani, Varun and Liu, Sifei and Molchanov, Pavlo and Yang, Ming-Hsuan and Kautz, Jan},
+	booktitle = {IEEE Conf. on Computer Vision and Pattern Recognition (CVPR)},
+	month = june,
+	year = {2019}
+}
+</code></pre></div></div>
+
+<h3> Code </h3>
+<p>SCOPS is implemented using <a href="https://pytorch.org/" style="color: #CC0000">pytorch</a> neural network framework. Code is available in this github repository:
+<a href="https://github.com/NVlabs/SCOPS" style="color: #CC0000">https://github.com/NVlabs/SCOPS</a>.</p>
+
+<h3> Video </h3>
+<center>
+<iframe width="900" height="500" src="https://www.youtube.com/embed/OeBhDK8mQa8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+</center>
+
+</div>
+
+      </div>
+    </div>
+
+    <div id="footer" class="panel">
+  <div class="panel-footer">
+	<div class="container-fluid">
+	  <div class="row">
+		<div class="col-sm-5">
+
+		  <p>&copy 2019 Erdi Sayar. Site made with <a href="https://jekyllrb.com">Jekyll</a>.</p>
+		   <p>  </p><p>
+
+
+		</div>
+		<div class="col-sm-5">
+		</div>
+    <div class="col-sm-5">
+		</div>
+		<div class="col-sm-5">
+		</div>
+	  </div>
+	</div>
+  </div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://localhost:4000/js/bootstrap.min.js"></script>
+
+
+  </body>
+
+</html>

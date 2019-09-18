@@ -1,0 +1,23 @@
+- title:  Fuzzy Logic Controller and PID Controller Design for Aircraft Pitch Control
+  image: fuzzy_pid.png
+  description: The goal of this paper is to compare a PID controller and a Fuzzy Logic controller in terms of pitch control of an aircraft.
+  authors: Erdi Sayar, Hüseyin Metin Ertunç
+  venue: European Conference on Mechanism Science, EuCoMeS'18
+  number_link: 1
+  link1:
+    url: https://erdisayar.github.io/papers/2019_Book_EuCoMeS2018.pdf
+    display: pdf
+  link2:
+    url: https://github.com/NVlabs/pacnet
+    display: code (github)
+
+
+- title: Assistive Handwriting Haptic Mechanism Using Deep Learning Speech Recognition
+  image: 5R_Haptic.png
+  description: Learning to handwrite for visually impaired people is a difficult task. Using assistive haptic device during handwriting learning for people having a visual impairment is the objective of this work
+  authors: Erdi Sayar
+  venue: Artifical Intelligence and Machine Learning, WCAIML'19
+  number_link: 1
+  link1:
+    url: https://erdisayar.github.io/papers/Haptic_Speech.pdf
+    display: pdf
