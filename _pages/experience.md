@@ -13,71 +13,56 @@ permalink: /experience
 <h3>Notable Achievements and Awards</h3>
 
 <ul>
-<li><strong>Best Paper Honorable Mention</strong> award at CVPR’18.</li>
-<li><strong>Nvidia Pioneering Research Award</strong>, 2018.</li>
-<li><strong>Summa cum laude (highest honors)</strong> from the University of Tübingen for my PhD dissertation.</li>
-<li><strong>Outstanding Reviewer Awards</strong> at CVPR'19, CVPR’18, CVPR’17 and ECCV’16.</li>
-<li><strong>Gold Medal</strong> for being first in my B.Tech. (out of around 180 students) at IIIT-Hyderabad.</li>
-<li>Member of <strong>Doctoral Consortium</strong> at CVPR'16.</li>
-<li>Prestigious <strong>Pratibha Scholarship</strong> given by the state government of Andhra Pradesh, India.</li>
-<li>All India Rank of <strong>121</strong> (out of over 700K students) in AIEEE'05 and State Rank of <strong>306</strong> (out of over 150K students) in EAMCET'05.</li>
-<li>Scholarships from CBSE, national and state governments of India for my academic achievements.</li>
-<li>One of the 50 finalists from all over the India for <strong>Reliance-Stanford scholarship 2011</strong>.</li>
-<li>A member of 100-member <strong>Youth delegation to China</strong> in 2009 organized by the Ministry of Youth affairs and Sports, India.</li>
+<li><strong>GPA: 3.82/4.00 (Ranked: 1/ ca.1000 ) between all engineering faculties </strong>from Kocaeli University.</li>
+
+<li><strong>Graduate summa cum laude (highest honors) </strong> in Mechatronics Engineering from Kocaeli University.</li>
+<li><strong>2211/A PhD Scholarship from TUBITAK </strong>(Turkish National Science Foundation).</li>
+<li><strong>EuCoMeS 2018 </strong> 7th European Conference on Mechanism Science attendance.</li>
+<li>Robot Operation System<strong>(ROS)</strong> Summer School 2019 at FH Aachen.</li>
 </ul>
 
-<p>&nbsp;</p>
 
-<h3>Program Committee</h3>
-I am an area chair for CVPR'20. I usually serve as a reviewer for the following conferences and journals: CVPR, NIPS, ICCV, ECCV, ICML, PAMI, SIGGRAPH Asia, NSF review panel. I received <strong>Outstanding Reviewer</strong> awards at CVPR'19, CVPR'18, CVPR'17 and ECCV'16.
 
 <p>&nbsp;</p>
 
 <h3>Talks</h3>
 <ul>
-<li><strong>Sparse High-Dimensional Neural Networks</strong>, Machine Intelligence Conference, MIT, Boston, November, 2018.</li>
-<li><strong>Bilateral Neural Networks for Image, Video and 3D Vision</strong>, University of Massachusetts, Amherst, October, 2017.</li>
-<li><strong>Learning Bilateral Information Propagation across Pixels</strong>, Nvidia Research, Santa Clara, June, 2016.</li>
-<li><strong>Learning to Propagate Information across Pixels</strong>, Microsoft Research, Redmond, April, 2016.</li>
-<li><strong>Primed Message Passing for Layered Graphical Models</strong>, Microsoft Research, Cambridge, October, 2014.</li>
-<li><strong>Inverting Graphic Engines using Informed Samplers</strong>, IIIT-Hyderabad, Hyderabad, December, 2013.</li>
+<li><strong>Valedictory speech</strong> at Kocaeli University.</li>
+<li><strong>EuCoMeS '18 </strong> Paper Presentation.</li>
+
 </ul>
 
 <p>&nbsp;</p>
 
 <h3>Education</h3>
 
-<p><em>(Jan&rsquo;13 &ndash; Dec &rsquo;16)</em></p>
+<p><em>(Feb&rsquo;17 &ndash; March &rsquo;18)</em></p>
 
-<p><strong>Max-Planck Institute for Intelligent Systems</strong> and <strong>University of T&uuml;bingen</strong>, T&uuml;bingen, Germany</p>
+<p><strong>Ph.D Mechanical Engieering, Izmir Institute of Technology(Drop-out)</strong> Izmir,Turkey</p>
 
-<p>Doctor of Philosophy (<em>PhD</em>) in computer vision and machine learning (Grade: <strong>summa cum laude</strong>)</p>
 
-<p>Thesis Title: Learning Inference Models for Computer Vision</p>
-
-<p>Advisor: Prof. Peter V. Gehler</p>
 
 <p>&nbsp;</p>
 
-<p><em>(July&rsquo;09 - Dec &rsquo;12)</em></p>
+<p><em>(Aug &rsquo;13 - Nov &rsquo;14)</em></p>
 
-<p><strong>International Institute of Information Technology</strong>, Hyderabad (IIIT-H), India</p>
+<p><strong>B.Sc Mechatronics Engineering, Bochum University of Applied Science</strong> Bochum, Germany</p>
 
-<p>Master of Science (<em>MS</em>) by Research in computer sciences</p>
+<p>Exchange with double diplom agreement</p>
+<p><strong>GPA: </strong> 1.36/1.00</p>
+<p><strong>Thesis Title:</strong> Three phase asynchronous motor dynamic mathematical model
+and control Simulink </p>
 
-<p>Thesis Title: A Study of X-ray Image Perception for Pneumoconiosis Diagnosis</p>
-
-<p>Advisors: Prof. Jayanthi Sivaswamy and Prof. Bipin Indurkhya</p>
+<p><strong>Advisors:</strong> Advisors :Prof.Dr.-Ing Peter Brychta,Prof. Dr.-Ing. Arno Bergmann</p>
 
 <p>&nbsp;</p>
 
-<p><em>(July &rsquo;05 &ndash; May &rsquo;09)</em></p>
+<p><em>(Sept &rsquo;10 &ndash; June &rsquo;15) (including 1 year language prepration school)</em></p>
 
-<p><strong>International Institute of Information Technology</strong>, Hyderabad (IIIT-H), India</p>
+<p><strong>B.Sc Mechatronics Engineering, Kocaeli University </strong> Kocaeli,Turkey </p>
 
-<p>Bachelor of Technology (<em>BTech</em>) with Honours in computer sciences (CGPA: <strong>9.68/10.0</strong>)</p>
+<p><strong>GPA: </strong>3.82/4.00</p>
 
-<p><strong>Gold Medalist </strong>and member of <strong>Dean&rsquo;s list&nbsp;</strong>for all the semesters</p>
 
 <p>&nbsp;</p>
 

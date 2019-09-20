@@ -30,7 +30,7 @@ My work lies at the intersection of Computer Vision and Machine Learning. Specif
 <div class="col-sm-4" style="display:table-cell; vertical-align:middle; text-align:left">
 
   <ul style="overflow: hidden">
-  <img src="{{ site.url }}{{ site.baseurl }}/images/profile_pic.jpeg" class="img-responsive" width="100%" />
+  <img src="{{ site.url }}{{ site.baseurl }}/media/images/profile_pic.jpeg" class="img-responsive" width="100%" />
   </ul>
 
   <!-- <br clear="all" /> -->
@@ -55,7 +55,7 @@ My work lies at the intersection of Computer Vision and Machine Learning. Specif
  <div class="well">
  <pubtit>{{ publi.title }}</pubtit>
 
- <img src="{{ site.url }}{{ site.baseurl }}/images/pubpic/{{ publi.image }}" class="img-responsive" width="200px" style="float: left" />
+ <img src="{{ site.url }}{{ site.baseurl }}/media/images/pubpic/{{ publi.image }}" class="img-responsive" width="200px" style="float: left" />
 
  <p>{{ publi.description }}</p>
 
@@ -115,6 +115,10 @@ My work lies at the intersection of Computer Vision and Machine Learning. Specif
 </div>
 
 <div class="col-sm-12">
+
+
+<!-- ## Full List
+
 
 ### Theses
 
@@ -180,3 +184,4 @@ My work lies at the intersection of Computer Vision and Machine Learning. Specif
 <p> &nbsp; </p>
 
 </div>
+-->

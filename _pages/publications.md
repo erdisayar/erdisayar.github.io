@@ -137,7 +137,7 @@ permalink: /publications/
 
 
 
-
+<!-- ## Full List
 ### Theses
 
 {% for publi in site.data.theseslist limit:6 %}

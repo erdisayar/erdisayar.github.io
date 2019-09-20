@@ -1,100 +1,80 @@
+- title:  Designing current and power controller
+  image: modern_control_controller_design.png
+  description: Designing State Space PI with Coupling and without Coupling , Optimal Control with Kalman Filter
+  authors: Erdi Sayar
+
+  number_link: 1
+  link1:
+    url: /papers/projects/ModernControl.pdf
+    display: pdf
+
+
+
+- title:  Control of Kinematicly Redundant Robot
+  image: redundant_robot.jpg
+  description: Control 3R redundant robot with "Withstanding Impacts" and "Generalized Impact Measure" subtasks
+  authors: Erdi Sayar
+
+  number_link: 2
+  link1:
+    url: /papers/projects/Redundant_Robot.pdf
+    display: pdf
+  link2:
+    url: /media/video/project/robot_redundant.mp4
+    display: video
+
+
+
 - title:  Image Processing Car Detection (Bachelor Project )
   image: car_detection.jpg
   description: Detection of cars in video and print the number of detected cars
   authors: Erdi Sayar
 
-  number_link: 3
+  number_link: 2
   link1:
-    url: https://erdisayar.github.io/papers/Car_Detection_HW.pdf
+    url: /papers/projects/Car_Detection_HW.pdf
     display: pdf
   link2:
-    url: https://github.com/NVlabs/pacnet
+    url: /media/video/project/car_detection_matlab.mp4
     display: video
-  link3:
-    url: https://github.com/NVlabs/pacnet
-    display: code (github)
 
 
-- title:  Image Processing Car Detection (Bachelor Project )
+- title:  Robot Simulation with Cosmir Software (Bachelor Project )
   image: cosmir_robot.png
-  description: Detection of cars in video and print the number of detected cars
+  description: Distinguishing 3 different color and lengths of boxes and sorting them
   authors: Erdi Sayar
 
-  number_link: 3
+  number_link: 2
   link1:
-    url: https://erdisayar.github.io/papers/Car_Detection_HW.pdf
+    url: /papers/projects/Cosmir_Project.pdf
     display: pdf
   link2:
-    url: https://github.com/NVlabs/pacnet
+    url: /media/video/project/cosmir_video.mp4
     display: video
-  link3:
-    url: https://github.com/NVlabs/pacnet
-    display: code (github)
 
 
-- title:  Image Processing Car Detection (Bachelor Project )
+
+- title:  Mechanical Press (Bachelor Project )
   image: mechanical_press.jpg
-  description: Detection of cars in video and print the number of detected cars
+  description: Velocity and Acceleration Analysis of Mechanical Press
   authors: Erdi Sayar
 
-  number_link: 3
+  number_link: 2
   link1:
-    url: https://erdisayar.github.io/papers/Car_Detection_HW.pdf
+    url: /papers/projects/Mechanical Press.pdf
     display: pdf
   link2:
-    url: https://github.com/NVlabs/pacnet
+    url: /media/video/project/Baugrupp.avi
     display: video
-  link3:
-    url: https://github.com/NVlabs/pacnet
-    display: code (github)
 
 
-- title:  Image Processing Car Detection (Bachelor Project )
+
+- title:  Intermittent worm wheel with cam (Bachelor Project )
   image: worm_wheel.png
-  description: Detection of cars in video and print the number of detected cars
+  description: In this study, stresses and deformations on cam mechanism caused by moment are analyzed
   authors: Erdi Sayar
 
-  number_link: 3
+  number_link: 1
   link1:
-    url: https://erdisayar.github.io/papers/Car_Detection_HW.pdf
+    url: /papers/projects/Intermittent-worm-wheel-with-cam.pdf
     display: pdf
-  link2:
-    url: https://github.com/NVlabs/pacnet
-    display: video
-  link3:
-    url: https://github.com/NVlabs/pacnet
-    display: code (github)
-
-
-- title:  Image Processing Car Detection (Bachelor Project )
-  image: modern_control_controller_design.png
-  description: Detection of cars in video and print the number of detected cars
-  authors: Erdi Sayar
-
-  number_link: 3
-  link1:
-    url: https://erdisayar.github.io/papers/Car_Detection_HW.pdf
-    display: pdf
-  link2:
-    url: https://github.com/NVlabs/pacnet
-    display: video
-  link3:
-    url: https://github.com/NVlabs/pacnet
-    display: code (github)
-
-
-- title:  Image Processing Car Detection (Bachelor Project )
-  image: redundant_robot.jpg
-  description: Detection of cars in video and print the number of detected cars
-  authors: Erdi Sayar
-
-  number_link: 3
-  link1:
-    url: https://erdisayar.github.io/papers/Car_Detection_HW.pdf
-    display: pdf
-  link2:
-    url: https://github.com/NVlabs/pacnet
-    display: video
-  link3:
-    url: https://github.com/NVlabs/pacnet
-    display: code (github)
