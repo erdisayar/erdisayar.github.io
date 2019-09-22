@@ -5,7 +5,7 @@
   venue: European Conference on Mechanism Science, EuCoMeS'18
   number_link: 1
   link1:
-    url: https://erdisayar.github.io/papers/2019_Book_EuCoMeS2018.pdf
+    url: https://erdisayar.github.io/papers/publications/2019_Book_EuCoMeS2018.pdf
     display: pdf
   link2:
     url: https://github.com/NVlabs/pacnet
@@ -19,5 +19,5 @@
   venue: Artifical Intelligence and Machine Learning, WCAIML'19
   number_link: 1
   link1:
-    url: https://erdisayar.github.io/papers/Haptic_Speech.pdf
+    url: https://erdisayar.github.io/papers/publications/Haptic_Speech.pdf
     display: pdf
