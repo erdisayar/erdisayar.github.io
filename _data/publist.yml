@@ -17,7 +17,10 @@
   description: Learning to handwrite for visually impaired people is a difficult task. Using assistive haptic device during handwriting learning for people having a visual impairment is the objective of this work
   authors: Erdi Sayar
   venue: Artifical Intelligence and Machine Learning, WCAIML'19
-  number_link: 1
+  number_link: 2
   link1:
     url: https://erdisayar.github.io/papers/publications/5R_Speech_Recogntion.pdf
     display: pdf
+  link2:
+    url: https://erdisayar.github.io/papers/publications/5R_presentation.zip
+    display: zip
