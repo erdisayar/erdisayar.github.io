@@ -20,6 +20,9 @@ permalink: /animations
         <li><p><iframe src="//www.youtube.com/embed/0XDHKKAoTbg" width="560" height="314" allowfullscreen="allowfullscreen"></iframe></p></li>
 	<li><p><iframe src="//www.youtube.com/embed/IYy6XeHFejY" width="560" height="314" allowfullscreen="allowfullscreen"></iframe></p></li>
 
+	<li><p><iframe src="//https://youtu.be/uFWOV1R2-0c" width="560" height="314" allowfullscreen="allowfullscreen"></iframe></p></li>
+
+
 
 	<li><p><a href="https://youtu.be/qW4eLRf4PcM">5R Dynamic Equations</a></p></li>
 	<li><p><a href="https://youtu.be/TOJpK020rE4">Recurrent Neural Network</a></p></li>
