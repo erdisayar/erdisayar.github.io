@@ -7,10 +7,28 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-ca</language>
     <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
-    <lastBuildDate>Thu, 24 Dec 2020 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 13 Feb 2021 00:00:00 +0100</lastBuildDate>
     
 	    <atom:link href="https://matbesancon.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>academia</title>
+      <link>https://matbesancon.github.io/tags/academia/</link>
+      <pubDate>Sat, 13 Feb 2021 00:00:00 +0100</pubDate>
+      
+      <guid>https://matbesancon.github.io/tags/academia/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>latex</title>
+      <link>https://matbesancon.github.io/tags/latex/</link>
+      <pubDate>Sat, 13 Feb 2021 00:00:00 +0100</pubDate>
+      
+      <guid>https://matbesancon.github.io/tags/latex/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>automatic-differentiation</title>
@@ -45,15 +63,6 @@
       <pubDate>Thu, 24 Dec 2020 00:00:00 +0100</pubDate>
       
       <guid>https://matbesancon.github.io/tags/optimization/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>academia</title>
-      <link>https://matbesancon.github.io/tags/academia/</link>
-      <pubDate>Thu, 26 Mar 2020 00:00:00 +0100</pubDate>
-      
-      <guid>https://matbesancon.github.io/tags/academia/</guid>
       <description></description>
     </item>
     
