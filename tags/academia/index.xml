@@ -7,10 +7,151 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-ca</language>
     <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
-    <lastBuildDate>Fri, 02 Apr 2021 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sun, 11 Apr 2021 00:00:00 +0200</lastBuildDate>
     
 	    <atom:link href="https://matbesancon.github.io/tags/academia/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>French Higher education in STEM</title>
+      <link>https://matbesancon.github.io/post/2021-04-11-french-highered/</link>
+      <pubDate>Sun, 11 Apr 2021 00:00:00 +0200</pubDate>
+      
+      <guid>https://matbesancon.github.io/post/2021-04-11-french-highered/</guid>
+      <description>&lt;h2&gt;Table of Contents&lt;/h2&gt;
+&lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#universities&#34;&gt;Universities&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#engineering-schools&#34;&gt;Engineering schools&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#classes-préparatoires&#34;&gt;Classes Préparatoires&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#iut&#34;&gt;IUT&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;p&gt;The Bologna reform brought some homogeneity to higher education in Europe,
+in particular the Bachelor-Master-Doctorate levels recognized across countries and
+the European Credit Transfer and Accumulation System (ECTS) defining
+an accounting system for academic programs, with 60 credits being the equivalent
+of a full-time year.&lt;/p&gt;
+&lt;p&gt;Even though we all refer to the same level with a Bachelor&amp;rsquo;s or Master&amp;rsquo;s,
+the reality of programs at each level can differ within and between countries.
+The goal of this post is to provide some opinionated explanations on the
+main curricula followed in STEM in France. I will not compare it to
+the systems of other countries which would be trickier, just provide few pointers.
+In applied sciences, technology and engineering domains, many people will not have been through
+universities but alternative degree-awarding institutions called &lt;em&gt;Grandes Écoles&lt;/em&gt;, an alternative system.
+The descriptions I give will represent overall trends, there will be institutions
+that do not fit well in one of the boxes and individuals within these institutions
+that have profiles quite different from the typical ones.&lt;/p&gt;
+&lt;h1 id=&#34;universities&#34;&gt;Universities&lt;/h1&gt;
+&lt;p&gt;Universities are the easiest model to understand since they fit into the
+Bachelor-Master-Doctorate Bologna model and work similarly to universities
+abroad.&lt;/p&gt;
+&lt;p&gt;University students are usually more exposed to research throughout their curriculum,
+being taught by professors and researchers for most of the course work from the Bachelor&amp;rsquo;s on
+and being trained specifically for research in many Master&amp;rsquo;s programs.
+A distinctive element of the French higher education program is selection at least as much as
+course content, with tougher selection being perceived as more prestigious.&lt;/p&gt;
+&lt;p&gt;Universities have a specific aspect with that regard: there is almost no selection
+for admission, as long as you graduated from high school.
+This means 1st-year cohorts are composed of lots of uncertain people here as a fallback plan
+or because they needed anything. This also means faculties cannot regulate the number of admissions
+in the 1st year and thus guarantee the quality of the curriculum.
+Selection only happens between the Bachelor&amp;rsquo;s years and between Bachelor&amp;rsquo;s and Master&amp;rsquo;s programs.&lt;/p&gt;
+&lt;p&gt;The good part of a system that is not selective for admissions is that a lot of people
+can sample a Bachelor program and become extremely good in their domain even though
+they did not seem to have a suitable profile based on their high-school record.
+A drawback is that 1st year experiences are usually awful because of under-staffing
+and the overall low cohort motivation.&lt;/p&gt;
+&lt;p&gt;Another issue appearing later in curricula and that was reported is that a pure university
+Bachelor&amp;rsquo;s and Master&amp;rsquo;s track leaves a feeling of unawareness of industry opportunities
+with most courses being taught by university professors who themselves have seldom worked
+outside of academia.&lt;/p&gt;
+&lt;h1 id=&#34;engineering-schools&#34;&gt;Engineering schools&lt;/h1&gt;
+&lt;p&gt;These institutions (&lt;em&gt;écoles d&amp;rsquo;ingénieurs&lt;/em&gt;) are public or private institutions delivering
+an engineering degree at a Master&amp;rsquo;s level. They are usually much smaller than universities,
+it is not shocking to hear of schools with about 300-500 students and a single building.
+The initial motivation (some several centuries old) for these schools was to prepare
+technical managers working for the state and companies. The term &amp;ldquo;ingénieur&amp;rdquo; in France
+is perceived mostly as a title first, and a function secondarily.
+People will consider themselves &lt;em&gt;ingénieurs&lt;/em&gt; even if they do not actually work
+in engineering (some schools are fairly famous for training managers more than technical specialists).
+Engineering schools are usually well-funded, even more when looking at the budget per capita.
+A larger part of the curriculum is preparing industry professionals and the institutions to develop
+stronger partnerships with companies (for better and worse).&lt;/p&gt;
+&lt;p&gt;Engineering schools also have more freedom over the curriculum from the start than universities.
+There is however one institution controlling the programs delivering a &lt;em&gt;diplôme d&amp;rsquo;ingénieur&lt;/em&gt;
+called the &lt;a href=&#34;https://www.cti-commission.fr/&#34;&gt;Commission des titres d&amp;rsquo;ingénieurs&lt;/a&gt; (CTI).
+They evaluate engineering programs periodically and assert whether an institution
+can continue delivering the degree.
+The requirements are much more precise than ones for a Master&amp;rsquo;s degree, with examples such as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a minimum level in English validated by an external examination&lt;/li&gt;
+&lt;li&gt;a minimum time abroad&lt;/li&gt;
+&lt;li&gt;some humanities and social sciences.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The CTI has always been a topic of debate, whether it should intervene less or more
+in the programs, which direction and changes they should give to engineering title
+requirements.&lt;/p&gt;
+&lt;p&gt;The last distinction between engineering schools is the way they recruit:
+after high school or after a &lt;em&gt;preparation program&lt;/em&gt;.
+Schools recruiting after high school offer a 5-year joint Bachelor-Master&amp;rsquo;s program
+up to the engineer title. There might be a cut-off after the Bachelor&#39; completion
+but it is expected to complete the 5 years.&lt;/p&gt;
+&lt;p&gt;The traditional and still predominant structure however is to go through a &lt;em&gt;classe préparatoire aux grandes écoles&lt;/em&gt;
+(CPGE) or preparation course in order to apply to those engineering schools and other non-university institutions.&lt;/p&gt;
+&lt;h1 id=&#34;classes-préparatoires&#34;&gt;Classes Préparatoires&lt;/h1&gt;
+&lt;p&gt;CPGEs offer a two-year program after high school, here are some key elements:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;They do not deliver any degree but &lt;em&gt;prepare&lt;/em&gt; candidates for other institutions;&lt;/li&gt;
+&lt;li&gt;CPGE are programs offered by high schools, not higher-education institutions, with smaller highly-directed classes more than lectures.&lt;/li&gt;
+&lt;li&gt;The teachers are usually not researchers but full-time teachers with specific qualifications (called aggrégation);&lt;/li&gt;
+&lt;li&gt;CPGE programs are split by emphasized topic (maths, physics, engineering, &amp;hellip;);&lt;/li&gt;
+&lt;li&gt;The workload is intense: about 38 weekly hours of classes (mixing lectures and exercises) and tests, about 20-30 hours of self-study (as reported on &lt;a href=&#34;https://www.letudiant.fr/etudes/classes-prepa/reussir-sa-prepa-les-reponses-a-vos-questions/en-prepa-comment-tenir-le-coup-face-au-rythme-de-travail.html&#34;&gt;several&lt;/a&gt;
+&lt;a href=&#34;https://www.orientation-education.com/article/les-eleves-de-classes-prepas-sont-les-etudiants-qui-travaillent-le-plus&#34;&gt;articles&lt;/a&gt;);&lt;/li&gt;
+&lt;li&gt;The emphasis is on quantitative skills with well-scoped exercises, theorem proving, with a few hours of literature and languages, one small science project.&lt;/li&gt;
+&lt;li&gt;Officially, they provide the hard skill foundations for the Grandes Écoles coming after. My perception, shared by many that went through them, the program is in fact designed around preparing for the selective exams (&lt;em&gt;concours&lt;/em&gt;) determining which institutions people get admitted to. The goal is to identify key patterns in exercises and be able to work fast towards a solution.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;After the end of the second year, the &lt;em&gt;concours&lt;/em&gt; period starts. Each institution has a rough number of places
+and chooses from which &lt;em&gt;concours&lt;/em&gt; they want to recruit. Most schools join a grouped concours but some have
+their own. Students choose which &lt;em&gt;concours&lt;/em&gt; they want to take. More concours implies increases the
+possible choices but given that most happen in a narrow time window, choices are necessary.
+Each concours has a specific style with selected topics, open-ended questions or directed exercises.&lt;/p&gt;
+&lt;p&gt;The concours results rank the students who can then pick their favourite.
+Remember these schools train for specific disciplines, they are not full universities with multiple faculties.
+One odd aspect of the match-making system of the concours is that everyone, students and teachers
+focus a lot on the rank and prestige of the schools.
+Whatever the student&amp;rsquo;s strategy regarding concours, the end-game is often to select a school as high
+as possible, almost disregarding its domain or other considerations.&lt;/p&gt;
+&lt;p&gt;An anecdote on that matter: a friend joined my school for the Informatics department after a CPGE
+and against the advice of his teachers who were pushing him to accept the highest-ranked school
+he got from the concours. That school specializes in Civil Engineering, a fact that was minimized by
+the teachers even though it was clearly not a domain this friend was interested in.&lt;/p&gt;
+&lt;p&gt;I pointed earlier that the profiles from CPGEs typically work well under pressure and a high workload.
+I should correct and say, under &lt;strong&gt;guided&lt;/strong&gt; pressure.
+The curriculum is not designed in the spirit of intellectual wandering but getting things done.
+Even the humanities and literature opening is planned, no need to select books
+to read as a hobby, the list is already there and budgeted into the compact weeks.
+Because of this habit of having most things organized for them,
+many of the students are caught by surprise when arriving in environments favouring autonomy
+all year long, with exams happening at a much lower frequency than the weekly tests of CPGEs.
+Not having the pressure of short-term deadlines made the coursework look deceptively easy
+throughout the semester until they realized they had not been following, because the sense
+of urgency from the tests was absent.&lt;/p&gt;
+&lt;h1 id=&#34;iut&#34;&gt;IUT&lt;/h1&gt;
+&lt;p&gt;I will finish on &lt;em&gt;Instituts Universitaires de Technologie&lt;/em&gt;.
+These institutions train technicians and used to offer two-year programs for that purpose.
+The programs have been reformed as &lt;em&gt;Bachelor Universitaire de Technologie&lt;/em&gt; (BUT) starting
+in 2021 in three years after high school. Instead of focusing on theoretical foundations like CPGE,
+they deliver a degree in a practical domain like bioinformatics mechanical engineering or automation
+and electrical engineering. The degree prepares people for actual work, some join companies directly
+after the program, some join engineering schools.
+The workload is high but reasonable, students are followed throughout the year to a larger extent than in a university.
+The profiles are typically more specialized towards an engineering discipline, following in the school
+a specialty at least related to the one from the IUT.&lt;/p&gt;
+&lt;hr&gt;
+</description>
+    </item>
     
     <item>
       <title>Bringing a PhD to the finishing line</title>
