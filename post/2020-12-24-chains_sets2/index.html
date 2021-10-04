@@ -81,7 +81,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.11bfb5db527d0300a83b31a367badc35.css">
+  <link rel="stylesheet" href="/css/academic.min.0a6825b1f3e5f00ab1fb335a97b73515.css">
 
   
 
@@ -300,35 +300,6 @@
 
         <li class="nav-item">
           <a class="nav-link " href="/#experience"><span>Experience</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-        
-        
-        
-        
-        
-          
-          
-          
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/#projects"><span>Projects</span></a>
         </li>
 
         
@@ -660,7 +631,7 @@ Here is a visualization made with haste for $n=2$ using the very promising <a hr
 <p><img src="/img/posts/projections/projection.gif" alt="Projection"></p>
 <p>The red circle is a vector in the plane and the blue square its projection.<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup></p>
 <p>The Julia implementation follows the same idea, here in a simplified version:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> projection_on_set(v<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractVector</span>{T}, s<span style="color:#f92672">::</span>MOI<span style="color:#f92672">.</span>Nonnegatives) where {T}
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> projection_on_set(v<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractVector</span>{<span style="color:#66d9ef">T</span>}, s<span style="color:#f92672">::</span><span style="color:#66d9ef">MOI</span><span style="color:#f92672">.</span>Nonnegatives) <span style="color:#66d9ef">where</span> {<span style="color:#66d9ef">T</span>}
     <span style="color:#66d9ef">return</span> max<span style="color:#f92672">.</span>(v, zero(T))
 <span style="color:#66d9ef">end</span>
 </code></pre></div><p>For each component $i \in 1..n$, there are two cases to compute its derivative, either
@@ -675,9 +646,9 @@ $$</p>
 The convention usually taken is to return any quantity on such point
 (to the best of my knowledge, no system guarantees a subgradient).
 The Julia implementation holds on two lines:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> projection_gradient_on_set(v<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractVector</span>{T}, <span style="color:#f92672">::</span>MOI<span style="color:#f92672">.</span>Nonnegatives) where {T}
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> projection_gradient_on_set(v<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractVector</span>{<span style="color:#66d9ef">T</span>}, <span style="color:#f92672">::</span><span style="color:#66d9ef">MOI</span><span style="color:#f92672">.</span>Nonnegatives) <span style="color:#66d9ef">where</span> {<span style="color:#66d9ef">T</span>}
     y <span style="color:#f92672">=</span> (sign<span style="color:#f92672">.</span>(v) <span style="color:#f92672">.+</span> one(T)) <span style="color:#f92672">/</span> <span style="color:#ae81ff">2</span>
-    <span style="color:#66d9ef">return</span> LinearAlgebra<span style="color:#f92672">.</span><span style="color:#66d9ef">Diagonal</span>(y)
+    <span style="color:#66d9ef">return</span> LinearAlgebra<span style="color:#f92672">.</span>Diagonal(y)
 <span style="color:#66d9ef">end</span>
 </code></pre></div><p>First the diagonal of the matrix is computed using broadcasting and the sign function.
 Then a <code>LinearAlgebra.Diagonal</code> matrix is constructed. This matrix type is sparsity-aware,
@@ -714,7 +685,7 @@ on its use <a href="https://www.juliadiff.org/ChainRulesCore.jl/v0.9/#Self-deriv
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> ChainRulesCore<span style="color:#f92672">.</span>frule(
         (_, Δv, _),
         <span style="color:#f92672">::</span>typeof(projection_on_set),
-        v<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractVector</span>{T}, s<span style="color:#f92672">::</span>MOI<span style="color:#f92672">.</span>Nonnegatives) where {T}
+        v<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractVector</span>{<span style="color:#66d9ef">T</span>}, s<span style="color:#f92672">::</span><span style="color:#66d9ef">MOI</span><span style="color:#f92672">.</span>Nonnegatives) <span style="color:#66d9ef">where</span> {<span style="color:#66d9ef">T</span>}
     vproj <span style="color:#f92672">=</span> projection_on_set(v, s)
     ∂vproj <span style="color:#f92672">=</span> Δv <span style="color:#f92672">.*</span> (v <span style="color:#f92672">.&gt;=</span> <span style="color:#ae81ff">0</span>)
     <span style="color:#66d9ef">return</span> vproj, ∂vproj
@@ -761,7 +732,7 @@ If we give the pullback a 1 or 1-like as input, we compute the gradient,
 the partial derivative of <code>f</code> with respect to each input <code>x[i]</code> evaluated at the
 point <code>x</code>.</p>
 <p>Here is the result for our positive orthant (again, simplified for conciseness):</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> ChainRulesCore<span style="color:#f92672">.</span>rrule(<span style="color:#f92672">::</span>typeof(projection_on_set), v, s<span style="color:#f92672">::</span>MOI<span style="color:#f92672">.</span>Nonnegatives)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> ChainRulesCore<span style="color:#f92672">.</span>rrule(<span style="color:#f92672">::</span>typeof(projection_on_set), v, s<span style="color:#f92672">::</span><span style="color:#66d9ef">MOI</span><span style="color:#f92672">.</span>Nonnegatives)
     vproj <span style="color:#f92672">=</span> projection_on_set(v, s)
     <span style="color:#66d9ef">function</span> pullback(Δvproj)
         n <span style="color:#f92672">=</span> length(v)
@@ -812,20 +783,20 @@ happen.</p>
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p>See H. Friberg&rsquo;s talk on exponential cone projection in Mosek at <a href="https://docs.mosek.com/slides/2018/ismp2018/ismp-friberg.pdf">ISMP 2018</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>See H. Friberg&rsquo;s talk on exponential cone projection in Mosek at <a href="https://docs.mosek.com/slides/2018/ismp2018/ismp-friberg.pdf">ISMP 2018</a>&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p>An example case for the projection onto the Positive Semidefinite cone <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>An example case for the projection onto the Positive Semidefinite cone&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3" role="doc-endnote">
 <p>If like me you haven&rsquo;t spent much time lying around differential geometry books,
 the <a href="https://www.juliadiff.org/ChainRulesCore.jl/dev/#Differentials">ChainRules.jl</a>
 documentation has a great developer-oriented explanation.
 For more visual explanations, Keno Fischer had a recent talk on
-<a href="https://www.youtube.com/watch?v=mQnSRfseu0c">the topic</a>. <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<a href="https://www.youtube.com/watch?v=mQnSRfseu0c">the topic</a>.&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4" role="doc-endnote">
-<p>See the source code <a href="https://gist.github.com/matbesancon/80aa961e5c01fa6c426426083c684d84">here</a>. <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>See the source code <a href="https://gist.github.com/matbesancon/80aa961e5c01fa6c426426083c684d84">here</a>.&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -1154,7 +1125,7 @@ For more visual explanations, Keno Fischer had a recent talk on
     
     
     
-    <script src="/js/academic.min.16bbb3750feb7244c9bc409a5a4fe678.js"></script>
+    <script src="/js/academic.min.b22d2266dab94c8508ae1f0cf6b7056c.js"></script>
 
     
 

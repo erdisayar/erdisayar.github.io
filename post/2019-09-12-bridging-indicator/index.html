@@ -81,7 +81,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.11bfb5db527d0300a83b31a367badc35.css">
+  <link rel="stylesheet" href="/css/academic.min.0a6825b1f3e5f00ab1fb335a97b73515.css">
 
   
 
@@ -299,35 +299,6 @@
 
         <li class="nav-item">
           <a class="nav-link " href="/#experience"><span>Experience</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-        
-        
-        
-        
-        
-          
-          
-          
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/#projects"><span>Projects</span></a>
         </li>
 
         
@@ -627,11 +598,11 @@ f(x<span style="color:#f92672">::</span><span style="color:#66d9ef">Int</span>) 
 f(x, y) <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
 
 <span style="color:#75715e"># defining and dispatching on a custom type</span>
-<span style="color:#66d9ef">struct</span> X
+<span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">X</span>
   value<span style="color:#f92672">::</span><span style="color:#66d9ef">Float64</span>
 <span style="color:#66d9ef">end</span>
 
-f(x<span style="color:#f92672">::</span>X) <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> x<span style="color:#f92672">.</span>value</code></pre></div>
+f(x<span style="color:#f92672">::</span><span style="color:#66d9ef">X</span>) <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">*</span> x<span style="color:#f92672">.</span>value</code></pre></div>
 <p>In this section, we will consider the reformulation of problems
 using multiple dispatch. In a generic form, an optimization problem can be
 written as:</p>
@@ -648,42 +619,42 @@ $$ F_i(x) = a_i^T x $$</p>
 <li><code>GreaterThan(b)</code>: $ y \in S_i \Leftrightarrow y \geq b $</li>
 <li><code>EqualTo(b)</code>: $ y \in S_i \Leftrightarrow y = b $</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">abstract type</span> ConstraintSet <span style="color:#66d9ef">end</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">abstract type</span> <span style="color:#66d9ef">ConstraintSet</span> <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">struct</span> LessThan{T} <span style="color:#f92672">&lt;:</span> ConstraintSet
-    b<span style="color:#f92672">::</span>T
+<span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">LessThan</span>{<span style="color:#66d9ef">T</span>} <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">ConstraintSet</span>
+    b<span style="color:#f92672">::</span><span style="color:#66d9ef">T</span>
 <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">struct</span> GreaterThan{T} <span style="color:#f92672">&lt;:</span> ConstraintSet
-    b<span style="color:#f92672">::</span>T
+<span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">GreaterThan</span>{<span style="color:#66d9ef">T</span>} <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">ConstraintSet</span>
+    b<span style="color:#f92672">::</span><span style="color:#66d9ef">T</span>
 <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">struct</span> EqualTo{T} <span style="color:#f92672">&lt;:</span> ConstraintSet
-    b<span style="color:#f92672">::</span>T
+<span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">EqualTo</span>{<span style="color:#66d9ef">T</span>} <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">ConstraintSet</span>
+    b<span style="color:#f92672">::</span><span style="color:#66d9ef">T</span>
 <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">abstract type</span> ScalarFunction <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">abstract type</span> <span style="color:#66d9ef">ScalarFunction</span> <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">struct</span> ScalarAffineFunction{T} <span style="color:#f92672">&lt;:</span> ScalarFunction
-    a<span style="color:#f92672">::</span><span style="color:#66d9ef">Vector</span>{T}
-    x<span style="color:#f92672">::</span><span style="color:#66d9ef">Vector</span>{VariableIndex}
+<span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">ScalarAffineFunction</span>{<span style="color:#66d9ef">T</span>} <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">ScalarFunction</span>
+    a<span style="color:#f92672">::</span><span style="color:#66d9ef">Vector</span>{<span style="color:#66d9ef">T</span>}
+    x<span style="color:#f92672">::</span><span style="color:#66d9ef">Vector</span>{<span style="color:#66d9ef">VariableIndex</span>}
 <span style="color:#66d9ef">end</span></code></pre></div>
 <p>Now that the fundamental structures are there, let us think of a solver based
 on the simplex method, accepting only less-or-equal linear constraints.
 We will assume a <code>Model</code> type has been defined, which supports a function
 <code>add_constraint!(m::Model, f::F, s::S)</code>, which adds a constraint of type <code>F in S</code>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> add_constraint!(m<span style="color:#f92672">::</span>Model, f<span style="color:#f92672">::</span>ScalarAffineFunction, s<span style="color:#f92672">::</span>LessThan)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> add_constraint!(m<span style="color:#f92672">::</span><span style="color:#66d9ef">Model</span>, f<span style="color:#f92672">::</span><span style="color:#66d9ef">ScalarAffineFunction</span>, s<span style="color:#f92672">::</span><span style="color:#66d9ef">LessThan</span>)
     pass_to_solver(m<span style="color:#f92672">.</span>solver_pointer, f, s)
 <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">function</span> add_constraint!(m<span style="color:#f92672">::</span>Model, f<span style="color:#f92672">::</span>ScalarAffineFunction{T}, s<span style="color:#f92672">::</span>GreaterThan{T}) where {T}
+<span style="color:#66d9ef">function</span> add_constraint!(m<span style="color:#f92672">::</span><span style="color:#66d9ef">Model</span>, f<span style="color:#f92672">::</span><span style="color:#66d9ef">ScalarAffineFunction</span>{<span style="color:#66d9ef">T</span>}, s<span style="color:#f92672">::</span><span style="color:#66d9ef">GreaterThan</span>{<span style="color:#66d9ef">T</span>}) <span style="color:#66d9ef">where</span> {<span style="color:#66d9ef">T</span>}
     <span style="color:#75715e"># a^T x &gt;= b &lt;=&gt; -a^T x &lt;= b</span>
-    leq_set <span style="color:#f92672">=</span> LessThan{T}(<span style="color:#f92672">-</span>s<span style="color:#f92672">.</span>b)
+    leq_set <span style="color:#f92672">=</span> <span style="color:#66d9ef">LessThan</span>{<span style="color:#66d9ef">T</span>}(<span style="color:#f92672">-</span>s<span style="color:#f92672">.</span>b)
     leq_function <span style="color:#f92672">=</span> ScalarAffineFunction(<span style="color:#f92672">-</span>f<span style="color:#f92672">.</span>a, f<span style="color:#f92672">.</span>x)
     add_constraint!(m, leq_function, leq_set)
 <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">function</span> add_constraint!(m<span style="color:#f92672">::</span>Model, f<span style="color:#f92672">::</span>ScalarAffineFunction, s<span style="color:#f92672">::</span>EqualTo)
+<span style="color:#66d9ef">function</span> add_constraint!(m<span style="color:#f92672">::</span><span style="color:#66d9ef">Model</span>, f<span style="color:#f92672">::</span><span style="color:#66d9ef">ScalarAffineFunction</span>, s<span style="color:#f92672">::</span><span style="color:#66d9ef">EqualTo</span>)
     <span style="color:#75715e"># a^T x == b &lt;=&gt; a^T x &lt;= b &amp;&amp; a^T x &gt;= b</span>
     leq_set <span style="color:#f92672">=</span> LessThan(s<span style="color:#f92672">.</span>b)
     geq_set <span style="color:#f92672">=</span> LessThan(s<span style="color:#f92672">.</span>b)
@@ -743,44 +714,44 @@ $[x_1]$ is the collection of newly created variables, and the $(F_i,S_i)$ are th
 It consists of an abstract type <code>AbstractBridge</code> and some functions that bridges must implement.</p>
 <p>We will see the greatly reduced example of a bridge type <code>MyBridge</code> adding support for two types
 of constraints. The following code declares <em>what</em> the bridge does:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">abstract type</span> AbstractBridge <span style="color:#66d9ef">end</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">abstract type</span> <span style="color:#66d9ef">AbstractBridge</span> <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">struct</span> MyBridge1 <span style="color:#f92672">&lt;:</span> AbstractBridge <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">MyBridge1</span> <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">AbstractBridge</span> <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">struct</span> MyBridge2 <span style="color:#f92672">&lt;:</span> AbstractBridge <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">MyBridge2</span> <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">AbstractBridge</span> <span style="color:#66d9ef">end</span>
 
 <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">By default, bridges do not support a constraint `F-in-S`
 </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
-<span style="color:#66d9ef">function</span> MOI<span style="color:#f92672">.</span>supports_constraint(<span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{<span style="color:#f92672">&lt;:</span>AbstractBridge}, <span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{F}, <span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{S}) where {F, S}
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+<span style="color:#66d9ef">function</span> MOI<span style="color:#f92672">.</span>supports_constraint(<span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{<span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">AbstractBridge</span>}, <span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{<span style="color:#66d9ef">F</span>}, <span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{<span style="color:#66d9ef">S</span>}) <span style="color:#66d9ef">where</span> {<span style="color:#66d9ef">F</span>, <span style="color:#66d9ef">S</span>}
+    <span style="color:#66d9ef">return</span> false
 <span style="color:#66d9ef">end</span>
 
 <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">MyBridge1 supports `F1 in S1`
 </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
-<span style="color:#66d9ef">function</span> MOI<span style="color:#f92672">.</span>supports_constraint(<span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{MyBridge1}, <span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{F1}, <span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{S1})
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+<span style="color:#66d9ef">function</span> MOI<span style="color:#f92672">.</span>supports_constraint(<span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{<span style="color:#66d9ef">MyBridge1</span>}, <span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{<span style="color:#66d9ef">F1</span>}, <span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{<span style="color:#66d9ef">S1</span>})
+    <span style="color:#66d9ef">return</span> true
 <span style="color:#66d9ef">end</span>
 
 <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">MyBridge2 supports `F2 in S2`
 </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
-<span style="color:#66d9ef">function</span> MOI<span style="color:#f92672">.</span>supports_constraint(<span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{MyBridge2{F2,S2}}, <span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{F2}, <span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{S2})
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+<span style="color:#66d9ef">function</span> MOI<span style="color:#f92672">.</span>supports_constraint(<span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{<span style="color:#66d9ef">MyBridge2</span>{<span style="color:#66d9ef">F2</span>,<span style="color:#66d9ef">S2</span>}}, <span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{<span style="color:#66d9ef">F2</span>}, <span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{<span style="color:#66d9ef">S2</span>})
+    <span style="color:#66d9ef">return</span> true
 <span style="color:#66d9ef">end</span>
 
 <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">Bridging a `F1 in S1` with `MyBridge1` requires creating constraints of type `F3 in S3` and `F3 in S4`
 </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
-added_constraint_types(<span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{MyBridge1})
+added_constraint_types(<span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{<span style="color:#66d9ef">MyBridge1</span>})
     <span style="color:#66d9ef">return</span> [(F3, S3), (F3, S4)]
 <span style="color:#66d9ef">end</span>
 
 <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">Bridging a `F2 in S2` with `MyBridge2` requires creating constraints of type `F3 in S3`
 </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
-added_constraint_types(<span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{MyBridge2})
+added_constraint_types(<span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{<span style="color:#66d9ef">MyBridge2</span>})
     <span style="color:#66d9ef">return</span> [(F3, S3)]
 <span style="color:#66d9ef">end</span></code></pre></div>
 <p>What these method implementations declare is the following structure:</p>
@@ -793,7 +764,7 @@ added_constraint_types(<span style="color:#f92672">::</span><span style="color:#
 In optimization, this corresponds to multiple possible reformulations of a given constraint.</p>
 <p>Now that the bridges behaviour have been defined, their implementation have to be given,
 again in a trimmed version of the real MOI code:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> bridge_constraint(<span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{MyBridge1}, model<span style="color:#f92672">::</span>MOI<span style="color:#f92672">.</span>ModelLike, f<span style="color:#f92672">::</span>F1, s<span style="color:#f92672">::</span>S1)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> bridge_constraint(<span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{<span style="color:#66d9ef">MyBridge1</span>}, model<span style="color:#f92672">::</span><span style="color:#66d9ef">MOI</span><span style="color:#f92672">.</span>ModelLike, f<span style="color:#f92672">::</span><span style="color:#66d9ef">F1</span>, s<span style="color:#f92672">::</span><span style="color:#66d9ef">S1</span>)
     (f3, s3) <span style="color:#f92672">=</span> transform_constraint_first_component(f, s)
     s4 <span style="color:#f92672">=</span> transform_constraint_second_set(f, s)
     new_constraint3 <span style="color:#f92672">=</span> MOI<span style="color:#f92672">.</span>add_constraint(model, f3, s3)
@@ -801,7 +772,7 @@ again in a trimmed version of the real MOI code:</p>
     <span style="color:#66d9ef">return</span> MyBridge1(new_constraint3, new_constraint4)
 <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">function</span> bridge_constraint(<span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{MyBridge2}, model<span style="color:#f92672">::</span>MOI<span style="color:#f92672">.</span>ModelLike, f<span style="color:#f92672">::</span>F2, s<span style="color:#f92672">::</span>S2)
+<span style="color:#66d9ef">function</span> bridge_constraint(<span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{<span style="color:#66d9ef">MyBridge2</span>}, model<span style="color:#f92672">::</span><span style="color:#66d9ef">MOI</span><span style="color:#f92672">.</span>ModelLike, f<span style="color:#f92672">::</span><span style="color:#66d9ef">F2</span>, s<span style="color:#f92672">::</span><span style="color:#66d9ef">S2</span>)
     (f3, s3) <span style="color:#f92672">=</span> transform_constraint_first_component(f, s)
     new_constraint3 <span style="color:#f92672">=</span> MOI<span style="color:#f92672">.</span>add_constraint(model, f3, s3)
     <span style="color:#66d9ef">return</span> MyBridge2(new_constraint3)
@@ -875,22 +846,22 @@ of the <em>two-language problem</em> of mathematical optimization.</p>
 <hr>
 <ol>
 <li id="fn:1" role="doc-endnote">
-<p>MIPLIB 2017: Data-Driven Compilation of the 6th Mixed-Integer Programming Library, Gleixner, Ambros and Achterberg, Tobias and Christophel, Philipp and Lübbecke, Marco and Ralphs, Ted K and Hendel, Gregor and Gamrath, Gerald and Bastubbe, Michael and Berthold, Timo and Jarck, Kati and others, 2019. <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>MIPLIB 2017: Data-Driven Compilation of the 6th Mixed-Integer Programming Library, Gleixner, Ambros and Achterberg, Tobias and Christophel, Philipp and Lübbecke, Marco and Ralphs, Ted K and Hendel, Gregor and Gamrath, Gerald and Bastubbe, Michael and Berthold, Timo and Jarck, Kati and others, 2019.&#160;<a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:2" role="doc-endnote">
-<p>Liberti, Leo. &ldquo;Reformulations in mathematical programming: Definitions and systematics.&rdquo; RAIRO-Operations Research 43.1 (2009): 55-85. <a href="http://www.numdam.org/article/RO_2009__43_1_55_0.pdf">Preprint</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Liberti, Leo. &ldquo;Reformulations in mathematical programming: Definitions and systematics.&rdquo; RAIRO-Operations Research 43.1 (2009): 55-85. <a href="http://www.numdam.org/article/RO_2009__43_1_55_0.pdf">Preprint</a>&#160;<a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:3" role="doc-endnote">
-<p>Liberti, Leo and Cafieri, Sonia and Tarissan, Fabien, Reformulations in Mathematical Programming: A Computational Approach, <a href="https://doi.org/10.1007/978-3-642-01085-9_7">DOI</a>, <a href="https://www.lix.polytechnique.fr/~liberti/arschapter.pdf">Preprint</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>Liberti, Leo and Cafieri, Sonia and Tarissan, Fabien, Reformulations in Mathematical Programming: A Computational Approach, <a href="https://doi.org/10.1007/978-3-642-01085-9_7">DOI</a>, <a href="https://www.lix.polytechnique.fr/~liberti/arschapter.pdf">Preprint</a>&#160;<a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:4" role="doc-endnote">
-<p>JuMP initial paper <a href="https://doi.org/10.1137/15M1020575">https://doi.org/10.1137/15M1020575</a> <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>JuMP initial paper <a href="https://doi.org/10.1137/15M1020575">https://doi.org/10.1137/15M1020575</a>&#160;<a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:5" role="doc-endnote">
-<p>JuMP tutorial at JuliaCon2018: <a href="https://www.youtube.com/watch?v=7tzFRIiseJI">https://www.youtube.com/watch?v=7tzFRIiseJI</a> <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>JuMP tutorial at JuliaCon2018: <a href="https://www.youtube.com/watch?v=7tzFRIiseJI">https://www.youtube.com/watch?v=7tzFRIiseJI</a>&#160;<a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 <li id="fn:6" role="doc-endnote">
-<p>MathOptInterface, JuMP extensions and MOI-based solvers at JuliaCon2019: <a href="https://www.youtube.com/watch?v=cTmqmPcroFo">https://www.youtube.com/watch?v=cTmqmPcroFo</a> <a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+<p>MathOptInterface, JuMP extensions and MOI-based solvers at JuliaCon2019: <a href="https://www.youtube.com/watch?v=cTmqmPcroFo">https://www.youtube.com/watch?v=cTmqmPcroFo</a>&#160;<a href="#fnref:6" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
 </li>
 </ol>
 </section>
@@ -1219,7 +1190,7 @@ of the <em>two-language problem</em> of mathematical optimization.</p>
     
     
     
-    <script src="/js/academic.min.16bbb3750feb7244c9bc409a5a4fe678.js"></script>
+    <script src="/js/academic.min.b22d2266dab94c8508ae1f0cf6b7056c.js"></script>
 
     
 

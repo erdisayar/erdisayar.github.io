@@ -81,7 +81,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.11bfb5db527d0300a83b31a367badc35.css">
+  <link rel="stylesheet" href="/css/academic.min.0a6825b1f3e5f00ab1fb335a97b73515.css">
 
   
 
@@ -300,35 +300,6 @@
 
         <li class="nav-item">
           <a class="nav-link " href="/#experience"><span>Experience</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-        
-        
-        
-        
-        
-          
-          
-          
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/#projects"><span>Projects</span></a>
         </li>
 
         
@@ -600,7 +571,7 @@ importantly they define function <strong>prototypes</strong> looking like:</p>
 </code></pre></div><p>When using the function from Julia, the call to the native library looks like
 the following:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">ccall</span>(
-  (my_library_name, <span style="color:#f92672">:</span>preprocess_variables),
+  (my_library_name, <span style="color:#e6db74">:preprocess_variables</span>),
   CInt, <span style="color:#75715e"># return type</span>
   (<span style="color:#66d9ef">Ptr</span>{<span style="color:#66d9ef">Cint</span>}, <span style="color:#66d9ef">Cdouble</span>, <span style="color:#66d9ef">Cfloat</span>), <span style="color:#75715e"># tuple of argument types</span>
   (pointer(my_array), <span style="color:#ae81ff">3.5</span>, <span style="color:#ae81ff">4.5</span>f) <span style="color:#75715e"># tuple of arguments</span>
@@ -634,7 +605,7 @@ the <code>preprocess_variables</code> function defined above, a Julia wrapper wo
 like:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> preprocess_variables(my_array<span style="color:#f92672">::</span><span style="color:#66d9ef">Vector</span>{<span style="color:#66d9ef">Cint</span>}, offset<span style="color:#f92672">::</span><span style="color:#66d9ef">Cdouble</span>, coefficient<span style="color:#f92672">::</span><span style="color:#66d9ef">Cfloat</span>)
     result <span style="color:#f92672">=</span> <span style="color:#66d9ef">ccall</span>(
-        (<span style="color:#f92672">:</span>preprocess_variables, my_library_name),
+        (<span style="color:#e6db74">:preprocess_variables</span>, my_library_name),
         <span style="color:#66d9ef">Cint</span>, (<span style="color:#66d9ef">Ptr</span>{<span style="color:#66d9ef">Cint</span>}, <span style="color:#66d9ef">Cdouble</span>, <span style="color:#66d9ef">Cfloat</span>),
         (pointer(my_array), <span style="color:#ae81ff">3.5</span>, <span style="color:#ae81ff">4.5</span>f)
     )
@@ -717,8 +688,8 @@ Clang<span style="color:#f92672">.</span>parse_headers!(ctx, LIB_HEADERS,
 )
 
 ctx<span style="color:#f92672">.</span>libname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;libhighs&#34;</span>
-ctx<span style="color:#f92672">.</span>options[<span style="color:#e6db74">&#34;is_function_strictly_typed&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
-ctx<span style="color:#f92672">.</span>options[<span style="color:#e6db74">&#34;is_struct_mutable&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
+ctx<span style="color:#f92672">.</span>options[<span style="color:#e6db74">&#34;is_function_strictly_typed&#34;</span>] <span style="color:#f92672">=</span> true
+ctx<span style="color:#f92672">.</span>options[<span style="color:#e6db74">&#34;is_struct_mutable&#34;</span>] <span style="color:#f92672">=</span> false
 
 <span style="color:#66d9ef">const</span> api_file <span style="color:#f92672">=</span> joinpath(<span style="color:#a6e22e">@__DIR__</span>, <span style="color:#e6db74">&#34;../src/wrapper&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">$</span>(ctx<span style="color:#f92672">.</span>libname)<span style="color:#e6db74">_api.jl&#34;</span>)
 
@@ -1107,7 +1078,7 @@ artifacts, a post can be found
     
     
     
-    <script src="/js/academic.min.16bbb3750feb7244c9bc409a5a4fe678.js"></script>
+    <script src="/js/academic.min.b22d2266dab94c8508ae1f0cf6b7056c.js"></script>
 
     
 

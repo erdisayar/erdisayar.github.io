@@ -81,7 +81,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.11bfb5db527d0300a83b31a367badc35.css">
+  <link rel="stylesheet" href="/css/academic.min.0a6825b1f3e5f00ab1fb335a97b73515.css">
 
   
 
@@ -299,35 +299,6 @@
 
         <li class="nav-item">
           <a class="nav-link " href="/#experience"><span>Experience</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-        
-        
-        
-        
-        
-          
-          
-          
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/#projects"><span>Projects</span></a>
         </li>
 
         
@@ -620,8 +591,8 @@ to a node $j$, therefore all the information of a graph can be kept as an
 <p>We don&rsquo;t know what the use cases for our type will be, and therefore,
 we will parametrize the graph type over the matrix type:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">import</span> LightGraphs; <span style="color:#66d9ef">const</span> lg <span style="color:#f92672">=</span> LightGraphs
-<span style="color:#66d9ef">mutable</span> <span style="color:#66d9ef">struct</span> MatrixDiGraph{MT <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">AbstractMatrix</span>{<span style="color:#66d9ef">Bool</span>}} <span style="color:#f92672">&lt;:</span> lg<span style="color:#f92672">.</span>AbstractGraph{<span style="color:#66d9ef">Int</span>}
-  matrix<span style="color:#f92672">::</span>MT
+<span style="color:#66d9ef">mutable struct</span> <span style="color:#66d9ef">MatrixDiGraph</span>{<span style="color:#66d9ef">MT</span> <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">AbstractMatrix</span>{<span style="color:#66d9ef">Bool</span>}} <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">lg</span><span style="color:#f92672">.</span><span style="color:#66d9ef">AbstractGraph</span>{<span style="color:#66d9ef">Int</span>}
+  matrix<span style="color:#f92672">::</span><span style="color:#66d9ef">MT</span>
 <span style="color:#66d9ef">end</span></code></pre></div>
 <p>The edges are simply mapping an entry (i,j) to a boolean (whether there is an
 edge from i to j). Even though creating a graph type that can be directed
@@ -633,14 +604,14 @@ with methods defined over the type itself, of the form <code>function(g::MyType)
 <p>I&rsquo;m not going to re-define each function here, their meaning can be found
 by checking the help in a Julia REPL: <code>?LightGraphs.vertices</code> or on the
 <a href="http://juliagraphs.github.io/LightGraphs.jl/stable/types.html#AbstractGraph-Type-1">documentation page</a>.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">lg<span style="color:#f92672">.</span>is_directed(<span style="color:#f92672">::</span>MatrixDiGraph) <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
-lg<span style="color:#f92672">.</span>edgetype(<span style="color:#f92672">::</span>MatrixDiGraph) <span style="color:#f92672">=</span> lg<span style="color:#f92672">.</span>SimpleGraphs<span style="color:#f92672">.</span>SimpleEdge{<span style="color:#66d9ef">Int</span>}
-lg<span style="color:#f92672">.</span>ne(g<span style="color:#f92672">::</span>MatrixDiGraph) <span style="color:#f92672">=</span> sum(g<span style="color:#f92672">.</span>m)
-lg<span style="color:#f92672">.</span>nv(g<span style="color:#f92672">::</span>MatrixDiGraph) <span style="color:#f92672">=</span> size(g<span style="color:#f92672">.</span>m)[<span style="color:#ae81ff">1</span>]
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">lg<span style="color:#f92672">.</span>is_directed(<span style="color:#f92672">::</span><span style="color:#66d9ef">MatrixDiGraph</span>) <span style="color:#f92672">=</span> true
+lg<span style="color:#f92672">.</span>edgetype(<span style="color:#f92672">::</span><span style="color:#66d9ef">MatrixDiGraph</span>) <span style="color:#f92672">=</span> lg<span style="color:#f92672">.</span>SimpleGraphs<span style="color:#f92672">.</span><span style="color:#66d9ef">SimpleEdge</span>{<span style="color:#66d9ef">Int</span>}
+lg<span style="color:#f92672">.</span>ne(g<span style="color:#f92672">::</span><span style="color:#66d9ef">MatrixDiGraph</span>) <span style="color:#f92672">=</span> sum(g<span style="color:#f92672">.</span>m)
+lg<span style="color:#f92672">.</span>nv(g<span style="color:#f92672">::</span><span style="color:#66d9ef">MatrixDiGraph</span>) <span style="color:#f92672">=</span> size(g<span style="color:#f92672">.</span>m)[<span style="color:#ae81ff">1</span>]
 
-lg<span style="color:#f92672">.</span>vertices(g<span style="color:#f92672">::</span>MatrixDiGraph) <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>nv(g)
+lg<span style="color:#f92672">.</span>vertices(g<span style="color:#f92672">::</span><span style="color:#66d9ef">MatrixDiGraph</span>) <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>nv(g)
 
-<span style="color:#66d9ef">function</span> lg<span style="color:#f92672">.</span>edges(g<span style="color:#f92672">::</span>MatrixDiGraph)
+<span style="color:#66d9ef">function</span> lg<span style="color:#f92672">.</span>edges(g<span style="color:#f92672">::</span><span style="color:#66d9ef">MatrixDiGraph</span>)
     n <span style="color:#f92672">=</span> lg<span style="color:#f92672">.</span>nv(g)
     <span style="color:#66d9ef">return</span> (lg<span style="color:#f92672">.</span>SimpleGraphs<span style="color:#f92672">.</span>SimpleEdge(i,j) <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>n <span style="color:#66d9ef">for</span> j <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>n <span style="color:#66d9ef">if</span> g<span style="color:#f92672">.</span>m[i,j])
 <span style="color:#66d9ef">end</span></code></pre></div>
@@ -649,15 +620,15 @@ need to return an <strong>iterator</strong> over edges. We don&rsquo;t need to c
 in a Vector, returning a lazy generator.</p>
 <p>Some operations have to be defined on both the graph and a node, of the form
 <code>function(g::MyType, node)</code>.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">lg<span style="color:#f92672">.</span>outneighbors(g<span style="color:#f92672">::</span>MatrixDiGraph, node) <span style="color:#f92672">=</span> [v <span style="color:#66d9ef">for</span> v <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>lg<span style="color:#f92672">.</span>nv(g) <span style="color:#66d9ef">if</span> g<span style="color:#f92672">.</span>m[node, v]]
-lg<span style="color:#f92672">.</span>inneighbors(g<span style="color:#f92672">::</span>MatrixDiGraph, node) <span style="color:#f92672">=</span> [v <span style="color:#66d9ef">for</span> v <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>lg<span style="color:#f92672">.</span>nv(g) <span style="color:#66d9ef">if</span> g<span style="color:#f92672">.</span>m[v, node]]
-lg<span style="color:#f92672">.</span>has_vertex(g<span style="color:#f92672">::</span>MatrixDiGraph, v<span style="color:#f92672">::</span><span style="color:#66d9ef">Integer</span>) <span style="color:#f92672">=</span> v <span style="color:#f92672">&lt;=</span> lg<span style="color:#f92672">.</span>nv(g) <span style="color:#f92672">&amp;&amp;</span> v <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span></code></pre></div></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">lg<span style="color:#f92672">.</span>outneighbors(g<span style="color:#f92672">::</span><span style="color:#66d9ef">MatrixDiGraph</span>, node) <span style="color:#f92672">=</span> [v <span style="color:#66d9ef">for</span> v <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>lg<span style="color:#f92672">.</span>nv(g) <span style="color:#66d9ef">if</span> g<span style="color:#f92672">.</span>m[node, v]]
+lg<span style="color:#f92672">.</span>inneighbors(g<span style="color:#f92672">::</span><span style="color:#66d9ef">MatrixDiGraph</span>, node) <span style="color:#f92672">=</span> [v <span style="color:#66d9ef">for</span> v <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>lg<span style="color:#f92672">.</span>nv(g) <span style="color:#66d9ef">if</span> g<span style="color:#f92672">.</span>m[v, node]]
+lg<span style="color:#f92672">.</span>has_vertex(g<span style="color:#f92672">::</span><span style="color:#66d9ef">MatrixDiGraph</span>, v<span style="color:#f92672">::</span><span style="color:#66d9ef">Integer</span>) <span style="color:#f92672">=</span> v <span style="color:#f92672">&lt;=</span> lg<span style="color:#f92672">.</span>nv(g) <span style="color:#f92672">&amp;&amp;</span> v <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span></code></pre></div></p>
 <p>Out <code>MatrixDiGraph</code> type is pretty straight-forward to work with and all
 required methods are easy to relate to the way information is stored in the
 adjacency matrix.</p>
 <p>The last step is implementing methods on both the graph and an edge of the
 form <code>function(g::MatrixDiGraph,e)</code>. The only one we need here is:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">lg<span style="color:#f92672">.</span>has_edge(g<span style="color:#f92672">::</span>MatrixDiGraph,i,j) <span style="color:#f92672">=</span> g<span style="color:#f92672">.</span>m[i,j]</code></pre></div></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">lg<span style="color:#f92672">.</span>has_edge(g<span style="color:#f92672">::</span><span style="color:#66d9ef">MatrixDiGraph</span>,i,j) <span style="color:#f92672">=</span> g<span style="color:#f92672">.</span>m[i,j]</code></pre></div></p>
 <h2 id="optional-mutability">Optional mutability</h2>
 <p>Mutating methods were removed from the core interace some time ago,
 as they are not required to describe a graph-like behavior.
@@ -666,32 +637,32 @@ the operation succeded. They consist in adding or removing elements from
 either the edges or nodes.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">import</span> LightGraphs<span style="color:#f92672">:</span> rem_edge!, rem_vertex!, add_edge!, add_vertex!
 
-<span style="color:#66d9ef">function</span> add_edge!(g<span style="color:#f92672">::</span>MatrixDiGraph, e)
-    has_edge(g,e) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+<span style="color:#66d9ef">function</span> add_edge!(g<span style="color:#f92672">::</span><span style="color:#66d9ef">MatrixDiGraph</span>, e)
+    has_edge(g,e) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">return</span> false
     n <span style="color:#f92672">=</span> nv(g)
-    (src(e) <span style="color:#f92672">&gt;</span> n <span style="color:#f92672">||</span> dst(e) <span style="color:#f92672">&gt;</span> n) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
-    g<span style="color:#f92672">.</span>m[src(e),dst(e)] <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>
+    (src(e) <span style="color:#f92672">&gt;</span> n <span style="color:#f92672">||</span> dst(e) <span style="color:#f92672">&gt;</span> n) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">return</span> false
+    g<span style="color:#f92672">.</span>m[src(e),dst(e)] <span style="color:#f92672">=</span> true
 <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">function</span> rem_edge!(g<span style="color:#f92672">::</span>MatrixDiGraph,e)
-    has_edge(g,e) <span style="color:#f92672">||</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+<span style="color:#66d9ef">function</span> rem_edge!(g<span style="color:#f92672">::</span><span style="color:#66d9ef">MatrixDiGraph</span>,e)
+    has_edge(g,e) <span style="color:#f92672">||</span> <span style="color:#66d9ef">return</span> false
     n <span style="color:#f92672">=</span> nv(g)
-    (src(e) <span style="color:#f92672">&gt;</span> n <span style="color:#f92672">||</span> dst(e) <span style="color:#f92672">&gt;</span> n) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
-    g<span style="color:#f92672">.</span>m[src(e),dst(e)] <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+    (src(e) <span style="color:#f92672">&gt;</span> n <span style="color:#f92672">||</span> dst(e) <span style="color:#f92672">&gt;</span> n) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#66d9ef">return</span> false
+    g<span style="color:#f92672">.</span>m[src(e),dst(e)] <span style="color:#f92672">=</span> false
+    <span style="color:#66d9ef">return</span> true
 <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">function</span> add_vertex!(g<span style="color:#f92672">::</span>MatrixDiGraph)
+<span style="color:#66d9ef">function</span> add_vertex!(g<span style="color:#f92672">::</span><span style="color:#66d9ef">MatrixDiGraph</span>)
     n <span style="color:#f92672">=</span> nv(g)
     m <span style="color:#f92672">=</span> zeros(<span style="color:#66d9ef">Bool</span>,n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>,n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)
     m[<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>n,<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>n] <span style="color:#f92672">.=</span> g<span style="color:#f92672">.</span>m
     g<span style="color:#f92672">.</span>m <span style="color:#f92672">=</span> m
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+    <span style="color:#66d9ef">return</span> true
 <span style="color:#66d9ef">end</span></code></pre></div>
 <h2 id="testing-our-graph-type-on-real-data">Testing our graph type on real data</h2>
 <p>We will use the graph type to compute the PageRank of</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">import</span> SNAPDatasets
-data <span style="color:#f92672">=</span> SNAPDatasets<span style="color:#f92672">.</span>loadsnap(<span style="color:#f92672">:</span>ego_twitter_d)
+data <span style="color:#f92672">=</span> SNAPDatasets<span style="color:#f92672">.</span>loadsnap(<span style="color:#e6db74">:ego_twitter_d</span>)
 twitter_graph <span style="color:#f92672">=</span> MatrixDiGraph(lg<span style="color:#f92672">.</span>adjacency_matrix(data)[<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">1</span><span style="color:#f92672">:</span><span style="color:#ae81ff">10</span>]<span style="color:#f92672">.==</span><span style="color:#ae81ff">1</span>);
 ranks <span style="color:#f92672">=</span> lg<span style="color:#f92672">.</span>pagerank(twitter_graph)</code></pre></div>
 <p>Note the broadcast check <code>.==1</code>, <code>adjacency_matrix</code> is specified to yield a
@@ -708,7 +679,7 @@ there should be no computation required to return it (it&rsquo;s almost a no-op)
 
 <span style="color:#a6e22e">@btime</span> adjacency_matrix(bigger_twitter)
 println(<span style="color:#e6db74">&#34;why did that take so long?&#34;</span>)
-lg<span style="color:#f92672">.</span>adjacency_matrix(g<span style="color:#f92672">::</span>MatrixDiGraph) <span style="color:#f92672">=</span> <span style="color:#66d9ef">Int</span><span style="color:#f92672">.</span>(g<span style="color:#f92672">.</span>m)
+lg<span style="color:#f92672">.</span>adjacency_matrix(g<span style="color:#f92672">::</span><span style="color:#66d9ef">MatrixDiGraph</span>) <span style="color:#f92672">=</span> <span style="color:#66d9ef">Int</span><span style="color:#f92672">.</span>(g<span style="color:#f92672">.</span>m)
 <span style="color:#a6e22e">@btime</span> A <span style="color:#f92672">=</span> lg<span style="color:#f92672">.</span>adjacency_matrix(bigger_twitter)
 println(<span style="color:#e6db74">&#34;that&#39;s better.&#34;</span>)</code></pre></div>
 <p>This should yield roughly:</p>
@@ -926,9 +897,9 @@ enough (how dense? No idea), it might be interesting to store entries as as
           
           <li><a href="/post/2018-05-23-colgen/">Tackling the cutting stock problem: part 1, problem exploration</a></li>
           
-          <li><a href="/project/juliagraphs/">JuliaGraphs contributions</a></li>
-          
           <li><a href="/post/2017-12-20-diffeq-julia2/">DifferentialEquations.jl - part 2: decision from the model</a></li>
+          
+          <li><a href="/post/2017-12-14-diffeq-julia/">Getting started with DifferentialEquations.jl</a></li>
           
         </ul>
       </div>
@@ -1064,7 +1035,7 @@ enough (how dense? No idea), it might be interesting to store entries as as
     
     
     
-    <script src="/js/academic.min.16bbb3750feb7244c9bc409a5a4fe678.js"></script>
+    <script src="/js/academic.min.b22d2266dab94c8508ae1f0cf6b7056c.js"></script>
 
     
 

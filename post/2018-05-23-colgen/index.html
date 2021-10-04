@@ -81,7 +81,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.11bfb5db527d0300a83b31a367badc35.css">
+  <link rel="stylesheet" href="/css/academic.min.0a6825b1f3e5f00ab1fb335a97b73515.css">
 
   
 
@@ -299,35 +299,6 @@
 
         <li class="nav-item">
           <a class="nav-link " href="/#experience"><span>Experience</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-        
-        
-        
-        
-        
-          
-          
-          
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/#projects"><span>Projects</span></a>
         </li>
 
         
@@ -694,32 +665,32 @@ Subject to
  <span style="color:#ae81ff">12</span> X[<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span> X[<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">2</span>] <span style="color:#f92672">-</span> <span style="color:#ae81ff">100</span> Y[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">≤</span> <span style="color:#ae81ff">0</span>
  <span style="color:#ae81ff">12</span> X[<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span> X[<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">2</span>] <span style="color:#f92672">-</span> <span style="color:#ae81ff">100</span> Y[<span style="color:#ae81ff">6</span>] <span style="color:#f92672">≤</span> <span style="color:#ae81ff">0</span>
  <span style="color:#ae81ff">12</span> X[<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">10</span> X[<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">2</span>] <span style="color:#f92672">-</span> <span style="color:#ae81ff">100</span> Y[<span style="color:#ae81ff">7</span>] <span style="color:#f92672">≤</span> <span style="color:#ae81ff">0</span>
- Y[i] <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>} ∀ i <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,…,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">7</span>}
- X[i,j], integer, ∀ i <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,…,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">7</span>}, j <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>}</code></pre></div>
+ Y[i] <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>} ∀ i <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#66d9ef">…</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">7</span>}
+ X[i,j], integer, ∀ i <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#66d9ef">…</span>,<span style="color:#ae81ff">6</span>,<span style="color:#ae81ff">7</span>}, j <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>}</code></pre></div>
 <p>Let&rsquo;s see what the model looks like for different instances:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">julia<span style="color:#f92672">&gt;</span> cutting_stock_model(<span style="color:#ae81ff">100</span>, [<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">10</span>], [<span style="color:#ae81ff">85</span>,<span style="color:#ae81ff">97</span>], <span style="color:#ae81ff">200</span>)
 (Minimization problem with<span style="color:#f92672">:</span>
  <span style="color:#f92672">*</span> <span style="color:#ae81ff">602</span> linear constraints
  <span style="color:#f92672">*</span> <span style="color:#ae81ff">600</span> variables<span style="color:#f92672">:</span> <span style="color:#ae81ff">200</span> binary, <span style="color:#ae81ff">400</span> integer
 Solver is CbcMathProg,
-X[i,j], integer, ∀ i <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,…,<span style="color:#ae81ff">199</span>,<span style="color:#ae81ff">200</span>}, j <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>},
-Y[i] <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>} ∀ i <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,…,<span style="color:#ae81ff">199</span>,<span style="color:#ae81ff">200</span>})
+X[i,j], integer, ∀ i <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#66d9ef">…</span>,<span style="color:#ae81ff">199</span>,<span style="color:#ae81ff">200</span>}, j <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>},
+Y[i] <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>} ∀ i <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#66d9ef">…</span>,<span style="color:#ae81ff">199</span>,<span style="color:#ae81ff">200</span>})
 
 julia<span style="color:#f92672">&gt;</span> cutting_stock_model(<span style="color:#ae81ff">100</span>, [<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">25</span>], [<span style="color:#ae81ff">85</span>,<span style="color:#ae81ff">97</span>,<span style="color:#ae81ff">52</span>], <span style="color:#ae81ff">300</span>)
 (Minimization problem with<span style="color:#f92672">:</span>
  <span style="color:#f92672">*</span> <span style="color:#ae81ff">1203</span> linear constraints
  <span style="color:#f92672">*</span> <span style="color:#ae81ff">1200</span> variables<span style="color:#f92672">:</span> <span style="color:#ae81ff">300</span> binary, <span style="color:#ae81ff">900</span> integer
 Solver is CbcMathProg,
-X[i,j], integer,∀ i <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,…,<span style="color:#ae81ff">299</span>,<span style="color:#ae81ff">300</span>}, j <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>},
-Y[i] <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>} ∀ i <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,…,<span style="color:#ae81ff">299</span>,<span style="color:#ae81ff">300</span>})
+X[i,j], integer,∀ i <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#66d9ef">…</span>,<span style="color:#ae81ff">299</span>,<span style="color:#ae81ff">300</span>}, j <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>},
+Y[i] <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>} ∀ i <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#66d9ef">…</span>,<span style="color:#ae81ff">299</span>,<span style="color:#ae81ff">300</span>})
 
 julia<span style="color:#f92672">&gt;</span> cutting_stock_model(<span style="color:#ae81ff">100</span>, [<span style="color:#ae81ff">12</span>,<span style="color:#ae81ff">10</span>,<span style="color:#ae81ff">25</span>,<span style="color:#ae81ff">40</span>,<span style="color:#ae81ff">30</span>,<span style="color:#ae81ff">41</span>], [<span style="color:#ae81ff">85</span>,<span style="color:#ae81ff">97</span>,<span style="color:#ae81ff">52</span>,<span style="color:#ae81ff">63</span>,<span style="color:#ae81ff">77</span>,<span style="color:#ae81ff">31</span>], <span style="color:#ae81ff">500</span>)
 (Minimization problem with<span style="color:#f92672">:</span>
  <span style="color:#f92672">*</span> <span style="color:#ae81ff">3506</span> linear constraints
  <span style="color:#f92672">*</span> <span style="color:#ae81ff">3500</span> variables<span style="color:#f92672">:</span> <span style="color:#ae81ff">500</span> binary, <span style="color:#ae81ff">3000</span> integer
 Solver is CbcMathProg,
-X[i,j], integer, ∀ i <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,…,<span style="color:#ae81ff">499</span>,<span style="color:#ae81ff">500</span>}, j <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,…,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>},
-Y[i] <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>} ∀ i <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,…,<span style="color:#ae81ff">499</span>,<span style="color:#ae81ff">500</span>})</code></pre></div></p>
+X[i,j], integer, ∀ i <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#66d9ef">…</span>,<span style="color:#ae81ff">499</span>,<span style="color:#ae81ff">500</span>}, j <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#66d9ef">…</span>,<span style="color:#ae81ff">5</span>,<span style="color:#ae81ff">6</span>},
+Y[i] <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">1</span>} ∀ i <span style="color:#f92672">∈</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#66d9ef">…</span>,<span style="color:#ae81ff">499</span>,<span style="color:#ae81ff">500</span>})</code></pre></div></p>
 <p>We see the number of variables and constraints explode as we add more possible
 cut sizes. More precisely:</p>
 <ul>
@@ -752,7 +723,7 @@ nor the <code>Bin</code> restriction for $Y$:
    <span style="color:#66d9ef">return</span> (m,Y,X)
 <span style="color:#66d9ef">end</span></code></pre></div></p>
 <p>Let&rsquo;s see the results:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">julia<span style="color:#f92672">&gt;</span> res <span style="color:#f92672">=</span> [(i,getvalue(Y[i])) <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>N <span style="color:#66d9ef">if</span> getvalue(Y[i]) ≉ <span style="color:#ae81ff">0</span>]
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">julia<span style="color:#f92672">&gt;</span> res <span style="color:#f92672">=</span> [(i,getvalue(Y[i])) <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>N <span style="color:#66d9ef">if</span> getvalue(Y[i]) <span style="color:#f92672">≉</span> <span style="color:#ae81ff">0</span>]
 <span style="color:#ae81ff">33</span><span style="color:#f92672">-</span>element <span style="color:#66d9ef">Array</span>{<span style="color:#66d9ef">Tuple</span>{<span style="color:#66d9ef">Int64</span>,<span style="color:#66d9ef">Float64</span>},<span style="color:#ae81ff">1</span>}<span style="color:#f92672">:</span>
  (<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">1.0</span>)
  (<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">1.0</span>)
@@ -1169,7 +1140,7 @@ details and explanations where needed.</p>
     
     
     
-    <script src="/js/academic.min.16bbb3750feb7244c9bc409a5a4fe678.js"></script>
+    <script src="/js/academic.min.b22d2266dab94c8508ae1f0cf6b7056c.js"></script>
 
     
 

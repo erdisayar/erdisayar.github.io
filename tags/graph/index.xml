@@ -87,7 +87,7 @@ The last steps are straightforward:&lt;/p&gt;
 optimize!(m) &lt;span style=&#34;color:#75715e&#34;&gt;# solve the problem&lt;/span&gt;
 
 &lt;span style=&#34;color:#75715e&#34;&gt;# get the subset of interest&lt;/span&gt;
-diverse_names &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [vstr[i] &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; eachindex(vstr) &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; JuMP&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;value(x[i]) ≈ &lt;span style=&#34;color:#ae81ff&#34;&gt;1.&lt;/span&gt;]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+diverse_names &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [vstr[i] &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; eachindex(vstr) &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; JuMP&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;value(x[i]) &lt;span style=&#34;color:#f92672&#34;&gt;≈&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1.&lt;/span&gt;]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;And voilà.&lt;/p&gt;
 &lt;h2 id=&#34;trying-out-the-model&#34;&gt;Trying out the model&lt;/h2&gt;
 &lt;p&gt;I will use 50 real names taken from
@@ -169,8 +169,8 @@ to a node $j$, therefore all the information of a graph can be kept as an
 &lt;p&gt;We don&amp;rsquo;t know what the use cases for our type will be, and therefore,
 we will parametrize the graph type over the matrix type:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; LightGraphs; &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; lg &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; LightGraphs
-&lt;span style=&#34;color:#66d9ef&#34;&gt;mutable&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; MatrixDiGraph{MT &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractMatrix&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;Bool&lt;/span&gt;}} &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;:&lt;/span&gt; lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;AbstractGraph{&lt;span style=&#34;color:#66d9ef&#34;&gt;Int&lt;/span&gt;}
-  matrix&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;MT
+&lt;span style=&#34;color:#66d9ef&#34;&gt;mutable struct&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;MatrixDiGraph&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;MT&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractMatrix&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;Bool&lt;/span&gt;}} &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;lg&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractGraph&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;Int&lt;/span&gt;}
+  matrix&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;MT&lt;/span&gt;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;The edges are simply mapping an entry (i,j) to a boolean (whether there is an
 edge from i to j). Even though creating a graph type that can be directed
@@ -182,14 +182,14 @@ with methods defined over the type itself, of the form &lt;code&gt;function(g::M
 &lt;p&gt;I&amp;rsquo;m not going to re-define each function here, their meaning can be found
 by checking the help in a Julia REPL: &lt;code&gt;?LightGraphs.vertices&lt;/code&gt; or on the
 &lt;a href=&#34;http://juliagraphs.github.io/LightGraphs.jl/stable/types.html#AbstractGraph-Type-1&#34;&gt;documentation page&lt;/a&gt;.&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;is_directed(&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;MatrixDiGraph) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
-lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;edgetype(&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;MatrixDiGraph) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;SimpleGraphs&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;SimpleEdge{&lt;span style=&#34;color:#66d9ef&#34;&gt;Int&lt;/span&gt;}
-lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ne(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;MatrixDiGraph) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sum(g&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;m)
-lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nv(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;MatrixDiGraph) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; size(g&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;m)[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;is_directed(&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;MatrixDiGraph&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; true
+lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;edgetype(&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;MatrixDiGraph&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;SimpleGraphs&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;SimpleEdge&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;Int&lt;/span&gt;}
+lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ne(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;MatrixDiGraph&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; sum(g&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;m)
+lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nv(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;MatrixDiGraph&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; size(g&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;m)[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]
 
-lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;vertices(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;MatrixDiGraph) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;nv(g)
+lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;vertices(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;MatrixDiGraph&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;nv(g)
 
-&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;edges(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;MatrixDiGraph)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;edges(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;MatrixDiGraph&lt;/span&gt;)
     n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nv(g)
     &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;SimpleGraphs&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;SimpleEdge(i,j) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;n &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; j &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;n &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; g&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;m[i,j])
 &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
@@ -198,15 +198,15 @@ need to return an &lt;strong&gt;iterator&lt;/strong&gt; over edges. We don&amp;r
 in a Vector, returning a lazy generator.&lt;/p&gt;
 &lt;p&gt;Some operations have to be defined on both the graph and a node, of the form
 &lt;code&gt;function(g::MyType, node)&lt;/code&gt;.
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;outneighbors(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;MatrixDiGraph, node) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [v &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; v &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nv(g) &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; g&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;m[node, v]]
-lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;inneighbors(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;MatrixDiGraph, node) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [v &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; v &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nv(g) &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; g&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;m[v, node]]
-lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;has_vertex(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;MatrixDiGraph, v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Integer&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; v &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nv(g) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; v &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;outneighbors(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;MatrixDiGraph&lt;/span&gt;, node) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [v &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; v &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nv(g) &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; g&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;m[node, v]]
+lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;inneighbors(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;MatrixDiGraph&lt;/span&gt;, node) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [v &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; v &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nv(g) &lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; g&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;m[v, node]]
+lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;has_vertex(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;MatrixDiGraph&lt;/span&gt;, v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Integer&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; v &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;=&lt;/span&gt; lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;nv(g) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; v &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
 &lt;p&gt;Out &lt;code&gt;MatrixDiGraph&lt;/code&gt; type is pretty straight-forward to work with and all
 required methods are easy to relate to the way information is stored in the
 adjacency matrix.&lt;/p&gt;
 &lt;p&gt;The last step is implementing methods on both the graph and an edge of the
 form &lt;code&gt;function(g::MatrixDiGraph,e)&lt;/code&gt;. The only one we need here is:
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;has_edge(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;MatrixDiGraph,i,j) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; g&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;m[i,j]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;has_edge(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;MatrixDiGraph&lt;/span&gt;,i,j) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; g&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;m[i,j]&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
 &lt;h2 id=&#34;optional-mutability&#34;&gt;Optional mutability&lt;/h2&gt;
 &lt;p&gt;Mutating methods were removed from the core interace some time ago,
 as they are not required to describe a graph-like behavior.
@@ -215,32 +215,32 @@ the operation succeded. They consist in adding or removing elements from
 either the edges or nodes.&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; LightGraphs&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt; rem_edge!, rem_vertex!, add_edge!, add_vertex!
 
-&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; add_edge!(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;MatrixDiGraph, e)
-    has_edge(g,e) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; add_edge!(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;MatrixDiGraph&lt;/span&gt;, e)
+    has_edge(g,e) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; false
     n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nv(g)
-    (src(e) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; dst(e) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; n) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;
-    g&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;m[src(e),dst(e)] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+    (src(e) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; dst(e) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; n) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; false
+    g&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;m[src(e),dst(e)] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; true
 &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
 
-&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; rem_edge!(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;MatrixDiGraph,e)
-    has_edge(g,e) &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;
+&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; rem_edge!(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;MatrixDiGraph&lt;/span&gt;,e)
+    has_edge(g,e) &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; false
     n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nv(g)
-    (src(e) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; dst(e) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; n) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;
-    g&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;m[src(e),dst(e)] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;false&lt;/span&gt;
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+    (src(e) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; n &lt;span style=&#34;color:#f92672&#34;&gt;||&lt;/span&gt; dst(e) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; n) &lt;span style=&#34;color:#f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; false
+    g&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;m[src(e),dst(e)] &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; false
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; true
 &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
 
-&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; add_vertex!(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;MatrixDiGraph)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; add_vertex!(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;MatrixDiGraph&lt;/span&gt;)
     n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nv(g)
     m &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; zeros(&lt;span style=&#34;color:#66d9ef&#34;&gt;Bool&lt;/span&gt;,n&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,n&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
     m[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;n,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;n] &lt;span style=&#34;color:#f92672&#34;&gt;.=&lt;/span&gt; g&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;m
     g&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;m &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; m
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; true
 &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h2 id=&#34;testing-our-graph-type-on-real-data&#34;&gt;Testing our graph type on real data&lt;/h2&gt;
 &lt;p&gt;We will use the graph type to compute the PageRank of&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; SNAPDatasets
-data &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; SNAPDatasets&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;loadsnap(&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;ego_twitter_d)
+data &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; SNAPDatasets&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;loadsnap(&lt;span style=&#34;color:#e6db74&#34;&gt;:ego_twitter_d&lt;/span&gt;)
 twitter_graph &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; MatrixDiGraph(lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;adjacency_matrix(data)[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;]&lt;span style=&#34;color:#f92672&#34;&gt;.==&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;);
 ranks &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;pagerank(twitter_graph)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Note the broadcast check &lt;code&gt;.==1&lt;/code&gt;, &lt;code&gt;adjacency_matrix&lt;/code&gt; is specified to yield a
@@ -257,7 +257,7 @@ there should be no computation required to return it (it&amp;rsquo;s almost a no
 
 &lt;span style=&#34;color:#a6e22e&#34;&gt;@btime&lt;/span&gt; adjacency_matrix(bigger_twitter)
 println(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;why did that take so long?&amp;#34;&lt;/span&gt;)
-lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;adjacency_matrix(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;MatrixDiGraph) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;(g&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;m)
+lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;adjacency_matrix(g&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;MatrixDiGraph&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Int&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;(g&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;m)
 &lt;span style=&#34;color:#a6e22e&#34;&gt;@btime&lt;/span&gt; A &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;adjacency_matrix(bigger_twitter)
 println(&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;that&amp;#39;s better.&amp;#34;&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;This should yield roughly:&lt;/p&gt;
@@ -338,10 +338,10 @@ is the vector composed of one triplet:&lt;/p&gt;
 &lt;p&gt;In Julia, the expense information can be translated to a structure:
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; User &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Int&lt;/span&gt;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;const&lt;/span&gt; GraphCoin &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Float16&lt;/span&gt;
-&lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; Expense
-    payer&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;User
-    amount&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;GraphCoin
-    users&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Set&lt;/span&gt;{User}
+&lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Expense&lt;/span&gt;
+    payer&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;User&lt;/span&gt;
+    amount&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;GraphCoin&lt;/span&gt;
+    users&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Set&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;User&lt;/span&gt;}
 &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
 &lt;h2 id=&#34;reducing-expenses&#34;&gt;Reducing expenses&lt;/h2&gt;
 &lt;p&gt;Now that we have a full representation of the expenses,
@@ -397,7 +397,7 @@ is owed in net from a user to another:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&amp;#34;
 &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;Builds the matrix of net owed GraphCoins
 &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; compute_net_owing(expenses&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Vector&lt;/span&gt;{Expense}, nusers&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Int&lt;/span&gt;)
+&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; compute_net_owing(expenses&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Vector&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;Expense&lt;/span&gt;}, nusers&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Int&lt;/span&gt;)
     owing_matrix &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; zeros(GraphCoin, nusers, nusers)
     &lt;span style=&#34;color:#75715e&#34;&gt;# row owes to column&lt;/span&gt;
     &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; expense &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; expenses
@@ -424,7 +424,7 @@ is owed in net from a user to another:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&amp;#34;
 &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;    What is owed to a given user (negative if user owes money)
 &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; net_owed_user(net_owing&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Matrix&lt;/span&gt;{GraphCoin})
+&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; net_owed_user(net_owing&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Matrix&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;GraphCoin&lt;/span&gt;})
     &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; (sum(net_owing,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)&lt;span style=&#34;color:#f92672&#34;&gt;&amp;#39;&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt; sum(net_owing,&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;))[&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]
 &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;sum&lt;/code&gt; function used with &lt;code&gt;1&lt;/code&gt; or &lt;code&gt;2&lt;/code&gt; sums a matrix over its rows, columns
@@ -443,7 +443,7 @@ kept from using Python and that I consider more readable than importing
 the whole package into the namespace. &lt;code&gt;lg&lt;/code&gt; has become my usual name for the
 LightGraphs package.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; build_graph(net_owing&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Matrix&lt;/span&gt;{GraphCoin})
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; build_graph(net_owing&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Matrix&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;GraphCoin&lt;/span&gt;})
     nusers &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; size(net_owing,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;)
     g &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; lg&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;DiGraph(nusers &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)
     source &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; nusers &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
@@ -477,7 +477,7 @@ component of the JuliaGraphs ecosystem specialized for flow problems:&lt;/p&gt;
 using Clp: ClpSolver
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We also need a Linear Programming solver to pass to the flow solver, all we
 have to do is bundle the pieces together:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; solve_expense(expenses&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Vector&lt;/span&gt;{Expense}, nusers&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Int&lt;/span&gt;)
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; solve_expense(expenses&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Vector&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;Expense&lt;/span&gt;}, nusers&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Int&lt;/span&gt;)
     (g, capacity, demand) &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; build_graph(compute_net_owing(expenses, nusers))
     flow &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; mincost_flow(g, capacity, demand, ones(nusers&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;,nusers&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;), ClpSolver(), nusers&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;, nusers&lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;)
     &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; flow[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;]
@@ -525,29 +525,6 @@ Special thanks to &lt;a href=&#34;http://www.bromberger.com/&#34;&gt;Seth Brombe
 &lt;a href=&#34;https://github.com/JuliaGraphs/GraphPlot.jl&#34;&gt;GraphPlot.jl&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;[1] James Fairbanks Seth Bromberger and other contributors. Juliagraphs/LightGraphs.jl:
 Lightgraphs, 2017, &lt;a href=&#34;https://doi.org/10.5281/zenodo.889971&#34;&gt;https://doi.org/10.5281/zenodo.889971&lt;/a&gt;. DOI: 10.5281/zenodo.889971&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>JuliaGraphs contributions</title>
-      <link>https://matbesancon.github.io/project/juliagraphs/</link>
-      <pubDate>Wed, 10 Jan 2018 00:00:00 +0100</pubDate>
-      
-      <guid>https://matbesancon.github.io/project/juliagraphs/</guid>
-      <description>&lt;p&gt;Starting from a weird Kaggle &lt;a href=&#34;https://www.kaggle.com/c/santa-gift-matching&#34;&gt;side-project&lt;/a&gt;
-during the Chrismas holidays, I gradually got involved in the &lt;a href=&#34;https://juliagraphs.github.io/&#34;&gt;JuliaGraphs&lt;/a&gt;
-ecosystem. After some discussion on the Julia Slack &lt;em&gt;#graphs&lt;/em&gt; channel,
-I went from reporting a simple feature I needed to helping with the
-re-organization by splitting out two packages:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/JuliaGraphs/LightGraphsMatching.jl&#34;&gt;LightGraphsMatching.jl&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/JuliaGraphs/LightGraphsFlows.jl&#34;&gt;LightGraphsFlows.jl&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;I also implemented the
-&lt;a href=&#34;https://github.com/JuliaGraphs/LightGraphsFlows.jl/blob/master/src/mincost.jl&#34;&gt;min-cost flow problem&lt;/a&gt;
-formulated as a linear optimization problem formulated using MathProgBase.jl,
-using any user-provided solver.&lt;/p&gt;
-&lt;p&gt;Many thanks to the whole JuliaGraphs team for their trust, support and advice.&lt;/p&gt;
 </description>
     </item>
     

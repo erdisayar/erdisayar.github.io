@@ -81,7 +81,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.11bfb5db527d0300a83b31a367badc35.css">
+  <link rel="stylesheet" href="/css/academic.min.0a6825b1f3e5f00ab1fb335a97b73515.css">
 
   
 
@@ -299,35 +299,6 @@
 
         <li class="nav-item">
           <a class="nav-link " href="/#experience"><span>Experience</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-        
-        
-        
-        
-        
-          
-          
-          
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/#projects"><span>Projects</span></a>
         </li>
 
         
@@ -730,13 +701,13 @@ and the fraction being directly injected as parameters:</p>
         integrator<span style="color:#f92672">.</span>u[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">=</span> inj_rate
     <span style="color:#66d9ef">end</span>
     callback_start <span style="color:#f92672">=</span> DiffEq<span style="color:#f92672">.</span>ContinuousCallback(
-        condition_start, affect_start!, save_positions<span style="color:#f92672">=</span>(<span style="color:#66d9ef">true</span>, <span style="color:#66d9ef">true</span>)
+        condition_start, affect_start!, save_positions<span style="color:#f92672">=</span>(true, true)
     )
     condition_end(u, t, integrator) <span style="color:#f92672">=</span> (t <span style="color:#f92672">-</span> t0) <span style="color:#f92672">*</span> inj_rate <span style="color:#f92672">-</span> inj_quantity <span style="color:#f92672">*</span> (<span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> direct_frac)
     affect_end! <span style="color:#f92672">=</span> <span style="color:#66d9ef">function</span>(integrator)
         integrator<span style="color:#f92672">.</span>u[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>
     <span style="color:#66d9ef">end</span>
-    callback_end <span style="color:#f92672">=</span> DiffEq<span style="color:#f92672">.</span>ContinuousCallback(condition_end, affect_end!, save_positions<span style="color:#f92672">=</span>(<span style="color:#66d9ef">true</span>, <span style="color:#66d9ef">true</span>))
+    callback_end <span style="color:#f92672">=</span> DiffEq<span style="color:#f92672">.</span>ContinuousCallback(condition_end, affect_end!, save_positions<span style="color:#f92672">=</span>(true, true))
     sol <span style="color:#f92672">=</span> DiffEq<span style="color:#f92672">.</span>solve(prob, callback<span style="color:#f92672">=</span>DiffEq<span style="color:#f92672">.</span>CallbackSet(callback_start, callback_end), dtmax<span style="color:#f92672">=</span><span style="color:#ae81ff">0.005</span>)
 <span style="color:#66d9ef">end</span>
 
@@ -1154,7 +1125,7 @@ use Optim.jl for the second case (boxed multivariate optimization without explic
     
     
     
-    <script src="/js/academic.min.16bbb3750feb7244c9bc409a5a4fe678.js"></script>
+    <script src="/js/academic.min.b22d2266dab94c8508ae1f0cf6b7056c.js"></script>
 
     
 

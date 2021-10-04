@@ -81,7 +81,7 @@ class Car { private Motor motor; public Car(Motor m) { this.">
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.11bfb5db527d0300a83b31a367badc35.css">
+  <link rel="stylesheet" href="/css/academic.min.0a6825b1f3e5f00ab1fb335a97b73515.css">
 
   
 
@@ -300,35 +300,6 @@ class Car { private Motor motor; public Car(Motor m) { this."><meta property="og
 
         <li class="nav-item">
           <a class="nav-link " href="/#experience"><span>Experience</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-        
-        
-        
-        
-        
-          
-          
-          
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/#projects"><span>Projects</span></a>
         </li>
 
         
@@ -701,15 +672,15 @@ with $diag(\cdot)$ constructing a diagonal matrix from a vector.</p>
 <p>Sampling and computing quantities of interest for such multivariate would be
 much faster by using a multivariate directly.
 Our new design can leverage multiple dispatch, and would look as follows:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> Product(distributions<span style="color:#f92672">::</span><span style="color:#66d9ef">Vector</span>{<span style="color:#f92672">&lt;:</span>Gaussian})
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> Product(distributions<span style="color:#f92672">::</span><span style="color:#66d9ef">Vector</span>{<span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">Gaussian</span>})
 	<span style="color:#75715e"># construct multivariate gaussian</span>
 <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">function</span> Product(distributions<span style="color:#f92672">::</span><span style="color:#66d9ef">Vector</span>{<span style="color:#f92672">&lt;:</span>Uniform})
+<span style="color:#66d9ef">function</span> Product(distributions<span style="color:#f92672">::</span><span style="color:#66d9ef">Vector</span>{<span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">Uniform</span>})
 	<span style="color:#75715e"># construct multivariate uniform</span>
 <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">function</span> Product(distributions<span style="color:#f92672">::</span><span style="color:#66d9ef">Vector</span>{<span style="color:#f92672">&lt;:</span>UnivariateDistribution})
+<span style="color:#66d9ef">function</span> Product(distributions<span style="color:#f92672">::</span><span style="color:#66d9ef">Vector</span>{<span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">UnivariateDistribution</span>})
 	<span style="color:#75715e"># construct generic Product</span>
 <span style="color:#66d9ef">end</span></code></pre></div>
 <p>It is all fine and type-stable; if you don&rsquo;t know what it means, just think
@@ -719,7 +690,7 @@ A constructor of <code>Product</code> is supposed to return a <code>Product</cod
 If you work in a language that uses algebraic data types for possible failures
 and absence as <code>Maybe/Either/Result/Option</code>, the constructor should return the
 type and not one of these.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> T
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">T</span>
 	<span style="color:#75715e"># type fields</span>
 <span style="color:#66d9ef">end</span>
 
@@ -731,7 +702,7 @@ T(args) <span style="color:#f92672">=</span> <span style="color:#75715e"># ...</
 value <span style="color:#f92672">=</span> T(args)
 
 <span style="color:#75715e"># the following should always be true</span>
-typeof(value) <span style="color:#f92672">&lt;:</span> T</code></pre></div>
+typeof(value) <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">T</span></code></pre></div>
 <p>In our cases, a more efficient implementation cannot be returned from a
 constructor. This means the construction of our type must be left to another
 method which could return it or something else.
@@ -755,7 +726,7 @@ them being:</p>
 <li>Constructing an object by copy.</li>
 <li>Constructing an object with default parameters.</li>
 </ol>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> T
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">T</span>
 	<span style="color:#75715e"># fields</span>
 <span style="color:#66d9ef">end</span>
 
@@ -763,7 +734,7 @@ them being:</p>
 	<span style="color:#75715e"># default parameters are valid</span>
 <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">function</span> T(t<span style="color:#f92672">::</span>T)
+<span style="color:#66d9ef">function</span> T(t<span style="color:#f92672">::</span><span style="color:#66d9ef">T</span>)
 	<span style="color:#75715e"># t is already constructed, and is therefore valid</span>
 <span style="color:#66d9ef">end</span></code></pre></div>
 <p>Throwing errors in a constructor is ill-advised, because again,
@@ -773,15 +744,15 @@ return a <code>Maybe{T} / Either{_, T}</code>, which again breaks the promise.
 The problem is that if checking is not the default, users are less likely to
 call the checking function. The solution found here is to use a keyword in
 all constructors:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> D{T <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">Real</span>} <span style="color:#f92672">&lt;:</span> Distribution
-	param<span style="color:#f92672">::</span>T
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">D</span>{<span style="color:#66d9ef">T</span> <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">Real</span>} <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">Distribution</span>
+	param<span style="color:#f92672">::</span><span style="color:#66d9ef">T</span>
 <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">function</span> D(p<span style="color:#f92672">::</span>T; check_arg <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>) where {T}
+<span style="color:#66d9ef">function</span> D(p<span style="color:#f92672">::</span><span style="color:#66d9ef">T</span>; check_arg <span style="color:#f92672">=</span> true) <span style="color:#66d9ef">where</span> {<span style="color:#66d9ef">T</span>}
 	<span style="color:#66d9ef">if</span> check_arg
 		verify_parameter(p)
 	<span style="color:#66d9ef">end</span>
-	<span style="color:#66d9ef">return</span> D{T}(p)
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">D</span>{<span style="color:#66d9ef">T</span>}(p)
 <span style="color:#66d9ef">end</span></code></pre></div>
 <p>The default is still to check the validity of parameters, but objects of type
 <code>D</code> can now be constructed with opt-out checking. Another way to do it is
@@ -789,21 +760,21 @@ with multiple dispatch:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">A flag structure to avoid checking arguments.
 </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
-<span style="color:#66d9ef">struct</span> NoArgCheck <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">NoArgCheck</span> <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">struct</span> D{T <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">Real</span>} <span style="color:#f92672">&lt;:</span> Distribution
-	param<span style="color:#f92672">::</span>T
+<span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">D</span>{<span style="color:#66d9ef">T</span> <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">Real</span>} <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">Distribution</span>
+	param<span style="color:#f92672">::</span><span style="color:#66d9ef">T</span>
 <span style="color:#66d9ef">end</span>
 
 <span style="color:#75715e"># standard constructor, validates the parameter</span>
-<span style="color:#66d9ef">function</span> D(p<span style="color:#f92672">::</span>T) where {T <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">Real</span>}
+<span style="color:#66d9ef">function</span> D(p<span style="color:#f92672">::</span><span style="color:#66d9ef">T</span>) <span style="color:#66d9ef">where</span> {<span style="color:#66d9ef">T</span> <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">Real</span>}
 	verify_parameter(p)
-	<span style="color:#66d9ef">return</span> D{T}(p)
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">D</span>{<span style="color:#66d9ef">T</span>}(p)
 <span style="color:#66d9ef">end</span>
 
 <span style="color:#75715e"># faster constructor, no argument checking</span>
-<span style="color:#66d9ef">function</span> D(p<span style="color:#f92672">::</span>T, <span style="color:#f92672">::</span>NoArgCheck) where {T}
-	<span style="color:#66d9ef">return</span> D{T}(p)
+<span style="color:#66d9ef">function</span> D(p<span style="color:#f92672">::</span><span style="color:#66d9ef">T</span>, <span style="color:#f92672">::</span><span style="color:#66d9ef">NoArgCheck</span>) <span style="color:#66d9ef">where</span> {<span style="color:#66d9ef">T</span>}
+	<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">D</span>{<span style="color:#66d9ef">T</span>}(p)
 <span style="color:#66d9ef">end</span></code></pre></div>
 <p>In either cases, users can now take the responsibility of checking parameters
 themselves. In recent Julia version, the compiler optimization of boolean
@@ -1139,7 +1110,7 @@ on the subject was posted on Reddit (thanks Paul for pointing it out).</p>
     
     
     
-    <script src="/js/academic.min.16bbb3750feb7244c9bc409a5a4fe678.js"></script>
+    <script src="/js/academic.min.b22d2266dab94c8508ae1f0cf6b7056c.js"></script>
 
     
 

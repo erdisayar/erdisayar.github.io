@@ -81,7 +81,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.11bfb5db527d0300a83b31a367badc35.css">
+  <link rel="stylesheet" href="/css/academic.min.0a6825b1f3e5f00ab1fb335a97b73515.css">
 
   
 
@@ -300,35 +300,6 @@
 
         <li class="nav-item">
           <a class="nav-link " href="/#experience"><span>Experience</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-        
-        
-        
-        
-        
-          
-          
-          
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/#projects"><span>Projects</span></a>
         </li>
 
         
@@ -648,14 +619,14 @@ verifying if <code>x</code> is a <code>T</code> in a more concise way, this is v
 instead of type equality, which is much more flexible.</p>
 <p>The function is way longer than necessary, and will have to be modified every
 time. In a more idiomatic way, what we can do is:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> SOS1Method <span style="color:#66d9ef">end</span>
-<span style="color:#66d9ef">struct</span> BigMMethod <span style="color:#66d9ef">end</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">SOS1Method</span> <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">BigMMethod</span> <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">function</span> handle_ifthenelse(x, y, <span style="color:#f92672">::</span>SOS1Method)
+<span style="color:#66d9ef">function</span> handle_ifthenelse(x, y, <span style="color:#f92672">::</span><span style="color:#66d9ef">SOS1Method</span>)
     <span style="color:#75715e"># model as SOS1Method</span>
 <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">function</span> handle_ifthenelse(x, y, <span style="color:#f92672">::</span>BigMMethod, params)
+<span style="color:#66d9ef">function</span> handle_ifthenelse(x, y, <span style="color:#f92672">::</span><span style="color:#66d9ef">BigMMethod</span>, params)
     <span style="color:#75715e"># handle as big M with params</span>
 <span style="color:#66d9ef">end</span></code></pre></div>
 <p>Much better here, three things to notice:</p>
@@ -673,9 +644,9 @@ its own type, and the reader can refer to the method directly.</li>
 and defining a new behavior:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">import</span> OtherPackage <span style="color:#75715e"># where the function is defined</span>
 
-<span style="color:#66d9ef">struct</span> MyNewMethod <span style="color:#66d9ef">end</span>
+<span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">MyNewMethod</span> <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">function</span> handle_ifthenelse(x, y, <span style="color:#f92672">::</span>MyNewMethod)
+<span style="color:#66d9ef">function</span> handle_ifthenelse(x, y, <span style="color:#f92672">::</span><span style="color:#66d9ef">MyNewMethod</span>)
     <span style="color:#75715e"># define a new method for ifthenelse, much more efficient</span>
 <span style="color:#66d9ef">end</span></code></pre></div></p>
 <h1 id="handling-big-m-in-an-elegant-way">Handling big M in an elegant way</h1>
@@ -689,9 +660,9 @@ $$ x_j \leq M \cdot y_j,, \forall j $$</p>
 requires a scalar. One default option would be to adapt to the most general one:
 if several M values are given, build a vector, if there is only one, repeat it
 for each $j$. One way to do it using dynamic typing:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> BigMMethod <span style="color:#66d9ef">end</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">BigMMethod</span> <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">function</span> handle_ifthenelse(x, y, <span style="color:#f92672">::</span>BigMMethod, M<span style="color:#f92672">::</span><span style="color:#66d9ef">Union</span>{<span style="color:#66d9ef">Real</span>,<span style="color:#66d9ef">AbstractVector</span>{<span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">Real</span>}})
+<span style="color:#66d9ef">function</span> handle_ifthenelse(x, y, <span style="color:#f92672">::</span><span style="color:#66d9ef">BigMMethod</span>, M<span style="color:#f92672">::</span><span style="color:#66d9ef">Union</span>{<span style="color:#66d9ef">Real</span>,<span style="color:#66d9ef">AbstractVector</span>{<span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">Real</span>}})
     <span style="color:#66d9ef">if</span> M <span style="color:#66d9ef">isa</span> <span style="color:#66d9ef">Real</span>
         <span style="color:#75715e"># handle with one unique M</span>
     <span style="color:#66d9ef">else</span>
@@ -702,19 +673,19 @@ for each $j$. One way to do it using dynamic typing:
 <p>Note that we can constrain the type of M to be either a scalar or a Vector
 using <code>Union</code> type. Still, this type verification can be done using dispatch,
 and we can handle the multiple cases:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> BigMMethod <span style="color:#66d9ef">end</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">BigMMethod</span> <span style="color:#66d9ef">end</span>
 
 <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">Use one unique big M value
 </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
-<span style="color:#66d9ef">function</span> handle_ifthenelse(x, y, <span style="color:#f92672">::</span>BigMMethod, M<span style="color:#f92672">::</span><span style="color:#66d9ef">Real</span>)
+<span style="color:#66d9ef">function</span> handle_ifthenelse(x, y, <span style="color:#f92672">::</span><span style="color:#66d9ef">BigMMethod</span>, M<span style="color:#f92672">::</span><span style="color:#66d9ef">Real</span>)
     <span style="color:#75715e"># handle with one unique M</span>
 <span style="color:#66d9ef">end</span>
 
 <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">Use a vector of big M value
 </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
-<span style="color:#66d9ef">function</span> handle_ifthenelse(x, y, <span style="color:#f92672">::</span>BigMMethod, Mvec<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractVector</span>)
+<span style="color:#66d9ef">function</span> handle_ifthenelse(x, y, <span style="color:#f92672">::</span><span style="color:#66d9ef">BigMMethod</span>, Mvec<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractVector</span>)
     <span style="color:#75715e"># handle with each Mvec[j]</span>
 <span style="color:#66d9ef">end</span></code></pre></div>
 <p>This solution is fine, and resolving most things at compile-time.
@@ -726,10 +697,10 @@ types. However, in a realistic research or development work, many more
 decisions are taken such as algorithms options, number types, various parameters.
 We will likely end up with something similar to:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> do_science(x, y, z,
-                    <span style="color:#f92672">::</span>Alg1, params_alg_1,
-                    <span style="color:#f92672">::</span>Alg2, params_alg_2,
-                    <span style="color:#f92672">::</span>Alg3, <span style="color:#75715e"># algortithm 3 does not need parameters</span>
-                    <span style="color:#f92672">::</span>Alg4, params_alg_4)
+                    <span style="color:#f92672">::</span><span style="color:#66d9ef">Alg1</span>, params_alg_1,
+                    <span style="color:#f92672">::</span><span style="color:#66d9ef">Alg2</span>, params_alg_2,
+                    <span style="color:#f92672">::</span><span style="color:#66d9ef">Alg3</span>, <span style="color:#75715e"># algortithm 3 does not need parameters</span>
+                    <span style="color:#f92672">::</span><span style="color:#66d9ef">Alg4</span>, params_alg_4)
     <span style="color:#75715e"># do something with params_alg_1 for Alg1</span>
     <span style="color:#75715e"># do something with params_alg_2 for Alg2</span>
     <span style="color:#75715e"># ...</span>
@@ -739,14 +710,14 @@ A long chain of positional arguments like this end makes for error-prone
 and cumbersome interfaces. Can we change this? We created all our types as
 empty structures <code>struct A end</code> and use it just to dispatch. Instead,
 we could store adapted parameters within the corresponding type:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> Alg1
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">Alg1</span>
     coefficient<span style="color:#f92672">::</span><span style="color:#66d9ef">Float64</span>
     direction<span style="color:#f92672">::</span><span style="color:#66d9ef">Vector</span>{<span style="color:#66d9ef">Float64</span>}
 <span style="color:#66d9ef">end</span>
 
 <span style="color:#75715e"># define other types</span>
 
-<span style="color:#66d9ef">function</span> do_science(x, y, z, a1<span style="color:#f92672">::</span>Alg1, a2<span style="color:#f92672">::</span>Alg2, <span style="color:#f92672">::</span>Alg3, a4<span style="color:#f92672">::</span>Alg4)
+<span style="color:#66d9ef">function</span> do_science(x, y, z, a1<span style="color:#f92672">::</span><span style="color:#66d9ef">Alg1</span>, a2<span style="color:#f92672">::</span><span style="color:#66d9ef">Alg2</span>, <span style="color:#f92672">::</span><span style="color:#66d9ef">Alg3</span>, a4<span style="color:#f92672">::</span><span style="color:#66d9ef">Alg4</span>)
     <span style="color:#75715e"># do something with params_alg_1 for Alg1</span>
     <span style="color:#75715e"># a1.coefficient, a1.direction...</span>
     <span style="color:#75715e"># do something with Alg2</span>
@@ -754,14 +725,14 @@ we could store adapted parameters within the corresponding type:</p>
 <span style="color:#66d9ef">end</span></code></pre></div>
 <p>Getting back to our initial use case of <code>BigMMethod</code>, we need to store
 the $M$ value(s) in the structure:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> BigMMethod
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">BigMMethod</span>
     M<span style="color:#f92672">::</span><span style="color:#66d9ef">Union</span>{<span style="color:#66d9ef">Float64</span>, <span style="color:#66d9ef">Vector</span>{<span style="color:#66d9ef">Float64</span>}}
 <span style="color:#66d9ef">end</span></code></pre></div></p>
 <p>This seems fine, however, the Julia compiler cannot know the type of the <code>M</code>
 field at compile-time, instead, we can use a type parameter here:
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> BigMMethod{MT<span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">Union</span>{<span style="color:#66d9ef">Real</span>, <span style="color:#66d9ef">AbstractVector</span>{<span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">Real</span>}}}
-    M<span style="color:#f92672">::</span>MT
-    BigMMethod(M<span style="color:#f92672">::</span>MT) where {MT} <span style="color:#f92672">=</span> new{MT}(M)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">BigMMethod</span>{<span style="color:#66d9ef">MT</span><span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">Union</span>{<span style="color:#66d9ef">Real</span>, <span style="color:#66d9ef">AbstractVector</span>{<span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">Real</span>}}}
+    M<span style="color:#f92672">::</span><span style="color:#66d9ef">MT</span>
+    BigMMethod(M<span style="color:#f92672">::</span><span style="color:#66d9ef">MT</span>) <span style="color:#66d9ef">where</span> {<span style="color:#66d9ef">MT</span>} <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span>{<span style="color:#66d9ef">MT</span>}(M)
 <span style="color:#66d9ef">end</span></code></pre></div></p>
 <p>When constructing the BigMMethod with this definition, it can be specialized
 on <code>MT</code>, the type of <code>M</code>, two examples of valid definitions are:
@@ -778,14 +749,14 @@ signature on the type parameter of M, as below:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">Use one unique big M value
 </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
-<span style="color:#66d9ef">function</span> handle_ifthenelse(x, y, bm<span style="color:#f92672">::</span>BigMMethod{<span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">Real</span>})
+<span style="color:#66d9ef">function</span> handle_ifthenelse(x, y, bm<span style="color:#f92672">::</span><span style="color:#66d9ef">BigMMethod</span>{<span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">Real</span>})
     <span style="color:#75715e"># handle with one unique M bm.M</span>
 <span style="color:#66d9ef">end</span>
 
 <span style="color:#e6db74">&#34;&#34;&#34;
 </span><span style="color:#e6db74">Use a vector of big M value
 </span><span style="color:#e6db74">&#34;&#34;&#34;</span>
-<span style="color:#66d9ef">function</span> handle_ifthenelse(x, y, bm<span style="color:#f92672">::</span>BigMMethod{<span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">AbstractVector</span>})
+<span style="color:#66d9ef">function</span> handle_ifthenelse(x, y, bm<span style="color:#f92672">::</span><span style="color:#66d9ef">BigMMethod</span>{<span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">AbstractVector</span>})
     <span style="color:#75715e"># handle with each bm.M[j]</span>
 <span style="color:#66d9ef">end</span></code></pre></div>
 <p>The advantage is a strictly identical signature, whatever the method and
@@ -1008,7 +979,7 @@ indicator constraints instead of big M, as documented in <a href="http://www.gur
           
           <li><a href="/post/2018-12-27-heat-exchanger/">Winter warm-up: toy models for heat exchangers</a></li>
           
-          <li><a href="/project/tlou/">A Bilevel Framework for Optimal Price-Setting of Time-and-Level-of-Use Tariffs</a></li>
+          <li><a href="/post/2018-08-17-abstract_graph/">Building our own graph type in Julia</a></li>
           
         </ul>
       </div>
@@ -1144,7 +1115,7 @@ indicator constraints instead of big M, as documented in <a href="http://www.gur
     
     
     
-    <script src="/js/academic.min.16bbb3750feb7244c9bc409a5a4fe678.js"></script>
+    <script src="/js/academic.min.b22d2266dab94c8508ae1f0cf6b7056c.js"></script>
 
     
 

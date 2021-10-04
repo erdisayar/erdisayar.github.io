@@ -81,7 +81,7 @@ Another way to push the abstraction came out of the JuliaNantes workshop: levera
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.11bfb5db527d0300a83b31a367badc35.css">
+  <link rel="stylesheet" href="/css/academic.min.0a6825b1f3e5f00ab1fb335a97b73515.css">
 
   
 
@@ -300,35 +300,6 @@ Another way to push the abstraction came out of the JuliaNantes workshop: levera
 
         <li class="nav-item">
           <a class="nav-link " href="/#experience"><span>Experience</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-        
-        
-        
-        
-        
-          
-          
-          
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/#projects"><span>Projects</span></a>
         </li>
 
         
@@ -604,21 +575,21 @@ of types and made zero-cost abstractions. The real only runtime information of
 a path graph (which is not available before receiving the actual graph) is its
 size $n$. The only thing to do is implement the handful of methods from the
 LightGraphs interface.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> PathGraph{T <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">Integer</span>} <span style="color:#f92672">&lt;:</span> LG<span style="color:#f92672">.</span>AbstractGraph{T}
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">PathGraph</span>{<span style="color:#66d9ef">T</span> <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">Integer</span>} <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">LG</span><span style="color:#f92672">.</span><span style="color:#66d9ef">AbstractGraph</span>{<span style="color:#66d9ef">T</span>}
     nv<span style="color:#f92672">::</span><span style="color:#66d9ef">Int</span>
 <span style="color:#66d9ef">end</span>
 
-LG<span style="color:#f92672">.</span>edgetype(<span style="color:#f92672">::</span>PathGraph) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>Edge{<span style="color:#66d9ef">Int</span>}
-LG<span style="color:#f92672">.</span>is_directed(<span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{<span style="color:#f92672">&lt;:</span>PathGraph}) <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>
-LG<span style="color:#f92672">.</span>nv(g<span style="color:#f92672">::</span>PathGraph) <span style="color:#f92672">=</span> g<span style="color:#f92672">.</span>nv
-LG<span style="color:#f92672">.</span>ne(g<span style="color:#f92672">::</span>PathGraph) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>nv(g) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
-LG<span style="color:#f92672">.</span>vertices(g<span style="color:#f92672">::</span>PathGraph) <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>LG<span style="color:#f92672">.</span>nv(g)
+LG<span style="color:#f92672">.</span>edgetype(<span style="color:#f92672">::</span><span style="color:#66d9ef">PathGraph</span>) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span><span style="color:#66d9ef">Edge</span>{<span style="color:#66d9ef">Int</span>}
+LG<span style="color:#f92672">.</span>is_directed(<span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{<span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">PathGraph</span>}) <span style="color:#f92672">=</span> false
+LG<span style="color:#f92672">.</span>nv(g<span style="color:#f92672">::</span><span style="color:#66d9ef">PathGraph</span>) <span style="color:#f92672">=</span> g<span style="color:#f92672">.</span>nv
+LG<span style="color:#f92672">.</span>ne(g<span style="color:#f92672">::</span><span style="color:#66d9ef">PathGraph</span>) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>nv(g) <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+LG<span style="color:#f92672">.</span>vertices(g<span style="color:#f92672">::</span><span style="color:#66d9ef">PathGraph</span>) <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>LG<span style="color:#f92672">.</span>nv(g)
 
-LG<span style="color:#f92672">.</span>edges(g<span style="color:#f92672">::</span>PathGraph) <span style="color:#f92672">=</span> [LG<span style="color:#f92672">.</span>Edge(i, i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>LG<span style="color:#f92672">.</span>nv(g)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+LG<span style="color:#f92672">.</span>edges(g<span style="color:#f92672">::</span><span style="color:#66d9ef">PathGraph</span>) <span style="color:#f92672">=</span> [LG<span style="color:#f92672">.</span>Edge(i, i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>) <span style="color:#66d9ef">for</span> i <span style="color:#66d9ef">in</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>LG<span style="color:#f92672">.</span>nv(g)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
 
-LG<span style="color:#f92672">.</span>has_vertex(g<span style="color:#f92672">::</span>PathGraph, v) <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;=</span> v <span style="color:#f92672">&lt;=</span> LG<span style="color:#f92672">.</span>nv(g)
+LG<span style="color:#f92672">.</span>has_vertex(g<span style="color:#f92672">::</span><span style="color:#66d9ef">PathGraph</span>, v) <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;=</span> v <span style="color:#f92672">&lt;=</span> LG<span style="color:#f92672">.</span>nv(g)
 
-<span style="color:#66d9ef">function</span> LG<span style="color:#f92672">.</span>outneighbors(g<span style="color:#f92672">::</span>PathGraph, v)
+<span style="color:#66d9ef">function</span> LG<span style="color:#f92672">.</span>outneighbors(g<span style="color:#f92672">::</span><span style="color:#66d9ef">PathGraph</span>, v)
     LG<span style="color:#f92672">.</span>has_vertex(g, v) <span style="color:#f92672">||</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">Int</span>[]
     LG<span style="color:#f92672">.</span>nv(g) <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">||</span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">Int</span>[]
     <span style="color:#66d9ef">if</span> v <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>
@@ -630,11 +601,11 @@ LG<span style="color:#f92672">.</span>has_vertex(g<span style="color:#f92672">::
     <span style="color:#66d9ef">return</span> [v<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, v<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]
 <span style="color:#66d9ef">end</span>
 
-LightGraphs<span style="color:#f92672">.</span>inneighbors(g<span style="color:#f92672">::</span>PathGraph, v) <span style="color:#f92672">=</span> outneighbors(g, v)
+LightGraphs<span style="color:#f92672">.</span>inneighbors(g<span style="color:#f92672">::</span><span style="color:#66d9ef">PathGraph</span>, v) <span style="color:#f92672">=</span> outneighbors(g, v)
 
-<span style="color:#66d9ef">function</span> LightGraphs<span style="color:#f92672">.</span>has_edge(g<span style="color:#f92672">::</span>PathGraph, v1, v2)
+<span style="color:#66d9ef">function</span> LightGraphs<span style="color:#f92672">.</span>has_edge(g<span style="color:#f92672">::</span><span style="color:#66d9ef">PathGraph</span>, v1, v2)
     <span style="color:#66d9ef">if</span> <span style="color:#f92672">!</span>has_vertex(g, v1) <span style="color:#f92672">||</span> <span style="color:#f92672">!</span>has_vertex(g, v2)
-        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+        <span style="color:#66d9ef">return</span> false
     <span style="color:#66d9ef">end</span>
     <span style="color:#66d9ef">return</span> abs(v1<span style="color:#f92672">-</span>v2) <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>
 <span style="color:#66d9ef">end</span></code></pre></div>
@@ -993,7 +964,7 @@ graph prototype in <a href="/post/2018-08-17-abstract_graph/">this post</a>.</p>
     
     
     
-    <script src="/js/academic.min.16bbb3750feb7244c9bc409a5a4fe678.js"></script>
+    <script src="/js/academic.min.b22d2266dab94c8508ae1f0cf6b7056c.js"></script>
 
     
 

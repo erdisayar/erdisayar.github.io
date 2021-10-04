@@ -81,7 +81,7 @@ LightGraphs.jl offers a set of abstractions, types and algorithms to get started
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.11bfb5db527d0300a83b31a367badc35.css">
+  <link rel="stylesheet" href="/css/academic.min.0a6825b1f3e5f00ab1fb335a97b73515.css">
 
   
 
@@ -300,35 +300,6 @@ LightGraphs.jl offers a set of abstractions, types and algorithms to get started
 
         <li class="nav-item">
           <a class="nav-link " href="/#experience"><span>Experience</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-        
-        
-        
-        
-        
-          
-          
-          
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/#projects"><span>Projects</span></a>
         </li>
 
         
@@ -593,13 +564,13 @@ re-implementing only vertex removal.</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">import</span> LightGraphs
 <span style="color:#66d9ef">const</span> LG <span style="color:#f92672">=</span> LightGraphs
 
-<span style="color:#66d9ef">struct</span> VSafeGraph{T, G<span style="color:#f92672">&lt;:</span>LG<span style="color:#f92672">.</span>AbstractGraph{T}, V<span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">AbstractVector</span>{<span style="color:#66d9ef">Int</span>}} <span style="color:#f92672">&lt;:</span> LG<span style="color:#f92672">.</span>AbstractGraph{T}
-    g<span style="color:#f92672">::</span>G
-    deleted_vertices<span style="color:#f92672">::</span>V
-    VSafeGraph(g<span style="color:#f92672">::</span>G, v<span style="color:#f92672">::</span>V) where {T, G<span style="color:#f92672">&lt;:</span>LG<span style="color:#f92672">.</span>AbstractGraph{T}, V<span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">AbstractVector</span>{<span style="color:#66d9ef">Int</span>}} <span style="color:#f92672">=</span> new{T, G, V}(g, v)
+<span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">VSafeGraph</span>{<span style="color:#66d9ef">T</span>, <span style="color:#66d9ef">G</span><span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">LG</span><span style="color:#f92672">.</span><span style="color:#66d9ef">AbstractGraph</span>{<span style="color:#66d9ef">T</span>}, <span style="color:#66d9ef">V</span><span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">AbstractVector</span>{<span style="color:#66d9ef">Int</span>}} <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">LG</span><span style="color:#f92672">.</span><span style="color:#66d9ef">AbstractGraph</span>{<span style="color:#66d9ef">T</span>}
+    g<span style="color:#f92672">::</span><span style="color:#66d9ef">G</span>
+    deleted_vertices<span style="color:#f92672">::</span><span style="color:#66d9ef">V</span>
+    VSafeGraph(g<span style="color:#f92672">::</span><span style="color:#66d9ef">G</span>, v<span style="color:#f92672">::</span><span style="color:#66d9ef">V</span>) <span style="color:#66d9ef">where</span> {<span style="color:#66d9ef">T</span>, <span style="color:#66d9ef">G</span><span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">LG</span><span style="color:#f92672">.</span><span style="color:#66d9ef">AbstractGraph</span>{<span style="color:#66d9ef">T</span>}, <span style="color:#66d9ef">V</span><span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">AbstractVector</span>{<span style="color:#66d9ef">Int</span>}} <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span>{<span style="color:#66d9ef">T</span>, <span style="color:#66d9ef">G</span>, <span style="color:#66d9ef">V</span>}(g, v)
 <span style="color:#66d9ef">end</span>
 
-VSafeGraph(g<span style="color:#f92672">::</span>G) where {G<span style="color:#f92672">&lt;:</span>LG<span style="color:#f92672">.</span>AbstractGraph} <span style="color:#f92672">=</span> VSafeGraph(g, <span style="color:#66d9ef">Vector</span>{<span style="color:#66d9ef">Int</span>}())
+VSafeGraph(g<span style="color:#f92672">::</span><span style="color:#66d9ef">G</span>) <span style="color:#66d9ef">where</span> {<span style="color:#66d9ef">G</span><span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">LG</span><span style="color:#f92672">.</span><span style="color:#66d9ef">AbstractGraph</span>} <span style="color:#f92672">=</span> VSafeGraph(g, <span style="color:#66d9ef">Vector</span>{<span style="color:#66d9ef">Int</span>}())
 VSafeGraph(nv<span style="color:#f92672">::</span><span style="color:#66d9ef">Integer</span>) <span style="color:#f92672">=</span> VSafeGraph(LG<span style="color:#f92672">.</span>SimpleGraph(nv))</code></pre></div>
 <p>We added simple default constructors for convenience. The structure holds two
 elements:</p>
@@ -609,41 +580,41 @@ elements:</p>
 </ul>
 <p>The interface can now be implemented for our type, starting with the trivial
 parts:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">LG<span style="color:#f92672">.</span>edges(g<span style="color:#f92672">::</span>VSafeGraph) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>edges(g<span style="color:#f92672">.</span>g)
-LG<span style="color:#f92672">.</span>edgetype(g<span style="color:#f92672">::</span>VSafeGraph) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>edgetype(g<span style="color:#f92672">.</span>g)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">LG<span style="color:#f92672">.</span>edges(g<span style="color:#f92672">::</span><span style="color:#66d9ef">VSafeGraph</span>) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>edges(g<span style="color:#f92672">.</span>g)
+LG<span style="color:#f92672">.</span>edgetype(g<span style="color:#f92672">::</span><span style="color:#66d9ef">VSafeGraph</span>) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>edgetype(g<span style="color:#f92672">.</span>g)
 
-LG<span style="color:#f92672">.</span>is_directed(g<span style="color:#f92672">::</span>VSafeGraph) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>is_directed(g<span style="color:#f92672">.</span>g)
-LG<span style="color:#f92672">.</span>is_directed(<span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{<span style="color:#f92672">&lt;:</span>VSafeGraph{T,G}}) where {T,G} <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>is_directed(G)
+LG<span style="color:#f92672">.</span>is_directed(g<span style="color:#f92672">::</span><span style="color:#66d9ef">VSafeGraph</span>) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>is_directed(g<span style="color:#f92672">.</span>g)
+LG<span style="color:#f92672">.</span>is_directed(<span style="color:#f92672">::</span><span style="color:#66d9ef">Type</span>{<span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">VSafeGraph</span>{<span style="color:#66d9ef">T</span>,<span style="color:#66d9ef">G</span>}}) <span style="color:#66d9ef">where</span> {<span style="color:#66d9ef">T</span>,<span style="color:#66d9ef">G</span>} <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>is_directed(G)
 
-LG<span style="color:#f92672">.</span>ne(g<span style="color:#f92672">::</span>VSafeGraph) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>ne(g<span style="color:#f92672">.</span>g)
-LG<span style="color:#f92672">.</span>nv(g<span style="color:#f92672">::</span>VSafeGraph) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>nv(g<span style="color:#f92672">.</span>g) <span style="color:#f92672">-</span> length(g<span style="color:#f92672">.</span>deleted_vertices)
-LG<span style="color:#f92672">.</span>vertices(g<span style="color:#f92672">::</span>VSafeGraph) <span style="color:#f92672">=</span> (v <span style="color:#66d9ef">for</span> v <span style="color:#66d9ef">in</span> LG<span style="color:#f92672">.</span>vertices(g<span style="color:#f92672">.</span>g) <span style="color:#66d9ef">if</span> <span style="color:#f92672">!</span>(v <span style="color:#66d9ef">in</span> g<span style="color:#f92672">.</span>deleted_vertices))
+LG<span style="color:#f92672">.</span>ne(g<span style="color:#f92672">::</span><span style="color:#66d9ef">VSafeGraph</span>) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>ne(g<span style="color:#f92672">.</span>g)
+LG<span style="color:#f92672">.</span>nv(g<span style="color:#f92672">::</span><span style="color:#66d9ef">VSafeGraph</span>) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>nv(g<span style="color:#f92672">.</span>g) <span style="color:#f92672">-</span> length(g<span style="color:#f92672">.</span>deleted_vertices)
+LG<span style="color:#f92672">.</span>vertices(g<span style="color:#f92672">::</span><span style="color:#66d9ef">VSafeGraph</span>) <span style="color:#f92672">=</span> (v <span style="color:#66d9ef">for</span> v <span style="color:#66d9ef">in</span> LG<span style="color:#f92672">.</span>vertices(g<span style="color:#f92672">.</span>g) <span style="color:#66d9ef">if</span> <span style="color:#f92672">!</span>(v <span style="color:#66d9ef">in</span> g<span style="color:#f92672">.</span>deleted_vertices))
 
-LG<span style="color:#f92672">.</span>outneighbors(g<span style="color:#f92672">::</span>VSafeGraph, v) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>outneighbors(g<span style="color:#f92672">.</span>g, v)
-LG<span style="color:#f92672">.</span>inneighbors(g<span style="color:#f92672">::</span>VSafeGraph, v) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>inneighbors(g<span style="color:#f92672">.</span>g, v)
-LG<span style="color:#f92672">.</span>has_vertex(g<span style="color:#f92672">::</span>VSafeGraph, v) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>has_vertex(g<span style="color:#f92672">.</span>g, v) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>(v <span style="color:#66d9ef">in</span> g<span style="color:#f92672">.</span>deleted_vertices)
+LG<span style="color:#f92672">.</span>outneighbors(g<span style="color:#f92672">::</span><span style="color:#66d9ef">VSafeGraph</span>, v) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>outneighbors(g<span style="color:#f92672">.</span>g, v)
+LG<span style="color:#f92672">.</span>inneighbors(g<span style="color:#f92672">::</span><span style="color:#66d9ef">VSafeGraph</span>, v) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>inneighbors(g<span style="color:#f92672">.</span>g, v)
+LG<span style="color:#f92672">.</span>has_vertex(g<span style="color:#f92672">::</span><span style="color:#66d9ef">VSafeGraph</span>, v) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>has_vertex(g<span style="color:#f92672">.</span>g, v) <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>(v <span style="color:#66d9ef">in</span> g<span style="color:#f92672">.</span>deleted_vertices)
 
-LG<span style="color:#f92672">.</span>has_edge(g<span style="color:#f92672">::</span>VSafeGraph, e) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>has_edge(g<span style="color:#f92672">.</span>g, e)
+LG<span style="color:#f92672">.</span>has_edge(g<span style="color:#f92672">::</span><span style="color:#66d9ef">VSafeGraph</span>, e) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>has_edge(g<span style="color:#f92672">.</span>g, e)
 
-LG<span style="color:#f92672">.</span>add_vertex!(g<span style="color:#f92672">::</span>VSafeGraph) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>add_vertex!(g<span style="color:#f92672">.</span>g)
+LG<span style="color:#f92672">.</span>add_vertex!(g<span style="color:#f92672">::</span><span style="color:#66d9ef">VSafeGraph</span>) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>add_vertex!(g<span style="color:#f92672">.</span>g)
 
-LG<span style="color:#f92672">.</span>rem_edge!(g<span style="color:#f92672">::</span>VSafeGraph, v1, v2) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>rem_edge!(g<span style="color:#f92672">.</span>g, v1, v2)
+LG<span style="color:#f92672">.</span>rem_edge!(g<span style="color:#f92672">::</span><span style="color:#66d9ef">VSafeGraph</span>, v1, v2) <span style="color:#f92672">=</span> LG<span style="color:#f92672">.</span>rem_edge!(g<span style="color:#f92672">.</span>g, v1, v2)
 
-Base<span style="color:#f92672">.</span>copy(g<span style="color:#f92672">::</span>VSafeGraph) <span style="color:#f92672">=</span> VSafeGraph(copy(g<span style="color:#f92672">.</span>g), copy(g<span style="color:#f92672">.</span>deleteed_vertices))</code></pre></div>
+Base<span style="color:#f92672">.</span>copy(g<span style="color:#f92672">::</span><span style="color:#66d9ef">VSafeGraph</span>) <span style="color:#f92672">=</span> VSafeGraph(copy(g<span style="color:#f92672">.</span>g), copy(g<span style="color:#f92672">.</span>deleteed_vertices))</code></pre></div>
 <p>For most of these, we only re-call the method on the inner graph type.
 Only for <code>LG.nv</code>, which computes the number of vertices in the inner graph,
 minus the number of vertices in our removed list. Now the tricky parts,
 adding an edge and removing a vertex, which require a bit more verifications:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> LG<span style="color:#f92672">.</span>add_edge!(g<span style="color:#f92672">::</span>VSafeGraph, v1, v2)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> LG<span style="color:#f92672">.</span>add_edge!(g<span style="color:#f92672">::</span><span style="color:#66d9ef">VSafeGraph</span>, v1, v2)
     <span style="color:#66d9ef">if</span> <span style="color:#f92672">!</span>LG<span style="color:#f92672">.</span>has_vertex(g, v1) <span style="color:#f92672">||</span> <span style="color:#f92672">!</span>LG<span style="color:#f92672">.</span>has_vertex(g, v2)
-        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+        <span style="color:#66d9ef">return</span> false
     <span style="color:#66d9ef">end</span>
     LG<span style="color:#f92672">.</span>add_edge!(g<span style="color:#f92672">.</span>g, v1, v2)
 <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">function</span> LG<span style="color:#f92672">.</span>rem_vertex!(g<span style="color:#f92672">::</span>VSafeGraph, v1)
+<span style="color:#66d9ef">function</span> LG<span style="color:#f92672">.</span>rem_vertex!(g<span style="color:#f92672">::</span><span style="color:#66d9ef">VSafeGraph</span>, v1)
     <span style="color:#66d9ef">if</span> <span style="color:#f92672">!</span>LG<span style="color:#f92672">.</span>has_vertex(g, v1) <span style="color:#f92672">||</span> v1 <span style="color:#66d9ef">in</span> g<span style="color:#f92672">.</span>deleted_vertices
-        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>
+        <span style="color:#66d9ef">return</span> false
     <span style="color:#66d9ef">end</span>
     <span style="color:#66d9ef">for</span> v2 <span style="color:#66d9ef">in</span> LG<span style="color:#f92672">.</span>outneighbors(g, v1)
         LG<span style="color:#f92672">.</span>rem_edge!(g, v1, v2)
@@ -652,7 +623,7 @@ adding an edge and removing a vertex, which require a bit more verifications:</p
         LG<span style="color:#f92672">.</span>rem_edge!(g, v2, v1)
     <span style="color:#66d9ef">end</span>
     push!(g<span style="color:#f92672">.</span>deleted_vertices, v1)
-    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>
+    <span style="color:#66d9ef">return</span> true
 <span style="color:#66d9ef">end</span></code></pre></div>
 <p>Instead of removing the vertex <code>v1</code> from the inner graph, the function removes
 all edges pointing to and from <code>v1</code>, and then adds it to the removed list.</p>
@@ -1077,7 +1048,7 @@ vertex will take the place of the removed one in the re-labelling.</p>
     
     
     
-    <script src="/js/academic.min.16bbb3750feb7244c9bc409a5a4fe678.js"></script>
+    <script src="/js/academic.min.b22d2266dab94c8508ae1f0cf6b7056c.js"></script>
 
     
 

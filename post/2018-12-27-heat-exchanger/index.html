@@ -81,7 +81,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.11bfb5db527d0300a83b31a367badc35.css">
+  <link rel="stylesheet" href="/css/academic.min.0a6825b1f3e5f00ab1fb335a97b73515.css">
 
   
 
@@ -299,35 +299,6 @@
 
         <li class="nav-item">
           <a class="nav-link " href="/#experience"><span>Experience</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-        
-        
-        
-        
-        
-          
-          
-          
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/#projects"><span>Projects</span></a>
         </li>
 
         
@@ -730,7 +701,7 @@ and transfer coefficient $h$.
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">const</span> (a1, a2) <span style="color:#f92672">=</span> discrete_crossing(<span style="color:#ae81ff">500</span>, <span style="color:#ae81ff">0.1</span>)
 <span style="color:#66d9ef">const</span> x0 <span style="color:#f92672">=</span> range(<span style="color:#ae81ff">0.0</span>, length <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span>, stop <span style="color:#f92672">=</span> L)
 
-p <span style="color:#f92672">=</span> plot(x0, a1[<span style="color:#66d9ef">end</span>,<span style="color:#f92672">:</span>], label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;u1 final&#34;</span>, legend <span style="color:#f92672">=</span> <span style="color:#f92672">:</span>topleft)
+p <span style="color:#f92672">=</span> plot(x0, a1[<span style="color:#66d9ef">end</span>,<span style="color:#f92672">:</span>], label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;u1 final&#34;</span>, legend <span style="color:#f92672">=</span> <span style="color:#e6db74">:topleft</span>)
 plot!(p, x0, a2[<span style="color:#66d9ef">end</span>,<span style="color:#f92672">:</span>], label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;u2 final&#34;</span>)
 <span style="color:#66d9ef">for</span> iter <span style="color:#66d9ef">in</span> (<span style="color:#ae81ff">100</span>, <span style="color:#ae81ff">500</span>)
     <span style="color:#66d9ef">global</span> p
@@ -776,7 +747,7 @@ create a <strong>method</strong> for the function <code>discrete_crossing</code>
 with a new signature <code>(n, h, ratio)</code>.</p>
 <p>We can plot the result:
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">const</span> x0 <span style="color:#f92672">=</span> range(<span style="color:#ae81ff">0.0</span>, length <span style="color:#f92672">=</span> <span style="color:#ae81ff">500</span>, stop <span style="color:#f92672">=</span> L)
-p <span style="color:#f92672">=</span> plot(x0, a1[<span style="color:#66d9ef">end</span>,<span style="color:#f92672">:</span>], label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;u1 ratio 1.0&#34;</span>, legend <span style="color:#f92672">=</span> <span style="color:#f92672">:</span>bottomright)
+p <span style="color:#f92672">=</span> plot(x0, a1[<span style="color:#66d9ef">end</span>,<span style="color:#f92672">:</span>], label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;u1 ratio 1.0&#34;</span>, legend <span style="color:#f92672">=</span> <span style="color:#e6db74">:bottomright</span>)
 plot!(p, x0, a2[<span style="color:#66d9ef">end</span>,<span style="color:#f92672">:</span>], label <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;u2 ratio 1.0&#34;</span>)
 <span style="color:#66d9ef">for</span> ratio <span style="color:#66d9ef">in</span> (<span style="color:#ae81ff">0.1</span>,<span style="color:#ae81ff">0.5</span>)
     <span style="color:#66d9ef">global</span> p
@@ -1140,7 +1111,7 @@ universities and <a href="https://en.wikipedia.org/wiki/Soci%C3%A9t%C3%A9_Fran%C
     
     
     
-    <script src="/js/academic.min.16bbb3750feb7244c9bc409a5a4fe678.js"></script>
+    <script src="/js/academic.min.b22d2266dab94c8508ae1f0cf6b7056c.js"></script>
 
     
 

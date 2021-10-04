@@ -81,7 +81,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.11bfb5db527d0300a83b31a367badc35.css">
+  <link rel="stylesheet" href="/css/academic.min.0a6825b1f3e5f00ab1fb335a97b73515.css">
 
   
 
@@ -300,35 +300,6 @@
 
         <li class="nav-item">
           <a class="nav-link " href="/#experience"><span>Experience</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-        
-        
-        
-        
-        
-          
-          
-          
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/#projects"><span>Projects</span></a>
         </li>
 
         
@@ -636,7 +607,7 @@ $$</p>
 notion of the distance taken between two values in the domain $\mathcal{V}$,
 noted $dist(\cdot,\cdot)$ here.
 In terms of implementation, the signature is roughly:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">distance_to_set(v<span style="color:#f92672">::</span>V, s<span style="color:#f92672">::</span>S) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Real</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">distance_to_set(v<span style="color:#f92672">::</span><span style="color:#66d9ef">V</span>, s<span style="color:#f92672">::</span><span style="color:#66d9ef">S</span>) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">Real</span>
 </code></pre></div><p><em>Aside:</em>
 this is an example where multiple dispatch brings great value to the design:
 the implementation of <code>distance_to_set</code> depends on both the value type <code>V</code>
@@ -703,8 +674,8 @@ end up with new exotic problems on <a href="https://github.com/blegat/SetProg.jl
 <a href="https://github.com/jump-dev/ComplexOptInterface.jl">complex numbers</a> or function spaces.</p>
 <p>The solution that came up after discussions is adding a type to dispatch on,
 specifying the notion of distance used:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> distance_to_set(d<span style="color:#f92672">::</span>D, v<span style="color:#f92672">::</span>V, s<span style="color:#f92672">::</span>S)
-        where {D <span style="color:#f92672">&lt;:</span> AbstractDistance, V, S <span style="color:#f92672">&lt;:</span> MOI<span style="color:#f92672">.</span>AbstractSet}
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> distance_to_set(d<span style="color:#f92672">::</span><span style="color:#66d9ef">D</span>, v<span style="color:#f92672">::</span><span style="color:#66d9ef">V</span>, s<span style="color:#f92672">::</span><span style="color:#66d9ef">S</span>)
+        <span style="color:#66d9ef">where</span> {<span style="color:#66d9ef">D</span> <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">AbstractDistance</span>, <span style="color:#66d9ef">V</span>, <span style="color:#66d9ef">S</span> <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">MOI</span><span style="color:#f92672">.</span><span style="color:#66d9ef">AbstractSet</span>}
     <span style="color:#75715e"># ...</span>
 <span style="color:#66d9ef">end</span>
 </code></pre></div><p>which can for instance encode a p-norm or anything else.
@@ -716,25 +687,25 @@ design choice is to define a <code>Set</code> abstract class with a method <code
 This would work for most situations, since a set often implies a domain <code>V</code>.
 What about the following:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#75715e"># Projecting onto the reals (no-op)</span>
-project_on_set(v<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractVector</span>{T}, s<span style="color:#f92672">::</span>Reals) where {T <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">Real</span>}
+project_on_set(v<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractVector</span>{<span style="color:#66d9ef">T</span>}, s<span style="color:#f92672">::</span><span style="color:#66d9ef">Reals</span>) <span style="color:#66d9ef">where</span> {<span style="color:#66d9ef">T</span> <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">Real</span>}
 
 <span style="color:#75715e"># Projecting onto the reals (actual work)</span>
-project_on_set(v<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractVector</span>{T}, s<span style="color:#f92672">::</span>Reals) where {T <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">Complex</span>}
+project_on_set(v<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractVector</span>{<span style="color:#66d9ef">T</span>}, s<span style="color:#f92672">::</span><span style="color:#66d9ef">Reals</span>) <span style="color:#66d9ef">where</span> {<span style="color:#66d9ef">T</span> <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">Complex</span>}
 </code></pre></div><p>Which &ldquo;class&rdquo; should own the implementation in that case?
 From what I observed, libraries end up with either an enumeration:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">if</span> typeof(v) <span style="color:#f92672">==</span> <span style="color:#66d9ef">AbstractVector</span>{<span style="color:#f92672">&lt;:</span>Reals}
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">if</span> typeof(v) <span style="color:#f92672">==</span> <span style="color:#66d9ef">AbstractVector</span>{<span style="color:#f92672">&lt;:</span><span style="color:#66d9ef">Reals</span>}
     <span style="color:#75715e"># ...</span>
 <span style="color:#66d9ef">elseif</span> <span style="color:#75715e"># ...</span>
 <span style="color:#66d9ef">end</span>
 </code></pre></div><p>or when the number of possible domains is expected to be low, with several methods:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#75715e"># in the set class Reals</span>
-<span style="color:#66d9ef">function</span> project_real(v<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractVector</span>{T}) where {T <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">Real</span>}
+<span style="color:#66d9ef">function</span> project_real(v<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractVector</span>{<span style="color:#66d9ef">T</span>}) <span style="color:#66d9ef">where</span> {<span style="color:#66d9ef">T</span> <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">Real</span>}
 <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">function</span> project_complex(v<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractVector</span>{T}) where {T <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">Complex</span>}
+<span style="color:#66d9ef">function</span> project_complex(v<span style="color:#f92672">::</span><span style="color:#66d9ef">AbstractVector</span>{<span style="color:#66d9ef">T</span>}) <span style="color:#66d9ef">where</span> {<span style="color:#66d9ef">T</span> <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">Complex</span>}
 <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">function</span> project_scalar(v<span style="color:#f92672">::</span>T) where {T <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">Real</span>}
+<span style="color:#66d9ef">function</span> project_scalar(v<span style="color:#f92672">::</span><span style="color:#66d9ef">T</span>) <span style="color:#66d9ef">where</span> {<span style="color:#66d9ef">T</span> <span style="color:#f92672">&lt;:</span> <span style="color:#66d9ef">Real</span>}
 <span style="color:#66d9ef">end</span>
 </code></pre></div><p>As a last remark, one may wonder why would one define trivial sets as the <code>MOI.Reals</code>
 or the <code>MOI.Zeros</code>. A good example where this is needed is the polyhedral cone:
@@ -1068,7 +1039,7 @@ with $x$ a vector. This makes more sense to define $Ax$ as the function and<br>
     
     
     
-    <script src="/js/academic.min.16bbb3750feb7244c9bc409a5a4fe678.js"></script>
+    <script src="/js/academic.min.b22d2266dab94c8508ae1f0cf6b7056c.js"></script>
 
     
 

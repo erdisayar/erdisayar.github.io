@@ -81,7 +81,7 @@
   
   
   
-  <link rel="stylesheet" href="/css/academic.min.11bfb5db527d0300a83b31a367badc35.css">
+  <link rel="stylesheet" href="/css/academic.min.0a6825b1f3e5f00ab1fb335a97b73515.css">
 
   
 
@@ -300,35 +300,6 @@
 
         <li class="nav-item">
           <a class="nav-link " href="/#experience"><span>Experience</span></a>
-        </li>
-
-        
-        
-
-        
-
-        
-        
-        
-          
-        
-
-        
-        
-        
-        
-        
-        
-          
-          
-          
-            
-          
-          
-        
-
-        <li class="nav-item">
-          <a class="nav-link " href="/#projects"><span>Projects</span></a>
         </li>
 
         
@@ -664,20 +635,20 @@ to solve the sub-problem.</p>
 <span style="color:#66d9ef">using</span> LinearAlgebra<span style="color:#f92672">:</span> dot</code></pre></div>
 <h3 id="defining-and-solving-dual-sub-problems">Defining and solving dual sub-problems</h3>
 <p>Let us store static sub-problem data in a structure:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> SubProblemData
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">SubProblemData</span>
     b<span style="color:#f92672">::</span><span style="color:#66d9ef">Vector</span>{<span style="color:#66d9ef">Float64</span>}
     D<span style="color:#f92672">::</span><span style="color:#66d9ef">Matrix</span>{<span style="color:#66d9ef">Float64</span>}
     A<span style="color:#f92672">::</span><span style="color:#66d9ef">Matrix</span>{<span style="color:#66d9ef">Float64</span>}
     c<span style="color:#f92672">::</span><span style="color:#66d9ef">Vector</span>{<span style="color:#66d9ef">Float64</span>}
 <span style="color:#66d9ef">end</span></code></pre></div>
 <p>And the dual sub-problem is entirely contained in another structure:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> DualSubProblem
-    data<span style="color:#f92672">::</span>SubProblemData
-    α<span style="color:#f92672">::</span><span style="color:#66d9ef">Vector</span>{VariableRef}
-    m<span style="color:#f92672">::</span>Model
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">DualSubProblem</span>
+    data<span style="color:#f92672">::</span><span style="color:#66d9ef">SubProblemData</span>
+    α<span style="color:#f92672">::</span><span style="color:#66d9ef">Vector</span>{<span style="color:#66d9ef">VariableRef</span>}
+    m<span style="color:#f92672">::</span><span style="color:#66d9ef">Model</span>
 <span style="color:#66d9ef">end</span>
 
-<span style="color:#66d9ef">function</span> DualSubProblem(d<span style="color:#f92672">::</span>SubProblemData, m<span style="color:#f92672">::</span>Model)
+<span style="color:#66d9ef">function</span> DualSubProblem(d<span style="color:#f92672">::</span><span style="color:#66d9ef">SubProblemData</span>, m<span style="color:#f92672">::</span><span style="color:#66d9ef">Model</span>)
     α <span style="color:#f92672">=</span> <span style="color:#a6e22e">@variable</span>(m, α[i <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span><span style="color:#f92672">:</span>size(d<span style="color:#f92672">.</span>A, <span style="color:#ae81ff">1</span>)] <span style="color:#f92672">&gt;=</span> <span style="color:#ae81ff">0</span>)
     <span style="color:#a6e22e">@constraint</span>(m, dot(d<span style="color:#f92672">.</span>A, α) <span style="color:#f92672">.&lt;=</span> d<span style="color:#f92672">.</span>c)
     <span style="color:#66d9ef">return</span> DualSubProblem(d, α, m)
@@ -688,16 +659,16 @@ value of $y$, thus we can add the constraint right away. Only to optimize it
 do we require the $\hat{y}$ value, which is used to set the objective.
 We can then either return a feasibility cut or optimality cut depending on
 the solution status of the dual sub-problem:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> JuMP<span style="color:#f92672">.</span>optimize!(sp<span style="color:#f92672">::</span>DualSubProblem, yh)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> JuMP<span style="color:#f92672">.</span>optimize!(sp<span style="color:#f92672">::</span><span style="color:#66d9ef">DualSubProblem</span>, yh)
     obj <span style="color:#f92672">=</span> sp<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>b <span style="color:#f92672">.-</span> sp<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>D <span style="color:#f92672">*</span> yh
     <span style="color:#a6e22e">@objective</span>(sp<span style="color:#f92672">.</span>m, Max, dot(obj, sp<span style="color:#f92672">.</span>α))
     optimize!(sp<span style="color:#f92672">.</span>m)
     st <span style="color:#f92672">=</span> termination_status(sp<span style="color:#f92672">.</span>m)
     <span style="color:#66d9ef">if</span> st <span style="color:#f92672">==</span> MOI<span style="color:#f92672">.</span>OPTIMAL
         α <span style="color:#f92672">=</span> JuMP<span style="color:#f92672">.</span>value<span style="color:#f92672">.</span>(sp<span style="color:#f92672">.</span>α)
-        <span style="color:#66d9ef">return</span> (<span style="color:#f92672">:</span>OptimalityCut, α)
+        <span style="color:#66d9ef">return</span> (<span style="color:#e6db74">:OptimalityCut</span>, α)
     <span style="color:#66d9ef">elseif</span> st <span style="color:#f92672">==</span> MOI<span style="color:#f92672">.</span>DUAL_INFEASIBLE
-        <span style="color:#66d9ef">return</span> (<span style="color:#f92672">:</span>FeasibilityCut, α)
+        <span style="color:#66d9ef">return</span> (<span style="color:#e6db74">:FeasibilityCut</span>, α)
     <span style="color:#66d9ef">else</span>
         error(<span style="color:#e6db74">&#34;DualSubProblem error: status </span><span style="color:#e6db74">$status</span><span style="color:#e6db74">&#34;</span>)
     <span style="color:#66d9ef">end</span>
@@ -714,7 +685,7 @@ the solution status of the dual sub-problem:</p>
 <li>If yes, the solution is optimal.</li>
 <li>If no, add the corresponding cut to the master problem, return to 2.</li>
 </ul>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> benders_optimize!(m<span style="color:#f92672">::</span>Model, y<span style="color:#f92672">::</span><span style="color:#66d9ef">Vector</span>{VariableRef}, sd<span style="color:#f92672">::</span>SubProblemData, sp_optimizer, f<span style="color:#f92672">::</span><span style="color:#66d9ef">Union</span>{<span style="color:#66d9ef">Function</span>,<span style="color:#66d9ef">Type</span>}; eta_bound<span style="color:#f92672">::</span><span style="color:#66d9ef">Real</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1000.0</span>)
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">function</span> benders_optimize!(m<span style="color:#f92672">::</span><span style="color:#66d9ef">Model</span>, y<span style="color:#f92672">::</span><span style="color:#66d9ef">Vector</span>{<span style="color:#66d9ef">VariableRef</span>}, sd<span style="color:#f92672">::</span><span style="color:#66d9ef">SubProblemData</span>, sp_optimizer, f<span style="color:#f92672">::</span><span style="color:#66d9ef">Union</span>{<span style="color:#66d9ef">Function</span>,<span style="color:#66d9ef">Type</span>}; eta_bound<span style="color:#f92672">::</span><span style="color:#66d9ef">Real</span> <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1000.0</span>)
     subproblem <span style="color:#f92672">=</span> Model(with_optimizer(sp_optimizer))
     dsp <span style="color:#f92672">=</span> DualSubProblem(sd, subproblem)
     <span style="color:#a6e22e">@variable</span>(m, η <span style="color:#f92672">&gt;=</span> eta_bound)
@@ -731,7 +702,7 @@ the solution status of the dual sub-problem:</p>
         ŷ <span style="color:#f92672">=</span> JuMP<span style="color:#f92672">.</span>value<span style="color:#f92672">.</span>(y)
         η0 <span style="color:#f92672">=</span> JuMP<span style="color:#f92672">.</span>value(η)
         (res, α) <span style="color:#f92672">=</span> optimize!(dsp, ŷ)
-        <span style="color:#66d9ef">if</span> res <span style="color:#f92672">==</span> <span style="color:#f92672">:</span>OptimalityCut
+        <span style="color:#66d9ef">if</span> res <span style="color:#f92672">==</span> <span style="color:#e6db74">:OptimalityCut</span>
             <span style="color:#a6e22e">@info</span> <span style="color:#e6db74">&#34;Optimality cut found&#34;</span>
             <span style="color:#66d9ef">if</span> η0 <span style="color:#f92672">≥</span> dot(α, (dsp<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>b <span style="color:#f92672">-</span> dsp<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>D <span style="color:#f92672">*</span> ŷ))
                 <span style="color:#66d9ef">break</span>
@@ -1106,7 +1077,7 @@ don&rsquo;t hesitate to react or ping me on <a href="https://twitter.com/matbesa
     
     
     
-    <script src="/js/academic.min.16bbb3750feb7244c9bc409a5a4fe678.js"></script>
+    <script src="/js/academic.min.b22d2266dab94c8508ae1f0cf6b7056c.js"></script>
 
     
 

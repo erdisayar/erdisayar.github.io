@@ -108,7 +108,7 @@ Here is a visualization made with haste for $n=2$ using the very promising &lt;a
 &lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/projections/projection.gif&#34; alt=&#34;Projection&#34;&gt;&lt;/p&gt;
 &lt;p&gt;The red circle is a vector in the plane and the blue square its projection.&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;p&gt;The Julia implementation follows the same idea, here in a simplified version:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; projection_on_set(v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractVector&lt;/span&gt;{T}, s&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Nonnegatives) where {T}
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; projection_on_set(v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractVector&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;T&lt;/span&gt;}, s&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;MOI&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Nonnegatives) &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; {&lt;span style=&#34;color:#66d9ef&#34;&gt;T&lt;/span&gt;}
     &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; max&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;(v, zero(T))
 &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For each component $i \in 1..n$, there are two cases to compute its derivative, either
@@ -123,9 +123,9 @@ $$&lt;/p&gt;
 The convention usually taken is to return any quantity on such point
 (to the best of my knowledge, no system guarantees a subgradient).
 The Julia implementation holds on two lines:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; projection_gradient_on_set(v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractVector&lt;/span&gt;{T}, &lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Nonnegatives) where {T}
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; projection_gradient_on_set(v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractVector&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;T&lt;/span&gt;}, &lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;MOI&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Nonnegatives) &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; {&lt;span style=&#34;color:#66d9ef&#34;&gt;T&lt;/span&gt;}
     y &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; (sign&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;(v) &lt;span style=&#34;color:#f92672&#34;&gt;.+&lt;/span&gt; one(T)) &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;
-    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; LinearAlgebra&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Diagonal&lt;/span&gt;(y)
+    &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; LinearAlgebra&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Diagonal(y)
 &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;First the diagonal of the matrix is computed using broadcasting and the sign function.
 Then a &lt;code&gt;LinearAlgebra.Diagonal&lt;/code&gt; matrix is constructed. This matrix type is sparsity-aware,
@@ -162,7 +162,7 @@ on its use &lt;a href=&#34;https://www.juliadiff.org/ChainRulesCore.jl/v0.9/#Sel
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; ChainRulesCore&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;frule(
         (_, Δv, _),
         &lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;typeof(projection_on_set),
-        v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractVector&lt;/span&gt;{T}, s&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Nonnegatives) where {T}
+        v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractVector&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;T&lt;/span&gt;}, s&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;MOI&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Nonnegatives) &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; {&lt;span style=&#34;color:#66d9ef&#34;&gt;T&lt;/span&gt;}
     vproj &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; projection_on_set(v, s)
     ∂vproj &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Δv &lt;span style=&#34;color:#f92672&#34;&gt;.*&lt;/span&gt; (v &lt;span style=&#34;color:#f92672&#34;&gt;.&amp;gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;)
     &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; vproj, ∂vproj
@@ -209,7 +209,7 @@ If we give the pullback a 1 or 1-like as input, we compute the gradient,
 the partial derivative of &lt;code&gt;f&lt;/code&gt; with respect to each input &lt;code&gt;x[i]&lt;/code&gt; evaluated at the
 point &lt;code&gt;x&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;Here is the result for our positive orthant (again, simplified for conciseness):&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; ChainRulesCore&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;rrule(&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;typeof(projection_on_set), v, s&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Nonnegatives)
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; ChainRulesCore&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;rrule(&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;typeof(projection_on_set), v, s&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;MOI&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Nonnegatives)
     vproj &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; projection_on_set(v, s)
     &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; pullback(Δvproj)
         n &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; length(v)
@@ -260,20 +260,20 @@ happen.&lt;/p&gt;
 &lt;hr&gt;
 &lt;ol&gt;
 &lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;See H. Friberg&amp;rsquo;s talk on exponential cone projection in Mosek at &lt;a href=&#34;https://docs.mosek.com/slides/2018/ismp2018/ismp-friberg.pdf&#34;&gt;ISMP 2018&lt;/a&gt; &lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;See H. Friberg&amp;rsquo;s talk on exponential cone projection in Mosek at &lt;a href=&#34;https://docs.mosek.com/slides/2018/ismp2018/ismp-friberg.pdf&#34;&gt;ISMP 2018&lt;/a&gt;&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;An example case for the projection onto the Positive Semidefinite cone &lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;An example case for the projection onto the Positive Semidefinite cone&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:3&#34; role=&#34;doc-endnote&#34;&gt;
 &lt;p&gt;If like me you haven&amp;rsquo;t spent much time lying around differential geometry books,
 the &lt;a href=&#34;https://www.juliadiff.org/ChainRulesCore.jl/dev/#Differentials&#34;&gt;ChainRules.jl&lt;/a&gt;
 documentation has a great developer-oriented explanation.
 For more visual explanations, Keno Fischer had a recent talk on
-&lt;a href=&#34;https://www.youtube.com/watch?v=mQnSRfseu0c&#34;&gt;the topic&lt;/a&gt;. &lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;a href=&#34;https://www.youtube.com/watch?v=mQnSRfseu0c&#34;&gt;the topic&lt;/a&gt;.&amp;#160;&lt;a href=&#34;#fnref:3&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:4&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;See the source code &lt;a href=&#34;https://gist.github.com/matbesancon/80aa961e5c01fa6c426426083c684d84&#34;&gt;here&lt;/a&gt;. &lt;a href=&#34;#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;See the source code &lt;a href=&#34;https://gist.github.com/matbesancon/80aa961e5c01fa6c426426083c684d84&#34;&gt;here&lt;/a&gt;.&amp;#160;&lt;a href=&#34;#fnref:4&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/section&gt;
@@ -352,7 +352,7 @@ $$&lt;/p&gt;
 notion of the distance taken between two values in the domain $\mathcal{V}$,
 noted $dist(\cdot,\cdot)$ here.
 In terms of implementation, the signature is roughly:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;distance_to_set(v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;V, s&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;S) &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Real&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;distance_to_set(v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;V&lt;/span&gt;, s&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;S&lt;/span&gt;) &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Real&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;em&gt;Aside:&lt;/em&gt;
 this is an example where multiple dispatch brings great value to the design:
 the implementation of &lt;code&gt;distance_to_set&lt;/code&gt; depends on both the value type &lt;code&gt;V&lt;/code&gt;
@@ -419,8 +419,8 @@ end up with new exotic problems on &lt;a href=&#34;https://github.com/blegat/Set
 &lt;a href=&#34;https://github.com/jump-dev/ComplexOptInterface.jl&#34;&gt;complex numbers&lt;/a&gt; or function spaces.&lt;/p&gt;
 &lt;p&gt;The solution that came up after discussions is adding a type to dispatch on,
 specifying the notion of distance used:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; distance_to_set(d&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;D, v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;V, s&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;S)
-        where {D &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;:&lt;/span&gt; AbstractDistance, V, S &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;:&lt;/span&gt; MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;AbstractSet}
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; distance_to_set(d&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;D&lt;/span&gt;, v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;V&lt;/span&gt;, s&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;S&lt;/span&gt;)
+        &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; {&lt;span style=&#34;color:#66d9ef&#34;&gt;D&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractDistance&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;V&lt;/span&gt;, &lt;span style=&#34;color:#66d9ef&#34;&gt;S&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;MOI&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractSet&lt;/span&gt;}
     &lt;span style=&#34;color:#75715e&#34;&gt;# ...&lt;/span&gt;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;which can for instance encode a p-norm or anything else.
@@ -432,25 +432,25 @@ design choice is to define a &lt;code&gt;Set&lt;/code&gt; abstract class with a 
 This would work for most situations, since a set often implies a domain &lt;code&gt;V&lt;/code&gt;.
 What about the following:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# Projecting onto the reals (no-op)&lt;/span&gt;
-project_on_set(v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractVector&lt;/span&gt;{T}, s&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;Reals) where {T &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Real&lt;/span&gt;}
+project_on_set(v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractVector&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;T&lt;/span&gt;}, s&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Reals&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; {&lt;span style=&#34;color:#66d9ef&#34;&gt;T&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Real&lt;/span&gt;}
 
 &lt;span style=&#34;color:#75715e&#34;&gt;# Projecting onto the reals (actual work)&lt;/span&gt;
-project_on_set(v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractVector&lt;/span&gt;{T}, s&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;Reals) where {T &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Complex&lt;/span&gt;}
+project_on_set(v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractVector&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;T&lt;/span&gt;}, s&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Reals&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; {&lt;span style=&#34;color:#66d9ef&#34;&gt;T&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Complex&lt;/span&gt;}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Which &amp;ldquo;class&amp;rdquo; should own the implementation in that case?
 From what I observed, libraries end up with either an enumeration:&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; typeof(v) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractVector&lt;/span&gt;{&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;:&lt;/span&gt;Reals}
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;if&lt;/span&gt; typeof(v) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractVector&lt;/span&gt;{&lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;:&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;Reals&lt;/span&gt;}
     &lt;span style=&#34;color:#75715e&#34;&gt;# ...&lt;/span&gt;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;elseif&lt;/span&gt; &lt;span style=&#34;color:#75715e&#34;&gt;# ...&lt;/span&gt;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;or when the number of possible domains is expected to be low, with several methods:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#75715e&#34;&gt;# in the set class Reals&lt;/span&gt;
-&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; project_real(v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractVector&lt;/span&gt;{T}) where {T &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Real&lt;/span&gt;}
+&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; project_real(v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractVector&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;T&lt;/span&gt;}) &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; {&lt;span style=&#34;color:#66d9ef&#34;&gt;T&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Real&lt;/span&gt;}
 &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
 
-&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; project_complex(v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractVector&lt;/span&gt;{T}) where {T &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Complex&lt;/span&gt;}
+&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; project_complex(v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractVector&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;T&lt;/span&gt;}) &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; {&lt;span style=&#34;color:#66d9ef&#34;&gt;T&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Complex&lt;/span&gt;}
 &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
 
-&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; project_scalar(v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;T) where {T &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Real&lt;/span&gt;}
+&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; project_scalar(v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;T&lt;/span&gt;) &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; {&lt;span style=&#34;color:#66d9ef&#34;&gt;T&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;&amp;lt;:&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;Real&lt;/span&gt;}
 &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As a last remark, one may wonder why would one define trivial sets as the &lt;code&gt;MOI.Reals&lt;/code&gt;
 or the &lt;code&gt;MOI.Zeros&lt;/code&gt;. A good example where this is needed is the polyhedral cone:
@@ -606,7 +606,7 @@ We will use a 4-vertex graph, looking as such:&lt;/p&gt;
     weights &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;0.2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0.1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0.2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0.1&lt;/span&gt;]
     terms &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ScalarAffineTerm(weights[i], x[i][&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; eachindex(x)]
     objective &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ScalarAffineFunction(terms, &lt;span style=&#34;color:#ae81ff&#34;&gt;0.0&lt;/span&gt;)
-    MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set(model, MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ObjectiveFunction{typeof(objective)}(), objective)
+    MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set(model, MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;ObjectiveFunction&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;typeof&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;objective&lt;/span&gt;)}(), objective)
     MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set(model, MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ObjectiveSense(), MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;MAX_SENSE)
     MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;optimize!(model)
     &lt;span style=&#34;color:#75715e&#34;&gt;# add some tests&lt;/span&gt;
@@ -618,7 +618,7 @@ slack variable &lt;code&gt;z&lt;/code&gt;.&lt;/p&gt;
 &lt;p&gt;For this problem, the tests could be on both the solution and objective value, as follows:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@test&lt;/span&gt; MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(model, MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;VariablePrimal(), x[&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
 &lt;span style=&#34;color:#a6e22e&#34;&gt;@test&lt;/span&gt; MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(model, MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;VariablePrimal(), x[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;][&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]) &lt;span style=&#34;color:#f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
-&lt;span style=&#34;color:#a6e22e&#34;&gt;@test&lt;/span&gt; MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(model, MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ObjectiveValue()) ≈ &lt;span style=&#34;color:#ae81ff&#34;&gt;0.3&lt;/span&gt;
+&lt;span style=&#34;color:#a6e22e&#34;&gt;@test&lt;/span&gt; MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(model, MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ObjectiveValue()) &lt;span style=&#34;color:#f92672&#34;&gt;≈&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0.3&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;An equivalent JuMP version would look look this:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;matrix &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [
     &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
@@ -677,7 +677,7 @@ Let us implement our function $f(w)$:&lt;/p&gt;
     &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
     terms &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ScalarAffineTerm(w[i], x[i][&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;]) &lt;span style=&#34;color:#66d9ef&#34;&gt;for&lt;/span&gt; i &lt;span style=&#34;color:#66d9ef&#34;&gt;in&lt;/span&gt; eachindex(x)]
     objective &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ScalarAffineFunction(terms, zero(eltype(w)))
-    MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set(model, MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ObjectiveFunction{typeof(objective)}(), objective)
+    MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set(model, MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;ObjectiveFunction&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;typeof&lt;/span&gt;(&lt;span style=&#34;color:#66d9ef&#34;&gt;objective&lt;/span&gt;)}(), objective)
     MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;set(model, MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ObjectiveSense(), MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;MAX_SENSE)
     MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;optimize!(model)
     &lt;span style=&#34;color:#66d9ef&#34;&gt;return&lt;/span&gt; MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;get(model, MOI&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;ObjectiveValue())
@@ -686,9 +686,9 @@ Let us implement our function $f(w)$:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@testset&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Differentiating stable set&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;begin&lt;/span&gt;
     weights &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [&lt;span style=&#34;color:#ae81ff&#34;&gt;0.2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0.1&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0.2&lt;/span&gt;, &lt;span style=&#34;color:#ae81ff&#34;&gt;0.1&lt;/span&gt;]
     ∇w &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; ForwardDiff&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;gradient(weighted_stable_set, weights)
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;@test&lt;/span&gt; ∇w[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] ≈ &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;@test&lt;/span&gt; ∇w[&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;] ≈ &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
-    &lt;span style=&#34;color:#a6e22e&#34;&gt;@test&lt;/span&gt; ∇w[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;] ≈ ∇w[&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;] ≈ &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;@test&lt;/span&gt; ∇w[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;≈&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;@test&lt;/span&gt; ∇w[&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;≈&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;
+    &lt;span style=&#34;color:#a6e22e&#34;&gt;@test&lt;/span&gt; ∇w[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;≈&lt;/span&gt; ∇w[&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;] &lt;span style=&#34;color:#f92672&#34;&gt;≈&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0&lt;/span&gt;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To understand how this derivative computation can work with just few
 function calls (proportional to the size of the input), one must dig
@@ -756,10 +756,10 @@ where the whole journey from 0 to a constraint solver is documented.&lt;/p&gt;
 &lt;hr&gt;
 &lt;ol&gt;
 &lt;li id=&#34;fn:1&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;&lt;a href=&#34;http://conal.net/papers/essence-of-ad/&#34;&gt;The simple essence of automatic differentiation&lt;/a&gt;, Conal Elliott, Proceedings of the ACM on Programming Languages (ICFP), 2018 &lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://conal.net/papers/essence-of-ad/&#34;&gt;The simple essence of automatic differentiation&lt;/a&gt;, Conal Elliott, Proceedings of the ACM on Programming Languages (ICFP), 2018&amp;#160;&lt;a href=&#34;#fnref:1&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li id=&#34;fn:2&#34; role=&#34;doc-endnote&#34;&gt;
-&lt;p&gt;I believe a pure-Julia solver could be made as fast as a C/C++ solver, but developing solvers is an enormous amount of work and micro-optimizations, tests on industrial cases. The new &lt;a href=&#34;https://highs.dev&#34;&gt;HiGHS&lt;/a&gt; solver however shows that one can get pretty good results by developing a linear solver from scratch with all modern techniques already baked in. &lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;I believe a pure-Julia solver could be made as fast as a C/C++ solver, but developing solvers is an enormous amount of work and micro-optimizations, tests on industrial cases. The new &lt;a href=&#34;https://highs.dev&#34;&gt;HiGHS&lt;/a&gt; solver however shows that one can get pretty good results by developing a linear solver from scratch with all modern techniques already baked in.&amp;#160;&lt;a href=&#34;#fnref:2&#34; class=&#34;footnote-backref&#34; role=&#34;doc-backlink&#34;&gt;&amp;#x21a9;&amp;#xfe0e;&lt;/a&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;/section&gt;
