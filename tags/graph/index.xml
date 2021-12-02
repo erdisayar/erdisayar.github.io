@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>graph on μβ</title>
-    <link>https://matbesancon.github.io/tags/graph/</link>
+    <link>https://matbesancon.xyz/tags/graph/</link>
     <description>Recent content in graph on μβ</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-ca</language>
     <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
     <lastBuildDate>Sun, 07 Apr 2019 00:00:00 +0200</lastBuildDate>
     
-	    <atom:link href="https://matbesancon.github.io/tags/graph/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://matbesancon.xyz/tags/graph/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Picking different names with integer optimization</title>
-      <link>https://matbesancon.github.io/post/2019-04-07-name_distances/</link>
+      <link>https://matbesancon.xyz/post/2019-04-07-name_distances/</link>
       <pubDate>Sun, 07 Apr 2019 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2019-04-07-name_distances/</guid>
+      <guid>https://matbesancon.xyz/post/2019-04-07-name_distances/</guid>
       <description>&lt;hr&gt;
 &lt;p&gt;I must admit I am not always the most talented at social events.
 One point I am especially bad at is &lt;strong&gt;remembering names&lt;/strong&gt;, and it gets
@@ -92,7 +92,7 @@ diverse_names &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [vstr[i] 
 &lt;h2 id=&#34;trying-out-the-model&#34;&gt;Trying out the model&lt;/h2&gt;
 &lt;p&gt;I will use 50 real names taken from
 &lt;a href=&#34;http://listofrandomnames.com&#34;&gt;the list of random names&lt;/a&gt; website, which you
-can find &lt;a href=&#34;https://matbesancon.github.io/text/names.txt&#34;&gt;here&lt;/a&gt;.
+can find &lt;a href=&#34;https://matbesancon.xyz/text/names.txt&#34;&gt;here&lt;/a&gt;.
 The problem becomes large enough to be interesting, but reasonable enough for
 a decent laptop. If you want to invite 4 of these people and get the most
 different names, Christian, Elizbeth, Beulah and Wilhelmina are the ones you
@@ -123,10 +123,10 @@ post, and to BYP for the feedback.&lt;/p&gt;
     
     <item>
       <title>Building our own graph type in Julia</title>
-      <link>https://matbesancon.github.io/post/2018-08-17-abstract_graph/</link>
+      <link>https://matbesancon.xyz/post/2018-08-17-abstract_graph/</link>
       <pubDate>Fri, 17 Aug 2018 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2018-08-17-abstract_graph/</guid>
+      <guid>https://matbesancon.xyz/post/2018-08-17-abstract_graph/</guid>
       <description>&lt;hr&gt;
 &lt;p&gt;This is an adapted post on the talk we gave with &lt;a href=&#34;https://twitter.com/fairbanksjp&#34;&gt;James&lt;/a&gt;
 at JuliaCon 2018 in London. You can see the
@@ -293,10 +293,10 @@ enough (how dense? No idea), it might be interesting to store entries as as
     
     <item>
       <title>Solving the group expenses headache with graphs</title>
-      <link>https://matbesancon.github.io/post/2017-09-11-graph-theory-expenses-management/</link>
+      <link>https://matbesancon.xyz/post/2017-09-11-graph-theory-expenses-management/</link>
       <pubDate>Mon, 15 Jan 2018 00:00:00 +0100</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2017-09-11-graph-theory-expenses-management/</guid>
+      <guid>https://matbesancon.xyz/post/2017-09-11-graph-theory-expenses-management/</guid>
       <description>&lt;p&gt;With the end-of-year celebrations, we all had some expenses to manage,
 some of them shared with friends, and we all have this eternal problem
 of splitting them fairly.&lt;/p&gt;

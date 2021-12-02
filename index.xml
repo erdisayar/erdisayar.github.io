@@ -2,32 +2,32 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>μβ</title>
-    <link>https://matbesancon.github.io/</link>
+    <link>https://matbesancon.xyz/</link>
     <description>Recent content on μβ</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-ca</language>
     <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
     <lastBuildDate>Sun, 11 Apr 2021 00:00:00 +0200</lastBuildDate>
     
-	    <atom:link href="https://matbesancon.github.io/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://matbesancon.xyz/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Posts</title>
-      <link>https://matbesancon.github.io/post/</link>
+      <link>https://matbesancon.xyz/post/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://matbesancon.github.io/post/</guid>
+      <guid>https://matbesancon.xyz/post/</guid>
       <description>&lt;p&gt;These are a few thoughts I put in a text file, probably on paper before.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Recent &amp; Upcoming Talks</title>
-      <link>https://matbesancon.github.io/talk/</link>
+      <link>https://matbesancon.xyz/talk/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://matbesancon.github.io/talk/</guid>
+      <guid>https://matbesancon.xyz/talk/</guid>
       <description></description>
     </item>
     

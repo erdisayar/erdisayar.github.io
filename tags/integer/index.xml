@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>integer on μβ</title>
-    <link>https://matbesancon.github.io/tags/integer/</link>
+    <link>https://matbesancon.xyz/tags/integer/</link>
     <description>Recent content in integer on μβ</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-ca</language>
     <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
     <lastBuildDate>Thu, 23 Jan 2020 00:00:00 +0100</lastBuildDate>
     
-	    <atom:link href="https://matbesancon.github.io/tags/integer/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://matbesancon.xyz/tags/integer/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Differentiating the discrete: Automatic Differentiation meets Integer Optimization</title>
-      <link>https://matbesancon.github.io/post/2020-01-23-discrete-diff/</link>
+      <link>https://matbesancon.xyz/post/2020-01-23-discrete-diff/</link>
       <pubDate>Thu, 23 Jan 2020 00:00:00 +0100</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2020-01-23-discrete-diff/</guid>
+      <guid>https://matbesancon.xyz/post/2020-01-23-discrete-diff/</guid>
       <description>&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;In continuous convex optimization, duality is often the theoretical foundation for
 computing the sensibility of the optimal value of a problem to
@@ -127,7 +127,7 @@ for automatic differentiation.&lt;/p&gt;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; ForwardDiff
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Let us first write an implementation for the max-weight independent set problem.
 We will use a 4-vertex graph, looking as such:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/diff_discrete/graph2.svg&#34; alt=&#34;Weighted graph&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/diff_discrete/graph2.svg&#34; alt=&#34;Weighted graph&#34;&gt;&lt;/p&gt;
 &lt;p&gt;The optimal answer here is to pick vertices 1 and 4 (in orange).&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@testset&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Max independent set MOI&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;begin&lt;/span&gt;
     matrix &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [

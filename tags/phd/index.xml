@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>phd on μβ</title>
-    <link>https://matbesancon.github.io/tags/phd/</link>
+    <link>https://matbesancon.xyz/tags/phd/</link>
     <description>Recent content in phd on μβ</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-ca</language>
     <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
     <lastBuildDate>Fri, 02 Apr 2021 00:00:00 +0200</lastBuildDate>
     
-	    <atom:link href="https://matbesancon.github.io/tags/phd/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://matbesancon.xyz/tags/phd/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Bringing a PhD to the finishing line</title>
-      <link>https://matbesancon.github.io/post/2021-04-02-phdone/</link>
+      <link>https://matbesancon.xyz/post/2021-04-02-phdone/</link>
       <pubDate>Fri, 02 Apr 2021 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2021-04-02-phdone/</guid>
+      <guid>https://matbesancon.xyz/post/2021-04-02-phdone/</guid>
       <description>&lt;h2&gt;Table of Contents&lt;/h2&gt;
 &lt;nav id=&#34;TableOfContents&#34;&gt;
   &lt;ul&gt;
@@ -160,10 +160,10 @@ Richard Dykes on Unsplash&lt;/p&gt;
     
     <item>
       <title>Coping with a confined PhD, a naive report</title>
-      <link>https://matbesancon.github.io/post/2020-03-26-confined-phd/</link>
+      <link>https://matbesancon.xyz/post/2020-03-26-confined-phd/</link>
       <pubDate>Thu, 26 Mar 2020 00:00:00 +0100</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2020-03-26-confined-phd/</guid>
+      <guid>https://matbesancon.xyz/post/2020-03-26-confined-phd/</guid>
       <description>&lt;p&gt;One of the luxuries of a PhD in applied maths / computer science is the
 possibility to work from home. By possibility, I imply both the technical
 feasibility (my project does not require special equipment), and social
@@ -235,7 +235,7 @@ topics for your general scientific culture.&lt;/p&gt;
 and a big enough flat. Early in the epidemic when it felt like we were going for
 gradual home isolation, I started setting up my office in a way that felt good,
 not for two hours in the evening any more, but for 8+ hours in the day.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/office.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/office.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;First, the second monitor.
 I don&amp;rsquo;t think more than two active screens is necessary, but it may vary with
 activities, beware of excessive multi-tasking though.
@@ -315,10 +315,10 @@ or preparation.&lt;/p&gt;
     
     <item>
       <title>A year in PhD</title>
-      <link>https://matbesancon.github.io/post/2018-09-27-year-in-phd/</link>
+      <link>https://matbesancon.xyz/post/2018-09-27-year-in-phd/</link>
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2018-09-27-year-in-phd/</guid>
+      <guid>https://matbesancon.xyz/post/2018-09-27-year-in-phd/</guid>
       <description>&lt;hr&gt;
 &lt;p&gt;So, it&amp;rsquo;s been a bit more than a year since I took a flight to Montréal to
 start a PhD on mathematical optimization &amp;amp; game theory for smart grids.&lt;/p&gt;
@@ -338,7 +338,7 @@ you&amp;rsquo;re building be &amp;ldquo;finished&amp;rdquo;?&lt;/p&gt;
 don&amp;rsquo;t see this as emptying a 4-year bowl of soup. It&amp;rsquo;s more like picking
 berries: you grab one, then the next, which is close enough, oh and this one
 is nice, but a bit further, I&amp;rsquo;ll have to stretch my arm a bit more to reach it.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/phd-year/blueberries.jpg&#34; alt=&#34;&#34;&gt;[1]&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/phd-year/blueberries.jpg&#34; alt=&#34;&#34;&gt;[1]&lt;/p&gt;
 &lt;p&gt;I had some interesting discussions in Montréal about when and how to know
 you should bring your PhD to a conclusion. And the answer should always be
 that it depends what your objectives are, if you want to include this last
@@ -348,7 +348,7 @@ even research, what I do know is that I don&amp;rsquo;t want to block interestin
 or leave only half-explored research trails because &amp;ldquo;3 years is plenty&amp;rdquo;.&lt;/p&gt;
 &lt;h2 id=&#34;it-must-feel-weird-getting-back-to-university&#34;&gt;It must feel weird, getting back to university&lt;/h2&gt;
 &lt;p&gt;It does, but not how you imagine. I was previously at
-&lt;a href=&#34;https://matbesancon.github.io/post/2016-08-11-back-to-startup/&#34;&gt;a startup&lt;/a&gt; for a while.
+&lt;a href=&#34;https://matbesancon.xyz/post/2016-08-11-back-to-startup/&#34;&gt;a startup&lt;/a&gt; for a while.
 What I was used to is a great autonomy in execution. What the
 PhD is about is adding self-determination of the objectives,
 expected results, and means. It does not mean I&amp;rsquo;m working alone
@@ -373,7 +373,7 @@ syndrome or procrastination.&lt;/p&gt;
 my noodles, but let&amp;rsquo;s dig deeper on the matter of €/$/£.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;: my PhD is between applied maths &amp;amp; computer science, I know
 all majors are not that financially comfortable.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/phd-year/noodles.png&#34; alt=&#34;&#34;&gt;[2]&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/phd-year/noodles.png&#34; alt=&#34;&#34;&gt;[2]&lt;/p&gt;
 &lt;p&gt;I also know it&amp;rsquo;s considered rude to talk about money in some cultures,
 including France, especially if you&amp;rsquo;re not complaining; so yes, I&amp;rsquo;ll
 be rude.&lt;/p&gt;
@@ -434,7 +434,7 @@ your status, both the good and the bad bits. None should be made feel inferior
 because they didn&amp;rsquo;t take the conventional, safe and socially accepted path of
 the 9-17 workday.&lt;/p&gt;
 &lt;h2 id=&#34;re-thinking-my-values--priorities&#34;&gt;Re-thinking my values &amp;amp; priorities&lt;/h2&gt;
-&lt;p&gt;I&amp;rsquo;ve written about values &lt;a href=&#34;https://matbesancon.github.io/post/2016-10-7-company-values/&#34;&gt;two years ago&lt;/a&gt;
+&lt;p&gt;I&amp;rsquo;ve written about values &lt;a href=&#34;https://matbesancon.xyz/post/2016-10-7-company-values/&#34;&gt;two years ago&lt;/a&gt;
 in the context of a company trying to define who they are.
 This is a complex topic, about discovering and understanding what the
 group prioritizes collectively.&lt;/p&gt;
@@ -483,7 +483,7 @@ is as valuable as writing code.&lt;/p&gt;
 one of the reasons I had to learn more is not coming from a background
 in maths, nor from a research-oriented degree.&lt;/p&gt;
 &lt;p&gt;Reach out any way you prefer, &lt;a href=&#34;https://twitter.com/matbesancon&#34;&gt;Twitter&lt;/a&gt;,
-&lt;a href=&#34;https://matbesancon.github.io/#contact&#34;&gt;email&lt;/a&gt;. Of course some things I&amp;rsquo;ve written are related
+&lt;a href=&#34;https://matbesancon.xyz/#contact&#34;&gt;email&lt;/a&gt;. Of course some things I&amp;rsquo;ve written are related
 to my situation, I&amp;rsquo;d be interested to know how it relates or not to yours.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Image sources:&lt;br&gt;
@@ -494,10 +494,10 @@ to my situation, I&amp;rsquo;d be interested to know how it relates or not to yo
     
     <item>
       <title>Switching my work flow to Pomodoro for grad studies - part I: motivation  </title>
-      <link>https://matbesancon.github.io/post/2017-10-19-tomate-cli/</link>
+      <link>https://matbesancon.xyz/post/2017-10-19-tomate-cli/</link>
       <pubDate>Thu, 19 Oct 2017 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2017-10-19-tomate-cli/</guid>
+      <guid>https://matbesancon.xyz/post/2017-10-19-tomate-cli/</guid>
       <description>&lt;p&gt;The start of my journey as a PhD student last September was a big step, but
 also an opportunity to review and improve my working habits. My day time
 had to be used properly, both for results&#39; sake and to be able to keep
@@ -527,7 +527,7 @@ not to use this technique.&lt;/p&gt;
 &lt;h2 id=&#34;what-has-changed&#34;&gt;What has changed?&lt;/h2&gt;
 &lt;p&gt;Time management as a grad student has to be un- and re-learned:
 rules are different, criteria for success change and so on.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/tomate/phd_time.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/tomate/phd_time.gif&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Time management seen by PhD comics [2]&lt;/p&gt;
 &lt;/blockquote&gt;

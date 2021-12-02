@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>academia on μβ</title>
-    <link>https://matbesancon.github.io/tags/academia/</link>
+    <link>https://matbesancon.xyz/tags/academia/</link>
     <description>Recent content in academia on μβ</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-ca</language>
     <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
     <lastBuildDate>Sun, 11 Apr 2021 00:00:00 +0200</lastBuildDate>
     
-	    <atom:link href="https://matbesancon.github.io/tags/academia/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://matbesancon.xyz/tags/academia/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>French Higher education in STEM</title>
-      <link>https://matbesancon.github.io/post/2021-04-11-french-highered/</link>
+      <link>https://matbesancon.xyz/post/2021-04-11-french-highered/</link>
       <pubDate>Sun, 11 Apr 2021 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2021-04-11-french-highered/</guid>
+      <guid>https://matbesancon.xyz/post/2021-04-11-french-highered/</guid>
       <description>&lt;h2&gt;Table of Contents&lt;/h2&gt;
 &lt;nav id=&#34;TableOfContents&#34;&gt;
   &lt;ul&gt;
@@ -155,10 +155,10 @@ a specialty at least related to the one from the IUT.&lt;/p&gt;
     
     <item>
       <title>Bringing a PhD to the finishing line</title>
-      <link>https://matbesancon.github.io/post/2021-04-02-phdone/</link>
+      <link>https://matbesancon.xyz/post/2021-04-02-phdone/</link>
       <pubDate>Fri, 02 Apr 2021 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2021-04-02-phdone/</guid>
+      <guid>https://matbesancon.xyz/post/2021-04-02-phdone/</guid>
       <description>&lt;h2&gt;Table of Contents&lt;/h2&gt;
 &lt;nav id=&#34;TableOfContents&#34;&gt;
   &lt;ul&gt;
@@ -301,10 +301,10 @@ Richard Dykes on Unsplash&lt;/p&gt;
     
     <item>
       <title>Peer review &amp; change highlight</title>
-      <link>https://matbesancon.github.io/post/2021-2-13-diffreview/</link>
+      <link>https://matbesancon.xyz/post/2021-2-13-diffreview/</link>
       <pubDate>Sat, 13 Feb 2021 00:00:00 +0100</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2021-2-13-diffreview/</guid>
+      <guid>https://matbesancon.xyz/post/2021-2-13-diffreview/</guid>
       <description>&lt;h2&gt;Table of Contents&lt;/h2&gt;
 &lt;nav id=&#34;TableOfContents&#34;&gt;
   &lt;ul&gt;
@@ -409,7 +409,7 @@ Academics rely on implicit knowledge of the established system.
 We now develop the main result of the paper.
 &lt;span style=&#34;color:#66d9ef&#34;&gt;\rev&lt;/span&gt;{This approach is comparable to [Smith, 2020]}.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;with a result looking like the following:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/diffreview/diff1.png&#34; alt=&#34;First version&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/diffreview/diff1.png&#34; alt=&#34;First version&#34;&gt;&lt;/p&gt;
 &lt;p&gt;I added the wave underlining to make the diff file print-friendly and readable by colour-impaired people.&lt;/p&gt;
 &lt;p&gt;The process is fairly straightforward to set up: define a command that highlight changes,
 and then only use that command to make changes.&lt;/p&gt;
@@ -448,7 +448,7 @@ Luckily, one can always re-generate the diff, this is as cheap as running one co
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ latexdiff main_old.tex main.tex &amp;gt; diff.tex 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The first thing I do is usually set the deletion behaviour as not showing anything.
 If you look at the following result of running latexdiff on my example paper:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/diffreview/diff2.png&#34; alt=&#34;Second version&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/diffreview/diff2.png&#34; alt=&#34;Second version&#34;&gt;&lt;/p&gt;
 &lt;p&gt;This is subjective, but seeing both the removed and the added content is not always useful.
 Most problematic is when some parts were moved, latexdiff will interpret it as an addition
 and a deletion, which quickly gets bloated.&lt;/p&gt;
@@ -472,7 +472,7 @@ with tools like &lt;a href=&#34;https://draftable.com/compare&#34;&gt;draftable&
 &lt;p&gt;This is definitely interesting to avoid polluting the sources with artifacts from diff highlighting
 and takes care of the mundane part for you. One drawback could be less flexibility in what can be done
 to filter or remove highlights in a PDF compared to a source file, but this is definitely worth exploring.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/diffreview/diff3.png&#34; alt=&#34;Third version on draftable&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/diffreview/diff3.png&#34; alt=&#34;Third version on draftable&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;optional-annotation-flags&#34;&gt;Optional annotation flags&lt;/h3&gt;
 &lt;p&gt;The last option is a variant of manually highlighting your source file
 but using the &lt;a href=&#34;https://ctan.org/pkg/changes&#34;&gt;changes&lt;/a&gt; package.
@@ -491,7 +491,7 @@ We now develop the main result of the paper.
 This approach is comparable to [Smith, 2020].
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;with the result looking as follows:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/diffreview/diff4.png&#34; alt=&#34;Version with changes&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/diffreview/diff4.png&#34; alt=&#34;Version with changes&#34;&gt;&lt;/p&gt;
 &lt;p&gt;This option is much more robust than keeping raw colours in the text,
 with just a single point of change (the top-level declaration)
 between the diff and the final result.&lt;/p&gt;
@@ -544,10 +544,10 @@ are still around.&lt;/p&gt;
     
     <item>
       <title>Coping with a confined PhD, a naive report</title>
-      <link>https://matbesancon.github.io/post/2020-03-26-confined-phd/</link>
+      <link>https://matbesancon.xyz/post/2020-03-26-confined-phd/</link>
       <pubDate>Thu, 26 Mar 2020 00:00:00 +0100</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2020-03-26-confined-phd/</guid>
+      <guid>https://matbesancon.xyz/post/2020-03-26-confined-phd/</guid>
       <description>&lt;p&gt;One of the luxuries of a PhD in applied maths / computer science is the
 possibility to work from home. By possibility, I imply both the technical
 feasibility (my project does not require special equipment), and social
@@ -619,7 +619,7 @@ topics for your general scientific culture.&lt;/p&gt;
 and a big enough flat. Early in the epidemic when it felt like we were going for
 gradual home isolation, I started setting up my office in a way that felt good,
 not for two hours in the evening any more, but for 8+ hours in the day.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/office.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/office.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;First, the second monitor.
 I don&amp;rsquo;t think more than two active screens is necessary, but it may vary with
 activities, beware of excessive multi-tasking though.
@@ -699,10 +699,10 @@ or preparation.&lt;/p&gt;
     
     <item>
       <title>A naive and incomplete guide to peer-review</title>
-      <link>https://matbesancon.github.io/post/2019-02-04-article-review/</link>
+      <link>https://matbesancon.xyz/post/2019-02-04-article-review/</link>
       <pubDate>Mon, 04 Feb 2019 00:00:00 +0100</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2019-02-04-article-review/</guid>
+      <guid>https://matbesancon.xyz/post/2019-02-04-article-review/</guid>
       <description>&lt;hr&gt;
 &lt;p&gt;After the first submissions to journals, most researchers will be contacted
 by editors for reviewing articles others have written. It may seem like a
@@ -774,7 +774,7 @@ my mind.
 Notes are of different types: small mistakes, remarkable points, key information
 and the &amp;ldquo;interrogation queue&amp;rdquo;. This queue is inspired by developers&#39; code review
 and the most advanced metric found for it:
-&lt;img src=&#34;https://matbesancon.github.io/img/posts/peer_review/wtfm.jpg&#34; alt=&#34;&#34;&gt;
+&lt;img src=&#34;https://matbesancon.xyz/img/posts/peer_review/wtfm.jpg&#34; alt=&#34;&#34;&gt;
 An element is added in the queue when something is missing for my
 understanding here and has not been introduced upwards in the article.
 An element is removed from the queue when an explanation for it appears
@@ -838,7 +838,7 @@ is not doing much at the moment.&lt;/p&gt;
 &lt;p&gt;Maybe you have other tips for reviewing papers, how do you improve your process?
 Which points were too domain-dependent / idealistic? (I did warn it was a naive view)
 Reach out any way you prefer, &lt;a href=&#34;https://twitter.com/matbesancon&#34;&gt;Twitter&lt;/a&gt;,
-&lt;a href=&#34;https://matbesancon.github.io/#contact&#34;&gt;email&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&#34;https://matbesancon.xyz/#contact&#34;&gt;email&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;[1]
 Source for the cover image:
@@ -849,10 +849,10 @@ Source for the cover image:
     
     <item>
       <title>A year in PhD</title>
-      <link>https://matbesancon.github.io/post/2018-09-27-year-in-phd/</link>
+      <link>https://matbesancon.xyz/post/2018-09-27-year-in-phd/</link>
       <pubDate>Thu, 27 Sep 2018 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2018-09-27-year-in-phd/</guid>
+      <guid>https://matbesancon.xyz/post/2018-09-27-year-in-phd/</guid>
       <description>&lt;hr&gt;
 &lt;p&gt;So, it&amp;rsquo;s been a bit more than a year since I took a flight to Montréal to
 start a PhD on mathematical optimization &amp;amp; game theory for smart grids.&lt;/p&gt;
@@ -872,7 +872,7 @@ you&amp;rsquo;re building be &amp;ldquo;finished&amp;rdquo;?&lt;/p&gt;
 don&amp;rsquo;t see this as emptying a 4-year bowl of soup. It&amp;rsquo;s more like picking
 berries: you grab one, then the next, which is close enough, oh and this one
 is nice, but a bit further, I&amp;rsquo;ll have to stretch my arm a bit more to reach it.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/phd-year/blueberries.jpg&#34; alt=&#34;&#34;&gt;[1]&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/phd-year/blueberries.jpg&#34; alt=&#34;&#34;&gt;[1]&lt;/p&gt;
 &lt;p&gt;I had some interesting discussions in Montréal about when and how to know
 you should bring your PhD to a conclusion. And the answer should always be
 that it depends what your objectives are, if you want to include this last
@@ -882,7 +882,7 @@ even research, what I do know is that I don&amp;rsquo;t want to block interestin
 or leave only half-explored research trails because &amp;ldquo;3 years is plenty&amp;rdquo;.&lt;/p&gt;
 &lt;h2 id=&#34;it-must-feel-weird-getting-back-to-university&#34;&gt;It must feel weird, getting back to university&lt;/h2&gt;
 &lt;p&gt;It does, but not how you imagine. I was previously at
-&lt;a href=&#34;https://matbesancon.github.io/post/2016-08-11-back-to-startup/&#34;&gt;a startup&lt;/a&gt; for a while.
+&lt;a href=&#34;https://matbesancon.xyz/post/2016-08-11-back-to-startup/&#34;&gt;a startup&lt;/a&gt; for a while.
 What I was used to is a great autonomy in execution. What the
 PhD is about is adding self-determination of the objectives,
 expected results, and means. It does not mean I&amp;rsquo;m working alone
@@ -907,7 +907,7 @@ syndrome or procrastination.&lt;/p&gt;
 my noodles, but let&amp;rsquo;s dig deeper on the matter of €/$/£.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Disclaimer&lt;/strong&gt;: my PhD is between applied maths &amp;amp; computer science, I know
 all majors are not that financially comfortable.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/phd-year/noodles.png&#34; alt=&#34;&#34;&gt;[2]&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/phd-year/noodles.png&#34; alt=&#34;&#34;&gt;[2]&lt;/p&gt;
 &lt;p&gt;I also know it&amp;rsquo;s considered rude to talk about money in some cultures,
 including France, especially if you&amp;rsquo;re not complaining; so yes, I&amp;rsquo;ll
 be rude.&lt;/p&gt;
@@ -968,7 +968,7 @@ your status, both the good and the bad bits. None should be made feel inferior
 because they didn&amp;rsquo;t take the conventional, safe and socially accepted path of
 the 9-17 workday.&lt;/p&gt;
 &lt;h2 id=&#34;re-thinking-my-values--priorities&#34;&gt;Re-thinking my values &amp;amp; priorities&lt;/h2&gt;
-&lt;p&gt;I&amp;rsquo;ve written about values &lt;a href=&#34;https://matbesancon.github.io/post/2016-10-7-company-values/&#34;&gt;two years ago&lt;/a&gt;
+&lt;p&gt;I&amp;rsquo;ve written about values &lt;a href=&#34;https://matbesancon.xyz/post/2016-10-7-company-values/&#34;&gt;two years ago&lt;/a&gt;
 in the context of a company trying to define who they are.
 This is a complex topic, about discovering and understanding what the
 group prioritizes collectively.&lt;/p&gt;
@@ -1017,7 +1017,7 @@ is as valuable as writing code.&lt;/p&gt;
 one of the reasons I had to learn more is not coming from a background
 in maths, nor from a research-oriented degree.&lt;/p&gt;
 &lt;p&gt;Reach out any way you prefer, &lt;a href=&#34;https://twitter.com/matbesancon&#34;&gt;Twitter&lt;/a&gt;,
-&lt;a href=&#34;https://matbesancon.github.io/#contact&#34;&gt;email&lt;/a&gt;. Of course some things I&amp;rsquo;ve written are related
+&lt;a href=&#34;https://matbesancon.xyz/#contact&#34;&gt;email&lt;/a&gt;. Of course some things I&amp;rsquo;ve written are related
 to my situation, I&amp;rsquo;d be interested to know how it relates or not to yours.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Image sources:&lt;br&gt;

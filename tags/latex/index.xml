@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>latex on μβ</title>
-    <link>https://matbesancon.github.io/tags/latex/</link>
+    <link>https://matbesancon.xyz/tags/latex/</link>
     <description>Recent content in latex on μβ</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-ca</language>
     <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
     <lastBuildDate>Sat, 13 Feb 2021 00:00:00 +0100</lastBuildDate>
     
-	    <atom:link href="https://matbesancon.github.io/tags/latex/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://matbesancon.xyz/tags/latex/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Peer review &amp; change highlight</title>
-      <link>https://matbesancon.github.io/post/2021-2-13-diffreview/</link>
+      <link>https://matbesancon.xyz/post/2021-2-13-diffreview/</link>
       <pubDate>Sat, 13 Feb 2021 00:00:00 +0100</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2021-2-13-diffreview/</guid>
+      <guid>https://matbesancon.xyz/post/2021-2-13-diffreview/</guid>
       <description>&lt;h2&gt;Table of Contents&lt;/h2&gt;
 &lt;nav id=&#34;TableOfContents&#34;&gt;
   &lt;ul&gt;
@@ -122,7 +122,7 @@ Academics rely on implicit knowledge of the established system.
 We now develop the main result of the paper.
 &lt;span style=&#34;color:#66d9ef&#34;&gt;\rev&lt;/span&gt;{This approach is comparable to [Smith, 2020]}.
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;with a result looking like the following:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/diffreview/diff1.png&#34; alt=&#34;First version&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/diffreview/diff1.png&#34; alt=&#34;First version&#34;&gt;&lt;/p&gt;
 &lt;p&gt;I added the wave underlining to make the diff file print-friendly and readable by colour-impaired people.&lt;/p&gt;
 &lt;p&gt;The process is fairly straightforward to set up: define a command that highlight changes,
 and then only use that command to make changes.&lt;/p&gt;
@@ -161,7 +161,7 @@ Luckily, one can always re-generate the diff, this is as cheap as running one co
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;$ latexdiff main_old.tex main.tex &amp;gt; diff.tex 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The first thing I do is usually set the deletion behaviour as not showing anything.
 If you look at the following result of running latexdiff on my example paper:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/diffreview/diff2.png&#34; alt=&#34;Second version&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/diffreview/diff2.png&#34; alt=&#34;Second version&#34;&gt;&lt;/p&gt;
 &lt;p&gt;This is subjective, but seeing both the removed and the added content is not always useful.
 Most problematic is when some parts were moved, latexdiff will interpret it as an addition
 and a deletion, which quickly gets bloated.&lt;/p&gt;
@@ -185,7 +185,7 @@ with tools like &lt;a href=&#34;https://draftable.com/compare&#34;&gt;draftable&
 &lt;p&gt;This is definitely interesting to avoid polluting the sources with artifacts from diff highlighting
 and takes care of the mundane part for you. One drawback could be less flexibility in what can be done
 to filter or remove highlights in a PDF compared to a source file, but this is definitely worth exploring.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/diffreview/diff3.png&#34; alt=&#34;Third version on draftable&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/diffreview/diff3.png&#34; alt=&#34;Third version on draftable&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;optional-annotation-flags&#34;&gt;Optional annotation flags&lt;/h3&gt;
 &lt;p&gt;The last option is a variant of manually highlighting your source file
 but using the &lt;a href=&#34;https://ctan.org/pkg/changes&#34;&gt;changes&lt;/a&gt; package.
@@ -204,7 +204,7 @@ We now develop the main result of the paper.
 This approach is comparable to [Smith, 2020].
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;with the result looking as follows:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/diffreview/diff4.png&#34; alt=&#34;Version with changes&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/diffreview/diff4.png&#34; alt=&#34;Version with changes&#34;&gt;&lt;/p&gt;
 &lt;p&gt;This option is much more robust than keeping raw colours in the text,
 with just a single point of change (the top-level declaration)
 between the diff and the final result.&lt;/p&gt;

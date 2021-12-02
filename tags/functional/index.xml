@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>functional on μβ</title>
-    <link>https://matbesancon.github.io/tags/functional/</link>
+    <link>https://matbesancon.xyz/tags/functional/</link>
     <description>Recent content in functional on μβ</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-ca</language>
     <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
     <lastBuildDate>Mon, 29 Apr 2019 00:00:00 +0200</lastBuildDate>
     
-	    <atom:link href="https://matbesancon.github.io/tags/functional/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://matbesancon.xyz/tags/functional/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Variables are not values: types and expressions in mathematical optimization</title>
-      <link>https://matbesancon.github.io/post/2019-04-14-optimization-function-evaluation/</link>
+      <link>https://matbesancon.xyz/post/2019-04-14-optimization-function-evaluation/</link>
       <pubDate>Mon, 29 Apr 2019 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2019-04-14-optimization-function-evaluation/</guid>
+      <guid>https://matbesancon.xyz/post/2019-04-14-optimization-function-evaluation/</guid>
       <description>&lt;p&gt;This week, I came across Richard Oberdieck&amp;rsquo;s &lt;a href=&#34;https://github.com/RichardOberdieck/optimization-blog/blob/master/Why%20&#39;evaluate&#39;%20is%20the%20feature%20I%20am%20missing%20the%20most%20from%20commercial%20MIP%20solvers.ipynb&#34;&gt;post&lt;/a&gt;,
 &amp;ldquo;Why &amp;lsquo;evaluate&amp;rsquo; is the feature I am missing the most from commercial MIP solvers&amp;rdquo;.
 It would indeed be practical to have for the reasons listed by the author, but
@@ -277,11 +277,11 @@ a bunch of equations, not at all about how to tackle these.&lt;/p&gt;
     
     <item>
       <title>Functional and parallel PageRank implementation in Scala</title>
-      <link>https://matbesancon.github.io/post/2016-09-13-page-rank/</link>
+      <link>https://matbesancon.xyz/post/2016-09-13-page-rank/</link>
       <pubDate>Tue, 13 Sep 2016 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2016-09-13-page-rank/</guid>
-      <description>&lt;p&gt;When I &lt;a href=&#34;https://matbesancon.github.io/posts/2016-08-11-back-to-startup/&#34;&gt;came back to Equisense&lt;/a&gt;,
+      <guid>https://matbesancon.xyz/post/2016-09-13-page-rank/</guid>
+      <description>&lt;p&gt;When I &lt;a href=&#34;https://matbesancon.xyz/posts/2016-08-11-back-to-startup/&#34;&gt;came back to Equisense&lt;/a&gt;,
 I was surprised and intrigued by many things. But there was one element of the
 job in particular I had not planned: coming back to low level and embedded
 programming from higher abstractions I was used to. No OS, no
@@ -423,7 +423,7 @@ the distribution of ranks follows a Pareto distribution, which can be
 visualized on a log-log scale. I used Python with numpy and matplotlib, finding
 the current Scala libraries still to cumbersome for this simple task. Here is
 the result:
-&lt;img src=&#34;https://matbesancon.github.io/img/posts/pageRank/rankDist.png&#34; alt=&#34;Resulting log-rank&#34;&gt;&lt;/p&gt;
+&lt;img src=&#34;https://matbesancon.xyz/img/posts/pageRank/rankDist.png&#34; alt=&#34;Resulting log-rank&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;a-conclusion-on-the-functionalimperative-debate&#34;&gt;A conclusion on the functional/imperative debate&lt;/h2&gt;
 &lt;p&gt;If some of you clone and try to run the project (you&amp;rsquo;ll just need sbt for that).
 Some people could argue that the runtime is too long for what it does (whatever

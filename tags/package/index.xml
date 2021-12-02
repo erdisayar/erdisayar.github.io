@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>package on μβ</title>
-    <link>https://matbesancon.github.io/tags/package/</link>
+    <link>https://matbesancon.xyz/tags/package/</link>
     <description>Recent content in package on μβ</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-ca</language>
     <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
     <lastBuildDate>Fri, 17 Aug 2018 00:00:00 +0200</lastBuildDate>
     
-	    <atom:link href="https://matbesancon.github.io/tags/package/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://matbesancon.xyz/tags/package/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Building our own graph type in Julia</title>
-      <link>https://matbesancon.github.io/post/2018-08-17-abstract_graph/</link>
+      <link>https://matbesancon.xyz/post/2018-08-17-abstract_graph/</link>
       <pubDate>Fri, 17 Aug 2018 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2018-08-17-abstract_graph/</guid>
+      <guid>https://matbesancon.xyz/post/2018-08-17-abstract_graph/</guid>
       <description>&lt;hr&gt;
 &lt;p&gt;This is an adapted post on the talk we gave with &lt;a href=&#34;https://twitter.com/fairbanksjp&#34;&gt;James&lt;/a&gt;
 at JuliaCon 2018 in London. You can see the

@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>java on μβ</title>
-    <link>https://matbesancon.github.io/tags/java/</link>
+    <link>https://matbesancon.xyz/tags/java/</link>
     <description>Recent content in java on μβ</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-ca</language>
     <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
     <lastBuildDate>Tue, 24 Sep 2019 00:00:00 +0200</lastBuildDate>
     
-	    <atom:link href="https://matbesancon.github.io/tags/java/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://matbesancon.xyz/tags/java/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Lessons learned on object constructors</title>
-      <link>https://matbesancon.github.io/post/2019-09-23-constructors/</link>
+      <link>https://matbesancon.xyz/post/2019-09-23-constructors/</link>
       <pubDate>Tue, 24 Sep 2019 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2019-09-23-constructors/</guid>
+      <guid>https://matbesancon.xyz/post/2019-09-23-constructors/</guid>
       <description>&lt;hr&gt;
 &lt;p&gt;Constructors are a basic building block of object-oriented programming (OOP).
 They expose ways to build specific types of objects consistently,

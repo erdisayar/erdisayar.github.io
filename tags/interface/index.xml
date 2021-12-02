@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>interface on μβ</title>
-    <link>https://matbesancon.github.io/tags/interface/</link>
+    <link>https://matbesancon.xyz/tags/interface/</link>
     <description>Recent content in interface on μβ</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-ca</language>
     <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
     <lastBuildDate>Thu, 25 Jul 2019 18:14:43 +0200</lastBuildDate>
     
-	    <atom:link href="https://matbesancon.github.io/tags/interface/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://matbesancon.xyz/tags/interface/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Leveraging special graph shapes in LightGraphs</title>
-      <link>https://matbesancon.github.io/post/2019-07-25-special-graphs/</link>
+      <link>https://matbesancon.xyz/post/2019-07-25-special-graphs/</link>
       <pubDate>Thu, 25 Jul 2019 18:14:43 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2019-07-25-special-graphs/</guid>
-      <description>&lt;p&gt;In a &lt;a href=&#34;https://matbesancon.github.io/post/2019-05-30-vertex-safe-removal/&#34;&gt;previous post&lt;/a&gt;, we
+      <guid>https://matbesancon.xyz/post/2019-07-25-special-graphs/</guid>
+      <description>&lt;p&gt;In a &lt;a href=&#34;https://matbesancon.xyz/post/2019-05-30-vertex-safe-removal/&#34;&gt;previous post&lt;/a&gt;, we
 pushed the boundaries of the LightGraphs.jl abstraction to see how conforming the
 algorithms are to the declared interface, noticing some implied assumptions
 that were not stated. This has led to the development of
@@ -120,16 +120,16 @@ using specialized matrix types.&lt;/p&gt;
 &lt;p&gt;The work on these graph structures is happening in
 &lt;a href=&#34;https://github.com/JuliaGraphs/SpecialGraphs.jl&#34;&gt;SpecialGraphs.jl&lt;/a&gt;, feel free
 to file issues and submit pull requests. Also check out the matrix-based
-graph prototype in &lt;a href=&#34;https://matbesancon.github.io/post/2018-08-17-abstract_graph/&#34;&gt;this post&lt;/a&gt;.&lt;/p&gt;
+graph prototype in &lt;a href=&#34;https://matbesancon.xyz/post/2018-08-17-abstract_graph/&#34;&gt;this post&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Vertex removal in LightGraphs</title>
-      <link>https://matbesancon.github.io/post/2019-05-30-vertex-safe-removal/</link>
+      <link>https://matbesancon.xyz/post/2019-05-30-vertex-safe-removal/</link>
       <pubDate>Thu, 30 May 2019 11:14:43 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2019-05-30-vertex-safe-removal/</guid>
+      <guid>https://matbesancon.xyz/post/2019-05-30-vertex-safe-removal/</guid>
       <description>&lt;p&gt;In various graph-related algorithms, a graph is modified through successive
 operations, merging, creating and deleting vertices. That&amp;rsquo;s the case for the
 &lt;a href=&#34;https://en.wikipedia.org/wiki/Blossom_algorithm&#34;&gt;Blossom algorithm&lt;/a&gt; finding a
@@ -322,10 +322,10 @@ vertex will take the place of the removed one in the re-labelling.&lt;/p&gt;
     
     <item>
       <title>Building our own graph type in Julia</title>
-      <link>https://matbesancon.github.io/post/2018-08-17-abstract_graph/</link>
+      <link>https://matbesancon.xyz/post/2018-08-17-abstract_graph/</link>
       <pubDate>Fri, 17 Aug 2018 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2018-08-17-abstract_graph/</guid>
+      <guid>https://matbesancon.xyz/post/2018-08-17-abstract_graph/</guid>
       <description>&lt;hr&gt;
 &lt;p&gt;This is an adapted post on the talk we gave with &lt;a href=&#34;https://twitter.com/fairbanksjp&#34;&gt;James&lt;/a&gt;
 at JuliaCon 2018 in London. You can see the

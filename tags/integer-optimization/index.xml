@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>integer-optimization on μβ</title>
-    <link>https://matbesancon.github.io/tags/integer-optimization/</link>
+    <link>https://matbesancon.xyz/tags/integer-optimization/</link>
     <description>Recent content in integer-optimization on μβ</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-ca</language>
     <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
     <lastBuildDate>Wed, 08 May 2019 00:00:00 +0200</lastBuildDate>
     
-	    <atom:link href="https://matbesancon.github.io/tags/integer-optimization/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://matbesancon.xyz/tags/integer-optimization/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>A take on Benders decomposition in JuMP</title>
-      <link>https://matbesancon.github.io/post/2019-05-08-simple-benders/</link>
+      <link>https://matbesancon.xyz/post/2019-05-08-simple-benders/</link>
       <pubDate>Wed, 08 May 2019 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2019-05-08-simple-benders/</guid>
+      <guid>https://matbesancon.xyz/post/2019-05-08-simple-benders/</guid>
       <description>&lt;p&gt;Last Friday was a great seminar of the Combinatorial Optimization group in
 Paris, celebrating the 85th birthday of Jack Edmonds, one of the founding
 researchers of combinatorial optimization, with the notable Blossom matching algorithm.
@@ -48,7 +48,7 @@ information to an optimization problem, which entails two components:&lt;/p&gt;
 &lt;li&gt;An &lt;strong&gt;oracle&lt;/strong&gt; or &lt;strong&gt;sub-problem&lt;/strong&gt;, taking the problem state and building the new required structure (here a new constraint).&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Sounds familiar? Benders can be seen as the &amp;ldquo;dual twin&amp;rdquo; of the Dantzig-Wolfe
-decomposition I had played with in a &lt;a href=&#34;https://matbesancon.github.io/post/2018-05-25-colgen2/&#34;&gt;previous post&lt;/a&gt;.&lt;/p&gt;
+decomposition I had played with in a &lt;a href=&#34;https://matbesancon.xyz/post/2018-05-25-colgen2/&#34;&gt;previous post&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;digging-into-the-structure&#34;&gt;Digging into the structure&lt;/h2&gt;
 &lt;p&gt;Now that we have a general idea of the problem at hand, let&amp;rsquo;s see the specifics.
 Consider a problem such as:
@@ -234,10 +234,10 @@ don&amp;rsquo;t hesitate to react or ping me on &lt;a href=&#34;https://twitter.
     
     <item>
       <title>Picking different names with integer optimization</title>
-      <link>https://matbesancon.github.io/post/2019-04-07-name_distances/</link>
+      <link>https://matbesancon.xyz/post/2019-04-07-name_distances/</link>
       <pubDate>Sun, 07 Apr 2019 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2019-04-07-name_distances/</guid>
+      <guid>https://matbesancon.xyz/post/2019-04-07-name_distances/</guid>
       <description>&lt;hr&gt;
 &lt;p&gt;I must admit I am not always the most talented at social events.
 One point I am especially bad at is &lt;strong&gt;remembering names&lt;/strong&gt;, and it gets
@@ -312,7 +312,7 @@ diverse_names &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [vstr[i] 
 &lt;h2 id=&#34;trying-out-the-model&#34;&gt;Trying out the model&lt;/h2&gt;
 &lt;p&gt;I will use 50 real names taken from
 &lt;a href=&#34;http://listofrandomnames.com&#34;&gt;the list of random names&lt;/a&gt; website, which you
-can find &lt;a href=&#34;https://matbesancon.github.io/text/names.txt&#34;&gt;here&lt;/a&gt;.
+can find &lt;a href=&#34;https://matbesancon.xyz/text/names.txt&#34;&gt;here&lt;/a&gt;.
 The problem becomes large enough to be interesting, but reasonable enough for
 a decent laptop. If you want to invite 4 of these people and get the most
 different names, Christian, Elizbeth, Beulah and Wilhelmina are the ones you
@@ -343,13 +343,13 @@ post, and to BYP for the feedback.&lt;/p&gt;
     
     <item>
       <title>The cutting stock problem: part 2, solving with column generation</title>
-      <link>https://matbesancon.github.io/post/2018-05-25-colgen2/</link>
+      <link>https://matbesancon.xyz/post/2018-05-25-colgen2/</link>
       <pubDate>Wed, 30 May 2018 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2018-05-25-colgen2/</guid>
+      <guid>https://matbesancon.xyz/post/2018-05-25-colgen2/</guid>
       <description>&lt;hr&gt;
 &lt;p&gt;&lt;a href=&#34;https://doi.org/10.5281/zenodo.3329389&#34;&gt;&lt;img src=&#34;https://zenodo.org/badge/DOI/10.5281/zenodo.3329389.svg&#34; alt=&#34;DOI&#34;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;In the &lt;a href=&#34;https://matbesancon.github.io/post/2018-05-23-colgen/&#34;&gt;previous post&lt;/a&gt;,
+&lt;p&gt;In the &lt;a href=&#34;https://matbesancon.xyz/post/2018-05-23-colgen/&#34;&gt;previous post&lt;/a&gt;,
 we explored a well-known integer optimization situation
 in manufacturing, the cutting stock problem. After some details on the
 decisions, constraints and objectives, we implemented a naive model in JuMP.&lt;/p&gt;
@@ -625,10 +625,10 @@ contributed to its improvement!&lt;/p&gt;
     
     <item>
       <title>Tackling the cutting stock problem: part 1, problem exploration</title>
-      <link>https://matbesancon.github.io/post/2018-05-23-colgen/</link>
+      <link>https://matbesancon.xyz/post/2018-05-23-colgen/</link>
       <pubDate>Wed, 23 May 2018 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2018-05-23-colgen/</guid>
+      <guid>https://matbesancon.xyz/post/2018-05-23-colgen/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://doi.org/10.5281/zenodo.3329389&#34;&gt;&lt;img src=&#34;https://zenodo.org/badge/DOI/10.5281/zenodo.3329389.svg&#34; alt=&#34;DOI&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Integer optimization often feels weird (at least to me). Simple reformulations
 of a (mixed) integer optimization problem (MIP) can make it way easier to solve.

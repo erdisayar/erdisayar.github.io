@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>numerical-techniques on μβ</title>
-    <link>https://matbesancon.github.io/tags/numerical-techniques/</link>
+    <link>https://matbesancon.xyz/tags/numerical-techniques/</link>
     <description>Recent content in numerical-techniques on μβ</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-ca</language>
     <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
     <lastBuildDate>Wed, 20 Dec 2017 00:00:00 +0100</lastBuildDate>
     
-	    <atom:link href="https://matbesancon.github.io/tags/numerical-techniques/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://matbesancon.xyz/tags/numerical-techniques/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>DifferentialEquations.jl - part 2: decision from the model</title>
-      <link>https://matbesancon.github.io/post/2017-12-20-diffeq-julia2/</link>
+      <link>https://matbesancon.xyz/post/2017-12-20-diffeq-julia2/</link>
       <pubDate>Wed, 20 Dec 2017 00:00:00 +0100</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2017-12-20-diffeq-julia2/</guid>
-      <description>&lt;p&gt;In the &lt;a href=&#34;https://matbesancon.github.io/post/2017-12-14-diffeq-julia&#34;&gt;last article&lt;/a&gt;, we explored different modeling options for a
+      <guid>https://matbesancon.xyz/post/2017-12-20-diffeq-julia2/</guid>
+      <description>&lt;p&gt;In the &lt;a href=&#34;https://matbesancon.xyz/post/2017-12-14-diffeq-julia&#34;&gt;last article&lt;/a&gt;, we explored different modeling options for a
 three-component systems which could represent the dynamics of a chemical
 reaction or a disease propagation in a population. Building on top of this
 model, we will formulate a desirable outcome and find a decision which
@@ -71,7 +71,7 @@ inject_new &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span sty
 &lt;span style=&#34;color:#75715e&#34;&gt;# trying it out with an injection at t=0.4&lt;/span&gt;
 sol &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; inject_new(&lt;span style=&#34;color:#ae81ff&#34;&gt;0.4&lt;/span&gt;)
 Plots&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;plot(sol)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/DiffEq/inject.png&#34; alt=&#34;Injection simulation&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/DiffEq/inject.png&#34; alt=&#34;Injection simulation&#34;&gt;&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;ContinuousCallback&lt;/code&gt; construct is the central element here, it takes as
 information:&lt;/p&gt;
 &lt;ul&gt;
@@ -90,7 +90,7 @@ final_b &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [inject_new(tin
 Plots&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;plot(tinj_span, final_b)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Using a plain for comprehension, we fetch the solution of the simulation for
 the callback built with each $t_{inject}$.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/DiffEq/optimal_inject.png&#34; alt=&#34;Quantity of B&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/DiffEq/optimal_inject.png&#34; alt=&#34;Quantity of B&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Injecting $A$ too soon lets too much time for the created $B$ to turn into $R$,
 but injecting it too late does not let enough time for $B$ to be produced from
 the injected $A$. The optimum seems to be around ≈ 0.82,&lt;/p&gt;
@@ -185,7 +185,7 @@ Plots&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;plot(inject_progres
 while &lt;code&gt;condition_end&lt;/code&gt; corresponds to the time when the total injected
 quantity reaches &lt;code&gt;inj_quantity&lt;/code&gt;. The first events activates $u_4$ and sets it
 to the nominal flow, while the second callback resets it to 0.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/DiffEq/const_rate.png&#34; alt=&#34;Constant rate&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/DiffEq/const_rate.png&#34; alt=&#34;Constant rate&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Optim.jl can be re-used to determine the optimal decision:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;objective &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;(x)
     sol &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; inject_progressive(x[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;], x[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;])
@@ -280,10 +280,10 @@ use Optim.jl for the second case (boxed multivariate optimization without explic
     
     <item>
       <title>Getting started with DifferentialEquations.jl</title>
-      <link>https://matbesancon.github.io/post/2017-12-14-diffeq-julia/</link>
+      <link>https://matbesancon.xyz/post/2017-12-14-diffeq-julia/</link>
       <pubDate>Thu, 14 Dec 2017 00:00:00 +0100</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2017-12-14-diffeq-julia/</guid>
+      <guid>https://matbesancon.xyz/post/2017-12-14-diffeq-julia/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://github.com/JuliaDiffEq/DifferentialEquations.jl&#34;&gt;DifferentialEquations.jl&lt;/a&gt;
 came to be a key component of Julia&amp;rsquo;s scientific ecosystem. After checking the
 JuliaCon talk of its creator, I couldn&amp;rsquo;t wait to start building stuff with it,
@@ -375,7 +375,7 @@ contain a direct way to produce plots. This is fairly common in Julia to
 implement methods from other packages, here the &lt;code&gt;ODESolution&lt;/code&gt; type implements
 Plots.plot:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;Plots&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;plot(sol)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/DiffEq/smooth.png&#34; alt=&#34;Solution to the ODE&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/DiffEq/smooth.png&#34; alt=&#34;Solution to the ODE&#34;&gt;&lt;/p&gt;
 &lt;p&gt;If we use the disease propagation example, $u₁(t)$ is the number of
 healthy people who haven&amp;rsquo;t been infected. It starts high, which makes the rate
 of infection by the diseased population moderate. As the number of sick people
@@ -419,7 +419,7 @@ sol_stoch &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; DiffEq&lt;spa
 to stochastic equations. The last variation is set to the opposite of the sum
 of the two others to compensate the two other variations (we said we had only
 one randomness phenomenon per state transition).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/DiffEq/sde.png&#34; alt=&#34;SDE&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/DiffEq/sde.png&#34; alt=&#34;SDE&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Woops, something went wrong. This time the mass conservation doesn&amp;rsquo;t hold,
 we finish with a population below the initial condition. What is wrong is that
 we don&amp;rsquo;t define the &lt;strong&gt;variation&lt;/strong&gt; but the &lt;em&gt;gᵢ(u,t)&lt;/em&gt; function, which is then
@@ -445,7 +445,7 @@ sde_cons &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; DiffEq&lt;span
 cons_solution &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; DiffEq&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;solve(sde_cons, DiffEq&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;EM(), dt&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;500&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;We also provide a &lt;code&gt;noise_rate_prototype&lt;/code&gt; parameter to the problem builder to
 indicate we don&amp;rsquo;t want to use a diagonal noise.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/DiffEq/sde_nondiag.png&#34; alt=&#34;SDE&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/DiffEq/sde_nondiag.png&#34; alt=&#34;SDE&#34;&gt;&lt;/p&gt;
 &lt;p&gt;This time the population conservation holds, at any point in time the sum of
 the $uᵢ(t)$ remains 50.&lt;/p&gt;
 &lt;h2 id=&#34;discretizing-gillespie-model&#34;&gt;Discretizing: Gillespie model&lt;/h2&gt;
@@ -468,7 +468,7 @@ disc_sol &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; DiffEq&lt;span
 &lt;p&gt;We define the infection and recovery rate and the variables $uᵢ$ that are
 affected, and call the Discrete solver. The Plots.jl integration once again
 yields a direct representation of the solution over the time span.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/DiffEq/discrete.png&#34; alt=&#34;SDE&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/DiffEq/discrete.png&#34; alt=&#34;SDE&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Again, the conservation of the total population is guaranteed by the effect of
 the jumps deleting one unit from a population to add it to the other.&lt;/p&gt;
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;

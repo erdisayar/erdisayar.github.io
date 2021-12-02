@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>graphs on μβ</title>
-    <link>https://matbesancon.github.io/tags/graphs/</link>
+    <link>https://matbesancon.xyz/tags/graphs/</link>
     <description>Recent content in graphs on μβ</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-ca</language>
     <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
     <lastBuildDate>Thu, 12 Sep 2019 00:00:00 +0200</lastBuildDate>
     
-	    <atom:link href="https://matbesancon.github.io/tags/graphs/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://matbesancon.xyz/tags/graphs/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Bridges as an extended dispatch system</title>
-      <link>https://matbesancon.github.io/post/2019-09-12-bridging-indicator/</link>
+      <link>https://matbesancon.xyz/post/2019-09-12-bridging-indicator/</link>
       <pubDate>Thu, 12 Sep 2019 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2019-09-12-bridging-indicator/</guid>
+      <guid>https://matbesancon.xyz/post/2019-09-12-bridging-indicator/</guid>
       <description>&lt;hr&gt;
 &lt;p&gt;The progress of mathematical optimization as a domain has been tightly
 coupled with the development and improvement of computational methods and
@@ -254,7 +254,7 @@ thus contains the necessary information to convert a constraint to a supported f
 &lt;p&gt;A bridge optimizer takes a given problem, a solver and the set of bridges,
 all of which representable in a single hyper-graph, a graph with possibly
 multiple edges between two given nodes.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/bridges/Problem1.svg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/bridges/Problem1.svg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;$P$ represents the initial problem, pointing to the constraints it contains.
 There is an edge from $C_i$ to $C_j$ for each bridge reformulating $C_i$
 using at least a $C_j$ constraint. A constraint $C_i$ points to $S$ if the solver
@@ -339,11 +339,11 @@ of the &lt;em&gt;two-language problem&lt;/em&gt; of mathematical optimization.&l
     
     <item>
       <title>Leveraging special graph shapes in LightGraphs</title>
-      <link>https://matbesancon.github.io/post/2019-07-25-special-graphs/</link>
+      <link>https://matbesancon.xyz/post/2019-07-25-special-graphs/</link>
       <pubDate>Thu, 25 Jul 2019 18:14:43 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2019-07-25-special-graphs/</guid>
-      <description>&lt;p&gt;In a &lt;a href=&#34;https://matbesancon.github.io/post/2019-05-30-vertex-safe-removal/&#34;&gt;previous post&lt;/a&gt;, we
+      <guid>https://matbesancon.xyz/post/2019-07-25-special-graphs/</guid>
+      <description>&lt;p&gt;In a &lt;a href=&#34;https://matbesancon.xyz/post/2019-05-30-vertex-safe-removal/&#34;&gt;previous post&lt;/a&gt;, we
 pushed the boundaries of the LightGraphs.jl abstraction to see how conforming the
 algorithms are to the declared interface, noticing some implied assumptions
 that were not stated. This has led to the development of
@@ -445,16 +445,16 @@ using specialized matrix types.&lt;/p&gt;
 &lt;p&gt;The work on these graph structures is happening in
 &lt;a href=&#34;https://github.com/JuliaGraphs/SpecialGraphs.jl&#34;&gt;SpecialGraphs.jl&lt;/a&gt;, feel free
 to file issues and submit pull requests. Also check out the matrix-based
-graph prototype in &lt;a href=&#34;https://matbesancon.github.io/post/2018-08-17-abstract_graph/&#34;&gt;this post&lt;/a&gt;.&lt;/p&gt;
+graph prototype in &lt;a href=&#34;https://matbesancon.xyz/post/2018-08-17-abstract_graph/&#34;&gt;this post&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Vertex removal in LightGraphs</title>
-      <link>https://matbesancon.github.io/post/2019-05-30-vertex-safe-removal/</link>
+      <link>https://matbesancon.xyz/post/2019-05-30-vertex-safe-removal/</link>
       <pubDate>Thu, 30 May 2019 11:14:43 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2019-05-30-vertex-safe-removal/</guid>
+      <guid>https://matbesancon.xyz/post/2019-05-30-vertex-safe-removal/</guid>
       <description>&lt;p&gt;In various graph-related algorithms, a graph is modified through successive
 operations, merging, creating and deleting vertices. That&amp;rsquo;s the case for the
 &lt;a href=&#34;https://en.wikipedia.org/wiki/Blossom_algorithm&#34;&gt;Blossom algorithm&lt;/a&gt; finding a

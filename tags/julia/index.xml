@@ -2,22 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>julia on μβ</title>
-    <link>https://matbesancon.github.io/tags/julia/</link>
+    <link>https://matbesancon.xyz/tags/julia/</link>
     <description>Recent content in julia on μβ</description>
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-ca</language>
     <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
     <lastBuildDate>Thu, 24 Dec 2020 00:00:00 +0100</lastBuildDate>
     
-	    <atom:link href="https://matbesancon.github.io/tags/julia/index.xml" rel="self" type="application/rss+xml" />
+	    <atom:link href="https://matbesancon.xyz/tags/julia/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Sets, chains and rules - part II</title>
-      <link>https://matbesancon.github.io/post/2020-12-24-chains_sets2/</link>
+      <link>https://matbesancon.xyz/post/2020-12-24-chains_sets2/</link>
       <pubDate>Thu, 24 Dec 2020 00:00:00 +0100</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2020-12-24-chains_sets2/</guid>
+      <guid>https://matbesancon.xyz/post/2020-12-24-chains_sets2/</guid>
       <description>&lt;p&gt;In a previous post, I detailed some of the features of
 &lt;a href=&#34;https://github.com/matbesancon/MathOptSetDistances.jl&#34;&gt;MathOptSetDistances.jl&lt;/a&gt;
 and the evolution of the idea behind it. This is part II focusing on derivatives.&lt;/p&gt;
@@ -105,7 +105,7 @@ $$
 $$&lt;/p&gt;
 &lt;p&gt;In other terms, any non-diagonal term of the gradient matrix is 0 for any $v$.
 Here is a visualization made with haste for $n=2$ using the very promising &lt;a href=&#34;https://github.com/Wikunia/Javis.jl&#34;&gt;Javis.jl&lt;/a&gt;:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/projections/projection.gif&#34; alt=&#34;Projection&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/projections/projection.gif&#34; alt=&#34;Projection&#34;&gt;&lt;/p&gt;
 &lt;p&gt;The red circle is a vector in the plane and the blue square its projection.&lt;sup id=&#34;fnref:4&#34;&gt;&lt;a href=&#34;#fn:4&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;4&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;p&gt;The Julia implementation follows the same idea, here in a simplified version:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt; projection_on_set(v&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;AbstractVector&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;T&lt;/span&gt;}, s&lt;span style=&#34;color:#f92672&#34;&gt;::&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;MOI&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Nonnegatives) &lt;span style=&#34;color:#66d9ef&#34;&gt;where&lt;/span&gt; {&lt;span style=&#34;color:#66d9ef&#34;&gt;T&lt;/span&gt;}
@@ -282,10 +282,10 @@ For more visual explanations, Keno Fischer had a recent talk on
     
     <item>
       <title>Sets, chains and rules - part I</title>
-      <link>https://matbesancon.github.io/post/2020-12-23-chains_sets/</link>
+      <link>https://matbesancon.xyz/post/2020-12-23-chains_sets/</link>
       <pubDate>Wed, 23 Dec 2020 00:00:00 +0100</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2020-12-23-chains_sets/</guid>
+      <guid>https://matbesancon.xyz/post/2020-12-23-chains_sets/</guid>
       <description>&lt;h2&gt;Table of Contents&lt;/h2&gt;
 &lt;nav id=&#34;TableOfContents&#34;&gt;
   &lt;ul&gt;
@@ -464,10 +464,10 @@ with $x$ a vector. This makes more sense to define $Ax$ as the function and&lt;b
     
     <item>
       <title>Experiments on communicating vessels, constrained optimization and manifolds</title>
-      <link>https://matbesancon.github.io/post/2020-05-09-volumes/</link>
+      <link>https://matbesancon.xyz/post/2020-05-09-volumes/</link>
       <pubDate>Sat, 09 May 2020 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2020-05-09-volumes/</guid>
+      <guid>https://matbesancon.xyz/post/2020-05-09-volumes/</guid>
       <description>&lt;p&gt;Image source &lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;.&lt;/p&gt;
 &lt;h2&gt;Table of Contents&lt;/h2&gt;
 &lt;nav id=&#34;TableOfContents&#34;&gt;
@@ -506,7 +506,7 @@ The lower a point in the water, the higher the pressure, since there is more wat
 A difference in &lt;strong&gt;pressure&lt;/strong&gt; between two points will create a motion of the water, until the pressure equalizes.
 Put differently, some fluid moves from the full part of the vessel (with more pressure) to empty parts (with less pressure)
 until the pressure equalizes.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/volumes/motion.gif&#34; alt=&#34;Communicating vessels&#34;&gt;&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/volumes/motion.gif&#34; alt=&#34;Communicating vessels&#34;&gt;&lt;sup id=&#34;fnref:2&#34;&gt;&lt;a href=&#34;#fn:2&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;2&lt;/a&gt;&lt;/sup&gt;&lt;/p&gt;
 &lt;p&gt;Since the pressure at a point depends on the height of the fluid above this point,
 two points have equal pressure when the height of water above them is equal.
 This is a phenomenon we often experience, with a watering can for instance.&lt;/p&gt;
@@ -625,7 +625,7 @@ x0 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;
 V0 &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; g(x0)
 &lt;span style=&#34;color:#75715e&#34;&gt;# 1.9273890036845946&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;With the vessel shape functions defined above, this looks roughly like this:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/volumes/initial_plot.png&#34; alt=&#34;start&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/volumes/initial_plot.png&#34; alt=&#34;start&#34;&gt;&lt;/p&gt;
 &lt;p&gt;(source code available in the bonus section).&lt;/p&gt;
 &lt;p&gt;In unconstrained optimization, the gradient provides us with information on the steepest
 ascent direction, by following the opposite direction, the function will decrease, at least locally.&lt;/p&gt;
@@ -637,11 +637,11 @@ manifold, the region where $G(x) = 0$.&lt;/p&gt;
 &lt;p&gt;Think of the curve as the feasible region where we are supposed remain.
 $x_i$ is our current iterate and the direction points to the steepest descent of $F(x)$,
 i.e. $-\nabla F(x)$.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/volumes/manifold1.png&#34; alt=&#34;Naive descent&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/volumes/manifold1.png&#34; alt=&#34;Naive descent&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Moving in this direction will drive our iterates away from the feasible region,
 which is not desired. Instead, we will want to &lt;strong&gt;project&lt;/strong&gt; this direction to follow
 the equality constraints, like the red direction:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/volumes/manifold2.png&#34; alt=&#34;Projected descent&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/volumes/manifold2.png&#34; alt=&#34;Projected descent&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Of course, by following a fixed direction, the iterate ends up not on the curve, but not &amp;ldquo;too far&amp;rdquo;.
 More importantly, we will have ensured that the point has not been moved for nothing, which would
 be the case if we simply get away from the manifold.
@@ -824,7 +824,7 @@ let us check the solution profile:&lt;/p&gt;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
 
 plot(xs_pivot)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/volumes/plot_naive1.png&#34; alt=&#34;Plot 1&#34;&gt;&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/volumes/plot_naive1.png&#34; alt=&#34;Plot 1&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Fair enough, still, 1400 iterates should not be necessary for a 4-dimensional problem.
 Since convergence seems reached around the equilibrium point (the solution does not bounce around it),
 we can increase the step size, which was taken rather conservatively:&lt;/p&gt;
@@ -832,7 +832,7 @@ we can increase the step size, which was taken rather conservatively:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;xs &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; find_equilibrium(funcs, x0, γ &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;0.05&lt;/span&gt;, maxiter &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;5000&lt;/span&gt;, mindiff&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10e-6&lt;/span&gt;)
 plot(map(k &lt;span style=&#34;color:#f92672&#34;&gt;-&amp;gt;&lt;/span&gt; getindex&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;(xs, k), &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;))
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We reduce the number of iterations to 192, while not hindering convergence.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/volumes/plot_naive2.png&#34; alt=&#34;Plot 1&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/volumes/plot_naive2.png&#34; alt=&#34;Plot 1&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;conclusion-and-perspective&#34;&gt;Conclusion and perspective&lt;/h1&gt;
 &lt;p&gt;I wanted to add a section on the corresponding dynamical system, namely a
 differential algebraic equation (DAE) system, but this is clearly long enough,
@@ -869,8 +869,8 @@ And as often, thanks Pierre-Yves for the infaillible proof-reading as usual.&lt;
 &lt;h1 id=&#34;bonus&#34;&gt;Bonus&lt;/h1&gt;
 &lt;p&gt;What happens when the norm of the direction vector is proportional to $\nabla F(x_i)$
 instead of the projected vector (or constant)? Don&amp;rsquo;t reproduce at home:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/volumes/bump1.png&#34; alt=&#34;Oops1&#34;&gt;
-&lt;img src=&#34;https://matbesancon.github.io/img/posts/volumes/bump2.png&#34; alt=&#34;Oops2&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/volumes/bump1.png&#34; alt=&#34;Oops1&#34;&gt;
+&lt;img src=&#34;https://matbesancon.xyz/img/posts/volumes/bump2.png&#34; alt=&#34;Oops2&#34;&gt;&lt;/p&gt;
 &lt;p&gt;As promised, the plot to represent the vessels with the initial level of filling:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;p &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; plot(xaxis&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;nothing, yaxis&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;nothing)
 xtop &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1.2&lt;/span&gt;
@@ -921,7 +921,7 @@ res &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34
     plot_containers(x, p, iter)
 &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The result is not the kind of art that some manage with plots, but cool enough to see what is happening:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/volumes/evolution.gif&#34; alt=&#34;GIF&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/volumes/evolution.gif&#34; alt=&#34;GIF&#34;&gt;&lt;/p&gt;
 &lt;h1 id=&#34;sources&#34;&gt;Sources&lt;/h1&gt;
 &lt;p&gt;Some ideas for this post came from a talk by &lt;a href=&#34;https://github.com/antoine-levitt/&#34;&gt;Antoine Levitt&lt;/a&gt;
 at the Julia Paris meetup, where he presented some applications of optimization on manifolds for
@@ -942,10 +942,10 @@ quantum physics (if I recall?).&lt;/p&gt;
     
     <item>
       <title>Differentiating the discrete: Automatic Differentiation meets Integer Optimization</title>
-      <link>https://matbesancon.github.io/post/2020-01-23-discrete-diff/</link>
+      <link>https://matbesancon.xyz/post/2020-01-23-discrete-diff/</link>
       <pubDate>Thu, 23 Jan 2020 00:00:00 +0100</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2020-01-23-discrete-diff/</guid>
+      <guid>https://matbesancon.xyz/post/2020-01-23-discrete-diff/</guid>
       <description>&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;In continuous convex optimization, duality is often the theoretical foundation for
 computing the sensibility of the optimal value of a problem to
@@ -1055,7 +1055,7 @@ for automatic differentiation.&lt;/p&gt;
 &lt;span style=&#34;color:#66d9ef&#34;&gt;import&lt;/span&gt; ForwardDiff
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Let us first write an implementation for the max-weight independent set problem.
 We will use a 4-vertex graph, looking as such:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/diff_discrete/graph2.svg&#34; alt=&#34;Weighted graph&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/diff_discrete/graph2.svg&#34; alt=&#34;Weighted graph&#34;&gt;&lt;/p&gt;
 &lt;p&gt;The optimal answer here is to pick vertices 1 and 4 (in orange).&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;@testset&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Max independent set MOI&amp;#34;&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;begin&lt;/span&gt;
     matrix &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [
@@ -1246,10 +1246,10 @@ where the whole journey from 0 to a constraint solver is documented.&lt;/p&gt;
     
     <item>
       <title>Working with binary libraries for optimization in Julia</title>
-      <link>https://matbesancon.github.io/post/2019-11-04-binary-julia/</link>
+      <link>https://matbesancon.xyz/post/2019-11-04-binary-julia/</link>
       <pubDate>Mon, 04 Nov 2019 00:00:00 +0100</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2019-11-04-binary-julia/</guid>
+      <guid>https://matbesancon.xyz/post/2019-11-04-binary-julia/</guid>
       <description>&lt;p&gt;Unlike other ecosystems in the scientific programming world, scientists
 and engineers working with Julia usually prefer a whole stack in Julia for many
 reasons. The compiler is doing way better when able to infer what
@@ -1478,10 +1478,10 @@ artifacts, a post can be found
     
     <item>
       <title>Lessons learned on object constructors</title>
-      <link>https://matbesancon.github.io/post/2019-09-23-constructors/</link>
+      <link>https://matbesancon.xyz/post/2019-09-23-constructors/</link>
       <pubDate>Tue, 24 Sep 2019 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2019-09-23-constructors/</guid>
+      <guid>https://matbesancon.xyz/post/2019-09-23-constructors/</guid>
       <description>&lt;hr&gt;
 &lt;p&gt;Constructors are a basic building block of object-oriented programming (OOP).
 They expose ways to build specific types of objects consistently,
@@ -1733,10 +1733,10 @@ on the subject was posted on Reddit (thanks Paul for pointing it out).&lt;/p&gt;
     
     <item>
       <title>Bridges as an extended dispatch system</title>
-      <link>https://matbesancon.github.io/post/2019-09-12-bridging-indicator/</link>
+      <link>https://matbesancon.xyz/post/2019-09-12-bridging-indicator/</link>
       <pubDate>Thu, 12 Sep 2019 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2019-09-12-bridging-indicator/</guid>
+      <guid>https://matbesancon.xyz/post/2019-09-12-bridging-indicator/</guid>
       <description>&lt;hr&gt;
 &lt;p&gt;The progress of mathematical optimization as a domain has been tightly
 coupled with the development and improvement of computational methods and
@@ -1973,7 +1973,7 @@ thus contains the necessary information to convert a constraint to a supported f
 &lt;p&gt;A bridge optimizer takes a given problem, a solver and the set of bridges,
 all of which representable in a single hyper-graph, a graph with possibly
 multiple edges between two given nodes.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/bridges/Problem1.svg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/bridges/Problem1.svg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;$P$ represents the initial problem, pointing to the constraints it contains.
 There is an edge from $C_i$ to $C_j$ for each bridge reformulating $C_i$
 using at least a $C_j$ constraint. A constraint $C_i$ points to $S$ if the solver
@@ -2058,11 +2058,11 @@ of the &lt;em&gt;two-language problem&lt;/em&gt; of mathematical optimization.&l
     
     <item>
       <title>Leveraging special graph shapes in LightGraphs</title>
-      <link>https://matbesancon.github.io/post/2019-07-25-special-graphs/</link>
+      <link>https://matbesancon.xyz/post/2019-07-25-special-graphs/</link>
       <pubDate>Thu, 25 Jul 2019 18:14:43 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2019-07-25-special-graphs/</guid>
-      <description>&lt;p&gt;In a &lt;a href=&#34;https://matbesancon.github.io/post/2019-05-30-vertex-safe-removal/&#34;&gt;previous post&lt;/a&gt;, we
+      <guid>https://matbesancon.xyz/post/2019-07-25-special-graphs/</guid>
+      <description>&lt;p&gt;In a &lt;a href=&#34;https://matbesancon.xyz/post/2019-05-30-vertex-safe-removal/&#34;&gt;previous post&lt;/a&gt;, we
 pushed the boundaries of the LightGraphs.jl abstraction to see how conforming the
 algorithms are to the declared interface, noticing some implied assumptions
 that were not stated. This has led to the development of
@@ -2164,16 +2164,16 @@ using specialized matrix types.&lt;/p&gt;
 &lt;p&gt;The work on these graph structures is happening in
 &lt;a href=&#34;https://github.com/JuliaGraphs/SpecialGraphs.jl&#34;&gt;SpecialGraphs.jl&lt;/a&gt;, feel free
 to file issues and submit pull requests. Also check out the matrix-based
-graph prototype in &lt;a href=&#34;https://matbesancon.github.io/post/2018-08-17-abstract_graph/&#34;&gt;this post&lt;/a&gt;.&lt;/p&gt;
+graph prototype in &lt;a href=&#34;https://matbesancon.xyz/post/2018-08-17-abstract_graph/&#34;&gt;this post&lt;/a&gt;.&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>Vertex removal in LightGraphs</title>
-      <link>https://matbesancon.github.io/post/2019-05-30-vertex-safe-removal/</link>
+      <link>https://matbesancon.xyz/post/2019-05-30-vertex-safe-removal/</link>
       <pubDate>Thu, 30 May 2019 11:14:43 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2019-05-30-vertex-safe-removal/</guid>
+      <guid>https://matbesancon.xyz/post/2019-05-30-vertex-safe-removal/</guid>
       <description>&lt;p&gt;In various graph-related algorithms, a graph is modified through successive
 operations, merging, creating and deleting vertices. That&amp;rsquo;s the case for the
 &lt;a href=&#34;https://en.wikipedia.org/wiki/Blossom_algorithm&#34;&gt;Blossom algorithm&lt;/a&gt; finding a
@@ -2366,10 +2366,10 @@ vertex will take the place of the removed one in the re-labelling.&lt;/p&gt;
     
     <item>
       <title>A take on Benders decomposition in JuMP</title>
-      <link>https://matbesancon.github.io/post/2019-05-08-simple-benders/</link>
+      <link>https://matbesancon.xyz/post/2019-05-08-simple-benders/</link>
       <pubDate>Wed, 08 May 2019 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2019-05-08-simple-benders/</guid>
+      <guid>https://matbesancon.xyz/post/2019-05-08-simple-benders/</guid>
       <description>&lt;p&gt;Last Friday was a great seminar of the Combinatorial Optimization group in
 Paris, celebrating the 85th birthday of Jack Edmonds, one of the founding
 researchers of combinatorial optimization, with the notable Blossom matching algorithm.
@@ -2400,7 +2400,7 @@ information to an optimization problem, which entails two components:&lt;/p&gt;
 &lt;li&gt;An &lt;strong&gt;oracle&lt;/strong&gt; or &lt;strong&gt;sub-problem&lt;/strong&gt;, taking the problem state and building the new required structure (here a new constraint).&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;Sounds familiar? Benders can be seen as the &amp;ldquo;dual twin&amp;rdquo; of the Dantzig-Wolfe
-decomposition I had played with in a &lt;a href=&#34;https://matbesancon.github.io/post/2018-05-25-colgen2/&#34;&gt;previous post&lt;/a&gt;.&lt;/p&gt;
+decomposition I had played with in a &lt;a href=&#34;https://matbesancon.xyz/post/2018-05-25-colgen2/&#34;&gt;previous post&lt;/a&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;digging-into-the-structure&#34;&gt;Digging into the structure&lt;/h2&gt;
 &lt;p&gt;Now that we have a general idea of the problem at hand, let&amp;rsquo;s see the specifics.
 Consider a problem such as:
@@ -2586,10 +2586,10 @@ don&amp;rsquo;t hesitate to react or ping me on &lt;a href=&#34;https://twitter.
     
     <item>
       <title>Variables are not values: types and expressions in mathematical optimization</title>
-      <link>https://matbesancon.github.io/post/2019-04-14-optimization-function-evaluation/</link>
+      <link>https://matbesancon.xyz/post/2019-04-14-optimization-function-evaluation/</link>
       <pubDate>Mon, 29 Apr 2019 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2019-04-14-optimization-function-evaluation/</guid>
+      <guid>https://matbesancon.xyz/post/2019-04-14-optimization-function-evaluation/</guid>
       <description>&lt;p&gt;This week, I came across Richard Oberdieck&amp;rsquo;s &lt;a href=&#34;https://github.com/RichardOberdieck/optimization-blog/blob/master/Why%20&#39;evaluate&#39;%20is%20the%20feature%20I%20am%20missing%20the%20most%20from%20commercial%20MIP%20solvers.ipynb&#34;&gt;post&lt;/a&gt;,
 &amp;ldquo;Why &amp;lsquo;evaluate&amp;rsquo; is the feature I am missing the most from commercial MIP solvers&amp;rdquo;.
 It would indeed be practical to have for the reasons listed by the author, but
@@ -2849,10 +2849,10 @@ a bunch of equations, not at all about how to tackle these.&lt;/p&gt;
     
     <item>
       <title>Picking different names with integer optimization</title>
-      <link>https://matbesancon.github.io/post/2019-04-07-name_distances/</link>
+      <link>https://matbesancon.xyz/post/2019-04-07-name_distances/</link>
       <pubDate>Sun, 07 Apr 2019 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2019-04-07-name_distances/</guid>
+      <guid>https://matbesancon.xyz/post/2019-04-07-name_distances/</guid>
       <description>&lt;hr&gt;
 &lt;p&gt;I must admit I am not always the most talented at social events.
 One point I am especially bad at is &lt;strong&gt;remembering names&lt;/strong&gt;, and it gets
@@ -2927,7 +2927,7 @@ diverse_names &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [vstr[i] 
 &lt;h2 id=&#34;trying-out-the-model&#34;&gt;Trying out the model&lt;/h2&gt;
 &lt;p&gt;I will use 50 real names taken from
 &lt;a href=&#34;http://listofrandomnames.com&#34;&gt;the list of random names&lt;/a&gt; website, which you
-can find &lt;a href=&#34;https://matbesancon.github.io/text/names.txt&#34;&gt;here&lt;/a&gt;.
+can find &lt;a href=&#34;https://matbesancon.xyz/text/names.txt&#34;&gt;here&lt;/a&gt;.
 The problem becomes large enough to be interesting, but reasonable enough for
 a decent laptop. If you want to invite 4 of these people and get the most
 different names, Christian, Elizbeth, Beulah and Wilhelmina are the ones you
@@ -2958,10 +2958,10 @@ post, and to BYP for the feedback.&lt;/p&gt;
     
     <item>
       <title>Static lists in Julia</title>
-      <link>https://matbesancon.github.io/post/2019-03-30-static-list/</link>
+      <link>https://matbesancon.xyz/post/2019-03-30-static-list/</link>
       <pubDate>Sat, 30 Mar 2019 00:00:00 +0100</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2019-03-30-static-list/</guid>
+      <guid>https://matbesancon.xyz/post/2019-03-30-static-list/</guid>
       <description>&lt;hr&gt;
 &lt;p&gt;This post explores the possibility to build static lists in Julia, meaning
 lists for which the size is known at compile-time. This is inspired by
@@ -3253,7 +3253,7 @@ of custom struct I would be glad to exchange. Porting this to
 use &lt;a href=&#34;https://github.com/vtjnash/ComputedFieldTypes.jl&#34;&gt;ComputedFieldTypes.jl&lt;/a&gt; might be a fun
 experiment.&lt;/p&gt;
 &lt;p&gt;Feel free to reach out any way you prefer, &lt;a href=&#34;https://twitter.com/matbesancon&#34;&gt;Twitter&lt;/a&gt;,
-&lt;a href=&#34;https://matbesancon.github.io/#contact&#34;&gt;email&lt;/a&gt; to exchange or discuss this post.&lt;/p&gt;
+&lt;a href=&#34;https://matbesancon.xyz/#contact&#34;&gt;email&lt;/a&gt; to exchange or discuss this post.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;sources&#34;&gt;Sources&lt;/h1&gt;
 &lt;p&gt;Header image source: &lt;a href=&#34;https://pxhere.com/en/photo/742575&#34;&gt;https://pxhere.com/en/photo/742575&lt;/a&gt;&lt;/p&gt;
@@ -3264,10 +3264,10 @@ experiment.&lt;/p&gt;
     
     <item>
       <title>Multiple dispatch - an example for mathematical optimizers</title>
-      <link>https://matbesancon.github.io/post/2019-02-24-multiple-dispatch-optimizers/</link>
+      <link>https://matbesancon.xyz/post/2019-02-24-multiple-dispatch-optimizers/</link>
       <pubDate>Sun, 24 Feb 2019 00:00:00 +0100</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2019-02-24-multiple-dispatch-optimizers/</guid>
+      <guid>https://matbesancon.xyz/post/2019-02-24-multiple-dispatch-optimizers/</guid>
       <description>&lt;p&gt;In a recent pull request on a personal project, I spent some time designing
 an intuitive API for a specific problem. After reaching a satisfying result,
 I realized this would never have been possible without one of the central
@@ -3511,7 +3511,7 @@ use cases for the Julia type system, check out
 &lt;a href=&#34;https://white.ucc.asn.au/2018/10/03/Dispatch,-Traits-and-Metaprogramming-Over-Reflection.html&#34;&gt;two&lt;/a&gt;
 articles.
 Feel free to reach out any way you prefer, &lt;a href=&#34;https://twitter.com/matbesancon&#34;&gt;Twitter&lt;/a&gt;,
-&lt;a href=&#34;https://matbesancon.github.io/#contact&#34;&gt;email&lt;/a&gt;.&lt;/p&gt;
+&lt;a href=&#34;https://matbesancon.xyz/#contact&#34;&gt;email&lt;/a&gt;.&lt;/p&gt;
 &lt;hr&gt;
 &lt;p&gt;Edit 1: thanks BYP for sharp proofreading and constructive critics.&lt;/p&gt;
 &lt;p&gt;Edit 2: Thanks Mathieu Tanneau for pointing out the alternative solution of
@@ -3526,10 +3526,10 @@ indicator constraints instead of big M, as documented in &lt;a href=&#34;http://
     
     <item>
       <title>Winter warm-up: toy models for heat exchangers</title>
-      <link>https://matbesancon.github.io/post/2018-12-27-heat-exchanger/</link>
+      <link>https://matbesancon.xyz/post/2018-12-27-heat-exchanger/</link>
       <pubDate>Thu, 27 Dec 2018 00:00:00 +0100</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2018-12-27-heat-exchanger/</guid>
+      <guid>https://matbesancon.xyz/post/2018-12-27-heat-exchanger/</guid>
       <description>&lt;p&gt;Enjoying the calm of the frozen eastern French countryside for the last week of 2018,
 I was struck by nostalgia while reading a SIAM news article [1] on a
 near-reversible heat exchange between two flows and decided to dust off my
@@ -3776,10 +3776,10 @@ universities and &lt;a href=&#34;https://en.wikipedia.org/wiki/Soci%C3%A9t%C3%A9
     
     <item>
       <title>Building our own graph type in Julia</title>
-      <link>https://matbesancon.github.io/post/2018-08-17-abstract_graph/</link>
+      <link>https://matbesancon.xyz/post/2018-08-17-abstract_graph/</link>
       <pubDate>Fri, 17 Aug 2018 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2018-08-17-abstract_graph/</guid>
+      <guid>https://matbesancon.xyz/post/2018-08-17-abstract_graph/</guid>
       <description>&lt;hr&gt;
 &lt;p&gt;This is an adapted post on the talk we gave with &lt;a href=&#34;https://twitter.com/fairbanksjp&#34;&gt;James&lt;/a&gt;
 at JuliaCon 2018 in London. You can see the
@@ -3946,13 +3946,13 @@ enough (how dense? No idea), it might be interesting to store entries as as
     
     <item>
       <title>The cutting stock problem: part 2, solving with column generation</title>
-      <link>https://matbesancon.github.io/post/2018-05-25-colgen2/</link>
+      <link>https://matbesancon.xyz/post/2018-05-25-colgen2/</link>
       <pubDate>Wed, 30 May 2018 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2018-05-25-colgen2/</guid>
+      <guid>https://matbesancon.xyz/post/2018-05-25-colgen2/</guid>
       <description>&lt;hr&gt;
 &lt;p&gt;&lt;a href=&#34;https://doi.org/10.5281/zenodo.3329389&#34;&gt;&lt;img src=&#34;https://zenodo.org/badge/DOI/10.5281/zenodo.3329389.svg&#34; alt=&#34;DOI&#34;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;In the &lt;a href=&#34;https://matbesancon.github.io/post/2018-05-23-colgen/&#34;&gt;previous post&lt;/a&gt;,
+&lt;p&gt;In the &lt;a href=&#34;https://matbesancon.xyz/post/2018-05-23-colgen/&#34;&gt;previous post&lt;/a&gt;,
 we explored a well-known integer optimization situation
 in manufacturing, the cutting stock problem. After some details on the
 decisions, constraints and objectives, we implemented a naive model in JuMP.&lt;/p&gt;
@@ -4228,10 +4228,10 @@ contributed to its improvement!&lt;/p&gt;
     
     <item>
       <title>Tackling the cutting stock problem: part 1, problem exploration</title>
-      <link>https://matbesancon.github.io/post/2018-05-23-colgen/</link>
+      <link>https://matbesancon.xyz/post/2018-05-23-colgen/</link>
       <pubDate>Wed, 23 May 2018 00:00:00 +0200</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2018-05-23-colgen/</guid>
+      <guid>https://matbesancon.xyz/post/2018-05-23-colgen/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://doi.org/10.5281/zenodo.3329389&#34;&gt;&lt;img src=&#34;https://zenodo.org/badge/DOI/10.5281/zenodo.3329389.svg&#34; alt=&#34;DOI&#34;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Integer optimization often feels weird (at least to me). Simple reformulations
 of a (mixed) integer optimization problem (MIP) can make it way easier to solve.
@@ -4505,10 +4505,10 @@ details and explanations where needed.&lt;/p&gt;
     
     <item>
       <title>Solving the group expenses headache with graphs</title>
-      <link>https://matbesancon.github.io/post/2017-09-11-graph-theory-expenses-management/</link>
+      <link>https://matbesancon.xyz/post/2017-09-11-graph-theory-expenses-management/</link>
       <pubDate>Mon, 15 Jan 2018 00:00:00 +0100</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2017-09-11-graph-theory-expenses-management/</guid>
+      <guid>https://matbesancon.xyz/post/2017-09-11-graph-theory-expenses-management/</guid>
       <description>&lt;p&gt;With the end-of-year celebrations, we all had some expenses to manage,
 some of them shared with friends, and we all have this eternal problem
 of splitting them fairly.&lt;/p&gt;
@@ -4742,11 +4742,11 @@ Lightgraphs, 2017, &lt;a href=&#34;https://doi.org/10.5281/zenodo.889971&#34;&gt
     
     <item>
       <title>DifferentialEquations.jl - part 2: decision from the model</title>
-      <link>https://matbesancon.github.io/post/2017-12-20-diffeq-julia2/</link>
+      <link>https://matbesancon.xyz/post/2017-12-20-diffeq-julia2/</link>
       <pubDate>Wed, 20 Dec 2017 00:00:00 +0100</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2017-12-20-diffeq-julia2/</guid>
-      <description>&lt;p&gt;In the &lt;a href=&#34;https://matbesancon.github.io/post/2017-12-14-diffeq-julia&#34;&gt;last article&lt;/a&gt;, we explored different modeling options for a
+      <guid>https://matbesancon.xyz/post/2017-12-20-diffeq-julia2/</guid>
+      <description>&lt;p&gt;In the &lt;a href=&#34;https://matbesancon.xyz/post/2017-12-14-diffeq-julia&#34;&gt;last article&lt;/a&gt;, we explored different modeling options for a
 three-component systems which could represent the dynamics of a chemical
 reaction or a disease propagation in a population. Building on top of this
 model, we will formulate a desirable outcome and find a decision which
@@ -4799,7 +4799,7 @@ inject_new &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span sty
 &lt;span style=&#34;color:#75715e&#34;&gt;# trying it out with an injection at t=0.4&lt;/span&gt;
 sol &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; inject_new(&lt;span style=&#34;color:#ae81ff&#34;&gt;0.4&lt;/span&gt;)
 Plots&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;plot(sol)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/DiffEq/inject.png&#34; alt=&#34;Injection simulation&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/DiffEq/inject.png&#34; alt=&#34;Injection simulation&#34;&gt;&lt;/p&gt;
 &lt;p&gt;The &lt;code&gt;ContinuousCallback&lt;/code&gt; construct is the central element here, it takes as
 information:&lt;/p&gt;
 &lt;ul&gt;
@@ -4818,7 +4818,7 @@ final_b &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; [inject_new(tin
 Plots&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;plot(tinj_span, final_b)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;Using a plain for comprehension, we fetch the solution of the simulation for
 the callback built with each $t_{inject}$.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/DiffEq/optimal_inject.png&#34; alt=&#34;Quantity of B&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/DiffEq/optimal_inject.png&#34; alt=&#34;Quantity of B&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Injecting $A$ too soon lets too much time for the created $B$ to turn into $R$,
 but injecting it too late does not let enough time for $B$ to be produced from
 the injected $A$. The optimum seems to be around ≈ 0.82,&lt;/p&gt;
@@ -4913,7 +4913,7 @@ Plots&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;plot(inject_progres
 while &lt;code&gt;condition_end&lt;/code&gt; corresponds to the time when the total injected
 quantity reaches &lt;code&gt;inj_quantity&lt;/code&gt;. The first events activates $u_4$ and sets it
 to the nominal flow, while the second callback resets it to 0.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/DiffEq/const_rate.png&#34; alt=&#34;Constant rate&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/DiffEq/const_rate.png&#34; alt=&#34;Constant rate&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Optim.jl can be re-used to determine the optimal decision:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;objective &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;function&lt;/span&gt;(x)
     sol &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; inject_progressive(x[&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;], x[&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;])
@@ -5008,10 +5008,10 @@ use Optim.jl for the second case (boxed multivariate optimization without explic
     
     <item>
       <title>Getting started with DifferentialEquations.jl</title>
-      <link>https://matbesancon.github.io/post/2017-12-14-diffeq-julia/</link>
+      <link>https://matbesancon.xyz/post/2017-12-14-diffeq-julia/</link>
       <pubDate>Thu, 14 Dec 2017 00:00:00 +0100</pubDate>
       
-      <guid>https://matbesancon.github.io/post/2017-12-14-diffeq-julia/</guid>
+      <guid>https://matbesancon.xyz/post/2017-12-14-diffeq-julia/</guid>
       <description>&lt;p&gt;&lt;a href=&#34;https://github.com/JuliaDiffEq/DifferentialEquations.jl&#34;&gt;DifferentialEquations.jl&lt;/a&gt;
 came to be a key component of Julia&amp;rsquo;s scientific ecosystem. After checking the
 JuliaCon talk of its creator, I couldn&amp;rsquo;t wait to start building stuff with it,
@@ -5103,7 +5103,7 @@ contain a direct way to produce plots. This is fairly common in Julia to
 implement methods from other packages, here the &lt;code&gt;ODESolution&lt;/code&gt; type implements
 Plots.plot:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;Plots&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;plot(sol)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/DiffEq/smooth.png&#34; alt=&#34;Solution to the ODE&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/DiffEq/smooth.png&#34; alt=&#34;Solution to the ODE&#34;&gt;&lt;/p&gt;
 &lt;p&gt;If we use the disease propagation example, $u₁(t)$ is the number of
 healthy people who haven&amp;rsquo;t been infected. It starts high, which makes the rate
 of infection by the diseased population moderate. As the number of sick people
@@ -5147,7 +5147,7 @@ sol_stoch &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; DiffEq&lt;spa
 to stochastic equations. The last variation is set to the opposite of the sum
 of the two others to compensate the two other variations (we said we had only
 one randomness phenomenon per state transition).&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/DiffEq/sde.png&#34; alt=&#34;SDE&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/DiffEq/sde.png&#34; alt=&#34;SDE&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Woops, something went wrong. This time the mass conservation doesn&amp;rsquo;t hold,
 we finish with a population below the initial condition. What is wrong is that
 we don&amp;rsquo;t define the &lt;strong&gt;variation&lt;/strong&gt; but the &lt;em&gt;gᵢ(u,t)&lt;/em&gt; function, which is then
@@ -5173,7 +5173,7 @@ sde_cons &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; DiffEq&lt;span
 cons_solution &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; DiffEq&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;solve(sde_cons, DiffEq&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;EM(), dt&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;500&lt;/span&gt;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;We also provide a &lt;code&gt;noise_rate_prototype&lt;/code&gt; parameter to the problem builder to
 indicate we don&amp;rsquo;t want to use a diagonal noise.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/DiffEq/sde_nondiag.png&#34; alt=&#34;SDE&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/DiffEq/sde_nondiag.png&#34; alt=&#34;SDE&#34;&gt;&lt;/p&gt;
 &lt;p&gt;This time the population conservation holds, at any point in time the sum of
 the $uᵢ(t)$ remains 50.&lt;/p&gt;
 &lt;h2 id=&#34;discretizing-gillespie-model&#34;&gt;Discretizing: Gillespie model&lt;/h2&gt;
@@ -5196,7 +5196,7 @@ disc_sol &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; DiffEq&lt;span
 &lt;p&gt;We define the infection and recovery rate and the variables $uᵢ$ that are
 affected, and call the Discrete solver. The Plots.jl integration once again
 yields a direct representation of the solution over the time span.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://matbesancon.github.io/img/posts/DiffEq/discrete.png&#34; alt=&#34;SDE&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://matbesancon.xyz/img/posts/DiffEq/discrete.png&#34; alt=&#34;SDE&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Again, the conservation of the total population is guaranteed by the effect of
 the jumps deleting one unit from a population to add it to the other.&lt;/p&gt;
 &lt;h2 id=&#34;conclusion&#34;&gt;Conclusion&lt;/h2&gt;
