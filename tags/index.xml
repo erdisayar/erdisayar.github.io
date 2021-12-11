@@ -7,10 +7,37 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-ca</language>
     <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
-    <lastBuildDate>Sun, 11 Apr 2021 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Sat, 11 Dec 2021 00:00:00 +0100</lastBuildDate>
     
 	    <atom:link href="https://matbesancon.xyz/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>frank-wolfe</title>
+      <link>https://matbesancon.xyz/tags/frank-wolfe/</link>
+      <pubDate>Sat, 11 Dec 2021 00:00:00 +0100</pubDate>
+      
+      <guid>https://matbesancon.xyz/tags/frank-wolfe/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>julia</title>
+      <link>https://matbesancon.xyz/tags/julia/</link>
+      <pubDate>Sat, 11 Dec 2021 00:00:00 +0100</pubDate>
+      
+      <guid>https://matbesancon.xyz/tags/julia/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>optimization</title>
+      <link>https://matbesancon.xyz/tags/optimization/</link>
+      <pubDate>Sat, 11 Dec 2021 00:00:00 +0100</pubDate>
+      
+      <guid>https://matbesancon.xyz/tags/optimization/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>academia</title>
@@ -49,29 +76,11 @@
     </item>
     
     <item>
-      <title>julia</title>
-      <link>https://matbesancon.xyz/tags/julia/</link>
-      <pubDate>Thu, 24 Dec 2020 00:00:00 +0100</pubDate>
-      
-      <guid>https://matbesancon.xyz/tags/julia/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>jump</title>
       <link>https://matbesancon.xyz/tags/jump/</link>
       <pubDate>Thu, 24 Dec 2020 00:00:00 +0100</pubDate>
       
       <guid>https://matbesancon.xyz/tags/jump/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>optimization</title>
-      <link>https://matbesancon.xyz/tags/optimization/</link>
-      <pubDate>Thu, 24 Dec 2020 00:00:00 +0100</pubDate>
-      
-      <guid>https://matbesancon.xyz/tags/optimization/</guid>
       <description></description>
     </item>
     
