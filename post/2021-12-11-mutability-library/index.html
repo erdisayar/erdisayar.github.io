@@ -552,13 +552,10 @@ while keeping the code simple to read and close to the algorithms.</p>
 <h2>Table of Contents</h2>
 <nav id="TableOfContents">
   <ul>
-    <li><a href="#no-mutability">No mutability</a>
-      <ul>
-        <li><a href="#passing-containers">Passing containers</a></li>
-        <li><a href="#dedicated-workspace">Dedicated workspace</a></li>
-        <li><a href="#functors">Functors</a></li>
-      </ul>
-    </li>
+    <li><a href="#no-mutability">No mutability</a></li>
+    <li><a href="#passing-containers">Passing containers</a></li>
+    <li><a href="#dedicated-workspace">Dedicated workspace</a></li>
+    <li><a href="#functors">Functors</a></li>
   </ul>
 </nav>
 
@@ -624,7 +621,7 @@ converge in few iterations but with each one of them doing significant
 work. In the latter case, allocating a few vectors might be fine because
 linear algebra will dominate runtime, but not in FW where each
 individual operation is relatively cheap compared to allocations.</p>
-<h2 id="passing-containers">Passing containers</h2>
+<h1 id="passing-containers">Passing containers</h1>
 <p>This would be the typical signature of C functions, receiving almost all
 heap-allocated containers as arguments.
 A typical example would be replacing the gradient computation with:</p>
@@ -651,7 +648,7 @@ Remember we cannot just bundle all the storage containers into one
 because the ``main'' one is supposed to then contain the actual gradient
 value at <code>x</code>.
 Alternatively, all additional storage elements could be put as keyword arguments, but it also quickly makes for obscure signatures.</p>
-<h2 id="dedicated-workspace">Dedicated workspace</h2>
+<h1 id="dedicated-workspace">Dedicated workspace</h1>
 <p>This is the approach taken in <a href="https://github.com/JuliaNonconvex/Nonconvex.jl">Nonconvex.jl</a>, all temporary containers required by an algorithm are defined
 as a type specific to that algorithm:</p>
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia"><span style="color:#66d9ef">struct</span> <span style="color:#66d9ef">MyAlgorithm</span> <span style="color:#66d9ef">end</span>
@@ -673,7 +670,7 @@ The workspace of a given algorithm can also contain multiple arguments
 of different types without requiring changes to the other algorithms.
 This is exactly the path experimented for the step size computation
 in <a href="https://github.com/ZIB-IOL/FrankWolfe.jl/pull/259">FrankWolfe.jl#259</a>.</p>
-<h2 id="functors">Functors</h2>
+<h1 id="functors">Functors</h1>
 <p>Sadly, the workspace pattern not a silver bullet, even if it covers a lot of cases.
 When one needs not only some internal workspace, but also returning a large object?</p>
 <p>The Frank-Wolfe is also composed of different building blocks, gradient computation,

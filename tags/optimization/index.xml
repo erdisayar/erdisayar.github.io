@@ -31,13 +31,10 @@ while keeping the code simple to read and close to the algorithms.&lt;/p&gt;
 &lt;h2&gt;Table of Contents&lt;/h2&gt;
 &lt;nav id=&#34;TableOfContents&#34;&gt;
   &lt;ul&gt;
-    &lt;li&gt;&lt;a href=&#34;#no-mutability&#34;&gt;No mutability&lt;/a&gt;
-      &lt;ul&gt;
-        &lt;li&gt;&lt;a href=&#34;#passing-containers&#34;&gt;Passing containers&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href=&#34;#dedicated-workspace&#34;&gt;Dedicated workspace&lt;/a&gt;&lt;/li&gt;
-        &lt;li&gt;&lt;a href=&#34;#functors&#34;&gt;Functors&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#no-mutability&#34;&gt;No mutability&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#passing-containers&#34;&gt;Passing containers&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#dedicated-workspace&#34;&gt;Dedicated workspace&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#functors&#34;&gt;Functors&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/nav&gt;
 
@@ -103,7 +100,7 @@ converge in few iterations but with each one of them doing significant
 work. In the latter case, allocating a few vectors might be fine because
 linear algebra will dominate runtime, but not in FW where each
 individual operation is relatively cheap compared to allocations.&lt;/p&gt;
-&lt;h2 id=&#34;passing-containers&#34;&gt;Passing containers&lt;/h2&gt;
+&lt;h1 id=&#34;passing-containers&#34;&gt;Passing containers&lt;/h1&gt;
 &lt;p&gt;This would be the typical signature of C functions, receiving almost all
 heap-allocated containers as arguments.
 A typical example would be replacing the gradient computation with:&lt;/p&gt;
@@ -130,7 +127,7 @@ Remember we cannot just bundle all the storage containers into one
 because the ``main&#39;&#39; one is supposed to then contain the actual gradient
 value at &lt;code&gt;x&lt;/code&gt;.
 Alternatively, all additional storage elements could be put as keyword arguments, but it also quickly makes for obscure signatures.&lt;/p&gt;
-&lt;h2 id=&#34;dedicated-workspace&#34;&gt;Dedicated workspace&lt;/h2&gt;
+&lt;h1 id=&#34;dedicated-workspace&#34;&gt;Dedicated workspace&lt;/h1&gt;
 &lt;p&gt;This is the approach taken in &lt;a href=&#34;https://github.com/JuliaNonconvex/Nonconvex.jl&#34;&gt;Nonconvex.jl&lt;/a&gt;, all temporary containers required by an algorithm are defined
 as a type specific to that algorithm:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;struct&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;MyAlgorithm&lt;/span&gt; &lt;span style=&#34;color:#66d9ef&#34;&gt;end&lt;/span&gt;
@@ -152,7 +149,7 @@ The workspace of a given algorithm can also contain multiple arguments
 of different types without requiring changes to the other algorithms.
 This is exactly the path experimented for the step size computation
 in &lt;a href=&#34;https://github.com/ZIB-IOL/FrankWolfe.jl/pull/259&#34;&gt;FrankWolfe.jl#259&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&#34;functors&#34;&gt;Functors&lt;/h2&gt;
+&lt;h1 id=&#34;functors&#34;&gt;Functors&lt;/h1&gt;
 &lt;p&gt;Sadly, the workspace pattern not a silver bullet, even if it covers a lot of cases.
 When one needs not only some internal workspace, but also returning a large object?&lt;/p&gt;
 &lt;p&gt;The Frank-Wolfe is also composed of different building blocks, gradient computation,
