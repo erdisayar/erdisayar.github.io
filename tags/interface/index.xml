@@ -25,7 +25,7 @@ that were not stated. This has led to the development of
 &lt;a href=&#34;https://github.com/matbesancon/VertexSafeGraphs.jl&#34;&gt;VertexSafeGraphs.jl&lt;/a&gt; and
 soon to some work on LightGraphs.jl itself.&lt;/p&gt;
 &lt;p&gt;Another way to push the abstraction came out of the
-&lt;a href=&#34;http://matbesancon.github.io/slides/JuliaNantes/Graphs&#34;&gt;JuliaNantes workshop&lt;/a&gt;:
+&lt;a href=&#34;https://matbesancon.xyz/slides/JuliaNantes/Graphs&#34;&gt;JuliaNantes workshop&lt;/a&gt;:
 leveraging some special structure of graphs to optimize some specific operations.
 A good parallel can be established be with the &lt;code&gt;LinearAlgebra&lt;/code&gt; package from
 Julia Base, which defines special matrices such as &lt;code&gt;Diagonal&lt;/code&gt; and &lt;code&gt;Symmetric&lt;/code&gt;
@@ -329,14 +329,14 @@ vertex will take the place of the removed one in the re-labelling.&lt;/p&gt;
       <description>&lt;hr&gt;
 &lt;p&gt;This is an adapted post on the talk we gave with &lt;a href=&#34;https://twitter.com/fairbanksjp&#34;&gt;James&lt;/a&gt;
 at JuliaCon 2018 in London. You can see the
-&lt;a href=&#34;https://matbesancon.github.io/graph_interfaces_juliacon18&#34;&gt;original slides&lt;/a&gt;,
+&lt;a href=&#34;https://matbesancon.xyz/graph_interfaces_juliacon18&#34;&gt;original slides&lt;/a&gt;,
 the video still requires a bit of post-processing.&lt;/p&gt;
 &lt;p&gt;Last week &lt;a href=&#34;http://juliacon.org&#34;&gt;JuliaCon&lt;/a&gt; in London was a great and very condensed experience.
 The two talks on &lt;a href=&#34;https://github.com/JuliaGraphs/LightGraphs.jl&#34;&gt;LightGraphs.jl&lt;/a&gt;
 received a lot of positive feedback and more than that, we saw
 how people are using the library for a variety of use cases which is a great
 signal for the work on the JuliaGraphs ecosystem
-(see the &lt;a href=&#34;https://matbesancon.github.io/graph_interfaces_juliacon18/ecosystem.html#/&#34;&gt;lightning talk&lt;/a&gt;).&lt;/p&gt;
+(see the &lt;a href=&#34;https://matbesancon.xyz/graph_interfaces_juliacon18/ecosystem.html#/&#34;&gt;lightning talk&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;I wanted to re-build the same graph for people who prefer a post version to
 my clumsy live explanations on a laptop not handling dual-screen well
 (those who prefer the latter are invited to see the live-stream of the talk).&lt;/p&gt;
@@ -470,7 +470,7 @@ but the type ends up being a bit heavier in memory, your type, your trade-off.&l
 &lt;p&gt;We&amp;rsquo;ve implemented a graph type suited to our need in a couple lines of Julia,
 guided by the &lt;code&gt;LightGraphs&lt;/code&gt; interface specifying &lt;strong&gt;how&lt;/strong&gt; to think about our
 graph instead of getting in the way of &lt;strong&gt;what&lt;/strong&gt; to store. A lighter version
-of this post can be read as &lt;a href=&#34;https://matbesancon.github.io/graph_interfaces_juliacon18/&#34;&gt;slides&lt;/a&gt;.&lt;/p&gt;
+of this post can be read as &lt;a href=&#34;https://matbesancon.xyz/graph_interfaces_juliacon18/&#34;&gt;slides&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;As usual, ping me on &lt;a href=&#34;https://twitter.com/matbesancon&#34;&gt;Twitter&lt;/a&gt; for any
 question or comment.&lt;/p&gt;
 &lt;h2 id=&#34;bonus&#34;&gt;Bonus&lt;/h2&gt;

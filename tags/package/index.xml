@@ -21,14 +21,14 @@
       <description>&lt;hr&gt;
 &lt;p&gt;This is an adapted post on the talk we gave with &lt;a href=&#34;https://twitter.com/fairbanksjp&#34;&gt;James&lt;/a&gt;
 at JuliaCon 2018 in London. You can see the
-&lt;a href=&#34;https://matbesancon.github.io/graph_interfaces_juliacon18&#34;&gt;original slides&lt;/a&gt;,
+&lt;a href=&#34;https://matbesancon.xyz/graph_interfaces_juliacon18&#34;&gt;original slides&lt;/a&gt;,
 the video still requires a bit of post-processing.&lt;/p&gt;
 &lt;p&gt;Last week &lt;a href=&#34;http://juliacon.org&#34;&gt;JuliaCon&lt;/a&gt; in London was a great and very condensed experience.
 The two talks on &lt;a href=&#34;https://github.com/JuliaGraphs/LightGraphs.jl&#34;&gt;LightGraphs.jl&lt;/a&gt;
 received a lot of positive feedback and more than that, we saw
 how people are using the library for a variety of use cases which is a great
 signal for the work on the JuliaGraphs ecosystem
-(see the &lt;a href=&#34;https://matbesancon.github.io/graph_interfaces_juliacon18/ecosystem.html#/&#34;&gt;lightning talk&lt;/a&gt;).&lt;/p&gt;
+(see the &lt;a href=&#34;https://matbesancon.xyz/graph_interfaces_juliacon18/ecosystem.html#/&#34;&gt;lightning talk&lt;/a&gt;).&lt;/p&gt;
 &lt;p&gt;I wanted to re-build the same graph for people who prefer a post version to
 my clumsy live explanations on a laptop not handling dual-screen well
 (those who prefer the latter are invited to see the live-stream of the talk).&lt;/p&gt;
@@ -162,7 +162,7 @@ but the type ends up being a bit heavier in memory, your type, your trade-off.&l
 &lt;p&gt;We&amp;rsquo;ve implemented a graph type suited to our need in a couple lines of Julia,
 guided by the &lt;code&gt;LightGraphs&lt;/code&gt; interface specifying &lt;strong&gt;how&lt;/strong&gt; to think about our
 graph instead of getting in the way of &lt;strong&gt;what&lt;/strong&gt; to store. A lighter version
-of this post can be read as &lt;a href=&#34;https://matbesancon.github.io/graph_interfaces_juliacon18/&#34;&gt;slides&lt;/a&gt;.&lt;/p&gt;
+of this post can be read as &lt;a href=&#34;https://matbesancon.xyz/graph_interfaces_juliacon18/&#34;&gt;slides&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;As usual, ping me on &lt;a href=&#34;https://twitter.com/matbesancon&#34;&gt;Twitter&lt;/a&gt; for any
 question or comment.&lt;/p&gt;
 &lt;h2 id=&#34;bonus&#34;&gt;Bonus&lt;/h2&gt;

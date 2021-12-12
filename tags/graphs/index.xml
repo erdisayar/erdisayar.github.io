@@ -350,7 +350,7 @@ that were not stated. This has led to the development of
 &lt;a href=&#34;https://github.com/matbesancon/VertexSafeGraphs.jl&#34;&gt;VertexSafeGraphs.jl&lt;/a&gt; and
 soon to some work on LightGraphs.jl itself.&lt;/p&gt;
 &lt;p&gt;Another way to push the abstraction came out of the
-&lt;a href=&#34;http://matbesancon.github.io/slides/JuliaNantes/Graphs&#34;&gt;JuliaNantes workshop&lt;/a&gt;:
+&lt;a href=&#34;https://matbesancon.xyz/slides/JuliaNantes/Graphs&#34;&gt;JuliaNantes workshop&lt;/a&gt;:
 leveraging some special structure of graphs to optimize some specific operations.
 A good parallel can be established be with the &lt;code&gt;LinearAlgebra&lt;/code&gt; package from
 Julia Base, which defines special matrices such as &lt;code&gt;Diagonal&lt;/code&gt; and &lt;code&gt;Symmetric&lt;/code&gt;

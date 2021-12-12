@@ -490,7 +490,7 @@ I could not resist diving into this new &lt;a href=&#34;https://sinews.siam.org/
 on SIAM News.
 This is the second time a post from Mark Levi caught my attention, the last
 was on &lt;a href=&#34;https://sinews.siam.org/Details-Page/a-near-perfect-heat-exchange&#34;&gt;heat exchangers&lt;/a&gt;,
-on which I also wrote a &lt;a href=&#34;https://matbesancon.github.io/post/2018-12-27-heat-exchanger/&#34;&gt;post&lt;/a&gt;, toying with parallel and counter-current heat exchangers.&lt;/p&gt;
+on which I also wrote a &lt;a href=&#34;https://matbesancon.xyz/post/2018-12-27-heat-exchanger/&#34;&gt;post&lt;/a&gt;, toying with parallel and counter-current heat exchangers.&lt;/p&gt;
 &lt;p&gt;This new post from Mark Levi illustrates a key concept in constrained optimization: &lt;em&gt;Lagrange multipliers&lt;/em&gt;
 and a nice interpretation in a problem of communicating vessels.&lt;/p&gt;
 &lt;h1 id=&#34;communicating-vessels-and-optimization-formulation&#34;&gt;Communicating vessels and optimization formulation&lt;/h1&gt;
@@ -1171,7 +1171,7 @@ Let us implement our function $f(w)$:&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To understand how this derivative computation can work with just few
 function calls (proportional to the size of the input), one must dig
 a bit deeper in &lt;a href=&#34;https://en.wikipedia.org/wiki/Dual_number&#34;&gt;Dual Numbers&lt;/a&gt;.
-I will shamelessly refer to &lt;a href=&#34;https://matbesancon.github.io/slides/ad4dev#/12&#34;&gt;my slides&lt;/a&gt;
+I will shamelessly refer to &lt;a href=&#34;https://matbesancon.xyz/slides/ad4dev#/12&#34;&gt;my slides&lt;/a&gt;
 at the Lambda Lille meetup for an example implementation in Haskell.&lt;/p&gt;
 &lt;h1 id=&#34;why-not-reverse-mode&#34;&gt;Why not reverse-mode?&lt;/h1&gt;
 &lt;p&gt;I mentioned that the cost of computing the value &amp;amp; derivatives is proportional
