@@ -124,7 +124,7 @@ Adding more storage:&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;means users would need to implement one with a very large number of arguments
 all the time which they wouldn&amp;rsquo;t use.
 Remember we cannot just bundle all the storage containers into one
-because the ``main&#39;&#39; one is supposed to then contain the actual gradient
+because the &amp;ldquo;main&amp;rdquo; one is supposed to then contain the actual gradient
 value at &lt;code&gt;x&lt;/code&gt;.
 Alternatively, all additional storage elements could be put as keyword arguments, but it also quickly makes for obscure signatures.&lt;/p&gt;
 &lt;h1 id=&#34;dedicated-workspace&#34;&gt;Dedicated workspace&lt;/h1&gt;
@@ -150,7 +150,7 @@ of different types without requiring changes to the other algorithms.
 This is exactly the path experimented for the step size computation
 in &lt;a href=&#34;https://github.com/ZIB-IOL/FrankWolfe.jl/pull/259&#34;&gt;FrankWolfe.jl#259&lt;/a&gt;.&lt;/p&gt;
 &lt;h1 id=&#34;functors&#34;&gt;Functors&lt;/h1&gt;
-&lt;p&gt;Sadly, the workspace pattern not a silver bullet, even if it covers a lot of cases.
+&lt;p&gt;Sadly, the workspace pattern is not a silver bullet, even if it covers a lot of cases.
 When one needs not only some internal workspace, but also returning a large object?&lt;/p&gt;
 &lt;p&gt;The Frank-Wolfe is also composed of different building blocks, gradient computation,
 linear oracle, step size. Should we have a dedicated workspace for each of them?
@@ -220,6 +220,7 @@ grad! &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; GradientWithMatri
 &lt;span style=&#34;color:#75715e&#34;&gt;# ...&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This allows us, in a non-intrusive way for the algorithm code, to add an iteration tracking feature
 to Frank-Wolfe.&lt;/p&gt;
+&lt;p&gt;Thanks &lt;a href=&#34;https://github.com/Wikunia/&#34;&gt;Wikunia&lt;/a&gt; for proofreading and feedback!&lt;/p&gt;
 </description>
     </item>
     
