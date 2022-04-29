@@ -267,7 +267,7 @@ Library developers can implement custom derivatives for their own functions and 
 Finally, AD library developers can leverage ChainRules.jl to obtain derivatives
 from functions when available, and otherwise use AD mechanisms to obtain them from
 more elementary functions.&lt;/p&gt;
-&lt;p&gt;The logic and motivation is explained in more details in &lt;a href=&#34;https://www.youtube.com/watch?v=B4NfkkkJ7rs&#34;&gt;Lyndon&amp;rsquo;s talk&lt;/a&gt;
+&lt;p&gt;The logic and motivation is explained in more details in &lt;a href=&#34;https://www.youtube.com/watch?v=B4NfkkkJ7rs&#34;&gt;Frame&amp;rsquo;s talk&lt;/a&gt;
 at JuliaCon 2020 and the package &lt;a href=&#34;https://www.juliadiff.org/ChainRulesCore.jl/stable/&#34;&gt;documentation&lt;/a&gt;
 which is very instructive on AD in general.&lt;/p&gt;
 &lt;h1 id=&#34;projection-derivative&#34;&gt;Projection derivative&lt;/h1&gt;

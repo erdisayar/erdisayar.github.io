@@ -796,7 +796,7 @@ Library developers can implement custom derivatives for their own functions and 
 Finally, AD library developers can leverage ChainRules.jl to obtain derivatives
 from functions when available, and otherwise use AD mechanisms to obtain them from
 more elementary functions.&lt;/p&gt;
-&lt;p&gt;The logic and motivation is explained in more details in &lt;a href=&#34;https://www.youtube.com/watch?v=B4NfkkkJ7rs&#34;&gt;Lyndon&amp;rsquo;s talk&lt;/a&gt;
+&lt;p&gt;The logic and motivation is explained in more details in &lt;a href=&#34;https://www.youtube.com/watch?v=B4NfkkkJ7rs&#34;&gt;Frame&amp;rsquo;s talk&lt;/a&gt;
 at JuliaCon 2020 and the package &lt;a href=&#34;https://www.juliadiff.org/ChainRulesCore.jl/stable/&#34;&gt;documentation&lt;/a&gt;
 which is very instructive on AD in general.&lt;/p&gt;
 &lt;h1 id=&#34;projection-derivative&#34;&gt;Projection derivative&lt;/h1&gt;
@@ -1827,7 +1827,7 @@ does not make the situation remotely &amp;ldquo;fine&amp;rdquo; for many of us, 
 &lt;a href=&#34;https://blog.alicegoldfuss.com/work-in-the-time-of-corona/&#34;&gt;this post&lt;/a&gt;, from the
 same author as the restaurant recommendations above, is worth it.
 If you read French, feel free to also check this thread:&lt;/p&gt;
-&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;fr&#34; dir=&#34;ltr&#34;&gt;[THREAD DOCTORAT]&lt;br&gt;Bonjour à tous, comme la plupart des doctorants du territoires nous avons été encouragés à faire du télétravail à partir de lundi, puis en quelques heures aujourd’hui la situation s’est dégradée. Nous ne pouvons plus accéder à nos laboratoire ,à nos manips, rien&lt;/p&gt;&amp;mdash; Mathilde 👩🏼‍💻 (@BienDansMaThese) &lt;a href=&#34;https://twitter.com/BienDansMaThese/status/1239347768562499586?ref_src=twsrc%5Etfw&#34;&gt;March 16, 2020&lt;/a&gt;&lt;/blockquote&gt;
+&lt;blockquote class=&#34;twitter-tweet&#34;&gt;&lt;p lang=&#34;fr&#34; dir=&#34;ltr&#34;&gt;[THREAD DOCTORAT]&lt;br&gt;Bonjour à tous, comme la plupart des doctorants du territoires nous avons été encouragés à faire du télétravail à partir de lundi, puis en quelques heures aujourd’hui la situation s’est dégradée. Nous ne pouvons plus accéder à nos laboratoire ,à nos manips, rien&lt;/p&gt;&amp;mdash; Dr. Mathilde 👩🏼‍💻 (@BienDansMaThese) &lt;a href=&#34;https://twitter.com/BienDansMaThese/status/1239347768562499586?ref_src=twsrc%5Etfw&#34;&gt;March 16, 2020&lt;/a&gt;&lt;/blockquote&gt;
 &lt;script async src=&#34;https://platform.twitter.com/widgets.js&#34; charset=&#34;utf-8&#34;&gt;&lt;/script&gt;
 
 &lt;p&gt;where Mathilde documents the progress and of setting up a workflow and new
