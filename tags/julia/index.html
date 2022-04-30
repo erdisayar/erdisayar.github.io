@@ -116,7 +116,7 @@
   <meta property="og:description" content="Postdoctoral researcher, mathematical optimization"><meta property="og:image" content="https://matbesancon.xyz/img/icon-192.png">
   <meta property="twitter:image" content="https://matbesancon.xyz/img/icon-192.png"><meta property="og:locale" content="en-ca">
   
-  <meta property="og:updated_time" content="2021-12-11T00:00:00&#43;01:00">
+  <meta property="og:updated_time" content="2022-04-29T00:00:00&#43;02:00">
   
 
   
@@ -396,6 +396,15 @@
   
   
   <div>
+    <h2><a href="/post/2022-04-29-expression-trees/">Pruning the expression tree with recursive value identification</a></h2>
+    <div class="article-style">
+      
+      Today was the release of SCIP.jl v0.11, the first release switching to SCIP 8. The major change in this (massive) release was the rewrite of the nonlinear optimization part, using a so-called expression framework. The rewrite of the wrapper had some fairly tedious parts, debugging C shared libraries is quickly a mess with cryptic error messages. But the nonlinear rewrite gave me the opportunity to tweak the way Julia expressions are passed to SCIP in a minor way.
+      
+    </div>
+  </div>
+  
+  <div>
     <h2><a href="/post/2021-12-11-mutability-library/">Mutability, scope, and separation of concerns in library code</a></h2>
     <div class="article-style">
       
@@ -480,16 +489,6 @@ class Car { private Motor motor; public Car(Motor m) { this.
       
       In a previous post, we pushed the boundaries of the LightGraphs.jl abstraction to see how conforming the algorithms are to the declared interface, noticing some implied assumptions that were not stated. This has led to the development of VertexSafeGraphs.jl and soon to some work on LightGraphs.jl itself.
 Another way to push the abstraction came out of the JuliaNantes workshop: leveraging some special structure of graphs to optimize some specific operations. A good parallel can be established be with the LinearAlgebra package from Julia Base, which defines special matrices such as Diagonal and Symmetric and Adjoint, implementing the AbstractMatrix interface but without storing all the entries.
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/2019-05-30-vertex-safe-removal/">Vertex removal in LightGraphs</a></h2>
-    <div class="article-style">
-      
-      In various graph-related algorithms, a graph is modified through successive operations, merging, creating and deleting vertices. That&rsquo;s the case for the Blossom algorithm finding a best matching in a graph and using contractions of nodes. In such cases, it can be useful to remove only the vertex being contracted, and maintain the number of all other vertices.
-LightGraphs.jl offers a set of abstractions, types and algorithms to get started with graphs.
       
     </div>
   </div>

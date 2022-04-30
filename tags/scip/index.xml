@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>scip on μβ</title>
+    <link>https://matbesancon.xyz/tags/scip/</link>
+    <description>Recent content in scip on μβ</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-ca</language>
+    <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
+    <lastBuildDate>Fri, 29 Apr 2022 00:00:00 +0200</lastBuildDate>
+    
+	    <atom:link href="https://matbesancon.xyz/tags/scip/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Pruning the expression tree with recursive value identification</title>
+      <link>https://matbesancon.xyz/post/2022-04-29-expression-trees/</link>
+      <pubDate>Fri, 29 Apr 2022 00:00:00 +0200</pubDate>
+      
+      <guid>https://matbesancon.xyz/post/2022-04-29-expression-trees/</guid>
+      <description>&lt;p&gt;Today was the release of &lt;a href=&#34;LINK&#34;&gt;SCIP.jl&lt;/a&gt; v0.11, the first release switching to SCIP 8.
+The major change in this (massive) release was the rewrite of the nonlinear optimization part, using a so-called expression framework.
+The rewrite of the wrapper had some fairly tedious parts, debugging C shared libraries is quickly a mess with cryptic error messages.
+But the nonlinear rewrite gave me the opportunity to tweak the way Julia expressions are passed to SCIP in a minor way.&lt;/p&gt;
+&lt;h2&gt;Table of Contents&lt;/h2&gt;
+&lt;nav id=&#34;TableOfContents&#34;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href=&#34;#scip-expressions&#34;&gt;SCIP expressions&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#the-julia-wrapper-initial-framework&#34;&gt;The Julia wrapper initial framework&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#a-lazified-expression-declaration&#34;&gt;A lazified expression declaration&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;
+
+&lt;h1 id=&#34;scip-expressions&#34;&gt;SCIP expressions&lt;/h1&gt;
+&lt;p&gt;I will not go in depth into the new expression framework and will instead reference &lt;a href=&#34;https://scipopt.org/workshop2020/slides/minlp.pdf&#34;&gt;these slides&lt;/a&gt;
+but more importantly &lt;a href=&#34;https://arxiv.org/abs/2112.08872&#34;&gt;the SCIP 8 release report&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The key part is that in a nonlinear expression, each operand is defined as an &lt;em&gt;expression handler&lt;/em&gt;, and new ones can be introduced by users.
+Several specialized constraint types or &lt;em&gt;constraint handlers&lt;/em&gt; in SCIP terminology were also removed, using the expression framework with
+a generic nonlinear constraint instead.&lt;/p&gt;
+&lt;h1 id=&#34;the-julia-wrapper-initial-framework&#34;&gt;The Julia wrapper initial framework&lt;/h1&gt;
+&lt;p&gt;As a Lisp-inspired language, (some would even a Lisp dialect),
+Julia is a homoiconic language: valid Julia code can always be represented and stored in a primitive data structure.
+In this case, the tree-like structure is &lt;code&gt;Expr&lt;/code&gt; with fields &lt;code&gt;head&lt;/code&gt; and &lt;code&gt;args&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;julia&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; expr &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt;x)
+&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;+&lt;/span&gt; &lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; x)
+
+julia&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; expr&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;head
+&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;call
+
+julia&lt;span style=&#34;color:#f92672&#34;&gt;&amp;gt;&lt;/span&gt; expr&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;args
+&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;-&lt;/span&gt;element &lt;span style=&#34;color:#66d9ef&#34;&gt;Vector&lt;/span&gt;{&lt;span style=&#34;color:#66d9ef&#34;&gt;Any&lt;/span&gt;}&lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;:+&lt;/span&gt;
+ &lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;
+  &lt;span style=&#34;color:#f92672&#34;&gt;:&lt;/span&gt;(&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;/&lt;/span&gt; x)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The SCIP.jl wrapper recursively destructures the Julia expression and builds up corresponding SCIP
+expressions, a SCIP data structure defined either as a leaf (a simple value or a variable)
+or as an operand and a number of subexpressions.
+This is done through a &lt;code&gt;push_expr!&lt;/code&gt; function which either:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Creates and returns a single variable expression if the expression is a variable&lt;/li&gt;
+&lt;li&gt;Creates and returns a single value expression if the expression is a constant&lt;/li&gt;
+&lt;li&gt;If the expression is a function &lt;code&gt;f(arg1, arg2...)&lt;/code&gt;, calls &lt;code&gt;push_expr!&lt;/code&gt; on all arguments, and then creates and returns the SCIP expression corresponding to &lt;code&gt;f&lt;/code&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;One part remains problematic, imagine an expression like &lt;code&gt;3 * exp(x) + 0.5 * f(4.3)&lt;/code&gt;, where &lt;code&gt;f&lt;/code&gt;
+is not a primitive supported by SCIP. It should not have to be indeed, because that part of the expression
+could be evaluated at expression compile-time. But if one is walking down the expression sub-parts,
+there was no way to know that a given part is a pure value, the expression-constructing procedure would
+first create a SCIP expression for 4.3 and then try to find a function for &lt;code&gt;f&lt;/code&gt; to apply with this expression
+pointer as argument. This was the use case initially reported in &lt;a href=&#34;https://github.com/scipopt/SCIP.jl/issues/166&#34;&gt;this issue&lt;/a&gt;
+at a time when SCIP did not support trigonometric functions yet.&lt;/p&gt;
+&lt;p&gt;Another motivation for solving this issue is on the computational and memory burden.
+Imagine your expression is now &lt;code&gt;3 * exp(x) + 0.1 * cos(0.1) + 0.2 * cos(0.2) + ... + 100.0 * cos(100.0)&lt;/code&gt;.
+This will require producing 2 * 1000 expressions for a constant, declared, allocated and passed down to SCIP.
+The solver will then likely preprocess all constant expressions to reduce them down, so it ends up being a lot of
+work done on one end to undo immediately on the other.&lt;/p&gt;
+&lt;h1 id=&#34;a-lazified-expression-declaration&#34;&gt;A lazified expression declaration&lt;/h1&gt;
+&lt;p&gt;Make &lt;code&gt;push_expr!&lt;/code&gt; return two values &lt;code&gt;(scip_expr, pure_value)&lt;/code&gt;, with the second being a Boolean for whether the expression is a pure value or not.
+At any leaf computing &lt;code&gt;f(arg1, arg2...)&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;If the expression of all arguments are &lt;code&gt;pure_value&lt;/code&gt;, do &lt;strong&gt;not&lt;/strong&gt; compute the expression and just return a null pointer, &lt;code&gt;pure_value&lt;/code&gt; is true for this expression.&lt;/p&gt;
+&lt;p&gt;If at least one of the arguments is not a &lt;code&gt;pure_value&lt;/code&gt;, we need to compute the actual expression. None of the &lt;code&gt;pure_value&lt;/code&gt; arguments were declared as SCIP expressions yet, we create a leaf value expression for them with &lt;code&gt;Meta.eval(arg_i)&lt;/code&gt;. The non-pure value arguments already have a correct corresponding SCIP expression pointer. &lt;code&gt;pure_value&lt;/code&gt; is false for this expression.&lt;/p&gt;
+&lt;p&gt;Note here that we are traversing some sub-expressions twice, once when walking down the tree and once more hidden with &lt;code&gt;Meta.eval(arg_i)&lt;/code&gt; which computes the value for said expression, where we delegate the expression value computation to Julia. An alternative would be to return a triplet from every &lt;code&gt;push_expr!&lt;/code&gt; call &lt;code&gt;(expr_pointer, pure_value, val)&lt;/code&gt; and evaluate at
+each &lt;code&gt;pure_value&lt;/code&gt; node the value of &lt;code&gt;f(args...)&lt;/code&gt;, with the value of the arguments already computed. This would however complexity the code in the wrapper with no advantage of the runtime,
+the expression evaluation is not a bottleneck for expressions that can realistically be tackled by a global optimization solver like SCIP.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

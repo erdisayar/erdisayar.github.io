@@ -2,22 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://matbesancon.xyz/tags/julia/</loc>
+    <lastmod>2022-04-29T18:42:31+02:00</lastmod>
+  </url><url>
+    <loc>https://matbesancon.xyz/tags/optimization/</loc>
+    <lastmod>2022-04-29T18:42:31+02:00</lastmod>
+  </url><url>
+    <loc>https://matbesancon.xyz/post/2022-04-29-expression-trees/</loc>
+    <lastmod>2022-04-29T00:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://matbesancon.xyz/tags/scip/</loc>
+    <lastmod>2022-04-29T00:00:00+02:00</lastmod>
+  </url><url>
+    <loc>https://matbesancon.xyz/tags/</loc>
+    <lastmod>2022-04-29T18:42:31+02:00</lastmod>
+  </url><url>
+    <loc>https://matbesancon.xyz/</loc>
+    <lastmod>2022-04-29T18:42:31+02:00</lastmod>
+  </url><url>
     <loc>https://matbesancon.xyz/tags/frank-wolfe/</loc>
     <lastmod>2021-12-13T19:17:11+01:00</lastmod>
   </url><url>
-    <loc>https://matbesancon.xyz/tags/julia/</loc>
-    <lastmod>2021-12-13T19:17:11+01:00</lastmod>
-  </url><url>
     <loc>https://matbesancon.xyz/post/2021-12-11-mutability-library/</loc>
-    <lastmod>2021-12-13T19:17:11+01:00</lastmod>
-  </url><url>
-    <loc>https://matbesancon.xyz/tags/optimization/</loc>
-    <lastmod>2021-12-13T19:17:11+01:00</lastmod>
-  </url><url>
-    <loc>https://matbesancon.xyz/tags/</loc>
-    <lastmod>2021-12-13T19:17:11+01:00</lastmod>
-  </url><url>
-    <loc>https://matbesancon.xyz/</loc>
     <lastmod>2021-12-13T19:17:11+01:00</lastmod>
   </url><url>
     <loc>https://matbesancon.xyz/tags/academia/</loc>
@@ -39,13 +45,13 @@
     <lastmod>2021-04-02T17:46:26+02:00</lastmod>
   </url><url>
     <loc>https://matbesancon.xyz/tags/automatic-differentiation/</loc>
-    <lastmod>2021-12-12T12:28:18+01:00</lastmod>
+    <lastmod>2022-04-29T18:42:31+02:00</lastmod>
   </url><url>
     <loc>https://matbesancon.xyz/tags/jump/</loc>
-    <lastmod>2021-12-12T12:28:18+01:00</lastmod>
+    <lastmod>2022-04-29T18:42:31+02:00</lastmod>
   </url><url>
     <loc>https://matbesancon.xyz/post/2020-12-24-chains_sets2/</loc>
-    <lastmod>2020-12-24T18:52:33+01:00</lastmod>
+    <lastmod>2022-04-29T18:42:31+02:00</lastmod>
   </url><url>
     <loc>https://matbesancon.xyz/post/2020-12-23-chains_sets/</loc>
     <lastmod>2020-12-25T11:38:34+01:00</lastmod>

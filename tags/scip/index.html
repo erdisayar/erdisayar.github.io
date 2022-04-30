@@ -31,7 +31,7 @@
   <meta name="description" content="Postdoctoral researcher, mathematical optimization">
 
   
-  <link rel="alternate" hreflang="en-ca" href="https://matbesancon.xyz/tags/optimization/">
+  <link rel="alternate" hreflang="en-ca" href="https://matbesancon.xyz/tags/scip/">
 
   
 
@@ -89,14 +89,14 @@
   
 
   
-  <link rel="alternate" href="/tags/optimization/index.xml" type="application/rss+xml" title="μβ">
+  <link rel="alternate" href="/tags/scip/index.xml" type="application/rss+xml" title="μβ">
   
 
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://matbesancon.xyz/tags/optimization/">
+  <link rel="canonical" href="https://matbesancon.xyz/tags/scip/">
 
   
   
@@ -111,8 +111,8 @@
   <meta property="twitter:creator" content="@matbesancon">
   
   <meta property="og:site_name" content="μβ">
-  <meta property="og:url" content="https://matbesancon.xyz/tags/optimization/">
-  <meta property="og:title" content="optimization | μβ">
+  <meta property="og:url" content="https://matbesancon.xyz/tags/scip/">
+  <meta property="og:title" content="scip | μβ">
   <meta property="og:description" content="Postdoctoral researcher, mathematical optimization"><meta property="og:image" content="https://matbesancon.xyz/img/icon-192.png">
   <meta property="twitter:image" content="https://matbesancon.xyz/img/icon-192.png"><meta property="og:locale" content="en-ca">
   
@@ -128,7 +128,7 @@
 
 
 
-  <title>optimization | μβ</title>
+  <title>scip | μβ</title>
 
 </head>
 
@@ -381,7 +381,7 @@
     
   
 <div class="universal-wrapper pt-3">
-  <h1 itemprop="name">optimization</h1>
+  <h1 itemprop="name">scip</h1>
 
   
 
@@ -396,56 +396,16 @@
   
   
   <div>
-    <h2><a href="/post/2019-02-24-multiple-dispatch-optimizers/">Multiple dispatch - an example for mathematical optimizers</a></h2>
+    <h2><a href="/post/2022-04-29-expression-trees/">Pruning the expression tree with recursive value identification</a></h2>
     <div class="article-style">
       
-      Leveraging one of Julia central features for clearer formulation of an optimization problem.
-
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/2018-05-25-colgen2/">The cutting stock problem: part 2, solving with column generation</a></h2>
-    <div class="article-style">
-      
-      A column generation algorithm for the cutting width problem using Julia and JuMP
-
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/2018-05-23-colgen/">Tackling the cutting stock problem: part 1, problem exploration</a></h2>
-    <div class="article-style">
-      
-      Solving a cutting stock problem step by step using Julia and JuMP
-
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/2017-12-20-diffeq-julia2/">DifferentialEquations.jl - part 2: decision from the model</a></h2>
-    <div class="article-style">
-      
-      Now that we've built a model, let's use it to make the best decision
-
+      Today was the release of SCIP.jl v0.11, the first release switching to SCIP 8. The major change in this (massive) release was the rewrite of the nonlinear optimization part, using a so-called expression framework. The rewrite of the wrapper had some fairly tedious parts, debugging C shared libraries is quickly a mess with cryptic error messages. But the nonlinear rewrite gave me the opportunity to tweak the way Julia expressions are passed to SCIP in a minor way.
       
     </div>
   </div>
   
 
   
-<nav>
-  <ul class="pagination justify-content-center">
-    
-    <li class="page-item"><a class="page-link" href="/tags/optimization/">&laquo;</a></li>
-    
-    
-  </ul>
-</nav>
-
 
 </div>
 
