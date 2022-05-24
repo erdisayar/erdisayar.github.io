@@ -7,7 +7,7 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-ca</language>
     <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
-    <lastBuildDate>Sat, 11 Dec 2021 00:00:00 +0100</lastBuildDate>
+    <lastBuildDate>Sat, 11 Dec 2021 00:00:00 -0500</lastBuildDate>
     
 	    <atom:link href="https://matbesancon.xyz/tags/frank-wolfe/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Mutability, scope, and separation of concerns in library code</title>
       <link>https://matbesancon.xyz/post/2021-12-11-mutability-library/</link>
-      <pubDate>Sat, 11 Dec 2021 00:00:00 +0100</pubDate>
+      <pubDate>Sat, 11 Dec 2021 00:00:00 -0500</pubDate>
       
       <guid>https://matbesancon.xyz/post/2021-12-11-mutability-library/</guid>
       <description>&lt;p&gt;It has been about a year since I joined the Zuse Institute

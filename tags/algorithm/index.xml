@@ -7,7 +7,7 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-ca</language>
     <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
-    <lastBuildDate>Tue, 13 Sep 2016 00:00:00 +0200</lastBuildDate>
+    <lastBuildDate>Tue, 13 Sep 2016 00:00:00 -0400</lastBuildDate>
     
 	    <atom:link href="https://matbesancon.xyz/tags/algorithm/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Functional and parallel PageRank implementation in Scala</title>
       <link>https://matbesancon.xyz/post/2016-09-13-page-rank/</link>
-      <pubDate>Tue, 13 Sep 2016 00:00:00 +0200</pubDate>
+      <pubDate>Tue, 13 Sep 2016 00:00:00 -0400</pubDate>
       
       <guid>https://matbesancon.xyz/post/2016-09-13-page-rank/</guid>
       <description>&lt;p&gt;When I &lt;a href=&#34;https://matbesancon.xyz/posts/2016-08-11-back-to-startup/&#34;&gt;came back to Equisense&lt;/a&gt;,
