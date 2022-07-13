@@ -7,7 +7,7 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-ca</language>
     <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
-    <lastBuildDate>Fri, 29 Apr 2022 00:00:00 -0400</lastBuildDate>
+    <lastBuildDate>Fri, 29 Apr 2022 00:00:00 +0200</lastBuildDate>
     
 	    <atom:link href="https://matbesancon.xyz/tags/scip/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Pruning the expression tree with recursive value identification</title>
       <link>https://matbesancon.xyz/post/2022-04-29-expression-trees/</link>
-      <pubDate>Fri, 29 Apr 2022 00:00:00 -0400</pubDate>
+      <pubDate>Fri, 29 Apr 2022 00:00:00 +0200</pubDate>
       
       <guid>https://matbesancon.xyz/post/2022-04-29-expression-trees/</guid>
       <description>&lt;p&gt;Today was the release of &lt;a href=&#34;LINK&#34;&gt;SCIP.jl&lt;/a&gt; v0.11, the first release switching to SCIP 8.

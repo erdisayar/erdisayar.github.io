@@ -7,7 +7,7 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-ca</language>
     <copyright>&amp;copy; {year} Mathieu Besançon</copyright>
-    <lastBuildDate>Sat, 13 Feb 2021 00:00:00 -0500</lastBuildDate>
+    <lastBuildDate>Sat, 13 Feb 2021 00:00:00 +0100</lastBuildDate>
     
 	    <atom:link href="https://matbesancon.xyz/tags/latex/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Peer review &amp; change highlight</title>
       <link>https://matbesancon.xyz/post/2021-2-13-diffreview/</link>
-      <pubDate>Sat, 13 Feb 2021 00:00:00 -0500</pubDate>
+      <pubDate>Sat, 13 Feb 2021 00:00:00 +0100</pubDate>
       
       <guid>https://matbesancon.xyz/post/2021-2-13-diffreview/</guid>
       <description>&lt;h2&gt;Table of Contents&lt;/h2&gt;
