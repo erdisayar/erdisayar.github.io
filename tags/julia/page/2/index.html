@@ -116,7 +116,7 @@
   <meta property="og:description" content="Postdoctoral researcher, mathematical optimization"><meta property="og:image" content="https://matbesancon.xyz/img/icon-192.png">
   <meta property="twitter:image" content="https://matbesancon.xyz/img/icon-192.png"><meta property="og:locale" content="en-ca">
   
-  <meta property="og:updated_time" content="2022-04-29T00:00:00&#43;02:00">
+  <meta property="og:updated_time" content="2022-10-03T00:00:00&#43;02:00">
   
 
   
@@ -425,6 +425,16 @@
   
   
   <div>
+    <h2><a href="/post/2019-07-25-special-graphs/">Leveraging special graph shapes in LightGraphs</a></h2>
+    <div class="article-style">
+      
+      In a previous post, we pushed the boundaries of the LightGraphs.jl abstraction to see how conforming the algorithms are to the declared interface, noticing some implied assumptions that were not stated. This has led to the development of VertexSafeGraphs.jl and soon to some work on LightGraphs.jl itself.
+Another way to push the abstraction came out of the JuliaNantes workshop: leveraging some special structure of graphs to optimize some specific operations. A good parallel can be established be with the LinearAlgebra package from Julia Base, which defines special matrices such as Diagonal and Symmetric and Adjoint, implementing the AbstractMatrix interface but without storing all the entries.
+      
+    </div>
+  </div>
+  
+  <div>
     <h2><a href="/post/2019-05-30-vertex-safe-removal/">Vertex removal in LightGraphs</a></h2>
     <div class="article-style">
       
@@ -509,16 +519,6 @@ LightGraphs.jl offers a set of abstractions, types and algorithms to get started
     <div class="article-style">
       
       A column generation algorithm for the cutting width problem using Julia and JuMP
-
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/2018-05-23-colgen/">Tackling the cutting stock problem: part 1, problem exploration</a></h2>
-    <div class="article-style">
-      
-      Solving a cutting stock problem step by step using Julia and JuMP
 
       
     </div>
