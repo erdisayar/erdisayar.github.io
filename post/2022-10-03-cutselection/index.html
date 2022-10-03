@@ -29,7 +29,7 @@
     
   
   <meta name="description" content="This is a short post on the cut selection mechanism in SCIP and things I used for its implementation in the SCIP.jl Julia wrapper. You can check out the corresponding pull request for completeness.
-Table of Contents  Callbacks? SCIP plugins Cut selection Cut selector interface  Some C-Julia magic     Callbacks? The space of mixed-integer optimization solvers is mostly divided between commercial closed-source and academic solvers open in source code.">
+Table of Contents  Callbacks? SCIP plugins Cut selection Cut selector interface Some C-Julia magic   Callbacks? The space of mixed-integer optimization solvers is mostly divided between commercial closed-source and academic solvers open in source code.">
 
   
   <link rel="alternate" hreflang="en-ca" href="https://matbesancon.xyz/post/2022-10-03-cutselection/">
@@ -113,12 +113,12 @@ Table of Contents  Callbacks? SCIP plugins Cut selection Cut selector interface 
   <meta property="og:url" content="https://matbesancon.xyz/post/2022-10-03-cutselection/">
   <meta property="og:title" content="SCIP plugins and the cut selection interface | μβ">
   <meta property="og:description" content="This is a short post on the cut selection mechanism in SCIP and things I used for its implementation in the SCIP.jl Julia wrapper. You can check out the corresponding pull request for completeness.
-Table of Contents  Callbacks? SCIP plugins Cut selection Cut selector interface  Some C-Julia magic     Callbacks? The space of mixed-integer optimization solvers is mostly divided between commercial closed-source and academic solvers open in source code."><meta property="og:image" content="https://matbesancon.xyz/img/icon-192.png">
+Table of Contents  Callbacks? SCIP plugins Cut selection Cut selector interface Some C-Julia magic   Callbacks? The space of mixed-integer optimization solvers is mostly divided between commercial closed-source and academic solvers open in source code."><meta property="og:image" content="https://matbesancon.xyz/img/icon-192.png">
   <meta property="twitter:image" content="https://matbesancon.xyz/img/icon-192.png"><meta property="og:locale" content="en-ca">
   
   <meta property="article:published_time" content="2022-10-03T00:00:00&#43;02:00">
   
-  <meta property="article:modified_time" content="2022-10-03T00:00:00&#43;02:00">
+  <meta property="article:modified_time" content="2022-10-04T00:21:25&#43;02:00">
   
 
   
@@ -422,7 +422,7 @@ Table of Contents  Callbacks? SCIP plugins Cut selection Cut selector interface 
 
 
 <meta content="2022-10-03 00:00:00 &#43;0200 CEST" itemprop="datePublished">
-<meta content="2022-10-03 00:00:00 &#43;0200 CEST" itemprop="dateModified">
+<meta content="2022-10-04 00:21:25 &#43;0200 CEST" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -434,8 +434,10 @@ Table of Contents  Callbacks? SCIP plugins Cut selection Cut selector interface 
     
     
       
+          Last updated on
+      
     
-    <time>2022-10-03</time>
+    <time>2022-10-04</time>
   </span>
   
 
@@ -577,11 +579,8 @@ You can check out the corresponding <a href="https://github.com/scipopt/SCIP.jl/
     <li><a href="#callbacks">Callbacks?</a></li>
     <li><a href="#scip-plugins">SCIP plugins</a></li>
     <li><a href="#cut-selection">Cut selection</a></li>
-    <li><a href="#cut-selector-interface">Cut selector interface</a>
-      <ul>
-        <li><a href="#some-c-julia-magic">Some C-Julia magic</a></li>
-      </ul>
-    </li>
+    <li><a href="#cut-selector-interface">Cut selector interface</a></li>
+    <li><a href="#some-c-julia-magic">Some C-Julia magic</a></li>
   </ul>
 </nav>
 
@@ -722,7 +721,7 @@ In the Julia interface, we added a wrapper function that takes care of the plumb
 <div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-julia" data-lang="julia">cutselector <span style="color:#f92672">=</span> PickySelector()
 o <span style="color:#f92672">=</span> SCIP<span style="color:#f92672">.</span>Optimizer()
 SCIP<span style="color:#f92672">.</span>include_cutsel(o, cutselector)
-</code></pre></div><h2 id="some-c-julia-magic">Some C-Julia magic</h2>
+</code></pre></div><h1 id="some-c-julia-magic">Some C-Julia magic</h1>
 <p>The simplicity of the interface is enabled by some nice-to-have features.</p>
 <p><code>@cfunction</code> lets us take a Julia function that is compatible with C, that is,
 it can accept arguments that are compatible with the C type system, and produces a function pointer for it.

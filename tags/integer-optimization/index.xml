@@ -27,11 +27,8 @@ You can check out the corresponding &lt;a href=&#34;https://github.com/scipopt/S
     &lt;li&gt;&lt;a href=&#34;#callbacks&#34;&gt;Callbacks?&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&#34;#scip-plugins&#34;&gt;SCIP plugins&lt;/a&gt;&lt;/li&gt;
     &lt;li&gt;&lt;a href=&#34;#cut-selection&#34;&gt;Cut selection&lt;/a&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;a href=&#34;#cut-selector-interface&#34;&gt;Cut selector interface&lt;/a&gt;
-      &lt;ul&gt;
-        &lt;li&gt;&lt;a href=&#34;#some-c-julia-magic&#34;&gt;Some C-Julia magic&lt;/a&gt;&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#cut-selector-interface&#34;&gt;Cut selector interface&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&#34;#some-c-julia-magic&#34;&gt;Some C-Julia magic&lt;/a&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/nav&gt;
 
@@ -172,7 +169,7 @@ In the Julia interface, we added a wrapper function that takes care of the plumb
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-julia&#34; data-lang=&#34;julia&#34;&gt;cutselector &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; PickySelector()
 o &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; SCIP&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;Optimizer()
 SCIP&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;include_cutsel(o, cutselector)
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;some-c-julia-magic&#34;&gt;Some C-Julia magic&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h1 id=&#34;some-c-julia-magic&#34;&gt;Some C-Julia magic&lt;/h1&gt;
 &lt;p&gt;The simplicity of the interface is enabled by some nice-to-have features.&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;@cfunction&lt;/code&gt; lets us take a Julia function that is compatible with C, that is,
 it can accept arguments that are compatible with the C type system, and produces a function pointer for it.
