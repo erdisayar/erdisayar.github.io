@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>HERDT: Hindsight Experience Replay with Evolutionary Decision Trees | EvoStar / EuroGP 2024</title>
+  <meta name="description" content="Hindsight Experience Replay with Evolutionary Decision Trees for Curriculum Goal Generation - EvoApplications / EuroGP 2024 (Springer LNCS). Erdi Sayar, Vladislav Vintaykin, Giovanni Iacca, Alois Knoll." />
+  <meta name="author" content="Erdi Sayar" />
+
+  <!-- OpenGraph / Social Meta -->
+  <meta property="og:title" content="HERDT: Hindsight Experience Replay with Evolutionary Decision Trees for Curriculum Goal Generation" />
+  <meta property="og:description" content="A novel curriculum learning method using Grammatical Evolution to evolve decision trees and critic Q-value feedback for sparse-reward robot manipulation." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="fetchpush_n1.png" />
+
+  <!-- Icons & Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/project-page.css" />
+
+  <!-- MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    .math-block {
+      background: #F1F5F9;
+      padding: 1.2rem 1.5rem;
+      border-radius: var(--radius-md);
+      overflow-x: auto;
+      margin: 1.25rem 0;
+      border: 1px solid var(--border-color);
+      font-size: 0.95rem;
+    }
+    .grammar-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      margin: 1rem 0;
+    }
+    .grammar-table th, .grammar-table td {
+      padding: 0.65rem 0.9rem;
+      border: 1px solid var(--border-color);
+      text-align: left;
+    }
+    .grammar-table th {
+      background: #F8FAFC;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+    .grammar-table code {
+      font-family: 'Fira Code', monospace;
+      color: var(--primary-color);
+      background: rgba(79, 70, 229, 0.06);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .benchmark-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .benchmark-item {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.75rem;
+      text-align: center;
+    }
+    .benchmark-item img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-sm);
+      display: block;
+    }
+    .benchmark-item .title {
+      font-weight: 600;
+      font-size: 0.88rem;
+      margin-top: 0.5rem;
+      color: var(--text-main);
+    }
+    .speedup-badge {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: var(--radius-full);
+      background: rgba(16, 185, 129, 0.12);
+      color: #059669;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Navigation Bar -->
+  <nav class="site-nav">
+    <div class="site-nav-container">
+      <a href="/" class="site-nav-back">
+        <i class="fas fa-arrow-left"></i>
+        <span>Erdi Sayar Portfolio</span>
+      </a>
+      <div class="site-nav-links">
+        <a href="#abstract" class="site-nav-link">Abstract</a>
+        <a href="#method" class="site-nav-link">Method</a>
+        <a href="#grammar" class="site-nav-link">Grammar &amp; DT</a>
+        <a href="#benchmarks" class="site-nav-link">Benchmarks</a>
+        <a href="#ablations" class="site-nav-link">Ablations</a>
+        <a href="#bibtex" class="site-nav-link">BibTeX</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="paper-container">
+    <!-- Hero Header -->
+    <header class="paper-hero">
+      <div class="venue-pill">
+        <i class="fas fa-award"></i> EvoStar / EuroGP 2024 · Aberystwyth, Wales, UK · Springer LNCS Vol. 14634
+      </div>
+      <h1 class="paper-title">
+        Hindsight Experience Replay with Evolutionary Decision Trees for Curriculum Goal Generation
+      </h1>
+
+      <div class="paper-authors">
+        <span class="author-item">
+          <a href="https://erdisayar.github.io/" target="_blank" class="author-highlighted">Erdi Sayar</a>¹
+        </span>
+        <span class="author-item">
+          <a href="https://scholar.google.com/citations?user=vladislav_vintaykin" target="_blank">Vladislav Vintaykin</a>¹
+        </span>
+        <span class="author-item">
+          <a href="https://scholar.google.com/citations?user=dFk5x58AAAAJ" target="_blank">Giovanni Iacca</a>²
+        </span>
+        <span class="author-item">
+          <a href="https://www.ce.cit.tum.de/air/people/prof-dr-ing-habil-alois-knoll/" target="_blank">Alois Knoll</a>¹
+        </span>
+      </div>
+
+      <div class="paper-affiliations">
+        <span class="affiliation-item">¹ <a href="https://www.tum.de/" target="_blank">Technical University of Munich (TUM), Germany</a></span>
+        <span class="affiliation-item">² <a href="https://www.unitn.it/" target="_blank">University of Trento, Italy</a></span>
+      </div>
+
+      <!-- Action Button Dock -->
+      <div class="button-dock">
+        <a href="https://link.springer.com/chapter/10.1007/978-3-031-56855-8_1" class="dock-btn dock-btn-primary" target="_blank">
+          <i class="fas fa-file-pdf"></i> Paper (Springer Link)
+        </a>
+        <a href="https://github.com/erdiphd/HER_DT" class="dock-btn" target="_blank">
+          <i class="fab fa-github"></i> Code (GitHub)
+        </a>
+        <a href="#abstract" class="dock-btn">
+          <i class="fas fa-file-alt"></i> Abstract
+        </a>
+        <a href="#method" class="dock-btn">
+          <i class="fas fa-project-diagram"></i> Methodology
+        </a>
+        <a href="#benchmarks" class="dock-btn">
+          <i class="fas fa-chart-line"></i> Benchmarks
+        </a>
+        <a href="#bibtex" class="dock-btn">
+          <i class="fas fa-quote-right"></i> Cite (BibTeX)
+        </a>
+      </div>
+    </header>
+
+    <!-- Overview Window -->
+    <section id="method" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">HERDT Architecture &amp; Two-Stage Framework</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <div class="figure-window" style="margin-top: 0;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; align-items: center;">
+            <div>
+              <img src="grid_env.png" alt="Constructing Grid Environment from Robotic Environment" style="width: 100%; border-radius: var(--radius-md);" />
+            </div>
+            <div>
+              <img src="DT_evolution.png" alt="Evolutionary Process for Decision Trees" style="width: 100%; border-radius: var(--radius-md);" />
+            </div>
+          </div>
+          <div class="figure-caption" style="margin-top: 1rem;">
+            <strong>Figure 1:</strong> The <strong>HERDT</strong> curriculum generation workflow. 
+            <em>Left:</em> Discretizing continuous 7-DOF Fetch manipulator tasks into a clean grid world representation preserving initial and target goal boundaries. 
+            <em>Right:</em> Grammatical Evolution (GE) optimizes binary Decision Trees in the grid world using Q-learning updates on leaf nodes, creating an interpretable navigational policy that outputs intermediate curriculum waypoints.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Abstract Window -->
+    <section id="abstract" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Abstract &amp; Key Contributions</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-body);">
+          Reinforcement learning (RL) algorithms often require a significant number of experiences to learn a policy capable of achieving desired goals in multi-goal robot manipulation tasks with sparse rewards. Hindsight Experience Replay (HER) is an existing method that improves learning efficiency by using failed trajectories and replacing the original goals with hindsight goals that are uniformly sampled from the visited states. However, HER has a limitation: the hindsight goals are mostly near the initial state, which hinders solving tasks efficiently if the desired goals are far from the initial state.
+        </p>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-body);">
+          To overcome this limitation, we introduce a curriculum learning method called <strong>HERDT (HER with Decision Trees)</strong>. HERDT uses binary DTs to generate curriculum goals that guide a robotic agent progressively from an initial state toward a desired goal. During the warm-up stage, DTs are optimized using the Grammatical Evolution algorithm. In the training stage, curriculum goals are then sampled by DTs to help the agent navigate the environment. Since binary DTs generate discrete values, we fine-tune these curriculum points by incorporating a feedback value (i.e., the \(Q\)-value). This fine-tuning enables us to adjust the difficulty level of the generated curriculum points, ensuring that they are neither overly simplistic nor excessively challenging. We evaluate our proposed approach on different sparse reward robotic manipulation tasks and compare it with the state-of-the-art HER approach. Our results demonstrate that our method consistently outperforms or matches the existing approach in all the tested tasks.
+        </p>
+
+        <!-- Contributions Grid -->
+        <div class="contributions-grid">
+          <div class="contribution-card">
+            <div class="contribution-icon">
+              <i class="fas fa-sitemap"></i>
+            </div>
+            <h4>Grammatical Evolution DTs</h4>
+            <p>Evolves interpretable binary Decision Trees using Grammatical Evolution (GE) with Q-learning on leaf nodes within a discrete grid abstraction of the robot workspace.</p>
+          </div>
+          <div class="contribution-card">
+            <div class="contribution-icon">
+              <i class="fas fa-sliders-h"></i>
+            </div>
+            <h4>\(Q\)-Value Feedback Tuning</h4>
+            <p>Dynamically scales discrete DT curriculum waypoints using the continuous critic \(Q\)-value (\(\nu = \kappa \cdot |c - Q'|\)), ensuring appropriate task difficulty.</p>
+          </div>
+          <div class="contribution-card">
+            <div class="contribution-icon">
+              <i class="fas fa-tachometer-alt"></i>
+            </div>
+            <h4>5x Faster Convergence</h4>
+            <p>Accelerates policy training up to 5x over vanilla HER in complex long-horizon tasks like FetchPickAndPlace (75 epochs vs. 400 epochs to reach optimal success).</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Grammar & Tree Details Window -->
+    <section id="grammar" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Grammar Rules &amp; Continuous \(Q\)-Value Refinement</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <p>
+          In the <strong>warm-up stage</strong>, Grammatical Evolution maps integer codon strings to binary Decision Trees following Backus-Naur grammar rules:
+        </p>
+
+        <div style="overflow-x: auto;">
+          <table class="grammar-table">
+            <thead>
+              <tr>
+                <th>Rule</th>
+                <th>Production</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>dt</code></td>
+                <td><code>&lt;if&gt;</code></td>
+                <td>Root condition of the decision tree</td>
+              </tr>
+              <tr>
+                <td><code>if</code></td>
+                <td><code>if &lt;condition&gt; then &lt;action&gt; else &lt;action&gt;</code></td>
+                <td>Binary branch splitting on spatial coordinates</td>
+              </tr>
+              <tr>
+                <td><code>condition</code></td>
+                <td><code>input_var &lt;comp_op&gt; &lt;const&gt;</code></td>
+                <td>Compares coordinate against discrete threshold</td>
+              </tr>
+              <tr>
+                <td><code>comp_op</code></td>
+                <td><code>lt | gt</code></td>
+                <td>Less-than (<code>&lt;</code>) or greater-than (<code>&gt;</code>) comparison</td>
+              </tr>
+              <tr>
+                <td><code>const</code></td>
+                <td><code>[0, 20) with step 1</code></td>
+                <td>Integer bounds in discrete grid coordinate frame</td>
+              </tr>
+              <tr>
+                <td><code>action</code></td>
+                <td><code>leaf | &lt;if&gt;</code></td>
+                <td>Terminal directional step or sub-tree condition</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h4 style="margin-top: 1.5rem; color: var(--text-main);">Discrete Actions to Continuous Waypoint Calibration</h4>
+        <p>
+          The DT policy outputs discrete directional steps \(a \in \{0, 1, 2, 3, 4, 5\}\) representing cardinal directions (\(\pm x, \pm y, \pm z\)). Direct addition would cause rigid jumps. To align curriculum points with the robot's evolving capabilities, HERDT refines the raw goal \(\kappa\) using the critic \(Q\)-value:
+        </p>
+
+        <div class="math-block">
+          $$Q' = \begin{cases} -1 & \text{if } Q < -1 \\ 0 & \text{if } Q > 0 \\ Q & \text{otherwise} \end{cases} \qquad\Longrightarrow\qquad \nu = \kappa \cdot |c - Q'|$$
+        </div>
+
+        <p>
+          When the critic evaluates a high \(Q\)-value (state-action pair is well mastered), \(|c - Q'|\) enlarges the step size, advancing the curriculum farther toward the final goal. When \(Q\) is low, the step size shortens, keeping intermediate targets within reachable range.
+        </p>
+
+        <div class="figure-window" style="margin-top: 1.5rem;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; align-items: center;">
+            <div>
+              <img src="tree.png" alt="Evolved Decision Tree" style="width: 100%; border-radius: var(--radius-md);" />
+            </div>
+            <div>
+              <img src="dt_explanation.png" alt="Decision Tree Execution Convergence" style="width: 100%; border-radius: var(--radius-md);" />
+            </div>
+          </div>
+          <div class="figure-caption">
+            <strong>Figure 2:</strong> Evolved Decision Tree for <em>FetchPush</em> (left) and step-by-step waypoint execution graph (right), demonstrating interpretable branching logic from initial configuration to target coordinate.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experimental Benchmarks Window -->
+    <section id="benchmarks" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Benchmark Results on MuJoCo Manipulation Environments</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <p>
+          We benchmarked HERDT against standard <strong>HER</strong> across 4 standard continuous control robotic manipulation tasks from OpenAI Gym / MuJoCo, tested across 10 random seeds.
+        </p>
+
+        <div class="benchmark-grid">
+          <div class="benchmark-item">
+            <img src="FetchReach_interval.png" alt="FetchReach Success Rate" />
+            <div class="title">FetchReach</div>
+            <span class="speedup-badge">Converged in 5 epochs (vs 6)</span>
+          </div>
+          <div class="benchmark-item">
+            <img src="FetchPickAndPlace_interval.png" alt="FetchPickAndPlace Success Rate" />
+            <div class="title">FetchPickAndPlace</div>
+            <span class="speedup-badge" style="background: rgba(79, 70, 229, 0.12); color: var(--primary-color);">5.3x Faster Convergence (75 vs 400 epochs)</span>
+          </div>
+          <div class="benchmark-item">
+            <img src="FetchPush_interval.png" alt="FetchPush Success Rate" />
+            <div class="title">FetchPush</div>
+            <span class="speedup-badge">1.8x Faster (35 vs 65 epochs)</span>
+          </div>
+          <div class="benchmark-item">
+            <img src="FetchSlide_interval.png" alt="FetchSlide Success Rate" />
+            <div class="title">FetchSlide</div>
+            <span class="speedup-badge">6x Faster Convergence (50 vs 300 epochs)</span>
+          </div>
+        </div>
+
+        <div class="figure-caption" style="margin-top: 1rem;">
+          <strong>Figure 3:</strong> Test success rate across training epochs for the 4 manipulation benchmarks. Solid curves show mean performance and shaded regions show inter-quartile range across 10 independent runs.
+        </div>
+      </div>
+    </section>
+
+    <!-- Visualizations Window -->
+    <section id="visualizations" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Curriculum Goal Progression Visualizations</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <p>
+          Visualization of curriculum waypoints generated throughout the training process for <em>FetchPush</em>. Colors ranging from red to light blue represent intermediate goals sampled across successive training episodes, guiding the object smoothly from the initial position to the target zone (gray).
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 1.25rem;">
+          <div class="figure-window" style="margin: 0;">
+            <img src="fetchpush_n1.png" alt="FetchPush Intermediate Goals Overview" />
+            <div class="figure-caption">
+              <strong>FetchPush Overview:</strong> Global view of generated waypoints bridging the distance between start configuration and goal area.
+            </div>
+          </div>
+          <div class="figure-window" style="margin: 0;">
+            <img src="fetchpush_zoom.png" alt="FetchPush Intermediate Goals Detail" />
+            <div class="figure-caption">
+              <strong>FetchPush Detail View:</strong> High-resolution closeup of curriculum clustering along optimal pushing trajectories.
+            </div>
+          </div>
+        </div>
+
+        <h4 style="margin-top: 2.5rem; color: var(--text-main);">Evaluated 7-DOF Fetch Robot Manipulation Environments</h4>
+        <div class="benchmark-grid" style="margin-top: 1rem;">
+          <div class="benchmark-item">
+            <img src="FetchReach_mujoco_env.png" alt="FetchReach Environment" />
+            <div class="title">FetchReach (3D Gripper Control)</div>
+          </div>
+          <div class="benchmark-item">
+            <img src="FetchPush_mujoco_env.png" alt="FetchPush Environment" />
+            <div class="title">FetchPush (2D Table Surface)</div>
+          </div>
+          <div class="benchmark-item">
+            <img src="FetchPickAndPlace_mujoco_env.png" alt="FetchPickAndPlace Environment" />
+            <div class="title">FetchPickAndPlace (3D Grasp &amp; Move)</div>
+          </div>
+          <div class="benchmark-item">
+            <img src="FetchSlide_mujoco_env.png" alt="FetchSlide Environment" />
+            <div class="title">FetchSlide (Dynamic Object Impulse)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ablations Window -->
+    <section id="ablations" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Ablation Studies: Feedback &amp; Recursive Sampling</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <h4 style="color: var(--text-main); margin-top: 0;">Impact of \(Q\)-Value Feedback Calibration</h4>
+        <p>
+          Comparing HERDT with vs. without continuous \(Q\)-value scaling. Without feedback, the discrete nature of DT steps leads to suboptimal waypoint step sizing and degraded policy learning.
+        </p>
+
+        <div class="benchmark-grid">
+          <div class="benchmark-item">
+            <img src="FetchReach_feedback.png" alt="FetchReach Feedback Ablation" />
+            <div class="title">FetchReach</div>
+          </div>
+          <div class="benchmark-item">
+            <img src="FetchPickAndPlace_feedback.png" alt="FetchPickAndPlace Feedback Ablation" />
+            <div class="title">FetchPickAndPlace</div>
+          </div>
+          <div class="benchmark-item">
+            <img src="FetchPush_feedback.png" alt="FetchPush Feedback Ablation" />
+            <div class="title">FetchPush</div>
+          </div>
+          <div class="benchmark-item">
+            <img src="FetchSlide_feedback.png" alt="FetchSlide Feedback Ablation" />
+            <div class="title">FetchSlide</div>
+          </div>
+        </div>
+
+        <h4 style="color: var(--text-main); margin-top: 2rem;">Impact of Recursively Generated Goals (\(n\)-Step)</h4>
+        <p>
+          Evaluating multi-step recursive sampling \(g_{t+n} = \frac{1}{n}\sum_{i=1}^n g_i\) for \(n \in \{1, 2, 4, 8\}\):
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 1rem;">
+          <div class="figure-window" style="margin: 0;">
+            <img src="FetchPush_recursive.png" alt="FetchPush Recursive Ablation" />
+            <div class="figure-caption">
+              <strong>FetchPush:</strong> Success rates under varying recursion horizons \(n\).
+            </div>
+          </div>
+          <div class="figure-window" style="margin: 0;">
+            <img src="FetchPickAndPlace_recursive.png" alt="FetchPickAndPlace Recursive Ablation" />
+            <div class="figure-caption">
+              <strong>FetchPickAndPlace:</strong> Balancing intermediate goal step length against task complexity.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BibTeX Window -->
+    <section id="bibtex" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">BibTeX Citation</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <div class="bibtex-container">
+          <button class="copy-btn" id="copy-bibtex-btn" onclick="copyBibtex()">
+            <i class="fas fa-copy"></i>
+            <span>Copy Citation</span>
+          </button>
+          <pre id="bibtex-text"><code>@incollection{Sayar_2024_HERDT,
+  title     = {Hindsight Experience Replay with Evolutionary Decision Trees for Curriculum Goal Generation},
+  author    = {Sayar, Erdi and Vintaykin, Vladislav and Iacca, Giovanni and Knoll, Alois},
+  booktitle = {Applications of Evolutionary Computation (EvoApplications 2024)},
+  series    = {Lecture Notes in Computer Science},
+  volume    = {14634},
+  pages     = {3--18},
+  year      = {2024},
+  publisher = {Springer Nature Switzerland},
+  doi       = {10.1007/978-3-031-56855-8_1},
+  url       = {https://link.springer.com/chapter/10.1007/978-3-031-56855-8_1}
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="text-align: center; margin-top: 4rem; color: var(--text-muted); font-size: 0.9rem;">
+      <p>&copy; 2024 Erdi Sayar · Technical University of Munich &amp; University of Trento</p>
+      <p style="margin-top: 0.25rem;">
+        <a href="/" style="color: var(--primary-color); font-weight: 500;">
+          <i class="fas fa-arrow-left"></i> Return to Personal Portfolio
+        </a>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    function copyBibtex() {
+      const code = document.getElementById('bibtex-text').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        const btn = document.getElementById('copy-bibtex-btn');
+        btn.innerHTML = '<i class="fas fa-check"></i> <span>Copied!</span>';
+        btn.style.borderColor = 'var(--primary-color)';
+        btn.style.color = 'var(--primary-color)';
+        setTimeout(() => {
+          btn.innerHTML = '<i class="fas fa-copy"></i> <span>Copy Citation</span>';
+          btn.style.borderColor = 'var(--border-color)';
+          btn.style.color = 'var(--text-main)';
+        }, 2500);
+      });
+    }
+  </script>
+</body>
+
+</html>

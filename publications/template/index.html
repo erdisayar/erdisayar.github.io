@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- ======================================================================
+       TEMPLATE INSTRUCTIONS:
+       1. Replace "Paper Title" and metadata tags below.
+       2. Update Authors, Affiliations, and Links in the Hero Section.
+       3. Replace Abstract text and key contribution cards.
+       4. Replace demo media (video/mp4 or YouTube iframe) and figures.
+       5. Update the BibTeX citation block.
+       ====================================================================== -->
+
+  <title>[Paper Title] | [Conference/Journal Name Year]</title>
+  <meta name="description" content="[Paper Title] - [Conference/Journal Name Year]. Authors: [Author Names]." />
+  <meta name="author" content="Erdi Sayar" />
+
+  <!-- OpenGraph / Social Meta -->
+  <meta property="og:title" content="[Paper Title]" />
+  <meta property="og:description" content="[Short one-sentence summary of the paper]." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="teaser.png" />
+
+  <!-- Icons & CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/project-page.css" />
+
+  <!-- MathJax (Optional: Remove if not using LaTeX equations) -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <!-- Top Navigation Bar -->
+  <nav class="site-nav">
+    <div class="site-nav-container">
+      <a href="/" class="site-nav-back">
+        <i class="fas fa-arrow-left"></i>
+        <span>Erdi Sayar Portfolio</span>
+      </a>
+      <div class="site-nav-links">
+        <a href="#abstract" class="site-nav-link">Abstract</a>
+        <a href="#media-demo" class="site-nav-link">Demo</a>
+        <a href="#methodology" class="site-nav-link">Method</a>
+        <a href="#results" class="site-nav-link">Results</a>
+        <a href="#bibtex" class="site-nav-link">BibTeX</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="paper-container">
+    <!-- Hero Header -->
+    <header class="paper-hero">
+      <div class="venue-pill">
+        <i class="fas fa-award"></i> [Conference / Journal Name Year e.g. NeurIPS 2024 / ICRA 2026]
+      </div>
+      <h1 class="paper-title">
+        [Your Publication Title Goes Here: e.g. Diffusion-based Curriculum Reinforcement Learning]
+      </h1>
+
+      <!-- Authors -->
+      <div class="paper-authors">
+        <span class="author-item">
+          <a href="https://erdisayar.github.io/" target="_blank" class="author-highlighted">Erdi Sayar</a>¹
+        </span>
+        <span class="author-item">
+          <a href="#" target="_blank">Co-Author Name</a>¹
+        </span>
+        <span class="author-item">
+          <a href="#" target="_blank">Co-Author Name</a>²
+        </span>
+        <span class="author-item">
+          <a href="#" target="_blank">Senior Author Name</a>¹
+        </span>
+      </div>
+
+      <!-- Affiliations -->
+      <div class="paper-affiliations">
+        <span class="affiliation-item">¹ <a href="https://www.tum.de/" target="_blank">Technical University of Munich (TUM)</a></span>
+        <span class="affiliation-item">² <a href="https://www.uni-paderborn.de/" target="_blank">Paderborn University</a></span>
+      </div>
+
+      <!-- Action Button Dock -->
+      <div class="button-dock">
+        <a href="#" class="dock-btn dock-btn-primary" target="_blank">
+          <i class="fas fa-file-pdf"></i> Paper (PDF)
+        </a>
+        <a href="#" class="dock-btn" target="_blank">
+          <i class="fas fa-graduation-cap"></i> arXiv
+        </a>
+        <a href="https://github.com/erdisayar" class="dock-btn" target="_blank">
+          <i class="fab fa-github"></i> Code (GitHub)
+        </a>
+        <a href="#media-demo" class="dock-btn">
+          <i class="fas fa-play"></i> Watch Demo
+        </a>
+        <a href="#bibtex" class="dock-btn">
+          <i class="fas fa-quote-right"></i> Cite
+        </a>
+      </div>
+    </header>
+
+    <!-- Interactive Media / Showcase Window -->
+    <section id="media-demo" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Demonstration Showcase Window</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body" style="padding: 1.25rem;">
+        <div class="video-showcase-container">
+          <!-- Video element or image teaser -->
+          <video id="demo-video-player" controls autoplay muted loop playsinline poster="teaser.png">
+            <source src="demo_video.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <iframe id="demo-yt-player" style="display: none; width: 100%; height: 480px; border: 0;" src="" allowfullscreen></iframe>
+          
+          <!-- Optional Tabs to switch between multiple videos or benchmark results -->
+          <div class="video-tabs">
+            <button class="video-tab-btn active" onclick="switchVideo('demo_video.mp4', false, this)">
+              <i class="fas fa-play"></i> Experiment 1: Robot Manipulation
+            </button>
+            <button class="video-tab-btn" onclick="switchVideo('demo_video2.mp4', false, this)">
+              <i class="fas fa-robot"></i> Experiment 2: Benchmark Evaluation
+            </button>
+            <button class="video-tab-btn" onclick="switchVideo('https://www.youtube.com/embed/YOUR_VIDEO_ID', true, this)">
+              <i class="fab fa-youtube"></i> Full Video Presentation
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Abstract Window -->
+    <section id="abstract" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Abstract & Key Contributions</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-body);">
+          [Write your full abstract here. Describe the problem motivation, limitations of prior approaches, your proposed framework or algorithm, and summary of the key theoretical or empirical findings.]
+        </p>
+
+        <!-- 3 Highlight Contribution Cards -->
+        <div class="contributions-grid">
+          <div class="contribution-card">
+            <div class="contribution-icon">
+              <i class="fas fa-lightbulb"></i>
+            </div>
+            <h4>Core Novelty / Method</h4>
+            <p>[Brief description of the main methodological contribution or architectural innovation.]</p>
+          </div>
+          <div class="contribution-card">
+            <div class="contribution-icon">
+              <i class="fas fa-chart-line"></i>
+            </div>
+            <h4>Efficiency & Performance</h4>
+            <p>[Brief description of the quantitative speedup, sample-efficiency, or benchmark superiority.]</p>
+          </div>
+          <div class="contribution-card">
+            <div class="contribution-icon">
+              <i class="fas fa-cube"></i>
+            </div>
+            <h4>Deployment & Validation</h4>
+            <p>[Brief description of simulation benchmark testing or physical real-world robot experiments.]</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Methodology Window -->
+    <section id="methodology" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Framework Architecture & Methodology</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <h2>Overview of the Approach</h2>
+        <p>
+          [Explain the technical details of your proposed algorithm, mathematical formulations, optimization objectives, or neural architecture.]
+        </p>
+
+        <!-- Example Math Equation Box -->
+        <div class="math-box">
+          $$\mathcal{L}(\theta) = \mathbb{E}_{s, a \sim \mathcal{D}} \left[ \left( Q_\theta(s, a) - \left( r + \gamma \max_{a'} Q_{\bar{\theta}}(s', a') \right) \right)^2 \right]$$
+        </div>
+
+        <!-- Architecture Diagram -->
+        <div class="figure-window">
+          <img src="architecture.png" alt="Framework Architecture" onerror="this.src='https://placehold.co/900x400/e2e8f0/475569?text=Framework+Architecture+Diagram+Placeholder'" />
+          <div class="figure-caption">
+            <strong>Figure 1:</strong> System architecture overview of the proposed framework.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experimental Results Window -->
+    <section id="results" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Experimental Results & Comparisons</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <h2>Benchmark Evaluations</h2>
+        <p>
+          [Describe the experimental setup, simulation environments (e.g. MuJoCo, Isaac Sim), baselines compared against, and main quantitative findings.]
+        </p>
+
+        <div class="figure-window">
+          <img src="results.png" alt="Results and Learning Curves" onerror="this.src='https://placehold.co/900x350/e2e8f0/475569?text=Experimental+Results+and+Curves+Placeholder'" />
+          <div class="figure-caption">
+            <strong>Figure 2:</strong> Quantitative comparisons against baseline methods across evaluation benchmarks.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BibTeX Citation Window -->
+    <section id="bibtex" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">BibTeX Citation</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">
+          If you find this work helpful in your research, please cite:
+        </p>
+        <div class="bibtex-box">
+          <button class="bibtex-copy-btn" onclick="copyBibtex()">
+            <i class="fas fa-copy"></i> Copy BibTeX
+          </button>
+          <pre id="bibtex-text">@article{sayar2026paper,
+  title   = {[Your Publication Title]},
+  author  = {Sayar, Erdi and [Co-Authors]},
+  journal = {[Venue Name]},
+  year    = {2026}
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="paper-footer">
+      <p>
+        © 2026 Erdi Sayar · Technical University of Munich & Paderborn University
+      </p>
+      <p>
+        <a href="/" style="font-weight: 600;"><i class="fas fa-arrow-left"></i> Return to Erdi Sayar's Personal Webpage</a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="copy-toast" class="copy-toast">
+    <i class="fas fa-check-circle" style="color: #10B981;"></i> BibTeX copied to clipboard!
+  </div>
+
+  <!-- Interactive Scripts -->
+  <script>
+    function switchVideo(src, isIframe, btn) {
+      const videoPlayer = document.getElementById('demo-video-player');
+      const ytPlayer = document.getElementById('demo-yt-player');
+      const buttons = document.querySelectorAll('.video-tab-btn');
+      
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      if (isIframe) {
+        videoPlayer.style.display = 'none';
+        videoPlayer.pause();
+        ytPlayer.style.display = 'block';
+        ytPlayer.src = src;
+      } else {
+        ytPlayer.style.display = 'none';
+        ytPlayer.src = '';
+        videoPlayer.style.display = 'block';
+        videoPlayer.src = src;
+        videoPlayer.load();
+        videoPlayer.play();
+      }
+    }
+
+    function copyBibtex() {
+      const text = document.getElementById('bibtex-text').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('copy-toast');
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2500);
+      });
+    }
+  </script>
+</body>
+
+</html>

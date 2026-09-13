@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>Fuzzy Logic Theory-based Adaptive Reward Shaping for Robust Reinforcement Learning (FARS) | IEEE WCCI 2026</title>
+  <meta name="description" content="FARS: Fuzzy Logic Theory-based Adaptive Reward Shaping for Robust Reinforcement Learning - IEEE WCCI 2026. Hürkan Şahin, Van Huyen Dang, Erdi Sayar, Alper Yegenoglu, Erdal Kayacan." />
+  <meta name="author" content="Hürkan Şahin, Van Huyen Dang, Erdi Sayar" />
+
+  <!-- OpenGraph / Social Meta -->
+  <meta property="og:title" content="Fuzzy Logic Theory-based Adaptive Reward Shaping for Robust Reinforcement Learning (FARS)" />
+  <meta property="og:description" content="Adaptive, human-interpretable fuzzy reward shaping for robust RL demonstrated on autonomous drone racing in IsaacLab." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="abstract.png" />
+
+  <!-- Icons & Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/project-page.css" />
+
+  <!-- MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <!-- Top Navigation Bar -->
+  <nav class="site-nav">
+    <div class="site-nav-container">
+      <a href="/" class="site-nav-back">
+        <i class="fas fa-arrow-left"></i>
+        <span>Erdi Sayar Portfolio</span>
+      </a>
+      <div class="site-nav-links">
+        <a href="#abstract" class="site-nav-link">Abstract</a>
+        <a href="#overview" class="site-nav-link">Overview</a>
+        <a href="#methodology" class="site-nav-link">FARS Formulation</a>
+        <a href="#experiments" class="site-nav-link">Drone Racing</a>
+        <a href="#bibtex" class="site-nav-link">BibTeX</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="paper-container">
+    <!-- Hero Header -->
+    <header class="paper-hero">
+      <div class="venue-pill">
+        <i class="fas fa-award"></i> IEEE WCCI 2026 (Accepted)
+      </div>
+      <h1 class="paper-title">
+        Fuzzy Logic Theory-based Adaptive Reward Shaping for Robust Reinforcement Learning (FARS)
+      </h1>
+
+      <div class="paper-authors">
+        <span class="author-item">
+          <a href="https://orcid.org/0009-0008-7920-5872" target="_blank">Hürkan Şahin</a>¹
+        </span>
+        <span class="author-item">
+          <a href="https://orcid.org/0009-0006-2328-2153" target="_blank">Van Huyen Dang</a>¹
+        </span>
+        <span class="author-item">
+          <a href="https://erdisayar.github.io/" target="_blank" class="author-highlighted">Erdi Sayar</a>¹
+        </span>
+        <span class="author-item">
+          <a href="https://orcid.org/0000-0001-8869-215X" target="_blank">Alper Yegenoglu</a>¹
+        </span>
+        <span class="author-item">
+          <a href="https://orcid.org/0000-0002-7143-8777" target="_blank">Erdal Kayacan</a>¹
+        </span>
+      </div>
+
+      <div class="paper-affiliations">
+        <span class="affiliation-item">¹ <a href="https://www.uni-paderborn.de/" target="_blank">Automatic Control Group (RAT), Paderborn University, Germany</a></span>
+      </div>
+
+      <!-- Action Button Dock -->
+      <div class="button-dock">
+        <a href="#abstract" class="dock-btn dock-btn-primary">
+          <i class="fas fa-file-alt"></i> Abstract
+        </a>
+        <a href="#overview" class="dock-btn">
+          <i class="fas fa-project-diagram"></i> Method Overview
+        </a>
+        <a href="#experiments" class="dock-btn">
+          <i class="fas fa-drone"></i> Drone Racing Benchmarks
+        </a>
+        <a href="#bibtex" class="dock-btn">
+          <i class="fas fa-quote-right"></i> Cite (BibTeX)
+        </a>
+      </div>
+    </header>
+
+    <!-- Schematic Overview Window -->
+    <section id="overview" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Schematic Overview of FARS</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <div class="figure-window" style="margin-top: 0;">
+          <img src="abstract.png" alt="Schematic overview of FARS" />
+          <div class="figure-caption">
+            <strong>Figure 1:</strong> Schematic overview of the <strong>Fuzzy Adaptive Reward Shaping (FARS)</strong> method.
+            Whereas conventional RL reward design typically relies on manually tuned and crisp input terms, FARS introduces a fuzzy logic-based method that adaptively shapes reward as a function of distance and velocity using human-interpretable linguistic rules.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Abstract Window -->
+    <section id="abstract" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Abstract &amp; Key Contributions</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-body);">
+          Reinforcement learning (RL) often struggles in real-world tasks with high-dimensional state spaces and long horizons, where sparse or fixed rewards severely slow down exploration and cause agents to get trapped in local optima. This paper presents a fuzzy-logic-based reward shaping method that integrates human intuition into RL reward design.
+        </p>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-body);">
+          By encoding expert knowledge into adaptive, interpretable terms, fuzzy rules promote stable learning and reduce sensitivity to hyperparameters. The proposed method leverages these properties to adapt reward contributions based on the agent’s state, enabling smoother transitions between fast motion and precise control in challenging navigation tasks.
+        </p>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-body);">
+          Extensive simulation results on autonomous drone racing benchmarks in <strong>IsaacLab</strong> show stable learning behavior and consistent task performance across scenarios of increasing difficulty. FARS achieves faster convergence and reduced performance variability across training seeds in more challenging environments, with <strong>success rates improving by up to approximately 5%</strong> compared to non-fuzzy reward formulations.
+        </p>
+
+        <!-- Contributions Grid -->
+        <div class="contributions-grid">
+          <div class="contribution-card">
+            <div class="contribution-icon">
+              <i class="fas fa-brain"></i>
+            </div>
+            <h4>Human-Intuitive Reward Design</h4>
+            <p>Encodes natural linguistic heuristics (e.g., fly fast when far away, decelerate and align when approaching gates) into a continuous, differentiable reward surface.</p>
+          </div>
+          <div class="contribution-card">
+            <div class="contribution-icon">
+              <i class="fas fa-sliders-h"></i>
+            </div>
+            <h4>Mamdani &amp; Sugeno Inference</h4>
+            <p>Develops both Mamdani (continuous smooth mapping) and Sugeno (piecewise efficient) inference formulations, resolving conflicts between speed and precision.</p>
+          </div>
+          <div class="contribution-card">
+            <div class="contribution-icon">
+              <i class="fas fa-fighter-jet"></i>
+            </div>
+            <h4>IsaacLab Autonomous Drone Racing</h4>
+            <p>Validated on high-speed quadrotor drone racing through sequential gates in NVIDIA IsaacLab, demonstrating enhanced stability and lower seed variance.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Methodology Window -->
+    <section id="methodology" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Methodology &amp; Fuzzy Reward Logic</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <h2>Fuzzy Velocity–Distance Reward Formulation</h2>
+        <p>
+          In conventional reward shaping, scalar weights on distance and velocity can produce conflicting gradients: an agent rewarded for high speed may overshoot tight gates, while an agent penalised for speed may fly too conservatively. FARS resolves this trade-off via fuzzy linguistic rules:
+        </p>
+        <div class="math-box">
+          $$\text{If } v \text{ is } A_i \text{ and } d \text{ is } B_i, \text{ then } z \text{ is } C_i$$
+        </div>
+        <p>
+          Specifically:
+          <br>• <em>If the drone is far from the target gate and flies at high velocity</em>, high reward is provided to accelerate travel.
+          <br>• <em>If the drone approaches the gate and reduces velocity</em>, safe and centered gate passage is positively reinforced.
+        </p>
+        <p>
+          The total composite reward in FARS replaces rigid distance terms with the fuzzy velocity-distance reward:
+        </p>
+        <div class="math-box">
+          $$r_t = r^\text{gate} + r^\text{final} + r^\text{vd} + r_{\text{aux}}^\text{center} + r^\text{die}$$
+        </div>
+      </div>
+    </section>
+
+    <!-- Drone Racing Benchmarks Window -->
+    <section id="experiments" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Autonomous Drone Racing in IsaacLab</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <h2>Zigzag Racing Tracks of Escalating Complexity</h2>
+        <p>
+          FARS was evaluated across three distinct gate courses modeled in NVIDIA IsaacLab with full nonlinear quadrotor aerodynamics:
+        </p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+          <div style="text-align: center; background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.75rem;">
+            <img src="easy_test_c.png" style="max-width: 100%; border-radius: var(--radius-sm);" alt="Easy Track" />
+            <h4 style="margin: 0.5rem 0 0.25rem;">(a) Easy Track</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0;">Gentle turns with wide gate spacing.</p>
+          </div>
+          <div style="text-align: center; background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.75rem;">
+            <img src="medium_c.png" style="max-width: 100%; border-radius: var(--radius-sm);" alt="Medium Track" />
+            <h4 style="margin: 0.5rem 0 0.25rem;">(b) Medium Track</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0;">Moderate curvature requiring coordinated banking.</p>
+          </div>
+          <div style="text-align: center; background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.75rem;">
+            <img src="hard_test_c.png" style="max-width: 100%; border-radius: var(--radius-sm);" alt="Hard Track" />
+            <h4 style="margin: 0.5rem 0 0.25rem;">(c) Hard Track</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0;">Aggressive zigzag angles and close gate intervals.</p>
+          </div>
+        </div>
+
+        <h2>Quantitative Results &amp; Success Rates</h2>
+        <p>
+          Compared against conventional potential-field reward shaping (PFBRS), FARS delivered:
+          <br>• <strong>Up to ~5% higher success rate</strong> in completing full tracks.
+          <br>• <strong>Significantly faster policy convergence</strong> with substantially reduced variance across training seeds.
+          <br>• Smooth and agile flight trajectories without premature speed truncation.
+        </p>
+
+        <div class="figure-window">
+          <img src="tmp_result_plot1.png" alt="Quantitative Training Results" />
+          <div class="figure-caption">
+            <strong>Figure 2:</strong> Learning performance and reward progression comparing FARS (Mamdani and Sugeno) against standard reward shaping.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BibTeX Citation Window -->
+    <section id="bibtex" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">BibTeX Citation</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">
+          If you find FARS or this methodology useful for your research, please cite:
+        </p>
+        <div class="bibtex-box">
+          <button class="bibtex-copy-btn" onclick="copyBibtex()">
+            <i class="fas fa-copy"></i> Copy BibTeX
+          </button>
+          <pre id="bibtex-text">@inproceedings{sahin2026fuzzy,
+  title     = {Fuzzy Logic Theory-based Adaptive Reward Shaping for Robust Reinforcement Learning ({FARS})},
+  author    = {{\c{S}}ahin, H{\"u}rkan and Dang, Van Huyen and Sayar, Erdi and Yegenoglu, Alper and Kayacan, Erdal},
+  booktitle = {IEEE World Congress on Computational Intelligence (WCCI)},
+  year      = {2026},
+  publisher = {IEEE}
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="paper-footer">
+      <p>
+        © 2026 Hürkan Şahin, Erdi Sayar et al. · Automatic Control Group (RAT), Paderborn University
+      </p>
+      <p>
+        <a href="/" style="font-weight: 600;"><i class="fas fa-arrow-left"></i> Return to Erdi Sayar's Personal Webpage</a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="copy-toast" class="copy-toast">
+    <i class="fas fa-check-circle" style="color: #10B981;"></i> BibTeX copied to clipboard!
+  </div>
+
+  <!-- Script for BibTeX Copy -->
+  <script>
+    function copyBibtex() {
+      const text = document.getElementById('bibtex-text').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('copy-toast');
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2500);
+      });
+    }
+  </script>
+</body>
+
+</html>

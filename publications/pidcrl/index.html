@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>Palette Inpainting Diffusion Curriculum Reinforcement Learning (PIDCRL) | IEEE WCCI 2026</title>
+  <meta name="description" content="PIDCRL: Palette Inpainting Diffusion Curriculum Reinforcement Learning - IEEE WCCI 2026. Faruk Oruç, Erdi Sayar, Giovanni Iacca, Alois Knoll, Erdal Kayacan." />
+  <meta name="author" content="Faruk Oruç, Erdi Sayar" />
+
+  <!-- OpenGraph / Social Meta -->
+  <meta property="og:title" content="Palette Inpainting Diffusion Curriculum Reinforcement Learning (PIDCRL)" />
+  <meta property="og:description" content="A diffusion-based CRL framework leveraging mask-conditional image inpainting on trajectory heatmaps to automatically generate curriculum goals." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="system_arch.png" />
+
+  <!-- Icons & Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/project-page.css" />
+
+  <!-- MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <!-- Top Navigation Bar -->
+  <nav class="site-nav">
+    <div class="site-nav-container">
+      <a href="/" class="site-nav-back">
+        <i class="fas fa-arrow-left"></i>
+        <span>Erdi Sayar Portfolio</span>
+      </a>
+      <div class="site-nav-links">
+        <a href="#abstract" class="site-nav-link">Abstract</a>
+        <a href="#architecture" class="site-nav-link">Architecture</a>
+        <a href="#inpainting" class="site-nav-link">Diffusion Inpainting</a>
+        <a href="#results" class="site-nav-link">Benchmarks</a>
+        <a href="#bibtex" class="site-nav-link">BibTeX</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="paper-container">
+    <!-- Hero Header -->
+    <header class="paper-hero">
+      <div class="venue-pill">
+        <i class="fas fa-award"></i> IEEE WCCI 2026 (Accepted)
+      </div>
+      <h1 class="paper-title">
+        Palette Inpainting Diffusion Curriculum Reinforcement Learning (PIDCRL)
+      </h1>
+
+      <div class="paper-authors">
+        <span class="author-item">
+          <a href="https://github.com/farukoruc" target="_blank">Faruk Oruç</a>¹
+        </span>
+        <span class="author-item">
+          <a href="https://erdisayar.github.io/" target="_blank" class="author-highlighted">Erdi Sayar</a>²
+        </span>
+        <span class="author-item">
+          <a href="https://scholar.google.com/citations?user=giovanni_iacca" target="_blank">Giovanni Iacca</a>³
+        </span>
+        <span class="author-item">
+          <a href="https://www.ce.cit.tum.de/air/people/prof-dr-ing-habil-alois-knoll/" target="_blank">Alois Knoll</a>¹
+        </span>
+        <span class="author-item">
+          <a href="https://www.uni-paderborn.de/person/erdal-kayacan" target="_blank">Erdal Kayacan</a>²
+        </span>
+      </div>
+
+      <div class="paper-affiliations">
+        <span class="affiliation-item">¹ <a href="https://www.tum.de/" target="_blank">Technical University of Munich (TUM)</a></span>
+        <span class="affiliation-item">² <a href="https://www.uni-paderborn.de/" target="_blank">Paderborn University</a></span>
+        <span class="affiliation-item">³ <a href="https://www.unitn.it/" target="_blank">University of Trento</a></span>
+      </div>
+
+      <!-- Action Button Dock -->
+      <div class="button-dock">
+        <a href="https://github.com/farukoruc/DiffusionOutpace" class="dock-btn dock-btn-primary" target="_blank">
+          <i class="fab fa-github"></i> Code &amp; Benchmarks (GitHub)
+        </a>
+        <a href="#abstract" class="dock-btn">
+          <i class="fas fa-file-alt"></i> Abstract
+        </a>
+        <a href="#architecture" class="dock-btn">
+          <i class="fas fa-project-diagram"></i> Architecture
+        </a>
+        <a href="#bibtex" class="dock-btn">
+          <i class="fas fa-quote-right"></i> Cite (BibTeX)
+        </a>
+      </div>
+    </header>
+
+    <!-- Teaser Architecture Window -->
+    <section id="architecture" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">System Architecture Overview</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <div class="figure-window" style="margin-top: 0;">
+          <img src="system_arch.png" alt="Overview of PIDCRL Pipeline" />
+          <div class="figure-caption">
+            <strong>Figure 1:</strong> Overview of <strong>PIDCRL</strong>. The pipeline comprises three phases: 
+            <strong>(I)</strong> data collection and conversion of agent trajectories to 2D heatmap representations; 
+            <strong>(II)</strong> mask-conditional Palette diffusion model training; 
+            <strong>(III)</strong> generative inference, where the trained model in-paints and filters candidate curriculum goals to guide the RL agent.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Abstract Window -->
+    <section id="abstract" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Abstract &amp; Key Contributions</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-body);">
+          Curriculum reinforcement learning (CRL) aims to accelerate agent learning by organizing tasks into a sequence of progressively harder challenges. However, many existing CRL methods struggle to steer agents toward meaningful exploration targets, especially when domain knowledge or hand-tuned heuristics are limited or unavailable.
+        </p>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-body);">
+          To overcome this limitation, we introduce <strong>PIDCRL</strong>, a diffusion-based CRL framework that leverages a mask-conditional, image-to-image pretrained diffusion model (Palette) to automatically generate curriculum goals from agent trajectory heatmaps. Given a heatmap trajectory as input, the model produces candidate curriculum goals, which are subsequently filtered and selected using several strategies, including spatial averaging, $Q$-value scoring, and a trainable reward-based mechanism.
+        </p>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-body);">
+          These strategies identify curriculum goals that are both achievable from the current trajectory and appropriately challenging, enabling effective curricula without requiring expert-designed heuristics. Across three maze environments (PointUMaze, PointNMaze, PointSpiralMaze), PIDCRL matches or outperforms <strong>ten state-of-the-art CRL baselines</strong>.
+        </p>
+
+        <!-- Contributions Grid -->
+        <div class="contributions-grid">
+          <div class="contribution-card">
+            <div class="contribution-icon">
+              <i class="fas fa-palette"></i>
+            </div>
+            <h4>Diffusion Inpainting for CRL</h4>
+            <p>Repurposes Palette image-to-image conditional diffusion to in-paint prospective goal locations directly onto visual agent trajectory heatmaps.</p>
+          </div>
+          <div class="contribution-card">
+            <div class="contribution-icon">
+              <i class="fas fa-filter"></i>
+            </div>
+            <h4>Strategic Goal Selection</h4>
+            <p>Introduces $Q$-value scoring, spatial averaging, and trainable adversarial intrinsic motivation (AIM) filtering to pick frontier goals that avoid exploration traps.</p>
+          </div>
+          <div class="contribution-card">
+            <div class="contribution-icon">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <h4>Superlative Performance</h4>
+            <p>Outperforms 10 state-of-the-art CRL baselines (including OUTPACE, GoalGAN, HGG, CURROT, and GRADIENT) across PointUMaze, PointNMaze, and PointSpiralMaze.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Methodology & Diffusion Inpainting Window -->
+    <section id="inpainting" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Diffusion Inpainting &amp; Candidate Generation</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <h2>Trajectory Heatmaps to Curriculum Goals</h2>
+        <p>
+          Instead of operating in low-dimensional Euclidean coordinate space where obstacle topology is neglected, PIDCRL maps trajectories into 2D continuous density heatmaps. A binary mask isolates the region to be inpainted by the conditional diffusion network:
+        </p>
+
+        <div class="figure-window">
+          <img src="palette_diffusion_batch.png" alt="Palette Diffusion Inpainting Batch" />
+          <div class="figure-caption">
+            <strong>Figure 2:</strong> Step-by-step diffusion inpainting process generating candidate curriculum goals conditioned on masked agent trajectory history.
+          </div>
+        </div>
+
+        <h2>Curriculum Goal Propagation Across Mazes</h2>
+        <p>
+          As the policy evolves, the diffusion inpainter smoothly extends goals along reachable topological corridors, preventing goals from being placed behind insurmountable walls.
+        </p>
+
+        <div class="figure-window">
+          <img src="curriculum_goals_drawio.png" alt="Curriculum Goals in Maze Environments" />
+          <div class="figure-caption">
+            <strong>Figure 3:</strong> Generated curriculum goal trajectories across MuJoCo maze environments (PointUMaze, PointNMaze, PointSpiralMaze).
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Benchmarks & Code Window -->
+    <section id="results" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Experimental Evaluation &amp; Open-Source Code</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <h2>Benchmarked Against 10 CRL Baselines</h2>
+        <p>
+          We evaluated PIDCRL against a comprehensive suite of ten established CRL algorithms across 5 random seeds:
+        </p>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 1.5rem;">
+          <span class="project-tag" style="font-size: 0.85rem; padding: 4px 10px;">OUTPACE</span>
+          <span class="project-tag" style="font-size: 0.85rem; padding: 4px 10px;">GoalGAN</span>
+          <span class="project-tag" style="font-size: 0.85rem; padding: 4px 10px;">HGG</span>
+          <span class="project-tag" style="font-size: 0.85rem; padding: 4px 10px;">CURROT</span>
+          <span class="project-tag" style="font-size: 0.85rem; padding: 4px 10px;">GRADIENT</span>
+          <span class="project-tag" style="font-size: 0.85rem; padding: 4px 10px;">SPRL</span>
+          <span class="project-tag" style="font-size: 0.85rem; padding: 4px 10px;">PLR</span>
+          <span class="project-tag" style="font-size: 0.85rem; padding: 4px 10px;">VDS</span>
+          <span class="project-tag" style="font-size: 0.85rem; padding: 4px 10px;">ALP-GMM</span>
+          <span class="project-tag" style="font-size: 0.85rem; padding: 4px 10px;">ACL</span>
+        </div>
+
+        <div style="text-align: center; padding: 1.5rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); margin-top: 1rem;">
+          <h3 style="margin-top: 0; margin-bottom: 0.5rem;">Official Code &amp; Supplementary Materials</h3>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            Full PyTorch implementation, training scripts, MuJoCo environments, high-resolution plots, and supplementary analyses:
+          </p>
+          <a href="https://github.com/farukoruc/DiffusionOutpace" target="_blank" class="dock-btn dock-btn-primary">
+            <i class="fab fa-github"></i> View GitHub Repository (farukoruc/DiffusionOutpace)
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- BibTeX Citation Window -->
+    <section id="bibtex" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">BibTeX Citation</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">
+          If you find PIDCRL or this codebase useful for your research, please cite our IEEE WCCI 2026 paper:
+        </p>
+        <div class="bibtex-box">
+          <button class="bibtex-copy-btn" onclick="copyBibtex()">
+            <i class="fas fa-copy"></i> Copy BibTeX
+          </button>
+          <pre id="bibtex-text">@inproceedings{oruc2026palette,
+  title     = {Palette Inpainting Diffusion Curriculum Reinforcement Learning ({PIDCRL})},
+  author    = {Oru{\c{c}}, Faruk and Sayar, Erdi and Iacca, Giovanni and Knoll, Alois and Kayacan, Erdal},
+  booktitle = {IEEE World Congress on Computational Intelligence (WCCI)},
+  year      = {2026},
+  publisher = {IEEE}
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="paper-footer">
+      <p>
+        © 2026 Faruk Oruç, Erdi Sayar et al. · Technical University of Munich &amp; Paderborn University
+      </p>
+      <p>
+        <a href="/" style="font-weight: 600;"><i class="fas fa-arrow-left"></i> Return to Erdi Sayar's Personal Webpage</a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="copy-toast" class="copy-toast">
+    <i class="fas fa-check-circle" style="color: #10B981;"></i> BibTeX copied to clipboard!
+  </div>
+
+  <!-- Script for BibTeX Copy -->
+  <script>
+    function copyBibtex() {
+      const text = document.getElementById('bibtex-text').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('copy-toast');
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2500);
+      });
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>Exp2VLA: Enabling Vision–Language–Action for Drone Navigation from Expert Demonstrations | IEEE/ASME AIM 2026</title>
+  <meta name="description" content="Exp2VLA: Enabling Vision-Language-Action for Drone Navigation from Expert Demonstrations - IEEE/ASME AIM 2026. Van Huyen Dang, Kabilesh Rajendran, Erdi Sayar, Erdal Kayacan." />
+  <meta name="author" content="Van Huyen Dang, Kabilesh Rajendran, Erdi Sayar" />
+
+  <!-- OpenGraph / Social Meta -->
+  <meta property="og:title" content="Exp2VLA: Enabling Vision–Language–Action for Drone Navigation from Expert Demonstrations" />
+  <meta property="og:description" content="An expert-distillation pipeline for language-conditioned drone navigation fine-tuning compact VLA models." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="frontimage.png" />
+
+  <!-- Icons & Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/project-page.css" />
+
+  <!-- MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <!-- Top Navigation Bar -->
+  <nav class="site-nav">
+    <div class="site-nav-container">
+      <a href="/" class="site-nav-back">
+        <i class="fas fa-arrow-left"></i>
+        <span>Erdi Sayar Portfolio</span>
+      </a>
+      <div class="site-nav-links">
+        <a href="#abstract" class="site-nav-link">Abstract</a>
+        <a href="#pipeline" class="site-nav-link">Pipeline</a>
+        <a href="#navigation" class="site-nav-link">Experiments</a>
+        <a href="#datasets" class="site-nav-link">Datasets</a>
+        <a href="#bibtex" class="site-nav-link">BibTeX</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="paper-container">
+    <!-- Hero Header -->
+    <header class="paper-hero">
+      <div class="venue-pill">
+        <i class="fas fa-award"></i> IEEE/ASME AIM 2026 (Accepted)
+      </div>
+      <h1 class="paper-title">
+        Exp2VLA: Enabling Vision–Language–Action for Drone Navigation from Expert Demonstrations
+      </h1>
+
+      <div class="paper-authors">
+        <span class="author-item">
+          <a href="https://orcid.org/0009-0006-2328-2153" target="_blank">Van Huyen Dang</a>*
+        </span>
+        <span class="author-item">
+          <a href="mailto:kabilesh@mail.uni-paderborn.de" target="_blank">Kabilesh Rajendran</a>*
+        </span>
+        <span class="author-item">
+          <a href="https://erdisayar.github.io/" target="_blank" class="author-highlighted">Erdi Sayar</a>
+        </span>
+        <span class="author-item">
+          <a href="https://orcid.org/0000-0002-7143-8777" target="_blank">Erdal Kayacan</a>
+        </span>
+      </div>
+      <div style="font-size: 0.85rem; color: var(--text-muted); margin-top: -0.4rem; margin-bottom: 0.8rem;">
+        * Equal contribution
+      </div>
+
+      <div class="paper-affiliations">
+        <span class="affiliation-item"><a href="https://www.uni-paderborn.de/" target="_blank">Automatic Control Group (RAT), Paderborn University, Germany</a></span>
+      </div>
+
+      <!-- Action Button Dock -->
+      <div class="button-dock">
+        <a href="https://huggingface.co/datasets/UPB-RAT-VLA/Exp2VLA-MultiObject-v1" class="dock-btn dock-btn-primary" target="_blank">
+          <i class="fas fa-database"></i> Hugging Face Datasets
+        </a>
+        <a href="https://huggingface.co/spaces/lerobot/visualize_dataset?path=%2FUPB-RAT-VLA%2FExp2VLA-MultiObject-v1%2Fepisode_0" class="dock-btn" target="_blank">
+          <i class="fas fa-chart-area"></i> Dataset Visualizer
+        </a>
+        <a href="#pipeline" class="dock-btn">
+          <i class="fas fa-project-diagram"></i> Architecture
+        </a>
+        <a href="#bibtex" class="dock-btn">
+          <i class="fas fa-quote-right"></i> Cite (BibTeX)
+        </a>
+      </div>
+    </header>
+
+    <!-- Overview Window -->
+    <section id="overview" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Exp2VLA End-to-End Overview</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <div class="figure-window" style="margin-top: 0;">
+          <img src="frontimage.png" alt="Overview of the Exp2VLA pipeline" />
+          <div class="figure-caption">
+            <strong>Figure 1:</strong> Overview of the proposed <strong>Exp2VLA</strong> pipeline. Expert policies in Isaac Lab generate demonstration rollouts, which are converted into the LeRobot format for fine-tuning a vision-language-action model. At inference time, the fine-tuned model takes RGB observations and natural language commands (e.g., <em>"Fly to the red cube"</em>) and outputs high-frequency continuous control actions for drone navigation.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Abstract Window -->
+    <section id="abstract" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Abstract &amp; Key Contributions</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-body);">
+          Vision-language-action (VLA) models open a new path toward intuitive robot control by directly linking perception, language, and action in a single end-to-end framework. Yet for unmanned aerial vehicles (UAVs), practical adoption remains challenging because existing VLA models are either computationally prohibitive for onboard flight or lack fine-grained agility in complex environments.
+        </p>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-body);">
+          In this work, we propose <strong>Exp2VLA</strong>, a practical expert-distillation pipeline for language-conditioned drone navigation. The core idea is to distill expert behavior, obtained from reinforcement learning, teleoperation, or classical optimal controllers, into standardized demonstration data to fine-tune compact VLA models. This enables existing control capabilities to be transferred into a unified, language-guided aerial navigation policy, lowering the engineering barrier for deploying new robotic behaviors.
+        </p>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-body);">
+          Evaluations across multi-object scenes in both <strong>sim-to-sim</strong> and <strong>simulation-in-the-loop (SITL)</strong> flight setups demonstrate that the fine-tuned VLA models reliably execute semantic navigation commands and generalize to unseen target compositions.
+        </p>
+
+        <!-- Contributions Grid -->
+        <div class="contributions-grid">
+          <div class="contribution-card">
+            <div class="contribution-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h4>Expert-to-VLA Distillation</h4>
+            <p>Distills RL and optimal control rollouts from Isaac Lab into standardized LeRobot demonstration datasets tailored for aerial navigation.</p>
+          </div>
+          <div class="contribution-card">
+            <div class="contribution-icon">
+              <i class="fas fa-comments"></i>
+            </div>
+            <h4>Language-Guided Flight</h4>
+            <p>Directly conditions flight trajectories on natural language commands, enabling autonomous aerial robots to parse high-level instructions.</p>
+          </div>
+          <div class="contribution-card">
+            <div class="contribution-icon">
+              <i class="fas fa-laptop-code"></i>
+            </div>
+            <h4>Open-Access Datasets</h4>
+            <p>Publicly released SingleCube and MultiObject benchmark datasets on Hugging Face complete with interactive episode visualization spaces.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Methodology & Architecture Window -->
+    <section id="pipeline" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Pipeline Architecture &amp; Data Distillation</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <h2>From Expert Rollouts to LeRobot Fine-Tuning</h2>
+        <p>
+          Exp2VLA automates expert trajectory harvesting, synchronization of front-camera RGB images with low-level quadrotor velocity setpoints, and formatting for compact VLA backbones (e.g., SmolVLA):
+        </p>
+        <div class="figure-window">
+          <img src="figure2.png" alt="Exp2VLA Training & Adaptation Architecture" />
+          <div class="figure-caption">
+            <strong>Figure 2:</strong> Data distillation pipeline: Expert rollouts generated in Isaac Lab are converted into LeRobot episode structures, paired with semantic language prompts, and used to fine-tune pre-trained VLA backbones.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Multi-Object Navigation Window -->
+    <section id="navigation" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Multi-Object Semantic Navigation Benchmarks</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <h2>Sim2Sim and Simulation-in-the-Loop (SITL) Evaluations</h2>
+        <p>
+          The drone is commanded in real time to locate and navigate toward specified geometric targets in cluttered, randomized multi-object environments:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1.5rem 0;">
+          <div style="text-align: center; background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.75rem;">
+            <img src="sim2real_red_cube.png" style="max-width: 100%; border-radius: var(--radius-sm);" alt="Fly to Red Cube" />
+            <h4 style="margin: 0.5rem 0 0.25rem;">Command: <em>"Fly to the red cube"</em></h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0;">Successfully navigates to the target cube while ignoring distractors.</p>
+          </div>
+          <div style="text-align: center; background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.75rem;">
+            <img src="sim2real_blue_cylinder.png" style="max-width: 100%; border-radius: var(--radius-sm);" alt="Fly to Blue Cylinder" />
+            <h4 style="margin: 0.5rem 0 0.25rem;">Command: <em>"Fly to the blue cylinder"</em></h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0;">Identifies cylindrical geometry and color under varying illumination.</p>
+          </div>
+          <div style="text-align: center; background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.75rem;">
+            <img src="sim2real_green_cone.png" style="max-width: 100%; border-radius: var(--radius-sm);" alt="Fly to Green Cone" />
+            <h4 style="margin: 0.5rem 0 0.25rem;">Command: <em>"Fly to the green cone"</em></h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0;">Performs smooth descent and hovering at the commanded conical goal.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Datasets Window -->
+    <section id="datasets" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Open-Source Hugging Face Datasets</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <p style="font-size: 1rem; color: var(--text-body);">
+          To facilitate reproducibility and research in language-guided aerial autonomy, we have released our full demonstration datasets on Hugging Face:
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 1rem;">
+          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 1rem; background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+            <div>
+              <h4 style="margin: 0 0 4px 0;">Exp2VLA SingleCube Dataset</h4>
+              <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">Demonstration trajectories for single-target goal reaching.</p>
+            </div>
+            <a href="https://huggingface.co/datasets/UPB-RAT-VLA/Exp2VLA-SingleCube-v1" target="_blank" class="btn-pub btn-pub-primary">
+              <i class="fas fa-external-link-alt"></i> Hugging Face Repo
+            </a>
+          </div>
+          <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; padding: 1rem; background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md);">
+            <div>
+              <h4 style="margin: 0 0 4px 0;">Exp2VLA MultiObject Dataset</h4>
+              <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">Complex trajectories across multi-object, multi-color semantic scenes.</p>
+            </div>
+            <a href="https://huggingface.co/datasets/UPB-RAT-VLA/Exp2VLA-MultiObject-v1" target="_blank" class="btn-pub btn-pub-primary">
+              <i class="fas fa-external-link-alt"></i> Hugging Face Repo
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BibTeX Citation Window -->
+    <section id="bibtex" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">BibTeX Citation</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">
+          If you find Exp2VLA or our released datasets helpful in your research, please consider citing:
+        </p>
+        <div class="bibtex-box">
+          <button class="bibtex-copy-btn" onclick="copyBibtex()">
+            <i class="fas fa-copy"></i> Copy BibTeX
+          </button>
+          <pre id="bibtex-text">@inproceedings{dang2026exp2vla,
+  title     = {Exp2VLA: Enabling Vision--Language--Action for Drone Navigation from Expert Demonstrations},
+  author    = {Dang, Van Huyen and Rajendran, Kabilesh and Sayar, Erdi and Kayacan, Erdal},
+  booktitle = {IEEE/ASME International Conference on Advanced Intelligent Mechatronics (AIM)},
+  year      = {2026},
+  publisher = {IEEE}
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="paper-footer">
+      <p>
+        © 2026 Van Huyen Dang, Kabilesh Rajendran, Erdi Sayar, Erdal Kayacan · Automatic Control Group (RAT), Paderborn University
+      </p>
+      <p>
+        <a href="/" style="font-weight: 600;"><i class="fas fa-arrow-left"></i> Return to Erdi Sayar's Personal Webpage</a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="copy-toast" class="copy-toast">
+    <i class="fas fa-check-circle" style="color: #10B981;"></i> BibTeX copied to clipboard!
+  </div>
+
+  <!-- Script for BibTeX Copy -->
+  <script>
+    function copyBibtex() {
+      const text = document.getElementById('bibtex-text').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('copy-toast');
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2500);
+      });
+    }
+  </script>
+</body>
+
+</html>

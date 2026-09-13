@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>D-SafeMPC: Diffusion-Driven Safe Model Predictive Control with Discrete-Time Control Barrier Functions | IEEE/RSJ IROS 2026</title>
+  <meta name="description" content="D-SafeMPC: Diffusion-Driven Safe Model Predictive Control with Discrete-Time Control Barrier Functions - IEEE/RSJ IROS 2026. Erdi Sayar, Ersin Daş, Joel W. Burdick, Alois Knoll, Erdal Kayacan." />
+  <meta name="author" content="Erdi Sayar" />
+
+  <!-- OpenGraph / Social Meta -->
+  <meta property="og:title" content="D-SafeMPC: Diffusion-Driven Safe Model Predictive Control with Discrete-Time Control Barrier Functions" />
+  <meta property="og:description" content="Guiding reverse diffusion with discrete-time CBFs and CLFs and iterative-projection MPC for safe robot trajectory planning." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="graphical_abstract.png" />
+
+  <!-- Icons & Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/project-page.css" />
+
+  <!-- MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <!-- Top Navigation Bar -->
+  <nav class="site-nav">
+    <div class="site-nav-container">
+      <a href="/" class="site-nav-back">
+        <i class="fas fa-arrow-left"></i>
+        <span>Erdi Sayar Portfolio</span>
+      </a>
+      <div class="site-nav-links">
+        <a href="#abstract" class="site-nav-link">Abstract</a>
+        <a href="#architecture" class="site-nav-link">Architecture</a>
+        <a href="#sim2real" class="site-nav-link">Sim2Real</a>
+        <a href="#benchmarks" class="site-nav-link">Benchmarks</a>
+        <a href="#bibtex" class="site-nav-link">BibTeX</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="paper-container">
+    <!-- Hero Header -->
+    <header class="paper-hero">
+      <div class="venue-pill">
+        <i class="fas fa-award"></i> IEEE/RSJ IROS 2026 · Pittsburgh, PA, USA
+      </div>
+      <h1 class="paper-title">
+        D-SafeMPC: Diffusion-Driven Safe Model Predictive Control with Discrete-Time Control Barrier Functions
+      </h1>
+
+      <div class="paper-authors">
+        <span class="author-item">
+          <a href="https://erdisayar.github.io/" target="_blank" class="author-highlighted">Erdi Sayar</a>¹
+        </span>
+        <span class="author-item">
+          <a href="https://scholar.google.com/citations?user=ersin_das" target="_blank">Ersin Daş</a>²
+        </span>
+        <span class="author-item">
+          <a href="https://www.its.caltech.edu/~jwb/" target="_blank">Joel W. Burdick</a>³
+        </span>
+        <span class="author-item">
+          <a href="https://www.ce.cit.tum.de/air/people/prof-dr-ing-habil-alois-knoll/" target="_blank">Alois Knoll</a>⁴
+        </span>
+        <span class="author-item">
+          <a href="https://www.uni-paderborn.de/person/erdal-kayacan" target="_blank">Erdal Kayacan</a>¹
+        </span>
+      </div>
+
+      <div class="paper-affiliations">
+        <span class="affiliation-item">¹ <a href="https://www.uni-paderborn.de/" target="_blank">Paderborn University, Germany</a></span>
+        <span class="affiliation-item">² <a href="https://www.iit.edu/" target="_blank">Illinois Institute of Technology, Chicago, USA</a></span>
+        <span class="affiliation-item">³ <a href="https://www.caltech.edu/" target="_blank">California Institute of Technology (Caltech), Pasadena, USA</a></span>
+        <span class="affiliation-item">⁴ <a href="https://www.tum.de/" target="_blank">Technical University of Munich (TUM), Germany</a></span>
+      </div>
+
+      <!-- Action Button Dock -->
+      <div class="button-dock">
+        <a href="https://github.com/erdiphd/D-SafeMPC" class="dock-btn dock-btn-primary" target="_blank">
+          <i class="fab fa-github"></i> Code Repository (GitHub)
+        </a>
+        <a href="#abstract" class="dock-btn">
+          <i class="fas fa-file-alt"></i> Abstract
+        </a>
+        <a href="#architecture" class="dock-btn">
+          <i class="fas fa-project-diagram"></i> Architecture
+        </a>
+        <a href="#sim2real" class="dock-btn">
+          <i class="fas fa-robot"></i> Robot Experiments
+        </a>
+        <a href="#bibtex" class="dock-btn">
+          <i class="fas fa-quote-right"></i> Cite (BibTeX)
+        </a>
+      </div>
+    </header>
+
+    <!-- Overview Window -->
+    <section id="architecture" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">D-SafeMPC Framework Architecture</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <div class="figure-window" style="margin-top: 0;">
+          <img src="graphical_abstract.png" alt="D-SafeMPC System Architecture" />
+          <div class="figure-caption">
+            <strong>Figure 1:</strong> Overview of the <strong>D-SafeMPC</strong> trajectory planning framework. 
+            At each denoising step, the reverse diffusion process is guided by discrete-time Control Barrier Function (CBF) and Control Lyapunov Function (CLF) gradients ($\nabla_{\mathbf{u}}\psi_h$ and $\nabla_{\mathbf{u}}\Phi_V$), steering candidate trajectories away from obstacles and toward the goal. The trajectory is then projected onto a safe and dynamically feasible set via an MPC refinement step, which in turn initializes the next denoising iteration.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Abstract Window -->
+    <section id="abstract" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Abstract &amp; Key Contributions</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-body);">
+          A key limitation on the use of diffusion models in robotic trajectory planning is their inability to inherently enforce hard safety or dynamical constraints, which often results in physically infeasible or unsafe outputs. Hybrid approaches that employ model predictive control (MPC) to address this problem can be unstable, as poor trajectory initializations from the diffusion model prevent the MPC from converging to a safe and feasible solution.
+        </p>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-body);">
+          To overcome these challenges, we propose <strong>D-SafeMPC</strong>, which fundamentally enhances the interaction between diffusion models and optimal control. Our method guides the reverse diffusion process with <strong>control barrier functions (CBFs)</strong> and <strong>control Lyapunov functions (CLFs)</strong>, and employs an iterative-projection scheme where an MPC refines the trajectory at each denoising step. This steers sampling toward safe, goal-directed regions and provides reliable MPC warm starts.
+        </p>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-body);">
+          In extensive simulations on a 7-DOF Franka manipulator across four scenarios (one static-obstacle and three dynamic-obstacle settings) and in a <strong>sim-to-real experiment on a physical Franka robot</strong>, D-SafeMPC improves safety, task success rates, and planning efficiency over state-of-the-art baselines.
+        </p>
+
+        <!-- Contributions Grid -->
+        <div class="contributions-grid">
+          <div class="contribution-card">
+            <div class="contribution-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h4>Discrete-Time CBF/CLF Guidance</h4>
+            <p>Guides the stochastic reverse diffusion process with discrete-time CBF and CLF gradients, ensuring high-quality warm-starts without retraining the diffusion backbone.</p>
+          </div>
+          <div class="contribution-card">
+            <div class="contribution-icon">
+              <i class="fas fa-compress-arrows-alt"></i>
+            </div>
+            <h4>Iterative-Projection MPC</h4>
+            <p>Enforces strict hard safety and kinematic/dynamic feasibility constraints by projecting trajectories onto admissible control sets at each denoising step.</p>
+          </div>
+          <div class="contribution-card">
+            <div class="contribution-icon">
+              <i class="fas fa-robot"></i>
+            </div>
+            <h4>Real-World Franka Sim2Real</h4>
+            <p>Validated on a physical 7-DOF Franka Emika Panda robot with real-time avoidance of moving obstacles, demonstrating zero collisions and fast execution.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Sim2Real Hardware Window -->
+    <section id="sim2real" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Physical Franka Robot Experiments</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <h2>Real-Time Dynamic Obstacle Avoidance</h2>
+        <p>
+          We deployed D-SafeMPC zero-shot on a physical 7-DOF Franka Emika Panda manipulator. The robot successfully executes reaching tasks while evading dynamic obstacle intrusions:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin: 1.5rem 0;">
+          <div style="text-align: center; background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.75rem;">
+            <img src="real_experiment_image.png" style="max-width: 100%; border-radius: var(--radius-sm);" alt="Physical Franka Robot Experiment" />
+            <h4 style="margin: 0.5rem 0 0.25rem;">Hardware Setup</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0;">7-DOF Franka Emika robot reaching across workspace under hard safety constraints.</p>
+          </div>
+          <div style="text-align: center; background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.75rem;">
+            <img src="real_experiment_dynamic_obs.png" style="max-width: 100%; border-radius: var(--radius-sm);" alt="Dynamic Obstacle Avoidance" />
+            <h4 style="margin: 0.5rem 0 0.25rem;">Dynamic Evasion</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0;">Rapid trajectory re-planning when an unexpected dynamic obstacle crosses the path.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Simulation Benchmarks Window -->
+    <section id="benchmarks" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Simulation Benchmarks &amp; Baselines</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <h2>Static and Dynamic Obstacle Scenarios</h2>
+        <p>
+          We benchmarked D-SafeMPC against Diffuser, CoBL-Diffusion, and DPCC across four demanding scenarios in MuJoCo:
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.25rem; margin: 1.5rem 0;">
+          <div style="text-align: center; background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.75rem;">
+            <img src="static_env.png" style="max-width: 100%; border-radius: var(--radius-sm);" alt="Static Obstacle Scenario" />
+            <h4 style="margin: 0.5rem 0 0.25rem;">(a) Static Obstacle</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0;">Constrained corridors with immovable barriers.</p>
+          </div>
+          <div style="text-align: center; background: #f8fafc; border: 1px solid var(--border-color); border-radius: var(--radius-md); padding: 0.75rem;">
+            <img src="dynamic_env.png" style="max-width: 100%; border-radius: var(--radius-sm);" alt="Dynamic Obstacle Scenarios" />
+            <h4 style="margin: 0.5rem 0 0.25rem;">(b) Dynamic Obstacles</h4>
+            <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0;">Oscillating and moving obstacles with time-varying barrier functions.</p>
+          </div>
+        </div>
+
+        <div style="text-align: center; padding: 1.5rem; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: var(--radius-lg); margin-top: 1.5rem;">
+          <h3 style="margin-top: 0; margin-bottom: 0.5rem;">Open-Source Code &amp; Configurations</h3>
+          <p style="color: var(--text-muted); margin-bottom: 1rem;">
+            Full PyTorch implementation, MPC projection formulation, Franka robot controllers, and experiment configs:
+          </p>
+          <a href="https://github.com/erdiphd/D-SafeMPC" target="_blank" class="dock-btn dock-btn-primary">
+            <i class="fab fa-github"></i> View Repository (github.com/erdiphd/D-SafeMPC)
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- BibTeX Citation Window -->
+    <section id="bibtex" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">BibTeX Citation</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1rem;">
+          If you find D-SafeMPC or this framework useful for your research, please cite:
+        </p>
+        <div class="bibtex-box">
+          <button class="bibtex-copy-btn" onclick="copyBibtex()">
+            <i class="fas fa-copy"></i> Copy BibTeX
+          </button>
+          <pre id="bibtex-text">@inproceedings{sayar2026dsafempc,
+  title     = {D-SafeMPC: Diffusion-Driven Safe Model Predictive Control with Discrete-Time Control Barrier Functions},
+  author    = {Sayar, Erdi and Da{\c{s}}, Ersin and Burdick, Joel W. and Knoll, Alois and Kayacan, Erdal},
+  booktitle = {IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  year      = {2026},
+  address   = {Pittsburgh, PA, USA},
+  publisher = {IEEE}
+}</pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="paper-footer">
+      <p>
+        © 2026 Erdi Sayar et al. · Paderborn University &amp; Caltech &amp; IIT &amp; TUM
+      </p>
+      <p>
+        <a href="/" style="font-weight: 600;"><i class="fas fa-arrow-left"></i> Return to Erdi Sayar's Personal Webpage</a>
+      </p>
+    </footer>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="copy-toast" class="copy-toast">
+    <i class="fas fa-check-circle" style="color: #10B981;"></i> BibTeX copied to clipboard!
+  </div>
+
+  <!-- Script for BibTeX Copy -->
+  <script>
+    function copyBibtex() {
+      const text = document.getElementById('bibtex-text').innerText;
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('copy-toast');
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 2500);
+      });
+    }
+  </script>
+</body>
+
+</html>

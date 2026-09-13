@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <title>DiCuRL: Diffusion-based Curriculum Reinforcement Learning | NeurIPS 2024</title>
+  <meta name="description" content="Diffusion-based Curriculum Reinforcement Learning (DiCuRL) - NeurIPS 2024. Erdi Sayar, Giovanni Iacca, Ozgur S. Oguz, Alois Knoll." />
+  <meta name="author" content="Erdi Sayar" />
+
+  <!-- OpenGraph / Social Meta -->
+  <meta property="og:title" content="DiCuRL: Diffusion-based Curriculum Reinforcement Learning (NeurIPS 2024)" />
+  <meta property="og:description" content="A generative framework leveraging conditional diffusion models to adaptively synthesize curriculum goals guided by Q-value feasibility and AIM proximity." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="PointUMaze_diffusion_goal_gen.jpg" />
+
+  <!-- Icons & Fonts -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="../css/project-page.css" />
+
+  <!-- MathJax -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <style>
+    .math-block {
+      background: #F1F5F9;
+      padding: 1.2rem 1.5rem;
+      border-radius: var(--radius-md);
+      overflow-x: auto;
+      margin: 1.25rem 0;
+      border: 1px solid var(--border-color);
+      font-size: 0.95rem;
+    }
+    .benchmark-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+    .benchmark-item {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.75rem;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .benchmark-item img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-sm);
+      display: block;
+    }
+    .benchmark-item .title {
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-top: 0.5rem;
+      color: var(--text-main);
+    }
+    .comparison-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    .comparison-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 0.5rem;
+      text-align: center;
+    }
+    .comparison-card img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-sm);
+      display: block;
+    }
+    .comparison-card .label {
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-top: 0.4rem;
+      color: var(--text-muted);
+    }
+    .comparison-card.highlight {
+      border: 2px solid var(--primary-color);
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.15);
+    }
+    .comparison-card.highlight .label {
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Top Navigation Bar -->
+  <nav class="site-nav">
+    <div class="site-nav-container">
+      <a href="/" class="site-nav-back">
+        <i class="fas fa-arrow-left"></i>
+        <span>Erdi Sayar Portfolio</span>
+      </a>
+      <div class="site-nav-links">
+        <a href="#abstract" class="site-nav-link">Abstract</a>
+        <a href="#architecture" class="site-nav-link">Method</a>
+        <a href="#mazes" class="site-nav-link">Maze Benchmarks</a>
+        <a href="#robotics" class="site-nav-link">Robot Manipulation</a>
+        <a href="#ablations" class="site-nav-link">Ablations</a>
+        <a href="#bibtex" class="site-nav-link">BibTeX</a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="paper-container">
+    <!-- Hero Header -->
+    <header class="paper-hero">
+      <div class="venue-pill">
+        <i class="fas fa-award"></i> NeurIPS 2024 · 38th Conference on Neural Information Processing Systems · Vancouver, Canada
+      </div>
+      <h1 class="paper-title">
+        Diffusion-based Curriculum Reinforcement Learning
+      </h1>
+
+      <div class="paper-authors">
+        <span class="author-item">
+          <a href="https://erdisayar.github.io/" target="_blank" class="author-highlighted">Erdi Sayar</a>¹
+        </span>
+        <span class="author-item">
+          <a href="https://scholar.google.com/citations?user=dFk5x58AAAAJ" target="_blank">Giovanni Iacca</a>²
+        </span>
+        <span class="author-item">
+          <a href="https://scholar.google.com/citations?user=326s58YAAAAJ" target="_blank">Ozgur S. Oguz</a>³
+        </span>
+        <span class="author-item">
+          <a href="https://www.ce.cit.tum.de/air/people/prof-dr-ing-habil-alois-knoll/" target="_blank">Alois Knoll</a>¹
+        </span>
+      </div>
+
+      <div class="paper-affiliations">
+        <span class="affiliation-item">¹ <a href="https://www.tum.de/" target="_blank">Technical University of Munich (TUM), Germany</a></span>
+        <span class="affiliation-item">² <a href="https://www.unitn.it/" target="_blank">University of Trento, Italy</a></span>
+        <span class="affiliation-item">³ <a href="https://w3.cs.bilkent.edu.tr/" target="_blank">Bilkent University, Turkey</a></span>
+      </div>
+
+      <!-- Action Button Dock -->
+      <div class="button-dock">
+        <a href="https://proceedings.neurips.cc/paper_files/paper/2024/hash/b0e89a49af1fb2ebea69bfc39df0be4a-Abstract-Conference.html" class="dock-btn dock-btn-primary" target="_blank">
+          <i class="fas fa-file-pdf"></i> Paper (NeurIPS Proceedings)
+        </a>
+        <a href="https://proceedings.neurips.cc/paper_files/paper/2024/file/b0e89a49af1fb2ebea69bfc39df0be4a-Paper-Conference.pdf" class="dock-btn" target="_blank">
+          <i class="fas fa-download"></i> Direct PDF
+        </a>
+        <a href="https://github.com/erdiphd/DiCuRL/" class="dock-btn" target="_blank">
+          <i class="fab fa-github"></i> Code (GitHub)
+        </a>
+        <a href="#abstract" class="dock-btn">
+          <i class="fas fa-file-alt"></i> Abstract
+        </a>
+        <a href="#mazes" class="dock-btn">
+          <i class="fas fa-compass"></i> Maze Benchmarks
+        </a>
+        <a href="#robotics" class="dock-btn">
+          <i class="fas fa-robot"></i> Robot Tasks
+        </a>
+        <a href="#bibtex" class="dock-btn">
+          <i class="fas fa-quote-right"></i> Cite
+        </a>
+      </div>
+    </header>
+
+    <!-- Overview / Animated Teaser Window -->
+    <section id="architecture" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">DiCuRL Generative Process &amp; Curriculum Evolution</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <div class="figure-window" style="margin-top: 0;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; align-items: center;">
+            <div>
+              <img src="PointUMaze_diffusion_goal_gen.gif" alt="Animated Diffusion Curriculum Goal Generation in PointUMaze" style="width: 100%; border-radius: var(--radius-md); box-shadow: var(--shadow-sm);" />
+            </div>
+            <div>
+              <img src="Diffusion_Reverse_Process_Timesteps.png" alt="Reverse Diffusion Process Over Training" style="width: 100%; border-radius: var(--radius-md);" />
+            </div>
+          </div>
+          <div class="figure-caption" style="margin-top: 1rem;">
+            <strong>Figure 1:</strong> Overview of <strong>DiCuRL</strong>. 
+            <em>Left:</em> Real-time animation of the conditional diffusion reverse sampling process generating intermediate goals along the manifold of the U-Maze, progressively bridging initial state to the distant goal area without crossing walls. 
+            <em>Right:</em> The reverse diffusion process at successive training milestones (\(t=2\,000\), \(t=19\,000\), \(t=34\,000\)), showing how curriculum goal distributions adaptively evolve from localized exploration to the target goal zone.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Abstract Window -->
+    <section id="abstract" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Abstract &amp; Key Contributions</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-body);">
+          Curriculum Reinforcement Learning (CRL) is an approach to facilitate the learning process of agents by structuring tasks in a sequence of increasing complexity. Despite its potential, many existing CRL methods struggle to efficiently guide agents toward desired outcomes, particularly in the absence of domain knowledge.
+        </p>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-body);">
+          This paper introduces <strong>DiCuRL (Diffusion Curriculum Reinforcement Learning)</strong>, a novel method that leverages conditional diffusion models to generate curriculum goals. To estimate how close an agent is to achieving its goal, our method uniquely incorporates a \(Q\)-function and a trainable reward function based on <strong>Adversarial Intrinsic Motivation (AIM)</strong> within the diffusion model. Furthermore, it promotes exploration through the inherent noising and denoising mechanism present in the diffusion models and is environment-agnostic.
+        </p>
+        <p style="font-size: 1.05rem; line-height: 1.8; color: var(--text-body);">
+          This combination allows for the generation of challenging yet achievable goals, enabling agents to learn effectively without relying on domain knowledge. We demonstrate the effectiveness of DiCuRL in three different maze environments and two robotic manipulation tasks simulated in MuJoCo, where it outperforms or matches <strong>nine state-of-the-art CRL algorithms</strong> from the literature.
+        </p>
+
+        <!-- Contributions Grid -->
+        <div class="contributions-grid">
+          <div class="contribution-card">
+            <div class="contribution-icon">
+              <i class="fas fa-wind"></i>
+            </div>
+            <h4>Conditional Diffusion Sampling</h4>
+            <p>Captures the true manifold of visited states via continuous denoising, enabling robust exploration across complex geometries without heuristic priors.</p>
+          </div>
+          <div class="contribution-card">
+            <div class="contribution-icon">
+              <i class="fas fa-balance-scale"></i>
+            </div>
+            <h4>Dual \(Q\) &amp; AIM Conditioning</h4>
+            <p>Conditions diffusion reverse steps on both the critic \(Q\)-value (ensuring feasibility) and the learned AIM potential (ensuring directional goal progress).</p>
+          </div>
+          <div class="contribution-card">
+            <div class="contribution-icon">
+              <i class="fas fa-trophy"></i>
+            </div>
+            <h4>State-of-the-Art Performance</h4>
+            <p>Outperforms or matches 9 CRL baselines across complex mazes (U-Maze, N-Maze, Spiral-Maze) and 7-DOF continuous Fetch manipulation benchmarks.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Mathematical Formulation Window -->
+    <section class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Methodology &amp; Mathematical Formulation</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <p>
+          DiCuRL generates curriculum goals \(g \in \mathcal{G}_c\) by training a conditional diffusion probabilistic model on previously visited states, conditioned on state-evaluation signals:
+        </p>
+
+        <div class="math-block">
+          $$p_\theta(x_{0:K} \mid c) = p(x_K) \prod_{k=1}^K p_\theta(x_{k-1} \mid x_k, c), \quad \text{where } c = \big[ Q_\phi(s, g), \; r_{\text{AIM}}(s, g) \big]$$
+        </div>
+
+        <p>
+          The conditioning vector \(c\) balances two essential curriculum learning criteria:
+        </p>
+        <ul style="padding-left: 1.5rem; line-height: 1.8;">
+          <li>
+            <strong>Critic \(Q\)-value \(Q_\phi(s, g)\):</strong> Measures policy feasibility. Conditioning on high \(Q\)-values forces the diffusion model to sample goals that are within reach of the agent's current capability.
+          </li>
+          <li>
+            <strong>Adversarial Intrinsic Motivation (AIM) Reward \(r_{\text{AIM}}(s, g)\):</strong> Formulated via Wasserstein-1 distance minimization between the state visitation distribution and the desired goal distribution:
+            $$r_{\text{AIM}}(s) = -\log\big(1 - D_\psi(s)\big) + \log\big(D_\psi(s)\big)$$
+            This potential function monotonically increases along optimal trajectories toward the target, continuously pulling the curriculum forward.
+          </li>
+        </ul>
+
+        <h4 style="margin-top: 2rem; color: var(--text-main);">Progression of Value and Reward Landscapes Across Training</h4>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; margin-top: 1rem;">
+          <div class="benchmark-item">
+            <img src="Diffusion_Reverse_Process_Timesteps_t2000.png" alt="Timestep 2000" />
+            <div class="title">Early Phase (\(t=2\,000\))</div>
+          </div>
+          <div class="benchmark-item">
+            <img src="Diffusion_Reverse_Process_Timesteps_t19000.png" alt="Timestep 19000" />
+            <div class="title">Mid Phase (\(t=19\,000\))</div>
+          </div>
+          <div class="benchmark-item">
+            <img src="Diffusion_Reverse_Process_Timesteps_t34000.png" alt="Timestep 34000" />
+            <div class="title">Convergence Phase (\(t=34\,000\))</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Maze Benchmarks Window -->
+    <section id="mazes" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Continuous Maze Navigation Benchmarks</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <p>
+          We benchmarked DiCuRL against <strong>9 state-of-the-art CRL algorithms</strong>: CURROT, GRADIENT, OUTPACE, HGG, GoalGAN, ALP-GMM, VDS, PLR, and ACL across 3 standard non-convex continuous maze environments.
+        </p>
+
+        <!-- Benchmark Curves -->
+        <div class="benchmark-grid">
+          <div class="benchmark-item">
+            <img src="PointUMaze_benchmark_optim.png" alt="PointUMaze Benchmark" />
+            <div class="title">PointUMaze</div>
+          </div>
+          <div class="benchmark-item">
+            <img src="PointNMaze_benchmark_optim.png" alt="PointNMaze Benchmark" />
+            <div class="title">PointNMaze</div>
+          </div>
+          <div class="benchmark-item">
+            <img src="PointSpiralMaze_benchmark_optim.png" alt="PointSpiralMaze Benchmark" />
+            <div class="title">PointSpiralMaze</div>
+          </div>
+        </div>
+
+        <h4 style="margin-top: 2.5rem; color: var(--text-main);">Curriculum Goal Sampling Comparison vs. Baselines</h4>
+        <p>
+          Visual comparison of intermediate goals generated by DiCuRL versus leading baselines. DiCuRL strictly adheres to the passable geometric manifold without attempting invalid shortcuts through walls.
+        </p>
+
+        <!-- PointSpiralMaze Comparison -->
+        <h5 style="margin: 1.5rem 0 0.5rem; color: var(--text-main); font-size: 1rem;">PointSpiralMaze (High-Complexity Barrier)</h5>
+        <div class="comparison-row">
+          <div class="comparison-card highlight">
+            <img src="PointSpiralMaze_curriculum_generation_diffusion.png" alt="DiCuRL Spiral" />
+            <div class="label"><i class="fas fa-check-circle"></i> DiCuRL (Ours)</div>
+          </div>
+          <div class="comparison-card">
+            <img src="PointSpiralMaze_curriculum_generation_outpace.png" alt="OUTPACE Spiral" />
+            <div class="label">OUTPACE</div>
+          </div>
+          <div class="comparison-card">
+            <img src="PointSpiralMaze_curriculum_generation_gradient.png" alt="GRADIENT Spiral" />
+            <div class="label">GRADIENT</div>
+          </div>
+          <div class="comparison-card">
+            <img src="PointSpiralMaze_curriculum_generation_hgg.png" alt="HGG Spiral" />
+            <div class="label">HGG</div>
+          </div>
+        </div>
+
+        <!-- PointUMaze Comparison -->
+        <h5 style="margin: 1.5rem 0 0.5rem; color: var(--text-main); font-size: 1rem;">PointUMaze</h5>
+        <div class="comparison-row">
+          <div class="comparison-card highlight">
+            <img src="PointUMaze_curriculum_generation_diffusion.png" alt="DiCuRL UMaze" />
+            <div class="label"><i class="fas fa-check-circle"></i> DiCuRL (Ours)</div>
+          </div>
+          <div class="comparison-card">
+            <img src="PointUMaze_curriculum_generation_outpace.png" alt="OUTPACE UMaze" />
+            <div class="label">OUTPACE</div>
+          </div>
+          <div class="comparison-card">
+            <img src="PointUMaze_curriculum_generation_gradient.png" alt="GRADIENT UMaze" />
+            <div class="label">GRADIENT</div>
+          </div>
+          <div class="comparison-card">
+            <img src="PointUMaze_curriculum_generation_hgg.png" alt="HGG UMaze" />
+            <div class="label">HGG</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Robotics Window -->
+    <section id="robotics" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">7-DOF MuJoCo Robotic Manipulation Benchmarks</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <p>
+          To demonstrate scalability to continuous high-dimensional systems, we integrated DiCuRL into PyTorch DDPG for 7-DOF Fetch manipulator benchmarks with substantially expanded desired goal areas.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 1.25rem;">
+          <div class="benchmark-item">
+            <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 0.75rem; align-items: center;">
+              <img src="FetchPush_env_view.png" alt="FetchPush Environment Setup" />
+              <img src="FetchPush_results.png" alt="FetchPush Results" />
+            </div>
+            <div class="title" style="margin-top: 0.75rem;">FetchPush (Expanded Goal Region)</div>
+          </div>
+
+          <div class="benchmark-item">
+            <div style="display: grid; grid-template-columns: 1fr 1.2fr; gap: 0.75rem; align-items: center;">
+              <img src="FetchPickAndPlace_env_view.png" alt="FetchPickAndPlace Environment Setup" />
+              <img src="FetchPickAndPlace_results.png" alt="FetchPickAndPlace Results" />
+            </div>
+            <div class="title" style="margin-top: 0.75rem;">FetchPickAndPlace (3D Grasp &amp; Lift)</div>
+          </div>
+        </div>
+
+        <div class="figure-caption" style="margin-top: 1rem;">
+          <strong>Figure 4:</strong> Robotic manipulation setups (yellow: object sampling; cyan: desired goal distribution) and test success rate curves comparing DiCuRL against HGG and HER across 5 independent random seeds.
+        </div>
+      </div>
+    </section>
+
+    <!-- Ablations Window -->
+    <section id="ablations" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Ablation Studies &amp; Conditioning Analysis</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+          <div class="figure-window" style="margin: 0;">
+            <img src="PointSpiralMaze_ablation.png" alt="PointSpiralMaze Ablation Curve" />
+            <div class="figure-caption">
+              <strong>Component Ablation:</strong> Comparison between Full DiCuRL, DiCuRL without \(Q\)-function guidance, and DiCuRL without AIM reward.
+            </div>
+          </div>
+          <div class="figure-window" style="margin: 0;">
+            <img src="aim_reward_pointspiral_maze.png" alt="Learned AIM Potential Field" />
+            <div class="figure-caption">
+              <strong>Learned AIM Potential Field:</strong> Heatmap showing how the potential function increases strictly along the spiral passage toward the goal.
+            </div>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+          <div class="figure-window" style="margin: 0;">
+            <img src="PointSpiralMaze_without_q.png" alt="Without Q Conditioning" />
+            <div class="figure-caption">
+              <strong>Without \(Q\)-Conditioning:</strong> Goals are sampled prematurely in distant regions before the agent has acquired the skills to reach them.
+            </div>
+          </div>
+          <div class="figure-window" style="margin: 0;">
+            <img src="PointSpiralMaze_without_reward.png" alt="Without Reward Conditioning" />
+            <div class="figure-caption">
+              <strong>Without AIM Reward:</strong> Goals fail to progress along the spiral manifold, diffusing diffusely into dead ends.
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BibTeX Window -->
+    <section id="bibtex" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">BibTeX Citation</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body">
+        <div class="bibtex-container">
+          <button class="copy-btn" id="copy-bibtex-btn" onclick="copyBibtex()">
+            <i class="fas fa-copy"></i>
+            <span>Copy Citation</span>
+          </button>
+          <pre id="bibtex-text"><code>@inproceedings{sayar2024diffusion,
+  title     = {Diffusion-based Curriculum Reinforcement Learning},
+  author    = {Sayar, Erdi and Iacca, Giovanni and Oguz, Ozgur S. and Knoll, Alois},
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS 2024)},
+  volume    = {37},
+  pages     = {97587--97617},
+  year      = {2024},
+  doi       = {10.52202/079017-3096},
+  url       = {https://proceedings.neurips.cc/paper_files/paper/2024/hash/b0e89a49af1fb2ebea69bfc39df0be4a-Abstract-Conference.html}
+}</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="text-align: center; margin-top: 4rem; color: var(--text-muted); font-size: 0.9rem;">
+      <p>&copy; 2024 Erdi Sayar · Technical University of Munich, University of Trento &amp; Bilkent University</p>
+      <p style="margin-top: 0.25rem;">
+        <a href="/" style="color: var(--primary-color); font-weight: 500;">
+          <i class="fas fa-arrow-left"></i> Return to Personal Portfolio
+        </a>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    function copyBibtex() {
+      const code = document.getElementById('bibtex-text').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        const btn = document.getElementById('copy-bibtex-btn');
+        btn.innerHTML = '<i class="fas fa-check"></i> <span>Copied!</span>';
+        btn.style.borderColor = 'var(--primary-color)';
+        btn.style.color = 'var(--primary-color)';
+        setTimeout(() => {
+          btn.innerHTML = '<i class="fas fa-copy"></i> <span>Copy Citation</span>';
+          btn.style.borderColor = 'var(--border-color)';
+          btn.style.color = 'var(--text-main)';
+        }, 2500);
+      });
+    }
+  </script>
+</body>
+
+</html>
