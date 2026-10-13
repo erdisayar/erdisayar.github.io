@@ -34,6 +34,8 @@
         <span>Erdi Sayar Portfolio</span>
       </a>
       <div class="site-nav-links">
+        <a href="#video-demo" class="site-nav-link">Video</a>
+        <a href="#overview" class="site-nav-link">Overview</a>
         <a href="#abstract" class="site-nav-link">Abstract</a>
         <a href="#pipeline" class="site-nav-link">Pipeline</a>
         <a href="#navigation" class="site-nav-link">Experiments</a>
@@ -77,7 +79,10 @@
 
       <!-- Action Button Dock -->
       <div class="button-dock">
-        <a href="https://huggingface.co/datasets/UPB-RAT-VLA/Exp2VLA-MultiObject-v1" class="dock-btn dock-btn-primary" target="_blank">
+        <a href="#video-demo" class="dock-btn dock-btn-primary">
+          <i class="fas fa-play"></i> Watch Video Demo
+        </a>
+        <a href="https://huggingface.co/datasets/UPB-RAT-VLA/Exp2VLA-MultiObject-v1" class="dock-btn" target="_blank">
           <i class="fas fa-database"></i> Hugging Face Datasets
         </a>
         <a href="https://huggingface.co/spaces/lerobot/visualize_dataset?path=%2FUPB-RAT-VLA%2FExp2VLA-MultiObject-v1%2Fepisode_0" class="dock-btn" target="_blank">
@@ -91,6 +96,30 @@
         </a>
       </div>
     </header>
+
+    <!-- Interactive Video & Demo Window -->
+    <section id="video-demo" class="window-card">
+      <div class="window-header">
+        <div class="window-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <div class="window-title">Autonomous Flight Demonstration &amp; Experiments Showcase</div>
+        <div style="width: 48px;"></div>
+      </div>
+      <div class="window-body" style="padding: 1.25rem;">
+        <div class="video-showcase-container">
+          <video id="demo-video-player" controls autoplay muted loop playsinline poster="video_poster.jpg">
+            <source src="exp2vla_demo.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="figure-caption" style="margin-top: 0.85rem; text-align: center;">
+          <strong>Video Demonstration:</strong> Language-guided autonomous drone navigation via <strong>Exp2VLA</strong>. Demonstrating Sim2Sim policy execution in Isaac Lab (left) and real-time Simulation-in-the-Loop (SITL) autonomous flight on an NVIDIA Jetson Orin NX platform (right) following natural language navigation commands.
+        </div>
+      </div>
+    </section>
 
     <!-- Overview Window -->
     <section id="overview" class="window-card">
@@ -220,6 +249,19 @@
             <h4 style="margin: 0.5rem 0 0.25rem;">Command: <em>"Fly to the green cone"</em></h4>
             <p style="font-size: 0.82rem; color: var(--text-muted); margin: 0;">Performs smooth descent and hovering at the commanded conical goal.</p>
           </div>
+        </div>
+
+        <div style="background: var(--primary-light); border: 1px solid var(--primary-border); border-radius: var(--radius-md); padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-top: 1.5rem;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <i class="fas fa-play-circle" style="font-size: 1.8rem; color: var(--primary-color);"></i>
+            <div>
+              <div style="font-weight: 600; color: var(--text-main);">Full Flight Demonstration Video</div>
+              <div style="font-size: 0.85rem; color: var(--text-muted);">Watch the real-time Sim2Sim and SITL autonomous flight rollouts in action.</div>
+            </div>
+          </div>
+          <a href="#video-demo" class="btn-pub btn-pub-primary" style="margin: 0;">
+            <i class="fas fa-arrow-up"></i> Watch Video Demo
+          </a>
         </div>
       </div>
     </section>
